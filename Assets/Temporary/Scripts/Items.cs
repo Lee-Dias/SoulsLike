@@ -9,7 +9,7 @@ public class Items : ScriptableObject
     private enum Buff { Health, Damage, Armor}
 
     [SerializeField] private ItemType itemType;
-
+    [SerializeField] private Sprite icon;
     [SerializeField] private new string name;
     [SerializeField] private string description;
     [SerializeField] private int value;

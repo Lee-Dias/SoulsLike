@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject parentObject; // Assign in Inspector
     private Dictionary<GameObject, int> childrenDict = new Dictionary<GameObject, int>();
+    [SerializeField] Dictionary<int, Items> inventory = new Dictionary<int, Items>();
 
     void Start()
     {
