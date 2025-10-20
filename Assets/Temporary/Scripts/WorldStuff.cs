@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ToggleVisibility : MonoBehaviour
+public class WorldStuff : MonoBehaviour
 {
     [SerializeField] private GameObject targetObject; // The object you want to show/hide
     [SerializeField] private Key key = Key.I;
+    [SerializeField]Dictionary<int, Items> inventory = new Dictionary<int, Items>();
 
     void Update()
     {
@@ -14,5 +16,7 @@ public class ToggleVisibility : MonoBehaviour
             bool isActive = targetObject.activeSelf;
             targetObject.SetActive(!isActive);
         }
+
+
     }
 }
