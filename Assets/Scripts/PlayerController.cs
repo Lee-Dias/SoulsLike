@@ -1,24 +1,26 @@
-using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 4f;         // velocidade máxima
-    [SerializeField] private float acceleration = 8f;      // aceleração até atingir moveSpeed
-    [SerializeField] private float gravity = -9.81f;       // gravidade
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float acceleration = 8f;
+    [SerializeField] private float gravity = -9.81f;
 
     [Header("References")]
-    [SerializeField] private Transform cameraTransform;    // referência à câmera (3ª pessoa)
+    [SerializeField] private Transform cameraTransform;
     [SerializeField] private Animator animator;
+    [SerializeField] private CameraSettings cameraSettings;
+
+    [SerializeField] private PlayerCombat playerCombat;
 
     private CharacterController controller;
     private Vector3 velocity;
     private Vector3 currentDirection;
 
     // Input
-    private Vector2 moveInput;           // recebido do Input System
+    private Vector2 moveInput;
 
     void Start()
     {
@@ -27,11 +29,14 @@ public class PlayerController : MonoBehaviour
             cameraTransform = Camera.main.transform;
     }
 
-    // Chamado automaticamente pelo PlayerInput
     public void OnMove(InputAction.CallbackContext value)
     {
         moveInput = value.ReadValue<Vector2>();
-        //moveInput = value.Get<Vector2>();
+    }
+    
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
     }
 
     void Update()
@@ -41,54 +46,78 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-    // --- MOVEMENT RELATIVE TO CAMERA ---
-    Vector3 camForward = cameraTransform.forward;
-    Vector3 camRight = cameraTransform.right;
-    camForward.y = 0f;
-    camRight.y = 0f;
-    camForward.Normalize();
-    camRight.Normalize();
+        if (!controller) return;
 
-    // Desired horizontal direction
-    Vector3 targetDirection = (camForward * moveInput.y + camRight * moveInput.x).normalized;
+        Vector3 camForward = cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+        camForward.y = 0f;
+        camRight.y = 0f;
+        camForward.Normalize();
+        camRight.Normalize();
 
-    if (controller.isGrounded)
-    {
-        // Animator updates
-        animator.SetFloat("x", moveInput.x);
-        animator.SetFloat("y", moveInput.y);
 
-        // Only allow movement on ground
-        if (targetDirection.magnitude > 0.1f)
+        bool isLocked = cameraSettings != null && cameraSettings.currentLockTarget != null;
+        Transform lockTarget = cameraSettings != null ? cameraSettings.currentLockTarget : null;
+
+        animator.SetBool("cameraLocked", isLocked);
+
+        Vector3 targetDirection = Vector3.zero;
+
+        if (isLocked && lockTarget != null)
         {
-            currentDirection = Vector3.Lerp(currentDirection, targetDirection, acceleration * Time.deltaTime);
+            // Movement relative to camera, not target
+            targetDirection = (camForward * moveInput.y + camRight * moveInput.x).normalized;
 
-            // Rotate character
-            Quaternion targetRot = Quaternion.LookRotation(currentDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
+            if (targetDirection.magnitude > 0.1f)
+            {
+                currentDirection = Vector3.Lerp(currentDirection, targetDirection, acceleration * Time.deltaTime);
+            }
+            else
+            {
+                currentDirection = Vector3.Lerp(currentDirection, Vector3.zero, acceleration * Time.deltaTime);
+            }
+
+            // --- Rotate player toward lock target ---
+            Vector3 lookDir = (lockTarget.position - transform.position);
+            lookDir.y = 0f;
+            if (lookDir.sqrMagnitude > 0.01f)
+            {
+                Quaternion lookRot = Quaternion.LookRotation(lookDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
+            }
         }
         else
         {
-            currentDirection = Vector3.Lerp(currentDirection, Vector3.zero, acceleration * Time.deltaTime);
+            // --- Free look rotation ---
+            targetDirection = (camForward * moveInput.y + camRight * moveInput.x).normalized;
+
+            if (targetDirection.magnitude > 0.1f)
+            {
+                currentDirection = Vector3.Lerp(currentDirection, targetDirection, acceleration * Time.deltaTime);
+
+                // Rotate character toward movement direction
+                Quaternion targetRot = Quaternion.LookRotation(currentDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
+            }
+            else
+            {
+                currentDirection = Vector3.Lerp(currentDirection, Vector3.zero, acceleration * Time.deltaTime);
+            }
         }
 
-        // Reset small downward force when grounded
-        if (velocity.y < 0)
-                velocity.y = -2f;
-        }
-        else
-        {
-            // In the air → no horizontal control
-            currentDirection = Vector3.zero;
-        }
-
-        // --- APPLY MOVEMENT ---
+        // --- Apply movement ---
         Vector3 move = currentDirection * moveSpeed;
         controller.Move(move * Time.deltaTime);
 
-        // --- GRAVITY ---
+        // --- Gravity ---
+        if (controller.isGrounded && velocity.y < 0)
+            velocity.y = -2f;
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        // --- Animator movement inputs ---
+        animator.SetFloat("x", moveInput.x);
+        animator.SetFloat("y", moveInput.y);
     }
 }
