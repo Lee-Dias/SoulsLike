@@ -13,6 +13,7 @@ public class Items : ScriptableObject
     [SerializeField] private new string name;
     [SerializeField] private string description;
     [SerializeField] private int value;
+    //[SerializeField] private SlotTag itemTag;
 
     // Weapon ------------------------------------------------------------------------------
     [SerializeField, ShowIf("itemType", ItemType.Weapon)] private int damage;
