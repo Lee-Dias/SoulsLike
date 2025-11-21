@@ -45,6 +45,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     protected bool attacked = false;
     protected float circleDirection = 1f;
+    protected float reverseCircle;
+    protected float reverseCircleTimer;
 
     protected virtual void Start()
     {
@@ -150,7 +152,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
         // Reset the circle timer to a random value between min and max time
         ResetCircleTimer();
-
+        reverseCircle = circleTimer/3;
+        reverseCircleTimer = circleTimer/3;
         // Randomly decide whether to circle clockwise or counterclockwise
         circleDirection = Random.value > 0.5f ? 1f : -1f;
     }
@@ -181,6 +184,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         agent.SetDestination(targetPos);    
 
         circleTimer -= Time.deltaTime;
+        reverseCircleTimer -= Time.deltaTime;    
         // If time is up, transition based on conditions
         if (circleTimer <= 0)
         {
@@ -195,6 +199,13 @@ public abstract class BaseEnemyAI : MonoBehaviour
             }
             stateMachine.Update();
             ResetCircleTimer();
+            reverseCircle = circleTimer/2;
+            reverseCircleTimer = reverseCircle;
+        }
+        if (reverseCircleTimer <= 0)
+        {
+            circleDirection = Random.value > 0.5f ? 1f : -1f;
+            reverseCircleTimer = reverseCircle;
         }
     }
 

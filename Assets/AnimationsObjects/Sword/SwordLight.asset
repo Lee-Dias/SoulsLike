@@ -18,6 +18,7 @@ MonoBehaviour:
   weaponType: 0
   stopControlledMovement: 0
   walkDuringAnimation: 0
+  AttackAnimation: 1
   speed: 1
   singleClip: {fileID: 0}
   movementCurve: []
@@ -26,17 +27,21 @@ MonoBehaviour:
     clip: {fileID: -623603649343465320, guid: b8a597c23df6390499842cbe722f2eb2, type: 3}
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0.2
-    transitionWindowEnd: 0.9
+    transitionWindowEnd: 1
     movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
-    comboSpeed: 1
+    comboSpeed: 0.8
     blendTime: 0.01
+    hitStartTime: 0.3
+    hitEndTime: 1
   - name: LightAttack2
     clip: {fileID: -623603649343465320, guid: beb81735b58aa5647a4647d5b35501e9, type: 3}
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0.2
-    transitionWindowEnd: 0.9
+    transitionWindowEnd: 1
     movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
-    comboSpeed: 1
-    blendTime: 0.01
+    comboSpeed: 0.8
+    blendTime: 0.5
+    hitStartTime: 0.3
+    hitEndTime: 1

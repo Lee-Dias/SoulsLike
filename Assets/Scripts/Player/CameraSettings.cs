@@ -31,6 +31,7 @@ public class CameraSettings : MonoBehaviour
     [Header("Camera Collision")]
     [SerializeField] private float cameraCollisionRadius = 0.3f;
     [SerializeField] private float cameraCollisionSmooth = 15f;
+    [SerializeField] private LayerMask[] wallLayers; // New variable for the wall layer
 
     private float currentCameraDistance;
     private float yaw;
@@ -142,57 +143,64 @@ public class CameraSettings : MonoBehaviour
         }
     }
 
-        private void UpdateCameraTransform(bool editMode = false)
+    private void UpdateCameraTransform(bool editMode = false)
+    {
+        if (!target) return;
+
+        Vector3 targetPosition = target.position;
+        Quaternion rotation;
+
+        if (currentLockTarget != null)
         {
-            if (!target) return;
+            Vector3 toEnemy = currentLockTarget.position - targetPosition;
+            Vector3 flatDir = new Vector3(toEnemy.x, 0, toEnemy.z).normalized;
 
-            Vector3 targetPosition = target.position;
-            Quaternion rotation;
+            yaw = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
+            pitch = lockOnPitch;
 
-            if (currentLockTarget != null)
+            rotation = Quaternion.Euler(pitch, yaw, 0f);
+        }
+        else
+        {
+            rotation = Quaternion.Euler(pitch, yaw, 0f);
+        }
+
+        // --- Calculate camera position ---
+        Vector3 desiredDirection = (rotation * offset).normalized;
+        float desiredDistance = offset.magnitude;
+        float correctedDistance = desiredDistance;
+
+        if (Application.isPlaying)
+        {
+            // Loop through all wall layers and check if the object is in any of them
+            foreach (var layer in wallLayers)
             {
-                Vector3 toEnemy = currentLockTarget.position - targetPosition;
-                Vector3 flatDir = new Vector3(toEnemy.x, 0, toEnemy.z).normalized;
-
-                yaw = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
-                pitch = lockOnPitch;
-
-                rotation = Quaternion.Euler(pitch, yaw, 0f);
-            }
-            else
-            {
-                rotation = Quaternion.Euler(pitch, yaw, 0f);
-            }
-
-            // --- Calculate camera position ---
-            Vector3 desiredDirection = (rotation * offset).normalized;
-            float desiredDistance = offset.magnitude;
-            float correctedDistance = desiredDistance;
-
-            if (Application.isPlaying)
-            {
-                // Collision
-                if (Physics.SphereCast(targetPosition, cameraCollisionRadius, desiredDirection, out RaycastHit hit, desiredDistance))
+                if (Physics.SphereCast(targetPosition, cameraCollisionRadius, desiredDirection, out RaycastHit hit, desiredDistance, layer))
                 {
+                    // Apply the collision when the camera is against a wall
                     correctedDistance = hit.distance - 0.1f;
                     if (correctedDistance < 0f) correctedDistance = 0f;
+                    break; // Stop checking further layers once we hit something
                 }
-
-                currentCameraDistance = Mathf.Lerp(currentCameraDistance, correctedDistance, Time.deltaTime * cameraCollisionSmooth);
-                transform.position = targetPosition + desiredDirection * currentCameraDistance - Vector3.up * verticalCameraShift;
-            }
-            else
-            {
-                // Editor preview
-                transform.position = targetPosition + desiredDirection * desiredDistance - Vector3.up * verticalCameraShift;
             }
 
-            // Look at target
-            if (currentLockTarget)
-                transform.LookAt(currentLockTarget.position + Vector3.up * 0.8f);
-            else
-                transform.LookAt(targetPosition + Vector3.up * lookHeight);
+            currentCameraDistance = Mathf.Lerp(currentCameraDistance, correctedDistance, Time.deltaTime * cameraCollisionSmooth);
+            transform.position = targetPosition + desiredDirection * currentCameraDistance - Vector3.up * verticalCameraShift;
         }
+        else
+        {
+            // Editor preview
+            transform.position = targetPosition + desiredDirection * desiredDistance - Vector3.up * verticalCameraShift;
+        }
+
+        // Look at target
+        if (currentLockTarget)
+            transform.LookAt(currentLockTarget.position + Vector3.up * 0.8f);
+        else
+            transform.LookAt(targetPosition + Vector3.up * lookHeight);
+    }
+
+
 
     private void OnDrawGizmosSelected()
     {

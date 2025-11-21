@@ -12,6 +12,7 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private WeaponAnimationsData equippedWeapon;
+    [SerializeField] private BoxCollider weaponCollider;
 
     private Animator anim;
     private Stamina stamina;
@@ -19,7 +20,6 @@ public class PlayerCombat : MonoBehaviour
 
 
 
-    private float lastAttackTime;
     private bool attackQueued;
     private float bufferTimer;
     private bool isAttacking;
@@ -43,11 +43,24 @@ public class PlayerCombat : MonoBehaviour
 
             normalizedTime = animManager.Handle.GetNormalizedTime();
 
-            if (normalizedTime >= 1.2f && !animManager.QueuedNext)
+            if (normalizedTime >= 1.1f && !animManager.QueuedNext)
             {
                 ResetCombatState();
             }
         }
+        if (animManager.Handle != null)
+        {
+            if (animManager.Handle.ActivateHitBox)
+            {
+                weaponCollider.enabled = true;
+            }
+            else
+            {
+                weaponCollider.enabled = false;
+            }
+                
+        }
+        
 
         // input buffer timeout
         if (attackQueued)
@@ -112,8 +125,6 @@ public class PlayerCombat : MonoBehaviour
     private void HandleAttackInput(CombatAnimations animData)
     {
         if (animData == null) return;
-
-        lastAttackTime = Time.time;
 
         if (!animManager.IsPlaying && stamina.StaminaValue >= staminaToWastePerAttack && !animManager.QueuedNext && !isAttacking )
         {

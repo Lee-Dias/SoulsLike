@@ -12,6 +12,7 @@ public class CombatAnimations : ScriptableObject
     [SerializeField] private WeaponType weaponType;
     [SerializeField] private bool stopControlledMovement;
     [SerializeField] private bool walkDuringAnimation;
+    [SerializeField] private bool AttackAnimation;
     [HideIf(nameof(isCombo))] [SerializeField, Range(0.1f, 3f)] private float speed = 1f;
 
     [HideIf(nameof(isCombo))] [SerializeField] private AnimationClip singleClip;
@@ -37,7 +38,11 @@ public class CombatAnimations : ScriptableObject
         [SerializeField, Range(0.1f, 1f)] private float nextAnimationTriggerPoint; // when to start next combo part
         [SerializeField, Range(0.1f, 3f)] private float comboSpeed;
         [SerializeField, Range(0.01f, 3f)] private float blendTime;
+        [SerializeField, Range(0f, 1f)] private float hitStartTime;
+        [SerializeField, Range(0f, 1f)] private float hitEndTime;
 
+        public float HitStartTime => hitStartTime;
+        public float HitEndTime => hitEndTime;
         public string Name => name;
         public AnimationClip Clip => clip;
         public float BlendTime =>blendTime;
@@ -54,6 +59,7 @@ public class CombatAnimations : ScriptableObject
         return walkDuringAnimation && !isCombo;
     }
 
+    public bool IsAttackAnimation => AttackAnimation;
     public bool IsCombo => isCombo;
     public bool StopControlledMovement => stopControlledMovement;
     public bool WalkDuringAnimation => walkDuringAnimation;

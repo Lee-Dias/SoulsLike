@@ -44,9 +44,12 @@ public class CombatPlayableHandle
     private float startBlendTimer = 0f;
     private float startBlendDuration = 0.15f; // can be per-animation if needed
 
+    private bool activateHitBox; // can be per-animation if needed
+
     public bool IsBlending => blendActive;
     public bool IsFadingOut => fadeOutActive;
     public bool IsFadingIn => startBlendActive;
+    public bool ActivateHitBox => activateHitBox;
 
     public CombatPlayableHandle(Animator animator, CombatAnimations animData)
     {
@@ -155,6 +158,24 @@ public class CombatPlayableHandle
 
         graph.Evaluate(deltaTime);
 
+        if (data.IsAttackAnimation)
+        {
+            if (data.IsCombo)
+            {
+                if(data.Steps[currentStep].HitStartTime < GetNormalizedTime() && data.Steps[currentStep].HitEndTime > GetNormalizedTime())
+                {
+                    activateHitBox = true;
+                }
+                else
+                {
+                    activateHitBox = false;
+                }
+            }
+        }
+        else
+        {
+            activateHitBox = false; 
+        }
         // -----------------------
         // BLENDING BETWEEN STEPS
         // -----------------------

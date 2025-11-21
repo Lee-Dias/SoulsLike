@@ -34,6 +34,8 @@ MonoBehaviour:
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.5
     blendTime: 0.01
+    hitStartTime: 0.2
+    hitEndTime: 1
   - name: AxeHit1
     clip: {fileID: 1827226128182048838, guid: bbb69fa55753a4b4a917be40ef8fd259, type: 3}
     soundEffectCombo: {fileID: 0}
@@ -46,6 +48,8 @@ MonoBehaviour:
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.5
     blendTime: 0.01
+    hitStartTime: 0
+    hitEndTime: 0
   - name: AxeHit1
     clip: {fileID: 1827226128182048838, guid: a3e1bbe28974b6e4eb7dc701fbd7d296, type: 3}
     soundEffectCombo: {fileID: 0}
@@ -58,3 +62,5 @@ MonoBehaviour:
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.5
     blendTime: 0.01
+    hitStartTime: 0
+    hitEndTime: 0
