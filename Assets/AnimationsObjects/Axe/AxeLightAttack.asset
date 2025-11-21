@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98abd0cd5cae9c4cbb5f0d180a21c47, type: 3}
+  m_Name: AxeLightAttack
+  m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
+  isCombo: 1
+  soundEffect: {fileID: 0}
+  attackType: 0
+  weaponType: 0
+  stopControlledMovement: 1
+  walkDuringAnimation: 1
+  speed: 0.5
+  singleClip: {fileID: 0}
+  movementCurve: []
+  comboSteps:
+  - name: AxeHit1
+    clip: {fileID: 1827226128182048838, guid: 00a5fa0dc823ad1498aae38cc5af2611, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0.2
+    transitionWindowEnd: 1
+    movementCurveOnCombo:
+    - startTime: 0
+      endTime: 1
+      speed: {x: 0, y: 1}
+    nextAnimationTriggerPoint: 1
+    comboSpeed: 0.5
+    blendTime: 0.01
+  - name: AxeHit1
+    clip: {fileID: 1827226128182048838, guid: bbb69fa55753a4b4a917be40ef8fd259, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0.2
+    transitionWindowEnd: 1
+    movementCurveOnCombo:
+    - startTime: 0
+      endTime: 1
+      speed: {x: 0, y: 1}
+    nextAnimationTriggerPoint: 1
+    comboSpeed: 0.5
+    blendTime: 0.01
+  - name: AxeHit1
+    clip: {fileID: 1827226128182048838, guid: a3e1bbe28974b6e4eb7dc701fbd7d296, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0.2
+    transitionWindowEnd: 1
+    movementCurveOnCombo:
+    - startTime: 0
+      endTime: 1
+      speed: {x: 0, y: 1}
+    nextAnimationTriggerPoint: 1
+    comboSpeed: 0.5
+    blendTime: 0.01

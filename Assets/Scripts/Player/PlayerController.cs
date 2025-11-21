@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,16 +10,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration = 8f;
     [SerializeField] private float gravity = -9.81f;
 
+    [Header("Dash Settings")]
+    [SerializeField] private float dashDistance = 5f;
+    [SerializeField] private float dashDuration = 0.5f;
+    [SerializeField] private TrailRenderer trail;
+    [SerializeField] private SkinnedMeshRenderer[] renderers;
+    [SerializeField] private MeshRenderer axeRenderer; 
+    
+
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Animator animator;
     [SerializeField] private CameraSettings cameraSettings;
+
+
 
     [SerializeField] private PlayerCombat playerCombat;
 
     private CharacterController controller;
     private Vector3 velocity;
     private Vector3 currentDirection;
+
+    private bool isDashing = false;
+    private bool isInvincible = false;
 
     // Input
     private Vector2 moveInput;
@@ -33,10 +48,13 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = value.ReadValue<Vector2>();
     }
-    
+
     public void OnDodge(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (isDashing) return;
+
+        StartCoroutine(Dash());
     }
 
     void Update()
@@ -48,6 +66,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!controller) return;
 
+        if (playerCombat.ShouldBlockMovement(out Vector3 animWalk))
+        {
+            controller.Move(animWalk * Time.deltaTime);
+            animator.SetFloat("x", 0);
+            animator.SetFloat("y", 0);
+            return;
+        }
         Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
         camForward.y = 0f;
@@ -119,5 +144,54 @@ public class PlayerController : MonoBehaviour
         // --- Animator movement inputs ---
         animator.SetFloat("x", moveInput.x);
         animator.SetFloat("y", moveInput.y);
+    }
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        isInvincible = true;
+
+        // Hide the player model
+        foreach (var r in renderers)
+            r.enabled = false;
+        axeRenderer.enabled = false;
+        trail.emitting = true;
+
+        Vector3 dashDir = Vector3.zero;
+
+        if (moveInput.sqrMagnitude > 0.1f)
+        {
+            dashDir = (cameraTransform.forward * moveInput.y + cameraTransform.right * moveInput.x).normalized;
+        }
+        else
+        {
+            dashDir = -transform.forward; // default to facing direction
+        }
+        dashDir.y = 0f;
+
+        float elapsed = 0f;
+        Vector3 start = transform.position;
+        Vector3 target = start + dashDir * dashDistance;
+
+        while (elapsed < dashDuration)
+        {
+            // Smoothly interpolate between start and target
+            Vector3 next = Vector3.Lerp(start, target, elapsed / dashDuration);
+            controller.Move(next - transform.position);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Final snap to target position
+        controller.Move(target - transform.position);
+
+        // Reveal model again
+        foreach (var r in renderers)
+            r.enabled = true;
+        axeRenderer.enabled = true;
+        trail.emitting = false;
+
+        isInvincible = false;
+        isDashing = false;
     }
 }

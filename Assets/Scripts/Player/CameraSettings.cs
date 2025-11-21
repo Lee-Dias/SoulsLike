@@ -6,9 +6,7 @@ using System.Linq;
 public class CameraSettings : MonoBehaviour
 {
     [Header("Camera Targeting")]
-    [SerializeField, Tooltip("Vertical offset from player’s position for the camera to look at")]
-    private float lookHeight = 1.2f;
-    [Header("Target")]
+    [SerializeField] private float lookHeight = 1.2f;
     [SerializeField] private Transform target;
 
     [Header("Camera Settings")]
@@ -16,6 +14,7 @@ public class CameraSettings : MonoBehaviour
     [SerializeField] private float followSpeed = 10f;
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private Vector2 pitchLimits = new Vector2(-20f, 45f);
+    [SerializeField] private float verticalCameraShift = 0f; // new variable
 
     [Header("Initial Rotation")]
     [SerializeField] private float initialYaw = 0f;
@@ -26,17 +25,25 @@ public class CameraSettings : MonoBehaviour
     [SerializeField] private float distanceToUnlock = 25f;
     [SerializeField] private LayerMask enemyLayer;
 
+    [Header("Lock-On Camera Angle")]
+    [SerializeField] private float lockOnPitch = 15f;   // fixed lock-on height
+
+    [Header("Camera Collision")]
+    [SerializeField] private float cameraCollisionRadius = 0.3f;
+    [SerializeField] private float cameraCollisionSmooth = 15f;
+
+    private float currentCameraDistance;
     private float yaw;
     private float pitch;
 
     private Vector2 lookInput;
-    
     public Transform currentLockTarget { get; private set; }
 
     private void OnEnable()
     {
         yaw = initialYaw;
         pitch = initialPitch;
+        currentCameraDistance = offset.magnitude;
         UpdateCameraTransform(editMode: true);
     }
 
@@ -44,6 +51,7 @@ public class CameraSettings : MonoBehaviour
     {
         yaw = initialYaw;
         pitch = initialPitch;
+        currentCameraDistance = offset.magnitude;
         UpdateCameraTransform(editMode: true);
     }
 
@@ -53,8 +61,10 @@ public class CameraSettings : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
             yaw = initialYaw;
             pitch = initialPitch;
+            currentCameraDistance = offset.magnitude;
             UpdateCameraTransform();
         }
     }
@@ -95,6 +105,8 @@ public class CameraSettings : MonoBehaviour
             .FirstOrDefault();
 
         currentLockTarget = bestTarget;
+
+        pitch = lockOnPitch;
     }
 
     private void Unlock()
@@ -117,7 +129,6 @@ public class CameraSettings : MonoBehaviour
 
             if (currentLockTarget == null)
             {
-                // Normal free rotation
                 yaw += lookInput.x * rotationSpeed;
                 pitch -= lookInput.y * rotationSpeed;
                 pitch = Mathf.Clamp(pitch, pitchLimits.x, pitchLimits.y);
@@ -131,63 +142,57 @@ public class CameraSettings : MonoBehaviour
         }
     }
 
-    private void UpdateCameraTransform(bool editMode = false)
-    {
-        if (!target) return;
-
-        Vector3 targetPosition = target.position;
-
-        Quaternion rotation;
-        Vector3 desiredPosition;
-
-        if (currentLockTarget != null)
+        private void UpdateCameraTransform(bool editMode = false)
         {
-            // --- Souls-like lock-on orbit behavior ---
+            if (!target) return;
 
-            // 1. Find direction from player to enemy (flat on XZ plane)
-            Vector3 toEnemy = currentLockTarget.position - targetPosition;
-            Vector3 flatDir = new Vector3(toEnemy.x, 0, toEnemy.z).normalized;
+            Vector3 targetPosition = target.position;
+            Quaternion rotation;
 
-            // 2. Get yaw from that direction
-            yaw = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
+            if (currentLockTarget != null)
+            {
+                Vector3 toEnemy = currentLockTarget.position - targetPosition;
+                Vector3 flatDir = new Vector3(toEnemy.x, 0, toEnemy.z).normalized;
 
-            // (Optional) smoothly interpolate yaw for smoother orbit
-            // yaw = Mathf.LerpAngle(yaw, Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg, Time.deltaTime * followSpeed);
+                yaw = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
+                pitch = lockOnPitch;
 
-            // Keep pitch limited (you can also make pitch auto-adjust slightly)
-            pitch = Mathf.Clamp(pitch, pitchLimits.x, pitchLimits.y);
+                rotation = Quaternion.Euler(pitch, yaw, 0f);
+            }
+            else
+            {
+                rotation = Quaternion.Euler(pitch, yaw, 0f);
+            }
 
-            // 3. Build rotation from yaw & pitch
-            rotation = Quaternion.Euler(pitch, yaw, 0f);
+            // --- Calculate camera position ---
+            Vector3 desiredDirection = (rotation * offset).normalized;
+            float desiredDistance = offset.magnitude;
+            float correctedDistance = desiredDistance;
 
-            // 4. Camera stays same offset relative to player (behind player, not enemy)
-            desiredPosition = targetPosition + rotation * offset;
+            if (Application.isPlaying)
+            {
+                // Collision
+                if (Physics.SphereCast(targetPosition, cameraCollisionRadius, desiredDirection, out RaycastHit hit, desiredDistance))
+                {
+                    correctedDistance = hit.distance - 0.1f;
+                    if (correctedDistance < 0f) correctedDistance = 0f;
+                }
 
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
+                currentCameraDistance = Mathf.Lerp(currentCameraDistance, correctedDistance, Time.deltaTime * cameraCollisionSmooth);
+                transform.position = targetPosition + desiredDirection * currentCameraDistance - Vector3.up * verticalCameraShift;
+            }
+            else
+            {
+                // Editor preview
+                transform.position = targetPosition + desiredDirection * desiredDistance - Vector3.up * verticalCameraShift;
+            }
 
-            // 5. Look directly at the enemy’s upper body
-            Vector3 enemyLookPos = currentLockTarget.position + Vector3.up * 0.8f;
-            transform.LookAt(enemyLookPos);
+            // Look at target
+            if (currentLockTarget)
+                transform.LookAt(currentLockTarget.position + Vector3.up * 0.8f);
+            else
+                transform.LookAt(targetPosition + Vector3.up * lookHeight);
         }
-        else
-        {
-            // --- Normal free camera behavior ---
-
-            rotation = Quaternion.Euler(pitch, yaw, 0f);
-            desiredPosition = targetPosition + rotation * offset;
-
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
-            transform.LookAt(targetPosition + Vector3.up * lookHeight);
-        }
-
-        // For edit mode preview (when not playing)
-        if (editMode)
-        {
-            transform.position = targetPosition + Quaternion.Euler(pitch, yaw, 0f) * offset;
-            transform.LookAt(targetPosition + Vector3.up * lookHeight);
-        }
-    }
-
 
     private void OnDrawGizmosSelected()
     {
