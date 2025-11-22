@@ -5482,6 +5482,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2780147876215319319, guid: ef625d772bb1a1e4fa35871b8e0b8409, type: 3}
       insertIndex: -1
       addedObject: {fileID: 524599236}
+    - targetCorrespondingSourceObject: {fileID: 2780147876215319319, guid: ef625d772bb1a1e4fa35871b8e0b8409, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524599244}
+    - targetCorrespondingSourceObject: {fileID: 2780147876215319319, guid: ef625d772bb1a1e4fa35871b8e0b8409, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524599243}
+    - targetCorrespondingSourceObject: {fileID: 2780147876215319319, guid: ef625d772bb1a1e4fa35871b8e0b8409, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524599242}
     - targetCorrespondingSourceObject: {fileID: -2197023295489673911, guid: ef625d772bb1a1e4fa35871b8e0b8409, type: 3}
       insertIndex: -1
       addedObject: {fileID: 524599241}
@@ -5570,7 +5579,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -5618,6 +5627,69 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4791299493615319077, guid: ef625d772bb1a1e4fa35871b8e0b8409, type: 3}
+--- !u!65 &524599242
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524599233}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3157501, y: 27.87754, z: 17.923973}
+  m_Center: {x: 41, y: -22.005844, z: 63.74428}
+--- !u!65 &524599243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524599233}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.093887, y: 27.541727, z: 11.196701}
+  m_Center: {x: 39.07152, y: -22.173752, z: 50.28054}
+--- !u!65 &524599244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524599233}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3157501, y: 27.877542, z: 13.825623}
+  m_Center: {x: 36.682457, y: -22.005844, z: 37.714462}
 --- !u!1 &525636242
 GameObject:
   m_ObjectHideFlags: 0
@@ -15952,8 +16024,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 58.782196, y: 0.77748823, z: 48.495518}
-  m_Center: {x: -29.20256, y: -0.44277406, z: 0.96582603}
+  m_Size: {x: 58.782196, y: 1.0297706, z: 48.495518}
+  m_Center: {x: -29.20256, y: -0.31663287, z: 0.96582603}
 --- !u!1 &1479677616
 GameObject:
   m_ObjectHideFlags: 0
@@ -22315,8 +22387,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000501124}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16686901, y: -0.022182457, z: 0.003755127, w: 0.98572236}
-  m_LocalPosition: {x: 0, y: 2.9416556, z: -3.5560913}
+  m_LocalRotation: {x: 0.16838986, y: -0, z: -0, w: 0.9857205}
+  m_LocalPosition: {x: 0, y: 2.8910127, z: -3.8104668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22429,7 +22501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   lookHeight: 1
-  target: {fileID: 0}
+  target: {fileID: 86206219}
   offset: {x: 0, y: 2, z: -4}
   followSpeed: 10
   rotationSpeed: 0.01
