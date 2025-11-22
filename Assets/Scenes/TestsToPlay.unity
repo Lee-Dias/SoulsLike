@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73258818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11397211b890ef543ba62f7768447494, type: 3}
+  m_PrefabInstance: {fileID: 1024340924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &103700575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_of_mercenary
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11397211b890ef543ba62f7768447494, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3291460997423930385, guid: 11397211b890ef543ba62f7768447494, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9413503
@@ -1359,13 +1368,52 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2463706537061040287, guid: 11397211b890ef543ba62f7768447494, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11397211b890ef543ba62f7768447494, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1024340927}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11397211b890ef543ba62f7768447494, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1024340926}
   m_SourcePrefab: {fileID: 100100000, guid: 11397211b890ef543ba62f7768447494, type: 3}
 --- !u!4 &1024340925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11397211b890ef543ba62f7768447494, type: 3}
   m_PrefabInstance: {fileID: 1024340924}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1024340926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73258818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cce912fe97856f49a17a6c0157b8ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!65 &1024340927
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73258818}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.110067345, y: 0.12642954, z: 1.5274377}
+  m_Center: {x: -0.028138036, y: 0.4259205, z: 0.16025867}
 --- !u!1 &1053378475
 GameObject:
   m_ObjectHideFlags: 0
