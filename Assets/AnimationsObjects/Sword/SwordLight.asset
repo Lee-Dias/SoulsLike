@@ -16,8 +16,8 @@ MonoBehaviour:
   soundEffect: {fileID: 0}
   attackType: 0
   weaponType: 0
-  stopControlledMovement: 0
-  walkDuringAnimation: 0
+  stopControlledMovement: 1
+  walkDuringAnimation: 1
   AttackAnimation: 1
   speed: 1
   singleClip: {fileID: 0}
@@ -28,9 +28,15 @@ MonoBehaviour:
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
-    movementCurveOnCombo: []
+    movementCurveOnCombo:
+    - startTime: 0
+      endTime: 1
+      speed: {x: 0, y: 1.2}
+    - startTime: 0
+      endTime: 1
+      speed: {x: 0, y: -0.5}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.8
+    comboSpeed: 0.65
     blendTime: 0.01
     hitStartTime: 0.3
     hitEndTime: 1
@@ -39,9 +45,15 @@ MonoBehaviour:
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
-    movementCurveOnCombo: []
+    movementCurveOnCombo:
+    - startTime: 0
+      endTime: 0.5
+      speed: {x: 0, y: 0}
+    - startTime: 0.5
+      endTime: 1
+      speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.8
+    comboSpeed: 0.65
     blendTime: 0.5
     hitStartTime: 0.3
     hitEndTime: 1
