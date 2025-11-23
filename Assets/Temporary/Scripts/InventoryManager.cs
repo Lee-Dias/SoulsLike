@@ -1,73 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private GameObject parentObject; // Assign in Inspector
-    private Dictionary<GameObject, int> childrenDict = new Dictionary<GameObject, int>();
-    [SerializeField] Dictionary<int, Items> inventory = new Dictionary<int, Items>();
-
+    [SerializeField] private Button closeButton;
+    [SerializeField] private GameObject button;
+    [SerializeField] private GameObject inventory;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (parentObject == null)
-        {
-            Debug.LogError("Parent object not assigned!");
-            return;
-        }
-        byte i = 0;
-        // Loop through all direct children
-        foreach (Transform child in parentObject.transform)
-        {
-            // Get all Buttons under the parent
-            Button[] childButtons = child.GetComponentsInChildren<Button>();
-            
-            foreach (Button btn in childButtons)
-            {
-                childrenDict[btn.gameObject] = i;
-                // Add a listener for each button
-                btn.onClick.AddListener(() => OnChildClicked(btn));
-                i++;
-            }
-        }
-
-        
+        closeButton.onClick.AddListener(CloseInventory);
     }
 
-    private void OnChildClicked(Button clickedButton)
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log($"Button clicked: {clickedButton.name} (Number: {childrenDict[clickedButton.gameObject]})");
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            print("Espa�o clicado");
+            inventory.SetActive(!inventory.activeSelf);
+            button.SetActive(!button.activeSelf);
+        }
     }
 
-    // This function can be called from a Button's OnClick event
-    public void OnButtonClicked(GameObject clickedButton)
+    private void CloseInventory()
     {
-
-        // Get the button's parent Transform
-        Transform parent = clickedButton.transform.parent;
-
-        if (parent != null)
-        {
-            Debug.Log("Parent name: " + parent.name);
-        }
-        else
-        {
-            Debug.Log("This button has no parent!");
-        }
-
-        string parentName = parent.name;
-
-        // Remove all non-digit characters
-        string numbersOnly = Regex.Replace(parentName, @"\D", "");
-
-        if (int.TryParse(numbersOnly, out int number))
-        {
-            Debug.Log($"Parent name: {parentName} → Number: {number}");
-        }
-        else
-        {
-            Debug.Log($"Parent name: {parentName} → No numbers found or not valid");
-        }
+        inventory.SetActive(false);
+        button.SetActive(false);
     }
 }

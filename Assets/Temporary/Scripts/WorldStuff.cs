@@ -6,7 +6,7 @@ public class WorldStuff : MonoBehaviour
 {
     [SerializeField] private GameObject targetObject; // The object you want to show/hide
     [SerializeField] private Key key = Key.I;
-    [SerializeField]Dictionary<int, Items> inventory = new Dictionary<int, Items>();
+    [SerializeField]Dictionary<int, Item> inventory = new Dictionary<int, Item>();
 
     void Update()
     {

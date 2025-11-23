@@ -1,19 +1,24 @@
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Items", menuName = "Scriptable Objects/Items")]
-public class Items : ScriptableObject
+public class Item : ScriptableObject
 {
-    private enum ItemType { Weapon, Equipment, Consumable}
+    public enum ItemType { Weapon, Equipment, Consumable, None}
     private enum BodyPlace { Head, Chest, Pants, Ring}
     private enum Buff { Health, Damage, Armor}
 
     [SerializeField] private ItemType itemType;
-    [SerializeField] private Sprite icon;
     [SerializeField] private new string name;
+    [SerializeField] private Sprite icon;
     [SerializeField] private string description;
     [SerializeField] private int value;
     //[SerializeField] private SlotTag itemTag;
+
+    public ItemType itemTypePublic => itemType;
+
+    public Sprite Icon => icon;
 
     // Weapon ------------------------------------------------------------------------------
     [SerializeField, ShowIf("itemType", ItemType.Weapon)] private int damage;
