@@ -2,32 +2,49 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using NUnit.Framework;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private Button closeButton;
     [SerializeField] private GameObject button;
     [SerializeField] private GameObject inventory;
+    private bool isActive = false;
+    public bool IsActive => isActive;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         closeButton.onClick.AddListener(CloseInventory);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnInventory(InputAction.CallbackContext ctx)
     {
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            print("Espaço clicado");
-            inventory.SetActive(!inventory.activeSelf);
-            button.SetActive(!button.activeSelf);
+        if (!ctx.performed) return;
+        UpdateSetActives();
+
+    }
+    // Update is called once per frame
+    public void UpdateSetActives()
+    {
+        isActive = !isActive;
+        if (isActive)
+        {            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        button.SetActive(isActive);
+        inventory.SetActive(isActive);
     }
 
     private void CloseInventory()
     {
-        inventory.SetActive(false);
-        button.SetActive(false);
+        isActive = false;   
+        inventory.SetActive(isActive);
+        button.SetActive(isActive);
     }
 }

@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("References")]
     [SerializeField] private WeaponAnimationsData equippedWeapon;
     [SerializeField] private BoxCollider weaponCollider;
+    [SerializeField] private InventoryManager inventoryManager;
 
     private Animator anim;
     private Stamina stamina;
@@ -135,6 +136,11 @@ public class PlayerCombat : MonoBehaviour
     private void HandleAttackInput(CombatAnimations animData)
     {
         if (animData == null || !health.CanAttack()) return;
+        
+        if (inventoryManager != null)
+            if(inventoryManager.IsActive)
+                return;
+        
 
         if (!animManager.IsPlaying && stamina.StaminaValue >= staminaToWastePerAttack && !animManager.QueuedNext && !isAttacking )
         {
