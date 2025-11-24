@@ -82,10 +82,6 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("IsWalking",false);
             }
-            else
-            {
-                animator.SetBool("IsWalking",true);
-            }
             
         }
         else
