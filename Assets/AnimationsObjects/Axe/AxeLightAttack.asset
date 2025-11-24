@@ -18,6 +18,7 @@ MonoBehaviour:
   weaponType: 0
   stopControlledMovement: 1
   walkDuringAnimation: 1
+  AttackAnimation: 1
   speed: 0.5
   singleClip: {fileID: 0}
   movementCurve: []
@@ -32,11 +33,11 @@ MonoBehaviour:
       endTime: 1
       speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.5
+    comboSpeed: 0.4
     blendTime: 0.01
-    hitStartTime: 0.2
-    hitEndTime: 1
-  - name: AxeHit1
+    hitStartTime: 0.4
+    hitEndTime: 0.7
+  - name: AxeHit2
     clip: {fileID: 1827226128182048838, guid: bbb69fa55753a4b4a917be40ef8fd259, type: 3}
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0.2
@@ -46,21 +47,24 @@ MonoBehaviour:
       endTime: 1
       speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.5
+    comboSpeed: 0.4
     blendTime: 0.01
-    hitStartTime: 0
-    hitEndTime: 0
-  - name: AxeHit1
+    hitStartTime: 0.2
+    hitEndTime: 0.7
+  - name: AxeHit3
     clip: {fileID: 1827226128182048838, guid: a3e1bbe28974b6e4eb7dc701fbd7d296, type: 3}
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
     movementCurveOnCombo:
     - startTime: 0
-      endTime: 1
+      endTime: 0.4
       speed: {x: 0, y: 1}
+    - startTime: 0.4
+      endTime: 1
+      speed: {x: 0, y: -1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.5
+    comboSpeed: 0.4
     blendTime: 0.01
-    hitStartTime: 0
-    hitEndTime: 0
+    hitStartTime: 0.2
+    hitEndTime: 0.5

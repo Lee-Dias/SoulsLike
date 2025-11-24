@@ -8,11 +8,11 @@ public abstract class BaseEnemyAI : MonoBehaviour
     [SerializeField] protected float minPreferredDistanceFromPlayer;
     [SerializeField] protected float maxPreferredDistanceFromPlayer;
     [SerializeField] protected float audioRange;
-    [SerializeField] protected float viewRange;  // Max range of vision (distance from the enemy)
-    [SerializeField] protected float viewAngle;  // Angle of the view cone (in degrees)
+    [SerializeField] protected float viewRange;
+    [SerializeField] protected float viewAngle;
 
     [Header("Movement")]
-    [SerializeField] protected float circleEnemySpeed; // used only when circling
+    [SerializeField] protected float circleEnemySpeed;
 
     [Header("Timing & Stats")]
     [SerializeField] protected float minTimeCircling;
@@ -20,38 +20,46 @@ public abstract class BaseEnemyAI : MonoBehaviour
     [SerializeField] protected float attacksCooldown;
     [SerializeField] protected EnemyProfile enemy;
 
+    [Header("Decision Chance")]
+    [SerializeField] protected float chanceToCircle = 0.5f; // 50/50 default
+
     [SerializeField] protected Animator anim;
+
+    [SerializeField] protected BoxCollider weaponCollider;
 
     protected NavMeshAgent agent;
     protected StateMachine stateMachine;
+    protected Health health;
+
     protected State idleState;
+    protected State decideState;
     protected State chaseState;
     protected State circleState;
     protected State attackState;
 
     protected Transform player;
+
     protected float baseSpeed;
     protected float currentHealth;
     protected bool playerInViewRange;
     protected bool playerInAudioRange;
-    protected bool takingDamage;
+
     protected bool isDead;
-    protected float attackTimer;
 
     protected float circleTimer;
-    protected bool canCircle = true;
-
-    protected State stateAfterCircle;
-
-    protected bool attacked = false;
     protected float circleDirection = 1f;
-    protected float reverseCircle;
-    protected float reverseCircleTimer;
+
+    protected bool attackEnded = false;
+    protected bool isInAttackAnimation = false;
+
+    protected CombatAnimationManager animManager;
 
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        health = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        animManager = new CombatAnimationManager(anim);
 
         baseSpeed = agent.speed;
 
@@ -59,226 +67,225 @@ public abstract class BaseEnemyAI : MonoBehaviour
         CreateTransitions();
 
         stateMachine = new StateMachine(idleState);
-
-        // Manually trigger the entry actions of the starting state
         idleState.EntryActions?.Invoke();
     }
 
     protected virtual void Update()
     {
-        Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
+        if (!isInAttackAnimation)
+        {
+            Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
+            anim.SetFloat("x", localVel.x);
+            anim.SetFloat("y", localVel.z);
+        }
+        else
+        {
+            anim.SetFloat("x", 0);
+            anim.SetFloat("y", 0);
 
-        anim.SetFloat("x", localVel.x);  // strafe left/right
-        anim.SetFloat("y", localVel.z);  // forward/backwards
+            Vector2 mov = animManager.GetMovementFromCurrentAnimation();
+            transform.position += (transform.forward * mov.y + transform.right * mov.x) * Time.deltaTime;
+        }
+        if (!health.CanAttack())
+        {
+            if (animManager != null)
+            {
+                animManager?.UpdatePerFrame(Time.deltaTime);
+            }
+        }
+        
         UpdatePerception();
-
-        // Run whatever actions the FSM returns
         var actions = stateMachine.Update();
         actions?.Invoke();
     }
 
+    // ------------------------------------------------------
+    //  STATE DEFINITIONS
+    // ------------------------------------------------------
     protected virtual void CreateStates()
     {
         idleState = new State("Idle", OnEnterIdle, Idle, null);
+        decideState = new State("Decide", OnEnterDecide, Decide, null);
         chaseState = new State("Chase", OnEnterChase, Chase, null);
         circleState = new State("Circle", OnEnterCircle, Circle, null);
         attackState = new State("Attack", OnEnterAttack, Attack, null);
     }
 
+    // ------------------------------------------------------
+    //  FSM TRANSITIONS
+    // ------------------------------------------------------
     protected virtual void CreateTransitions()
     {
-        idleState.AddTransition(new Transition(() => !playerInViewRange || !playerInAudioRange, null, chaseState));
-        chaseState.AddTransition(new Transition(() => IsInPreferredRange(), null, circleState));
-        circleState.AddTransition(new Transition(() => stateAfterCircle == attackState, null, attackState));
-        circleState.AddTransition(new Transition(() => stateAfterCircle == circleState, null, circleState));
-        circleState.AddTransition(new Transition(() => !IsInPreferredRange() && playerInViewRange , null, chaseState));
-        circleState.AddTransition(new Transition(() => !IsInPreferredRange() && !playerInViewRange && !playerInAudioRange, null, idleState));
-        attackState.AddTransition(new Transition(() => attacked, null, circleState));
+        idleState.AddTransition(new Transition(() => playerInViewRange || playerInAudioRange, null, decideState));
+
+        decideState.AddTransition(new Transition(() => ShouldGoIdle(), null, idleState));
+        decideState.AddTransition(new Transition(() => ShouldChase(), null, chaseState));
+        decideState.AddTransition(new Transition(() => ShouldCircle(), null, circleState));
+        decideState.AddTransition(new Transition(() => ShouldAttack() && health.CanAttack(), null, attackState));
+
+        chaseState.AddTransition(new Transition(() => IsInPreferredRange(), null, decideState));
+
+        circleState.AddTransition(new Transition(() => circleTimer <= 0, null, decideState));
+
+        attackState.AddTransition(new Transition(() => attackEnded, null, decideState));
     }
 
-    // -------------------- STATE LOGIC --------------------
+    // ------------------------------------------------------
+    //  DECISION LOGIC
+    // ------------------------------------------------------
+    private bool ShouldGoIdle()
+    {
+        return !playerInAudioRange && !playerInViewRange;
+    }
+
+    private bool ShouldChase()
+    {
+        return !IsInPreferredRange() && (playerInAudioRange || playerInViewRange);
+    }
+
+    private bool ShouldCircle()
+    {
+        if (!IsInPreferredRange()) return false;
+
+        return Random.value < chanceToCircle;
+    }
+
+    private bool ShouldAttack()
+    {
+        if (!IsInPreferredRange()) return false;
+        return Random.value >= chanceToCircle;
+    }
+
+    // ------------------------------------------------------
+    //  STATE BEHAVIOR
+    // ------------------------------------------------------
 
     protected virtual void OnEnterIdle()
     {
-        Debug.Log("Is Idle");
         agent.isStopped = true;
+        Debug.Log("Idle");
     }
 
-    protected virtual void Idle()
+    protected virtual void Idle() { }
+
+    protected virtual void OnEnterDecide()
     {
-        
+        agent.isStopped = false;
+        agent.updateRotation = false;
+        attackEnded = false;
+        circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
+        Debug.Log("Deciding...");
     }
+
+    protected virtual void Decide() { }
 
     protected virtual void OnEnterChase()
     {
-        Debug.Log("Is Chasing");
-
-        // Smoothly rotate the enemy to face the player
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, 5f * Time.deltaTime); // Adjust rotation speed
-
         agent.isStopped = false;
         agent.speed = baseSpeed;
+        Debug.Log("Chasing player");
     }
 
     protected virtual void Chase()
     {
         if (player == null) return;
 
-        // Keep the enemy facing the player during the chase
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, 5f * Time.deltaTime); // Smooth rotation
-
-        // Move towards the player
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance > minPreferredDistanceFromPlayer)
-        {
-            agent.SetDestination(player.position); // Keep moving towards the player
-        }
-        else
-        {
-            agent.isStopped = true; // Stop moving when in the preferred range
-        }
+        RotateTowardPlayer();
+        agent.SetDestination(player.position);
     }
 
     protected virtual void OnEnterCircle()
     {
-        stateAfterCircle = null;
-        Debug.Log("Is Circling");
+        Debug.Log("Circling player");
         agent.isStopped = false;
         agent.speed = circleEnemySpeed;
 
-        // Reset the circle timer to a random value between min and max time
-        ResetCircleTimer();
-        reverseCircle = circleTimer/3;
-        reverseCircleTimer = circleTimer/3;
-        // Randomly decide whether to circle clockwise or counterclockwise
+        circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
         circleDirection = Random.value > 0.5f ? 1f : -1f;
     }
 
     protected virtual void Circle()
     {
         if (player == null) return;
+        if (health.ShouldBlockMovement())
+        {
+            agent.isStopped=true;
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+        RotateTowardPlayer();
 
-        // Always face the player
         Vector3 toPlayer = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(toPlayer);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, 360f * Time.deltaTime);
+        Vector3 strafe = Vector3.Cross(Vector3.up, toPlayer) * circleDirection;
 
-        // Strafe direction (sideways relative to the player)
-        Vector3 strafeDir = Vector3.Cross(Vector3.up, toPlayer) * circleDirection;
+        Vector3 target = transform.position + strafe * 2f;
 
-        // Base target position: sideways from current position, keeping the player as the pivot
-        Vector3 targetPos = transform.position + strafeDir * 2f; // 2 meters per side-step movement, feels natural
-
-        // Keep the enemy near the preferred distance
         float distance = Vector3.Distance(transform.position, player.position);
-        if (distance < minPreferredDistanceFromPlayer)
-            targetPos -= toPlayer * 1f; // back off a bit
-        else if (distance > maxPreferredDistanceFromPlayer)
-            targetPos += toPlayer * 1f; // move slightly closer
+        if (distance < minPreferredDistanceFromPlayer) target -= toPlayer;
+        else if (distance > maxPreferredDistanceFromPlayer) target += toPlayer;
 
-        // Move there — let NavMeshAgent speed control actual rate
-        agent.SetDestination(targetPos);    
+        agent.SetDestination(target);
 
         circleTimer -= Time.deltaTime;
-        reverseCircleTimer -= Time.deltaTime;    
-        // If time is up, transition based on conditions
-        if (circleTimer <= 0)
-        {
-            int rnd = Random.Range(1, 3);
-            if (rnd == 1)
-            {
-                stateAfterCircle = circleState;
-            }
-            else
-            {
-                stateAfterCircle = attackState;
-            }
-            stateMachine.Update();
-            ResetCircleTimer();
-            reverseCircle = circleTimer/2;
-            reverseCircleTimer = reverseCircle;
-        }
-        if (reverseCircleTimer <= 0)
-        {
-            circleDirection = Random.value > 0.5f ? 1f : -1f;
-            reverseCircleTimer = reverseCircle;
-        }
     }
 
     protected abstract void OnEnterAttack();
-    protected abstract void Attack(); // implemented by subclasses
+    protected abstract void Attack();
 
-    // -------------------- HELPERS --------------------
-
+    // ------------------------------------------------------
+    //  HELPERS
+    // ------------------------------------------------------
     protected virtual void UpdatePerception()
     {
         if (player == null) return;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        float dist = Vector3.Distance(transform.position, player.position);
 
-        IsPlayerInViewRange();
-
-        playerInAudioRange = distance <= audioRange;
+        playerInAudioRange = dist <= audioRange;
+        playerInViewRange = IsPlayerInViewRange();
     }
 
     protected bool IsInPreferredRange()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
-        return distance >= minPreferredDistanceFromPlayer && distance <= maxPreferredDistanceFromPlayer;
+        float d = Vector3.Distance(transform.position, player.position);
+        return d >= minPreferredDistanceFromPlayer && d <= maxPreferredDistanceFromPlayer;
     }
 
-    // Helper method to reset the circle timer to a random value between min and max
-    private void ResetCircleTimer()
+    protected bool IsPlayerInViewRange()
     {
-        circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
-    }
-
-    protected virtual bool IsPlayerInViewRange()
-    {
-        if (player == null) return false;
-
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
 
-        // Calculate the angle between the enemy's forward direction and the direction to the player
-        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-        // Check if the player is within the field of view (cone) and within the range
-        if (angleToPlayer <= viewAngle / 2 && Vector3.Distance(transform.position, player.position) <= viewRange)
-        {
-            return true;
-        }
-
-        return false;
+        return angle <= viewAngle / 2f && Vector3.Distance(transform.position, player.position) <= viewRange;
     }
 
-    // -------------------- GIZMOS --------------------
-
-    private void OnDrawGizmosSelected()
+    protected void RotateTowardPlayer()
     {
-        // Only draw gizmos when the player is assigned
         if (player == null) return;
-
-        // Set Gizmo color for the view cone
-        Gizmos.color = Color.green;
-
-        // Calculate the boundaries of the view cone based on the enemy's current forward direction
-        Vector3 leftBoundary = Quaternion.Euler(0, -viewAngle / 2, 0) * transform.forward * viewRange;
-        Vector3 rightBoundary = Quaternion.Euler(0, viewAngle / 2, 0) * transform.forward * viewRange;
-
-        // Draw the left and right boundary lines
-        Gizmos.DrawLine(transform.position, transform.position + leftBoundary);  // Left boundary of the cone
-        Gizmos.DrawLine(transform.position, transform.position + rightBoundary); // Right boundary of the cone
-
-        // Draw the center line for reference
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * viewRange);
-
-        // Draw the wire sphere to represent the total view range
-        Gizmos.DrawWireSphere(transform.position, viewRange);
-
+        Vector3 dir = (player.position - transform.position).normalized;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 360f * Time.deltaTime);
     }
 
+    public bool RotateTowardPlayerEnded()
+    {
+        if (player == null) return true;
+
+        Vector3 dir = (player.position - transform.position).normalized;
+        dir.y = 0;
+
+        if (dir.sqrMagnitude < 0.01f)
+            return true;
+
+        Quaternion targetRot = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            targetRot,
+            360f * Time.deltaTime
+        );
+
+        // Return true when rotation is close enough
+        return Quaternion.Angle(transform.rotation, targetRot) < 1f;
+    }
 }

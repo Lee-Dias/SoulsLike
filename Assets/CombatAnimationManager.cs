@@ -15,7 +15,8 @@ public class CombatAnimationManager
     public bool QueuedNext => queuedNext;
 
     public CombatPlayableHandle Handle => handle;
-
+    private bool autoComboPlayback = false;
+    public void EnableAutoCombo() => autoComboPlayback = true;
 
     public CombatAnimationManager(Animator anim)
     {
@@ -71,6 +72,28 @@ public class CombatAnimationManager
             if (normalizedTime >= 1f)
                 Stop();
             return;
+        }
+
+        // ENEMY AUTOMATIC COMBO
+        if (autoComboPlayback)
+        {
+            // Se passou o ponto de trigger, avança
+            if (normalizedTime >= steps[step].NextAnimationTriggerPoint)
+            {
+                int nextStep = step + 1;
+
+                if (nextStep < steps.Length)
+                {
+                    handle.BlendToStep(nextStep);
+                }
+                else
+                {
+                    Stop();  // se só quiser tocar uma vez
+                    //handle.BlendToStep(0);
+                }
+            }
+
+            return; // impedir lógica do player
         }
         if (queuedNext && normalizedTime >= 1f)
         {

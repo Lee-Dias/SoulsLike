@@ -30,16 +30,16 @@ MonoBehaviour:
     transitionWindowEnd: 1
     movementCurveOnCombo:
     - startTime: 0
-      endTime: 1
+      endTime: 0.5
       speed: {x: 0, y: 1.2}
-    - startTime: 0
+    - startTime: 0.5
       endTime: 1
       speed: {x: 0, y: -0.5}
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.65
     blendTime: 0.01
     hitStartTime: 0.3
-    hitEndTime: 1
+    hitEndTime: 0.7
   - name: LightAttack2
     clip: {fileID: -623603649343465320, guid: beb81735b58aa5647a4647d5b35501e9, type: 3}
     soundEffectCombo: {fileID: 0}
@@ -56,4 +56,4 @@ MonoBehaviour:
     comboSpeed: 0.65
     blendTime: 0.5
     hitStartTime: 0.3
-    hitEndTime: 1
+    hitEndTime: 0.7

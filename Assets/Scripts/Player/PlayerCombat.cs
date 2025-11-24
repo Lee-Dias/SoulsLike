@@ -17,6 +17,7 @@ public class PlayerCombat : MonoBehaviour
     private Animator anim;
     private Stamina stamina;
     private CombatAnimationManager animManager;
+    private Health health;
 
 
 
@@ -28,6 +29,7 @@ public class PlayerCombat : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         stamina = GetComponent<Stamina>();
+        health = GetComponent<Health>();
         animManager = new CombatAnimationManager(anim);
     }
 
@@ -35,6 +37,12 @@ public class PlayerCombat : MonoBehaviour
     {
         // manually update combat animation manager
         animManager.UpdatePerFrame(Time.deltaTime);
+
+        if(!health.CanAttack() && animManager.IsPlaying)
+        {
+            ResetCombatState();
+            weaponCollider.enabled = false;
+        }
 
         // reset state if combo window expired and animation finished
         if (isAttacking && animManager.CurrentAnimation != null)
@@ -61,7 +69,6 @@ public class PlayerCombat : MonoBehaviour
                 
         }
         
-
         // input buffer timeout
         if (attackQueued)
         {
@@ -97,6 +104,9 @@ public class PlayerCombat : MonoBehaviour
     {
         animMotion = Vector3.zero;
 
+        if(health.ShouldBlockMovement())
+            return true;
+
         var anim = animManager.CurrentAnimation;
         if (anim == null)
             return false;
@@ -124,7 +134,7 @@ public class PlayerCombat : MonoBehaviour
     // ----------------------------
     private void HandleAttackInput(CombatAnimations animData)
     {
-        if (animData == null) return;
+        if (animData == null || !health.CanAttack()) return;
 
         if (!animManager.IsPlaying && stamina.StaminaValue >= staminaToWastePerAttack && !animManager.QueuedNext && !isAttacking )
         {

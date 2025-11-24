@@ -133,12 +133,6 @@ public class CombatPlayableHandle
     }
 
 
-    public void Stop()
-    {
-        if (!IsValid) return;
-        graph.Stop();
-        isPlaying = false;
-    }
 
     // -----------------------------
     // FADE OUT WITH BLENDING
@@ -147,6 +141,7 @@ public class CombatPlayableHandle
     {
         fadeOutActive = true;
         fadeOutTimer = 0f;
+        
     }
 
     // -----------------------------
@@ -158,9 +153,9 @@ public class CombatPlayableHandle
 
         graph.Evaluate(deltaTime);
 
-        if (data.IsAttackAnimation)
+        if (data.IsAttackAnimation&& !fadeOutActive && !blendActive && !startBlendActive)
         {
-            if (data.IsCombo)
+            if (data.IsCombo )
             {
                 if(data.Steps[currentStep].HitStartTime < GetNormalizedTime() && data.Steps[currentStep].HitEndTime > GetNormalizedTime())
                 {
@@ -229,10 +224,10 @@ public class CombatPlayableHandle
             {
                 output.SetWeight(w);  
                 fadeOutActive = false;
-
+                isPlaying = false;
                 // DO NOT immediately reset animation root
                 graph.Stop();
-                isPlaying = false;
+                
             }
         }
 

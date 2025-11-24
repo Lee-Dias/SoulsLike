@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [SerializeField]private GameObject Ignore;
+    [SerializeField]private float damage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -9,13 +12,12 @@ public class Attack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        // If the object is on the "Player" layer, ignore it
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) return;
+        if (other.gameObject == Ignore) return;
         
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
-            health.GetHit();
+            health.GetHit(damage);
         }
     }
 
