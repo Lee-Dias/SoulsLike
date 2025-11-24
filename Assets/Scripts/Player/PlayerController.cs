@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float acceleration = 8f;
     [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float sprintMultiplier = 1.5f;
 
     [Header("Dash Settings")]
     [SerializeField] private float dashDistance = 5f;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private PlayerCombat playerCombat;
-    [SerializeField] private float sprintMultiplier = 2f;
+    
     private bool isSprinting = false;
 
     private CharacterController controller;
@@ -62,14 +63,15 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
             isSprinting = true;
-
         if (context.canceled)
             isSprinting = false;
+
+        animator.SetBool("IsSprinting",isSprinting);
     }
 
     void Update()
     {
-        animator.SetBool("IsSprinting",isSprinting);
+        
         MoveCharacter();
     }
 
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 targetDirection = Vector3.zero;
 
-        if (isLocked && lockTarget != null)
+        if (isLocked && lockTarget != null&& !isSprinting)
         {
             // Movement relative to camera, not target
             targetDirection = (camForward * moveInput.y + camRight * moveInput.x).normalized;
@@ -114,16 +116,14 @@ public class PlayerController : MonoBehaviour
             }
 
             // --- Rotate player toward lock target ---
-            if (!isSprinting)
+            Vector3 lookDir = (lockTarget.position - transform.position);
+            lookDir.y = 0f;
+            if (lookDir.sqrMagnitude > 0.01f)
             {
-                Vector3 lookDir = (lockTarget.position - transform.position);
-                lookDir.y = 0f;
-                if (lookDir.sqrMagnitude > 0.01f)
-                {
-                    Quaternion lookRot = Quaternion.LookRotation(lookDir);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
-                }                
-            }
+                Quaternion lookRot = Quaternion.LookRotation(lookDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
+            }                
+            
 
         }
         else
