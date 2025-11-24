@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float acceleration = 8f;
     [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float sprintMultiplier = 1.5f;
+    [SerializeField] private float sprintMultiplier = 1.3f;
+    [SerializeField] private float lockedDivider = 1.5f;
 
     [Header("Dash Settings")]
     [SerializeField] private float dashDistance = 5f;
@@ -36,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isDashing = false;
     private bool isInvincible = false;
+    private float stopGraceTime = 0.1f; // 80ms grace
+    private float stopTimer = 0f;
+
 
     // Input
     private Vector2 moveInput;
@@ -71,7 +75,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        if(moveInput.magnitude == 0)
+        {
+            stopTimer += Time.deltaTime;
+            if (stopTimer > stopGraceTime)
+            {
+                animator.SetBool("IsWalking",false);
+            }
+            else
+            {
+                animator.SetBool("IsWalking",true);
+            }
+            
+        }
+        else
+        {
+            stopTimer = 0;
+            animator.SetBool("IsWalking",true);
+        }
         MoveCharacter();
     }
 
@@ -147,6 +168,10 @@ public class PlayerController : MonoBehaviour
 
         // --- Apply movement ---
         float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+        if (isLocked)
+        {
+            speed /= lockedDivider;
+        }
         Vector3 move = currentDirection * speed;
         controller.Move(move * Time.deltaTime);
 
