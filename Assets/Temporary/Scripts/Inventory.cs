@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
     {
         if(carriedItem != null)
         {
-            carriedItem.transform.position = Input.mousePosition;
+            //carriedItem.transform.position = Input.mousePosition;
         }
     }
 
