@@ -43,6 +43,25 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void SpawnWeapon()
+    {
+        Item _item = items[2];
+        if(_item == null)
+        {
+            int random = Random.Range(0, items.Length);
+            _item = items[random];
+        }
+
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if(inventorySlots[i].myItem == null)
+            {
+                Instantiate(itemPrefab, inventorySlots[i].transform).Initialize(_item, inventorySlots[i]);
+                break;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

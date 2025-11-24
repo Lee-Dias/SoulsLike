@@ -4,14 +4,17 @@ public class WeaponHit : MonoBehaviour
 {
     [SerializeField] private float damage = 10f;
     [SerializeField] private LayerMask ignore;
+    [SerializeField] private LayerMask layerToApplyGroundVFX;
     [SerializeField] private GameObject hitVFX;   // <--- Your VFX prefab
+    [SerializeField] private GameObject groundVFX; 
     private void OnTriggerEnter(Collider other)
     {
         if (((1 << other.gameObject.layer) & ignore) != 0) return;
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
 
-        // spawn VFX
+        if (((1 << other.gameObject.layer) & layerToApplyGroundVFX) != 0)
+            Instantiate(hitVFX, hitPoint, Quaternion.identity);
         
 
         Health health = other.GetComponent<Health>();

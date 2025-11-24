@@ -2682,13 +2682,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   damage: 15
-  hitMask:
-    serializedVersion: 2
-    m_Bits: 8
   ignore:
     serializedVersion: 2
     m_Bits: 64
+  layerToApplyGroundVFX:
+    serializedVersion: 2
+    m_Bits: 256
   hitVFX: {fileID: 4962705371907233886, guid: 220fd1343f4ee324da96b2d71353d60a, type: 3}
+  groundVFX: {fileID: 4551737649709689300, guid: 79d3a42eef238044b8982169b24e7477, type: 3}
 --- !u!1 &9009103525500909671
 GameObject:
   m_ObjectHideFlags: 0

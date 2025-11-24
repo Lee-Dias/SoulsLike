@@ -26,6 +26,8 @@ public class PlayerCombat : MonoBehaviour
     private float bufferTimer;
     private bool isAttacking;
 
+    public bool IsAttacking => isAttacking;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -136,7 +138,7 @@ public class PlayerCombat : MonoBehaviour
     private void HandleAttackInput(CombatAnimations animData)
     {
         if (animData == null || !health.CanAttack()) return;
-        
+
         if (inventoryManager != null)
             if(inventoryManager.IsActive)
                 return;

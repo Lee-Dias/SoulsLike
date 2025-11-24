@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration = 0.5f;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private SkinnedMeshRenderer[] renderers;
-    [SerializeField] private MeshRenderer axeRenderer; 
+    [SerializeField] private MeshRenderer[] weaponRenderer; 
     
 
     [Header("References")]
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private float walkAfterConsumable;
+    [SerializeField] private GameObject Lumenvia;
     
     private bool isSprinting = false;
 
@@ -40,6 +42,10 @@ public class PlayerController : MonoBehaviour
     private float stopGraceTime = 0.1f; // 80ms grace
     private float stopTimer = 0f;
 
+    private bool usingConsumable;
+    private float walkTimer;
+    private bool canUse = true;
+
 
     // Input
     private Vector2 moveInput;
@@ -49,11 +55,22 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
+        walkTimer = walkAfterConsumable;
     }
 
     public void OnMove(InputAction.CallbackContext value)
     {
+        
         moveInput = value.ReadValue<Vector2>();
+    }
+    public void OnConsumable(InputAction.CallbackContext context)
+    {
+        if (usingConsumable || playerCombat.IsAttacking || !canUse)
+            return;
+        canUse = false;
+        usingConsumable  = true;
+        walkTimer = 0f;
+        animator.SetBool("Consumable", true);
     }
 
     public void OnDodge(InputAction.CallbackContext context)
@@ -89,14 +106,24 @@ public class PlayerController : MonoBehaviour
             stopTimer = 0;
             animator.SetBool("IsWalking",true);
         }
+        walkTimer += Time.deltaTime;  
+        if(walkTimer > walkAfterConsumable-0.5 && usingConsumable)
+        {
+            Lumenvia.SetActive(true);  
+        }
+        if(walkTimer > walkAfterConsumable)
+        {
+            usingConsumable = false;
+            animator.SetBool("Consumable", false);
+        }
         MoveCharacter();
     }
 
     private void MoveCharacter()
     {
-        if (!controller) return;
+        if (!controller || usingConsumable) return;
 
-        if (playerCombat.ShouldBlockMovement(out Vector3 animWalk))
+        if (playerCombat.ShouldBlockMovement(out Vector3 animWalk) )
         {
             controller.Move(animWalk * Time.deltaTime);
             animator.SetFloat("x", 0);
@@ -191,7 +218,10 @@ public class PlayerController : MonoBehaviour
         // Hide the player model
         foreach (var r in renderers)
             r.enabled = false;
-        axeRenderer.enabled = false;
+        
+        foreach (var w in weaponRenderer)
+            w.enabled = false;
+        
         trail.emitting = true;
 
         Vector3 dashDir = Vector3.zero;
@@ -225,7 +255,8 @@ public class PlayerController : MonoBehaviour
         // Reveal model again
         foreach (var r in renderers)
             r.enabled = true;
-        axeRenderer.enabled = true;
+        foreach (var w in weaponRenderer)
+            w.enabled = true;
         trail.emitting = false;
 
         isInvincible = false;

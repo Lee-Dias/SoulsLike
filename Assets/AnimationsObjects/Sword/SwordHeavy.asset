@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98abd0cd5cae9c4cbb5f0d180a21c47, type: 3}
+  m_Name: SwordHeavy
+  m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
+  isCombo: 1
+  soundEffect: {fileID: 0}
+  attackType: 0
+  weaponType: 0
+  stopControlledMovement: 1
+  walkDuringAnimation: 1
+  AttackAnimation: 1
+  speed: 1
+  singleClip: {fileID: -623603649343465320, guid: 54050e031f070f445aeb754208b193aa, type: 3}
+  movementCurve:
+  - startTime: 0
+    endTime: 1
+    speed: {x: 0, y: 1}
+  comboSteps:
+  - name: Heavy
+    clip: {fileID: -623603649343465320, guid: 54050e031f070f445aeb754208b193aa, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0
+    transitionWindowEnd: 0
+    movementCurveOnCombo:
+    - startTime: 0
+      endTime: 1
+      speed: {x: 0, y: 1}
+    nextAnimationTriggerPoint: 1
+    comboSpeed: 1
+    blendTime: 0.2
+    hitStartTime: 0.2
+    hitEndTime: 0.6
