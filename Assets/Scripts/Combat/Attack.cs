@@ -12,9 +12,6 @@ public class WeaponHit : MonoBehaviour
         if (((1 << other.gameObject.layer) & ignore) != 0) return;
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
-
-        if (((1 << other.gameObject.layer) & layerToApplyGroundVFX) != 0)
-            Instantiate(hitVFX, hitPoint, Quaternion.identity);
         
 
         Health health = other.GetComponent<Health>();
