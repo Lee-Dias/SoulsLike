@@ -12,10 +12,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public Item myItem { get; set; }
     public InventorySlot activeSlot { get; set; }
 
+    Sprite iconSaver;
+
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         itemIcon = GetComponent<Image>();
+        
+        if(iconSaver != null)
+            itemIcon.sprite = iconSaver;
     }
 
     public void Initialize(Item item, InventorySlot parent)
@@ -23,7 +28,14 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         activeSlot = parent;
         activeSlot.myItem = this;
         myItem = item;
-        itemIcon.sprite = item.Icon;
+        if (itemIcon == null)
+        {
+            iconSaver = item.Icon;
+        }
+        else
+        {
+            itemIcon.sprite = item.Icon;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
