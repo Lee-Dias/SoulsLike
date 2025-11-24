@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private float sprintMultiplier = 2f;
+    private bool isSprinting = false;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -56,9 +58,18 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(Dash());
     }
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            isSprinting = true;
+
+        if (context.canceled)
+            isSprinting = false;
+    }
 
     void Update()
     {
+        animator.SetBool("IsSprinting",isSprinting);
         MoveCharacter();
     }
 
@@ -103,13 +114,17 @@ public class PlayerController : MonoBehaviour
             }
 
             // --- Rotate player toward lock target ---
-            Vector3 lookDir = (lockTarget.position - transform.position);
-            lookDir.y = 0f;
-            if (lookDir.sqrMagnitude > 0.01f)
+            if (!isSprinting)
             {
-                Quaternion lookRot = Quaternion.LookRotation(lookDir);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
+                Vector3 lookDir = (lockTarget.position - transform.position);
+                lookDir.y = 0f;
+                if (lookDir.sqrMagnitude > 0.01f)
+                {
+                    Quaternion lookRot = Quaternion.LookRotation(lookDir);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
+                }                
             }
+
         }
         else
         {
@@ -131,7 +146,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // --- Apply movement ---
-        Vector3 move = currentDirection * moveSpeed;
+        float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+        Vector3 move = currentDirection * speed;
         controller.Move(move * Time.deltaTime);
 
         // --- Gravity ---
