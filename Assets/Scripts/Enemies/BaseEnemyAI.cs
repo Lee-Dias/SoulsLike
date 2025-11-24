@@ -82,9 +82,13 @@ public abstract class BaseEnemyAI : MonoBehaviour
         {
             anim.SetFloat("x", 0);
             anim.SetFloat("y", 0);
+            if (!IsTouchingPlayer())
+            {
+                Vector2 mov = animManager.GetMovementFromCurrentAnimation();
+                transform.position += (transform.forward * mov.y + transform.right * mov.x) * Time.deltaTime;
+            }
+                
 
-            Vector2 mov = animManager.GetMovementFromCurrentAnimation();
-            transform.position += (transform.forward * mov.y + transform.right * mov.x) * Time.deltaTime;
         }
         if (!health.CanAttack())
         {
@@ -245,6 +249,13 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
         playerInAudioRange = dist <= audioRange;
         playerInViewRange = IsPlayerInViewRange();
+    }
+    protected bool IsTouchingPlayer()
+    {
+        if (player == null) return false;
+
+        float radius = 1.0f; // tweak based on enemy size
+        return Physics.CheckSphere(transform.position, radius, LayerMask.GetMask("Player"));
     }
 
     protected bool IsInPreferredRange()

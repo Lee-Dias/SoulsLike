@@ -51,6 +51,8 @@ public class CombatPlayableHandle
     public bool IsFadingIn => startBlendActive;
     public bool ActivateHitBox => activateHitBox;
 
+    public int ComboIndex;
+
     public CombatPlayableHandle(Animator animator, CombatAnimations animData)
     {
         data = animData;
@@ -171,6 +173,7 @@ public class CombatPlayableHandle
         {
             activateHitBox = false; 
         }
+        ComboIndex = currentStep;
         // -----------------------
         // BLENDING BETWEEN STEPS
         // -----------------------

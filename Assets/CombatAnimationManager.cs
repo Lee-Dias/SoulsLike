@@ -17,6 +17,7 @@ public class CombatAnimationManager
     public CombatPlayableHandle Handle => handle;
     private bool autoComboPlayback = false;
     public void EnableAutoCombo() => autoComboPlayback = true;
+    
 
     public CombatAnimationManager(Animator anim)
     {
