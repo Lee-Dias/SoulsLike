@@ -18,6 +18,9 @@ public class Health : MonoBehaviour
     private float timePassedSinceLastHitForAttack;
     private float timePassedSinceLastBlockMovement;
 
+    public float MaxHealth => maxHealth;
+    public float HealthValue => health;
+
     void Start()
     {
         maxHealth += baseMaxHealth + (characterProfile.BaseVitlaity * statsMultiplier);
@@ -36,25 +39,25 @@ public class Health : MonoBehaviour
 
     public void GetHit(float damage)
     {
-
-        if (cooldownPerGetHit <= timePassedSinceLastHit )
+        health -= damage;
+        if (health <= 0)
         {
-            health -= damage;
-            if (health <= 0)
+            if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
-                {
-                    Scene currentScene = SceneManager.GetActiveScene();
-                    SceneManager.LoadScene(currentScene.name);
-                }
-                Destroy(this.gameObject);
-                
+                Scene currentScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(currentScene.name);
             }
-            animator.SetTrigger("GetHit");
-            timePassedSinceLastHit = 0;
-            timePassedSinceLastHitForAttack = 0;
-            timePassedSinceLastBlockMovement = 0;
+            Destroy(this.gameObject);
+            
         }
+        animator.SetTrigger("GetHit");
+        timePassedSinceLastHit = 0;
+        timePassedSinceLastHitForAttack = 0;
+        timePassedSinceLastBlockMovement = 0;
+    }
+    public bool CanHit()
+    {
+        return cooldownPerGetHit <= timePassedSinceLastHit;
     }
     public bool CanAttack()
     {

@@ -1,16 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUiManager : MonoBehaviour
+public class EnemyUiManager : MonoBehaviour
 {
-    [SerializeField]
-    private Image staminaBar;
-    [SerializeField]
-    private Image healthBar;
-    [SerializeField]
-    private Stamina stamina;
-    [SerializeField]
-    private Health health;
+    [SerializeField]private Health health;
+    [SerializeField]private Image healthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +14,6 @@ public class PlayerUiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        staminaBar.fillAmount = stamina.StaminaValue / stamina.MaxStamina;
         healthBar.fillAmount = health.HealthValue / health.MaxHealth;
     }
 }

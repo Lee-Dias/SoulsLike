@@ -29,6 +29,16 @@ public class MeleeEnemyAI : BaseEnemyAI
         // --- Detect new attack in the combo ---
         if (animManager.Handle != null && animManager.Handle.ComboIndex != lastComboIndex)
         {
+            if (!IsInPreferredRange())
+            {
+                animManager.Stop();
+                weaponCollider.enabled = false;
+                isInAttackAnimation = false;
+                attackEnded = true;
+                agent.isStopped = false;
+                lastComboIndex = -1;
+                return;
+            }
             lastComboIndex = animManager.Handle.ComboIndex;
             rotated = false;
 

@@ -90,12 +90,9 @@ public abstract class BaseEnemyAI : MonoBehaviour
                 
 
         }
-        if (!health.CanAttack())
+        if (animManager != null)
         {
-            if (animManager != null)
-            {
-                animManager?.UpdatePerFrame(Time.deltaTime);
-            }
+            animManager?.UpdatePerFrame(Time.deltaTime);
         }
         
         UpdatePerception();
@@ -186,6 +183,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected virtual void OnEnterChase()
     {
         agent.isStopped = false;
+        agent.updateRotation = true;
         agent.speed = baseSpeed;
         Debug.Log("Chasing player");
     }
@@ -193,8 +191,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected virtual void Chase()
     {
         if (player == null) return;
-
-        RotateTowardPlayer();
         agent.SetDestination(player.position);
     }
 
@@ -202,6 +198,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         Debug.Log("Circling player");
         agent.isStopped = false;
+        agent.updateRotation = false;
         agent.speed = circleEnemySpeed;
 
         circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
@@ -299,4 +296,23 @@ public abstract class BaseEnemyAI : MonoBehaviour
         // Return true when rotation is close enough
         return Quaternion.Angle(transform.rotation, targetRot) < 1f;
     }
+    private void OnDrawGizmosSelected()
+    {
+        // AUDIO RANGE
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, audioRange);
+
+        // VIEW RANGE
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, viewRange);
+
+        // VIEW ANGLE (Cone lines)
+        Gizmos.color = Color.cyan;
+        Vector3 left = Quaternion.Euler(0, -viewAngle / 2f, 0) * transform.forward;
+        Vector3 right = Quaternion.Euler(0, viewAngle / 2f, 0) * transform.forward;
+
+        Gizmos.DrawLine(transform.position, transform.position + left * viewRange);
+        Gizmos.DrawLine(transform.position, transform.position + right * viewRange);
+    }
+
 }

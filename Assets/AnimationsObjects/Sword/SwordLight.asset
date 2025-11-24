@@ -30,11 +30,8 @@ MonoBehaviour:
     transitionWindowEnd: 1
     movementCurveOnCombo:
     - startTime: 0
-      endTime: 0.5
-      speed: {x: 0, y: 1.2}
-    - startTime: 0.5
       endTime: 1
-      speed: {x: 0, y: -0.5}
+      speed: {x: 0, y: 2}
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.65
     blendTime: 0.01
@@ -50,7 +47,7 @@ MonoBehaviour:
       endTime: 0.5
       speed: {x: 0, y: 0}
     - startTime: 0.5
-      endTime: 0.8
+      endTime: 1
       speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.65

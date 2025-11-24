@@ -1,24 +1,28 @@
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class WeaponHit : MonoBehaviour
 {
-    [SerializeField]private GameObject Ignore;
-    [SerializeField]private float damage;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
+    [SerializeField] private float damage = 10f;
+    [SerializeField] private LayerMask ignore;
+    [SerializeField] private GameObject hitVFX;   // <--- Your VFX prefab
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == Ignore) return;
+        if (((1 << other.gameObject.layer) & ignore) != 0) return;
+
+        Vector3 hitPoint = other.ClosestPoint(transform.position);
+
+        // spawn VFX
         
+
         Health health = other.GetComponent<Health>();
+
         if (health != null)
         {
-            health.GetHit(damage);
+            if (health.CanHit())
+            {
+                health.GetHit(damage);
+                Instantiate(hitVFX, hitPoint, Quaternion.identity);
+            }
         }
     }
-
 }
