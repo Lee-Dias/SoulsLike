@@ -1,14 +1,16 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using NUnit.Framework;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private Button closeButton;
     [SerializeField] private GameObject button;
     [SerializeField] private GameObject inventory;
+    [SerializeField] private List<GameObject> extras = new List<GameObject>();
     private bool isActive = false;
     public bool IsActive => isActive;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +41,10 @@ public class InventoryManager : MonoBehaviour
         }
         button.SetActive(isActive);
         inventory.SetActive(isActive);
+        foreach (GameObject extra in extras)
+        {
+            extra.SetActive(isActive);
+        }
     }
 
     private void CloseInventory()
@@ -46,5 +52,9 @@ public class InventoryManager : MonoBehaviour
         isActive = false;   
         inventory.SetActive(isActive);
         button.SetActive(isActive);
+        foreach(GameObject extra in extras)
+        {
+            extra.SetActive(isActive);
+        }
     }
 }
