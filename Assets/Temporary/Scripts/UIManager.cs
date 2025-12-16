@@ -57,11 +57,5 @@ public class UIManager : MonoBehaviour
             itemIcon.sprite = allPocketSlots[inv].Icon;
             print(allPocketSlots[inv].name);
         }
-        foreach(Item item in allPocketSlots)
-        {
-            print(item);
-        }
-        print(allPocketSlots);
-        print(allPocketSlots[inv].name + "\n" + currentItem.name);
     }
 }
