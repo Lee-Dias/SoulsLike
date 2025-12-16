@@ -49,7 +49,9 @@ public class InventoryManager : MonoBehaviour
 
     private void CloseInventory()
     {
-        isActive = false;   
+        isActive = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         inventory.SetActive(isActive);
         button.SetActive(isActive);
         foreach(GameObject extra in extras)
