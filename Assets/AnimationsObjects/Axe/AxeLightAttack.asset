@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
   isCombo: 1
   soundEffect: {fileID: 0}
-  attackType: 0
-  weaponType: 0
   stopControlledMovement: 1
   walkDuringAnimation: 1
-  AttackAnimation: 1
+  attackAnimation: 1
+  activeStartTime: 0
+  activetEndTime: 0
   speed: 0.5
   singleClip: {fileID: 0}
   movementCurve: []
@@ -35,7 +35,7 @@ MonoBehaviour:
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.3
     blendTime: 0.01
-    hitStartTime: 0.4
+    hitStartTime: 0.5
     hitEndTime: 0.7
   - name: AxeHit2
     clip: {fileID: 1827226128182048838, guid: bbb69fa55753a4b4a917be40ef8fd259, type: 3}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -13,10 +14,12 @@ public class CombatAnimationManager
     public bool IsPlaying => isPlaying;
     public CombatAnimations CurrentAnimation => currentAnim;
     public bool QueuedNext => queuedNext;
+    private bool autoComboPlayback = false;
 
     public CombatPlayableHandle Handle => handle;
-    private bool autoComboPlayback = false;
+    
     public void EnableAutoCombo() => autoComboPlayback = true;
+    public event Action<int> OnStepStarted;
     
 
     public CombatAnimationManager(Animator anim)
@@ -35,6 +38,9 @@ public class CombatAnimationManager
 
         currentAnim = animData;
         handle = new CombatPlayableHandle(animator, animData);
+
+        handle.StepStarted += (stepIndex) => OnStepStarted?.Invoke(stepIndex);
+
         handle.Play(0);
 
         queuedNext = false;
@@ -181,7 +187,11 @@ public class CombatAnimationManager
     public void Stop()
     {
         if (handle != null)
+        {
+            handle.StepStarted -= null;
             handle.FadeOutAndStop();
+        }
+
 
         currentAnim = null;
         queuedNext = false;

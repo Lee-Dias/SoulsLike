@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 738160f3c25162446a51d688a34fd91f, type: 3}
-  m_Name: Axe
+  m_Name: Sword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponAnimationsData
-  weaponType: 1
-  lightAttack: {fileID: 11400000, guid: 791e4641230ea7440833773f29f3d132, type: 2}
-  heavyAttack: {fileID: 0}
+  weaponType: 0
+  twoHanded: 1
+  lightAttack: {fileID: 11400000, guid: a32d79d6adbfa4745bc42abd0df77121, type: 2}
+  heavyAttack: {fileID: 11400000, guid: eb9caf924f3e9ba41b00a321e6de3a48, type: 2}
   specialAttack: {fileID: 0}
+  parry: {fileID: 11400000, guid: 0818c1a5803453f41bdc04a02582006a, type: 2}

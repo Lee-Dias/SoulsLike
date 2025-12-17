@@ -2,7 +2,7 @@ using LibGameAI.FSMs;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class BaseEnemyAI : MonoBehaviour
+public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 {
     [Header("Ranges")]
     [SerializeField] protected float minPreferredDistanceFromPlayer;
@@ -26,6 +26,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
     [SerializeField] protected Animator anim;
 
     [SerializeField] protected BoxCollider weaponCollider;
+
+    [SerializeField] protected Item item;
 
     protected NavMeshAgent agent;
     protected StateMachine stateMachine;
@@ -52,7 +54,11 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected bool attackEnded = false;
     protected bool isInAttackAnimation = false;
 
+    protected float timeScale = 1f;
+
     protected CombatAnimationManager animManager;
+
+    public bool IsInAttackAnimation => isInAttackAnimation;
 
     protected virtual void Start()
     {
@@ -85,19 +91,26 @@ public abstract class BaseEnemyAI : MonoBehaviour
             if (!IsTouchingPlayer())
             {
                 Vector2 mov = animManager.GetMovementFromCurrentAnimation();
-                transform.position += (transform.forward * mov.y + transform.right * mov.x) * Time.deltaTime;
+                transform.position += (transform.forward * mov.y + transform.right * mov.x) * (Time.deltaTime * timeScale);
             }
                 
 
         }
         if (animManager != null)
         {
-            animManager?.UpdatePerFrame(Time.deltaTime);
+            animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
         }
         
         UpdatePerception();
         var actions = stateMachine.Update();
         actions?.Invoke();
+    }
+
+    public void SetTimeScale(float scale)   
+    {
+        timeScale = scale;
+        agent.speed = baseSpeed * scale;
+        anim.speed = scale; 
     }
 
     // ------------------------------------------------------
@@ -229,7 +242,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
         agent.SetDestination(target);
 
-        circleTimer -= Time.deltaTime;
+        circleTimer -= Time.deltaTime * timeScale;
     }
 
     protected abstract void OnEnterAttack();
@@ -273,7 +286,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         if (player == null) return;
         Vector3 dir = (player.position - transform.position).normalized;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 360f * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 360f * (Time.deltaTime * timeScale));
     }
 
     public bool RotateTowardPlayerEnded()
@@ -290,7 +303,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(
             transform.rotation,
             targetRot,
-            360f * Time.deltaTime
+            360f * (Time.deltaTime * timeScale)
         );
 
         // Return true when rotation is close enough

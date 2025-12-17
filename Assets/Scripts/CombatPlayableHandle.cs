@@ -2,14 +2,17 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Animations;
 using System.Runtime.InteropServices;
+using System;
 
 public class CombatPlayableHandle
 {
+
     private PlayableGraph graph;
     private AnimationPlayableOutput output;
 
     private AnimationClipPlayable singlePlayable;
     private AnimationMixerPlayable comboMixer;
+    
 
     private CombatAnimations data;
     private bool isCombo => data != null && data.IsCombo;
@@ -45,6 +48,8 @@ public class CombatPlayableHandle
     private float startBlendDuration = 0.15f; // can be per-animation if needed
 
     private bool activateHitBox; // can be per-animation if needed
+
+    public event Action<int> StepStarted;
 
     public bool IsBlending => blendActive;
     public bool IsFadingOut => fadeOutActive;
@@ -200,6 +205,7 @@ public class CombatPlayableHandle
                 comboMixer.SetInputWeight(blendFromIndex, 0f);
                 comboMixer.SetInputWeight(blendToIndex, 1f);
                 toPlayable.Play();
+                StepStarted?.Invoke(blendToIndex);
 
             }
         }
@@ -256,6 +262,8 @@ public class CombatPlayableHandle
                     output.SetWeight(1f);
                 else
                     comboMixer.SetInputWeight(blendToIndex, 1f);
+                
+                StepStarted?.Invoke(blendToIndex);
             }
         }
     }

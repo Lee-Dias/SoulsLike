@@ -4,15 +4,14 @@ using NaughtyAttributes;
 [CreateAssetMenu(fileName = "CombatAnimations", menuName = "Scriptable Objects/CombatAnimations")]
 public class CombatAnimations : ScriptableObject
 {
-    public enum WeaponType { Sword, Axe, Spear, Shield }
-    public enum AttackType { Light,Heavy ,Special }
     [SerializeField] private bool isCombo;
     [HideIf(nameof(isCombo))] [SerializeField] private AudioClip soundEffect;
-    [SerializeField] private AttackType attackType;
-    [SerializeField] private WeaponType weaponType;
+
     [SerializeField] private bool stopControlledMovement;
     [SerializeField] private bool walkDuringAnimation;
-    [SerializeField] private bool AttackAnimation;
+    [SerializeField] private bool attackAnimation;
+    [SerializeField, Range(0f, 1f)] private float activeStartTime;
+    [SerializeField, Range(0f, 1f)] private float activetEndTime;
     [HideIf(nameof(isCombo))] [SerializeField, Range(0.1f, 3f)] private float speed = 1f;
 
     [HideIf(nameof(isCombo))] [SerializeField] private AnimationClip singleClip;
@@ -59,17 +58,17 @@ public class CombatAnimations : ScriptableObject
         return walkDuringAnimation && !isCombo;
     }
 
-    public bool IsAttackAnimation => AttackAnimation;
+    public bool IsAttackAnimation => attackAnimation;
     public bool IsCombo => isCombo;
     public bool StopControlledMovement => stopControlledMovement;
     public bool WalkDuringAnimation => walkDuringAnimation;
+    public float ActiveStartTime => activeStartTime;
+    public float ActivetEndTime => activetEndTime;
     public AudioClip SoundEffect => soundEffect;
     public AnimationClip SingleClip => singleClip;
     public ComboStep[] Steps => comboSteps;
     public MovementInterval[] MovementCurve => movementCurve;
 
-    public WeaponType TypeWeapon => weaponType;
-    public AttackType TypeAttack => attackType;
     public float Speed => speed;
 
 

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using static Item;
@@ -6,8 +9,11 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Singleton;
     public static InventoryItem carriedItem;
-
-    [SerializeField] private InventorySlot[] inventorySlots;
+    
+    
+    [SerializeField] private GameObject inventorySlotsParent;
+    [SerializeField] private GameObject inventorySlot;
+    
 
     [SerializeField] private Transform draggablesTransform;
     [SerializeField] private InventoryItem itemPrefab;
@@ -15,51 +21,52 @@ public class Inventory : MonoBehaviour
     [Header("Item List")]
     [SerializeField] private Item[] items;
 
-    [Header("Debug")]
-    [SerializeField] private Button giveItemButton;
+    [Header("In Hand")]
+    [SerializeField] private GameObject rightHand;
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject consumablesSlot;
+    [SerializeField] private GameObject armourSlot;
+
+    private List<InventorySlot> inventorySlots = new List<InventorySlot>();
+
+    private Item[] rightHandItems = new Item[3];
+    private Item[] leftHandItems = new Item[3];
+    private Item[] consumableItems = new Item[3];
+    private Item armourSet = null;
+
+    private int rightSelectedItemNum = 0; 
+    private int leftSelectedItemNum = 0;
+    private int consumableSelectedItemNum = 0;
     
     void Awake()
     {
         Singleton = this;
-        giveItemButton.onClick.AddListener( delegate { SpawnInventoryItem(); });
     }
 
+    private InventorySlot CreateInventorySlot()
+    {
+        GameObject slotGO = Instantiate(inventorySlot, inventorySlotsParent.transform);
+        InventorySlot slot = slotGO.GetComponent<InventorySlot>();
+
+        inventorySlots.Add(slot);
+        return slot;
+    }
     public void SpawnInventoryItem(Item item = null)
     {
         Item _item = item;
-        if(_item == null)
+
+        if (_item == null)
         {
             int random = Random.Range(0, items.Length);
             _item = items[random];
         }
 
-        for (int i = 0; i < inventorySlots.Length; i++)
-        {
-            if(inventorySlots[i].myItem == null)
-            {
-                Instantiate(itemPrefab, inventorySlots[i].transform).Initialize(_item, inventorySlots[i]);
-                break;
-            }
-        }
-    }
+        // Create a new slot
+        InventorySlot newSlot = CreateInventorySlot();
 
-    public void SpawnWeapon()
-    {
-        Item _item = items[2];
-        if(_item == null)
-        {
-            int random = Random.Range(0, items.Length);
-            _item = items[random];
-        }
-
-        for (int i = 0; i < inventorySlots.Length; i++)
-        {
-            if(inventorySlots[i].myItem == null)
-            {
-                Instantiate(itemPrefab, inventorySlots[i].transform).Initialize(_item, inventorySlots[i]);
-                break;
-            }
-        }
+        // Create the item in that slot
+        Instantiate(itemPrefab, newSlot.transform)
+            .Initialize(_item, newSlot);
     }
 
     // Update is called once per frame
@@ -69,7 +76,98 @@ public class Inventory : MonoBehaviour
         {
             //carriedItem.transform.position = Input.mousePosition;
         }
+        UpdateSlots();
     }
+    public void UpdateSlots()
+    {
+        int r = 0;
+        foreach(Transform item in rightHand.transform)
+        {
+            if(item.GetComponent<InventorySlot>() != null)
+            {
+                if(item.GetComponent<InventorySlot>().myItem != null)
+                {
+                    rightHandItems[r] = item.GetComponent<InventorySlot>().myItem.myItem;
+                }else
+                {
+                    rightHandItems[r] = null;
+                }
+            }
+            r+=1;
+        }
+        r= 0;
+        foreach(Transform item in leftHand.transform)
+        {
+            if(item.GetComponent<InventorySlot>() != null)
+            {
+                if(item.GetComponent<InventorySlot>().myItem != null)
+                {
+                    leftHandItems[r] = item.GetComponent<InventorySlot>().myItem.myItem;
+                }else
+                {
+                    leftHandItems[r] = null;
+                }
+            }
+            r+=1;
+        }
+        r= 0;
+        foreach(Transform item in consumablesSlot.transform)
+        {
+            if(item.GetComponent<InventorySlot>() != null)
+            {
+                if(item.GetComponent<InventorySlot>().myItem != null)
+                {
+                    consumableItems[r] = item.GetComponent<InventorySlot>().myItem.myItem;
+                }else
+                {
+                    consumableItems[r] = null;
+                }
+            }
+            r+=1;
+        }
+        if(armourSlot.GetComponentInChildren<InventorySlot>().myItem != null)
+        {
+            armourSet = armourSlot.GetComponentInChildren<InventorySlot>().myItem.myItem;
+        }
+        else
+        {
+            armourSet = null;
+        }
+    }
+
+    public Item GetItemOnRightHand()
+    {
+        if (rightHandItems[rightSelectedItemNum] != null)
+        {
+            return rightHandItems[rightSelectedItemNum];
+        }
+        return null;    
+    }
+    public Item GetItemOnLeftHand()
+    {
+        if (leftHandItems[leftSelectedItemNum] != null)
+        {
+            return leftHandItems[leftSelectedItemNum];
+        }
+        return null;    
+    }
+    public Item GetItemOnConsumablesSlot()
+    {
+        if (consumableItems[consumableSelectedItemNum] != null)
+        {
+            return consumableItems[consumableSelectedItemNum];
+        }
+        return null;    
+    }
+    public Item GetItemOnArmourSlot()
+    {
+        if (armourSet != null)
+        {
+            return armourSet;
+        }
+        return null;    
+    }
+
 
     public void SetCarriedItem(InventoryItem item)
     {

@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration = 0.5f;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private SkinnedMeshRenderer[] renderers;
-    [SerializeField] private MeshRenderer[] weaponRenderer; 
     
 
     [Header("References")]
@@ -45,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private bool usingConsumable;
     private float walkTimer;
     private bool canUse = true;
+    
 
 
     // Input
@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("IsSprinting",isSprinting);
     }
+
+
 
     void Update()
     {
@@ -209,6 +211,17 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("x", moveInput.x);
         animator.SetFloat("y", moveInput.y);
     }
+    public void SnapRotateToTarget()
+    {
+        if (cameraSettings == null) return;
+        if (cameraSettings.currentLockTarget == null) return;
+
+        Transform target = cameraSettings.currentLockTarget;
+        Vector3 dir = (target.position - transform.position);
+        dir.y = 0f;
+        if (dir.sqrMagnitude < 0.0001f) return;
+        transform.rotation = Quaternion.LookRotation(dir);
+    }
 
     private IEnumerator Dash()
     {
@@ -219,8 +232,8 @@ public class PlayerController : MonoBehaviour
         foreach (var r in renderers)
             r.enabled = false;
         
-        foreach (var w in weaponRenderer)
-            w.enabled = false;
+        //foreach (var w in weaponRenderer)
+            //w.enabled = false;
         
         trail.emitting = true;
 
@@ -255,8 +268,8 @@ public class PlayerController : MonoBehaviour
         // Reveal model again
         foreach (var r in renderers)
             r.enabled = true;
-        foreach (var w in weaponRenderer)
-            w.enabled = true;
+        //foreach (var w in weaponRenderer)
+            //w.enabled = true;
         trail.emitting = false;
 
         isInvincible = false;

@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class MeleeEnemyAI : BaseEnemyAI
 {
-
-    [SerializeField]private float timeToGoBackToCircleAfterLight = 3;
-    [SerializeField]private CombatAnimations animData;
+    [Header("Probabilidades das Animações (%)")]
+    [SerializeField, Range(0,100)] private float lightAttackChance = 25f;
+    [SerializeField, Range(0,100)] private float heavyAttackChance = 25f;
+    [SerializeField, Range(0,100)] private float specialAttackChance = 25f;
+    [SerializeField, Range(0,100)] private float parryChance = 25f;
+    
     private bool rotated = true;
     private int lastComboIndex = -1;
     private Quaternion cachedAttackRotation;
@@ -17,11 +20,39 @@ public class MeleeEnemyAI : BaseEnemyAI
         isInAttackAnimation = true;
         animManager = new CombatAnimationManager(anim);
         animManager.EnableAutoCombo();
-        animManager.Play(animData);
+        ChooseAnimation();
         agent.isStopped = true;  
         rotated = false;
         
-           
+    }
+
+    private void ChooseAnimation()
+    {
+        float total = lightAttackChance + heavyAttackChance + specialAttackChance + parryChance;
+        float rand = Random.Range(0f, total);
+
+        if (rand < lightAttackChance)
+        {
+            animManager.Play(item.AnimationsData.LightAttack);
+            return;
+        }
+
+        rand -= lightAttackChance;
+        if (rand < heavyAttackChance)
+        {
+            animManager.Play(item.AnimationsData.HeavyAttack);
+            return;
+        }
+
+        rand -= heavyAttackChance;
+        if (rand < specialAttackChance)
+        {
+            animManager.Play(item.AnimationsData.SpecialAttack);
+            return;
+        }
+
+        // Se chegou aqui, cai no último (Parry)
+        animManager.Play(item.AnimationsData.Parry);
     }
 
     protected override void Attack()
@@ -57,7 +88,7 @@ public class MeleeEnemyAI : BaseEnemyAI
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 cachedAttackRotation,
-                360f * Time.deltaTime
+                360f * (Time.deltaTime * timeScale)
             );
 
             if (Quaternion.Angle(transform.rotation, cachedAttackRotation) < 1f)
@@ -67,11 +98,11 @@ public class MeleeEnemyAI : BaseEnemyAI
 
 
         // --- Animation-driven movement during the swing ---
-        animManager?.UpdatePerFrame(Time.deltaTime);
+        animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
 
         Vector2 animMove = animManager.GetMovementFromCurrentAnimation();
         Vector3 move = transform.right * animMove.x + transform.forward * animMove.y;
-        transform.position += move * Time.deltaTime;
+        transform.position += move * (Time.deltaTime * timeScale);
 
 
         // --- Hitbox activation ---
