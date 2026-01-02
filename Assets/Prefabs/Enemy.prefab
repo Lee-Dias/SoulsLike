@@ -723,7 +723,7 @@ MonoBehaviour:
   audioRange: 15
   viewRange: 25
   viewAngle: 90
-  circleEnemySpeed: 1.5
+  circleEnemySpeed: 2
   minTimeCircling: 1
   maxTimeCircling: 3
   attacksCooldown: 2
@@ -731,11 +731,11 @@ MonoBehaviour:
   chanceToCircle: 0.2
   anim: {fileID: 5253544223475542090}
   weaponCollider: {fileID: 7982764645408804926}
-  item: {fileID: 0}
-  lightAttackChance: 25
-  heavyAttackChance: 25
-  specialAttackChance: 25
-  parryChance: 25
+  item: {fileID: 11400000, guid: 19657fff9d82bab41b05cc36b1a13da9, type: 2}
+  lightAttackChance: 100
+  heavyAttackChance: 0
+  specialAttackChance: 0
+  parryChance: 0
 --- !u!195 &5521724820854420040
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -746,7 +746,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1072,7 +1072,6 @@ GameObject:
   - component: {fileID: 248916119054532699}
   - component: {fileID: 7029281523595420427}
   - component: {fileID: 5933174975198255591}
-  - component: {fileID: 8975868807418018146}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1175,18 +1174,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8975868807418018146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838860625191566077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23db448ed7c384e4b9d712de5f785153, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::F
 --- !u!1 &3939676743265598028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,7 +2738,7 @@ GameObject:
   - component: {fileID: 7931566996205873911}
   - component: {fileID: 7982764645408804926}
   - component: {fileID: 9077837536400064510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Axe_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2766,13 +2753,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8901106870441350176}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.047, y: 0.088, z: 0.026}
+  m_LocalRotation: {x: 0.7071068, y: -0.7071068, z: 0, w: 0}
+  m_LocalPosition: {x: 0.047, y: 0.016, z: 0.026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6928078121936135473}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 90}
 --- !u!33 &5154399330268595492
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2862,7 +2849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cce912fe97856f49a17a6c0157b8ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 0}
+  character: {fileID: 2795702573018972404}
   ignore:
     serializedVersion: 2
     m_Bits: 64

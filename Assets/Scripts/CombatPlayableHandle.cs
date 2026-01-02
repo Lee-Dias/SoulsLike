@@ -160,9 +160,9 @@ public class CombatPlayableHandle
 
         graph.Evaluate(deltaTime);
 
-        if (data.IsAttackAnimation&& !fadeOutActive && !blendActive && !startBlendActive)
+        if (data.IsAttackAnimation && !fadeOutActive && !blendActive && !startBlendActive)
         {
-            if (data.IsCombo )
+            if (data.IsCombo)
             {
                 if(data.Steps[currentStep].HitStartTime < GetNormalizedTime() && data.Steps[currentStep].HitEndTime > GetNormalizedTime())
                 {

@@ -29,6 +29,9 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     [SerializeField] protected Item item;
 
+    private float spawnTimer;
+    private bool isSpawnDelayed = false;
+
     protected NavMeshAgent agent;
     protected StateMachine stateMachine;
     protected Health health;
@@ -60,13 +63,24 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     public bool IsInAttackAnimation => isInAttackAnimation;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         animManager = new CombatAnimationManager(anim);
 
+    }
+
+    public void CheckIfSpawned(float delay)
+    {
+        spawnTimer = delay;
+        isSpawnDelayed = true;
+        agent.isStopped = true; // freeze movement
+    }
+    protected virtual void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        animManager = new CombatAnimationManager(anim);
         baseSpeed = agent.speed;
 
         CreateStates();
@@ -74,10 +88,31 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
         stateMachine = new StateMachine(idleState);
         idleState.EntryActions?.Invoke();
+
     }
+
 
     protected virtual void Update()
     {
+        if (isSpawnDelayed)
+        {
+            spawnTimer -= Time.deltaTime;
+            if (spawnTimer <= 0f)
+            {
+                isSpawnDelayed = false;
+                agent.isStopped = false; // allow movement again
+            }
+            else
+            {
+                // Optional: still play walking animation (set anim values to zero or a walk blend)
+                Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
+                anim.SetFloat("x", 0);
+                anim.SetFloat("y", 1);
+                return; // skip rest of Update while in spawn delay
+            }
+        }
+
+        // === rest of your existing Update() ===
         if (!isInAttackAnimation)
         {
             Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
@@ -93,18 +128,14 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 Vector2 mov = animManager.GetMovementFromCurrentAnimation();
                 transform.position += (transform.forward * mov.y + transform.right * mov.x) * (Time.deltaTime * timeScale);
             }
-                
+        }
 
-        }
-        if (animManager != null)
-        {
-            animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
-        }
-        
+        animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
         UpdatePerception();
         var actions = stateMachine.Update();
         actions?.Invoke();
     }
+
 
     public void SetTimeScale(float scale)   
     {
