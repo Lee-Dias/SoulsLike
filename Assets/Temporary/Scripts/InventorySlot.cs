@@ -3,17 +3,21 @@ using UnityEngine.EventSystems;
 using static Item;
 
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
-{
-    public InventoryItem myItem { get; set; }
+{		
+    public InventoryItem myItem { get; set; }   
 
-    public ItemType myType;
+	public ItemType myType;  
     
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            print("Childs: " + transform.childCount + "\nI am: " + name);
+
+            if (transform.childCount == 1) return;
             if (Inventory.carriedItem == null) return;
             if(myType != ItemType.None && Inventory.carriedItem.myItem.itemTypePublic != myType) return;
+            
             SetItem(Inventory.carriedItem);
         }
     }

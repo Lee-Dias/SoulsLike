@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
     {
         Item _item = item;
 
-        if (_item == null)
+        if (_item.ItemIcon == null)
         {
             int random = Random.Range(0, items.Length);
             _item = items[random];
@@ -184,7 +184,7 @@ public class Inventory : MonoBehaviour
 
         carriedItem = item;
         carriedItem.canvasGroup.blocksRaycasts = false;
-        item.transform.SetParent(draggablesTransform);
+        //item.transform.SetParent(draggablesTransform);
     }
 
     public void EquipEquipment(ItemType type, InventoryItem item = null)

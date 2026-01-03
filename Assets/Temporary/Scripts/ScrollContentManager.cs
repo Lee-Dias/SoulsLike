@@ -38,5 +38,14 @@ public class ScrollContentManager : MonoBehaviour
                     grid.padding.bottom //Adicionando o padding inferior
                 );
         rectTransform.sizeDelta = size;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            if (child.childCount == 0)
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 }

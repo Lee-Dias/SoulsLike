@@ -14,6 +14,8 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
 
     Sprite iconSaver;
 
+    private Inventory inventory;
+
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -21,6 +23,8 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         
         if(iconSaver != null)
             itemIcon.sprite = iconSaver;
+
+        inventory = FindAnyObjectByType<Inventory>();
     }
 
     public void Initialize(Item item, InventorySlot parent)
@@ -43,6 +47,12 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Inventory.Singleton.SetCarriedItem(this);
+        }
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            inventory.SpawnInventoryItem(myItem);
+            Destroy(this.gameObject);
         }
     }
 }
