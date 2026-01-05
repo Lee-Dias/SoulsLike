@@ -34,6 +34,7 @@ public class PlayerAnimationsController : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;           // which layer enemies are on
 
     [SerializeField] private CombatModifiers combatModifiers;
+    [SerializeField] private LiminalUIController liminalUIController;
     
 
     private Item equippedWeapon;
@@ -72,6 +73,11 @@ public class PlayerAnimationsController : MonoBehaviour
         health = GetComponent<Health>();
         animManager = new CombatAnimationManager(anim);
         animManager.OnStepStarted += HandleAnimStepStarted;
+    }
+
+    public void EnablePlayerAfterSitting()
+    {
+        liminalUIController.DisableSittingAfterDelay();
     }
 
     private void Update()
@@ -180,7 +186,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public float DamageToDeal()
     {
-        return equippedWeapon.Damage;
+        return equippedWeapon.Damage * playerStats.TotalStrength * (playerStats.TotalDexterity /2);
     }
     public bool PerformParry()
     {

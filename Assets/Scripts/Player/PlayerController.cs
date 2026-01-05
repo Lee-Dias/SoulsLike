@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -15,8 +16,10 @@ public class PlayerController : MonoBehaviour
     [Header("Dash Settings")]
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashDuration = 0.5f;
-    [SerializeField] private TrailRenderer trail;
-    [SerializeField] private SkinnedMeshRenderer[] renderers;
+    [SerializeField] private MeshTrail meshTrail;
+    [SerializeField] private float dashCooldown = 1.0f;
+
+    
     
 
     [Header("References")]
@@ -31,8 +34,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerAnimationsController playerAnimationsController;
     [SerializeField] private float walkAfterConsumable;
+
+    [SerializeField] private GameObject interactionMessage;
+     
     
     private bool isSprinting = false;
+    private bool canDash = true;
+
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -83,7 +91,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext value)
     {
-        
         moveInput = value.ReadValue<Vector2>();
     }
 
@@ -91,9 +98,20 @@ public class PlayerController : MonoBehaviour
     public void OnDodge(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (isDashing) return;
+        if (!canDash || isDashing || !playerCanMove || playerAnimationsController.IsAttacking) return;
 
+        canDash = false;
+
+        meshTrail.Trail(0.6f);
         StartCoroutine(Dash());
+        StartCoroutine(DashCooldown());
+
+        animator.SetBool("Dodge", true);
+    }
+    private IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
     public void OnSprint(InputAction.CallbackContext context)
     {
@@ -120,6 +138,20 @@ public class PlayerController : MonoBehaviour
         }
         MoveCharacter();
     }
+    private void ResetMovementState()
+    {
+        moveInput = Vector2.zero;
+        currentDirection = Vector3.zero;
+        velocity = Vector3.zero;
+
+        animator.SetFloat("x", 0);
+        animator.SetFloat("y", 0);
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsSprinting", false);
+
+        isSprinting = false;
+    }
+
 
     private void MoveCharacter()
     {
@@ -128,6 +160,7 @@ public class PlayerController : MonoBehaviour
         if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerCanMove )
         {
             controller.Move(animWalk * Time.deltaTime);
+            ResetMovementState();
             animator.SetFloat("x", 0);
             animator.SetFloat("y", 0);
             return;
@@ -227,15 +260,7 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
         isInvincible = true;
-
-        // Hide the player model
-        foreach (var r in renderers)
-            r.enabled = false;
         
-        //foreach (var w in weaponRenderer)
-            //w.enabled = false;
-        
-        trail.emitting = true;
 
         Vector3 dashDir = Vector3.zero;
 
@@ -265,14 +290,15 @@ public class PlayerController : MonoBehaviour
         // Final snap to target position
         controller.Move(target - transform.position);
 
-        // Reveal model again
-        foreach (var r in renderers)
-            r.enabled = true;
-        //foreach (var w in weaponRenderer)
-            //w.enabled = true;
-        trail.emitting = false;
+        animator.SetBool("Dodge", false);
+
 
         isInvincible = false;
         isDashing = false;
+    }
+
+    public void ChangeInteractionMessageState(bool state)
+    {
+        interactionMessage.SetActive(state);
     }
 }

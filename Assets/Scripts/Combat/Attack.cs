@@ -65,7 +65,7 @@ public class Attack : MonoBehaviour
             }
         }
 
-        damage = 20;
+        damage = enemy.DamageToDeal();
     }
     private void PlayerAttack(Collider other)
     {

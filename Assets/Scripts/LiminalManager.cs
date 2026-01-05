@@ -8,8 +8,30 @@ public class LiminalManager : MonoBehaviour
     private void Start()
     {
         playerController = FindFirstObjectByType<PlayerController>();
+        TeleportPlayerToStartingBonfire();
     }
 
+    private void TeleportPlayerToStartingBonfire()
+    {
+        int START_BONFIRE_ID = 1;
+        bool START_IS_NORMAL_WORLD = false;
+
+        LiminalWorldChanger[] allBonfires =
+            FindObjectsOfType<LiminalWorldChanger>(true);
+
+        foreach (var bonfire in allBonfires)
+        {
+            if (bonfire.BonfireID == START_BONFIRE_ID &&
+                bonfire.IsNormalWorld == START_IS_NORMAL_WORLD)
+            {
+                TeleportPlayer(bonfire.SpawnPoint);
+
+                return;
+            }
+        }
+
+        Debug.LogError("Starting bonfire (ID 1, IsNormalWorld = false) not found!");
+    }
     // Call this method to load the scene (e.g., from a button click, collision, etc.)
     public void LoadTargetScene()
     {

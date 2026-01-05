@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float cooldownPerGetHit = 0.5f;
     [SerializeField] private float cooldownToAttack = 0.7f;
     [SerializeField] private float blockMovementFor = 0.2f;
-    [SerializeField] private CharacterProfileBase characterProfile;
+    [SerializeField] private PlayerStats playerStats;
     [SerializeField] private float statsMultiplier = 1.5f; 
     [SerializeField] private float baseMaxHealth = 100f; 
 
@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        maxHealth += baseMaxHealth + (characterProfile.BaseVitlaity * statsMultiplier);
+        maxHealth += baseMaxHealth + (playerStats.TotalVitality * statsMultiplier);
         health = maxHealth;
 
         animator = GetComponent<Animator>();

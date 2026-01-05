@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static Item;
 
@@ -30,6 +31,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject consumablesSlot;
     [SerializeField] private GameObject armourSlot;
 
+    [SerializeField] private Item giveItemAtStart;
+
     private List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
     private Item[] rightHandItems = new Item[3];
@@ -45,6 +48,124 @@ public class Inventory : MonoBehaviour
     {
         Singleton = this;
     }
+    void Start()
+    {
+        EquipItemAtStart();
+    }
+
+    public void ChangeRightHandEquipped(InputAction.CallbackContext ctx)
+    {
+        return;
+
+        rightSelectedItemNum =
+            (rightSelectedItemNum + 1) % rightHandItems.Length;
+
+        Debug.Log("Right hand slot selected: " + rightSelectedItemNum);
+
+        InventorySlot slot =
+            rightHand.transform
+                .GetChild(rightSelectedItemNum)
+                .GetComponent<InventorySlot>();
+
+        EquipEquipment(ItemType.Weapon, slot?.myItem);
+    }
+
+
+    public void ChangeLeftHandEquipped(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+
+        leftSelectedItemNum =
+            (leftSelectedItemNum + 1) % leftHandItems.Length;
+
+        Debug.Log("Left hand slot selected: " + leftSelectedItemNum);
+
+        InventorySlot slot =
+            leftHand.transform
+                .GetChild(leftSelectedItemNum)
+                .GetComponent<InventorySlot>();
+
+        EquipEquipment(ItemType.Weapon, slot?.myItem);
+    }
+
+
+    public void ChangeConsumableEquipped(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+
+        consumableSelectedItemNum =
+            (consumableSelectedItemNum + 1) % consumableItems.Length;
+
+        Debug.Log("Consumable slot selected: " + consumableSelectedItemNum);
+
+        InventorySlot slot =
+            consumablesSlot.transform
+                .GetChild(consumableSelectedItemNum)
+                .GetComponent<InventorySlot>();
+
+        EquipEquipment(ItemType.Consumable, slot?.myItem);
+    }
+
+
+    private int GetNextValidIndex(Item[] items, int currentIndex)
+    {
+        int length = items.Length;
+        int nextIndex = currentIndex;
+
+        for (int i = 0; i < length; i++)
+        {
+            nextIndex = (nextIndex + 1) % length;
+
+            if (items[nextIndex] != null)
+                return nextIndex;
+        }
+
+        // No valid item found
+        return currentIndex;
+    }
+
+
+
+    private void EquipItemAtStart()
+    {
+        if (giveItemAtStart == null)
+            return;
+
+        // Find first right-hand slot
+        InventorySlot targetSlot = null;
+
+        foreach (Transform child in rightHand.transform)
+        {
+            InventorySlot slot = child.GetComponent<InventorySlot>();
+            if (slot != null)
+            {
+                targetSlot = slot;
+                break;
+            }
+        }
+
+        if (targetSlot == null)
+        {
+            Debug.LogError("No right-hand InventorySlot found!");
+            return;
+        }
+
+        // Create inventory item instance
+        InventoryItem newItem = Instantiate(itemPrefab, targetSlot.transform);
+        // Temporary 
+        newItem.canRemove = false;
+        newItem.Initialize(giveItemAtStart, targetSlot);
+
+
+        // Force equip logic
+        targetSlot.SetItem(newItem);
+
+        rightSelectedItemNum = 0;
+
+        // Optional: notify equip system
+        EquipEquipment(ItemType.Weapon, newItem);
+    }
+
 
     private InventorySlot CreateInventorySlot()
     {
@@ -58,7 +179,6 @@ public class Inventory : MonoBehaviour
     {
         if (item == null) return;
 
-        // 👉 Route Aura items to AuraInventory
         if (item.itemTypePublic == ItemType.Aura)
         {
             auraInventory.SpawnAuraItem(item);

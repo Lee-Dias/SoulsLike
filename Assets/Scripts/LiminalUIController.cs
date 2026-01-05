@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,13 +39,15 @@ public class LiminalUIController : MonoBehaviour
     private PlayerController playerController;
 
     private bool menuIsActive = false;
-
+    private Animator animator;
     
 
     void Start()
     {
         pendingUpgrades = new Dictionary<PlayerStats.Stats, int>();
+        
         playerController = FindFirstObjectByType<PlayerController>();
+        animator = playerController.GetComponent<Animator>();
         foreach (PlayerStats.Stats stat in System.Enum.GetValues(typeof(PlayerStats.Stats)))
         {
             pendingUpgrades.Add(stat, 0);
@@ -76,6 +79,10 @@ public class LiminalUIController : MonoBehaviour
     public void TurnOn()
     {
         if(playerController.IsOnInventory) return;
+        
+        animator.SetTrigger("Down");
+        animator.ResetTrigger("Up");
+        animator.SetBool("Sitting", true);
         baseMenu.SetActive(true);
         playerController.PlayerCanMoveState(false);
         playerController.ChangeIsInBonfireState(true);
@@ -85,15 +92,21 @@ public class LiminalUIController : MonoBehaviour
     }
     public void TurnOff()
     {
+        animator.SetTrigger("Up");
         baseMenu.SetActive(false);
         upgradeMenu.SetActive(false);
         auraMenu.SetActive(false);
-        playerController.PlayerCanMoveState(true);
-        playerController.ChangeIsInBonfireState(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         menuIsActive = false;
         ResetUpgrades();
+    }
+
+    public void DisableSittingAfterDelay()
+    {
+        playerController.PlayerCanMoveState(true);
+        playerController.ChangeIsInBonfireState(false);
+        animator.SetBool("Sitting", false);
     }
 
     // Métodos de wrapper para os botões

@@ -1,6 +1,7 @@
 using LibGameAI.FSMs;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 {
@@ -74,6 +75,11 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         health = GetComponent<Health>();
         animManager = new CombatAnimationManager(anim);
 
+    }
+    
+    public float DamageToDeal()
+    {
+        return item.Damage * enemy.BaseDexterity * (enemy.BaseStrength / 2);
     }
 
     public void CheckIfSpawned(float delay)

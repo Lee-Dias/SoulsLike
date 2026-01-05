@@ -6,7 +6,9 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {		
     public InventoryItem myItem { get; set; }   
 
-	public ItemType myType;  
+	public ItemType myType;
+
+
     
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -33,7 +35,10 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         myItem = item;
         myItem.activeSlot = this;
         myItem.transform.SetParent(transform);
-        myItem.canvasGroup.blocksRaycasts = true;
+        if (myItem.canvasGroup != null)
+        {
+            myItem.canvasGroup.blocksRaycasts = true;
+        }
 
         if(myType != ItemType.None)
         {

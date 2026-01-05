@@ -16,6 +16,8 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
 
     private Inventory inventory;
 
+    public bool canRemove = true;
+
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -44,6 +46,9 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // Temporary
+        if (!canRemove) return;
+
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Inventory.Singleton.SetCarriedItem(this);
