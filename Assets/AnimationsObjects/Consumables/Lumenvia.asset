@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98abd0cd5cae9c4cbb5f0d180a21c47, type: 3}
+  m_Name: Lumenvia
+  m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
+  isCombo: 0
+  soundEffect: {fileID: 0}
+  stopControlledMovement: 1
+  walkDuringAnimation: 0
+  attackAnimation: 0
+  activeStartTime: 0.4
+  activetEndTime: 0.6
+  speed: 1
+  singleClip: {fileID: -4791504522942941401, guid: ac910d4b92b5e714b97c54ac0860c604, type: 3}
+  movementCurve: []
+  comboSteps:
+  - name: Lumenvia
+    clip: {fileID: -4791504522942941401, guid: ac910d4b92b5e714b97c54ac0860c604, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0.5
+    transitionWindowEnd: 1
+    movementCurveOnCombo: []
+    nextAnimationTriggerPoint: 1
+    comboSpeed: 0.7
+    blendTime: 0.01
+    hitStartTime: 0.5
+    hitEndTime: 0.6
+  spawnObject: 1
+  objectToSpawn: {fileID: 9120191441873206031, guid: 078674d94ed751d46a4c2a476a893702, type: 3}
+  positionToSpawnObject: {x: -0.5, y: 2.5, z: 0}

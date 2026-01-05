@@ -19,12 +19,13 @@ public class Spawner : MonoBehaviour
 
     [Header("Portal Movement")]
     [SerializeField] private float portalDepth = 2f;
-    [SerializeField] private float travelSpeed = 5f;
+    [SerializeField] private float travelDuration = 4f; // seconds to fully pass portal
+
 
     [Header("Post Exit Movement")]
     [SerializeField] private bool continueForward = true;
     [SerializeField, ShowIf(nameof(continueForward))]
-    private float postExitDistance = 3f;
+    private float postExitDistance = 2f;
 
     [Header("VFX & Lifetime")]
     [SerializeField] private float portalLifetime = 5f;
@@ -34,11 +35,12 @@ public class Spawner : MonoBehaviour
     [SerializeField, ShowIf(nameof(destroyObject))]
     private float objectLifetime = 5f;
 
-    private float nextSpawnTime;
+    private float nextSpawnTime = 0f;
+    
 
     private void Start()
     {
-        ScheduleNextSpawn();
+       
     }
 
     private void Update()
@@ -57,8 +59,12 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
+        float prefabY = objectToSpawn.transform.position.y;
+
         Vector3 exitPoint = GetSpawnPoint();
         Vector3 spawnPoint = exitPoint - transform.forward * portalDepth;
+        spawnPoint.y = prefabY;
+
 
         // Spawn portal VFX
         GameObject portalInstance = null;
@@ -78,6 +84,8 @@ public class Spawner : MonoBehaviour
         Vector3 finalTarget = exitPoint;
         if (continueForward)
             finalTarget += transform.forward * postExitDistance;
+        
+        finalTarget.y = prefabY;
 
         // Move object through portal
         StartCoroutine(MoveThroughPortal(spawned.transform, finalTarget));
@@ -88,8 +96,9 @@ public class Spawner : MonoBehaviour
 
         if(spawned.GetComponent<BaseEnemyAI>() != null)
         {
-            spawned.GetComponent<BaseEnemyAI>().CheckIfSpawned(portalLifetime);
+            spawned.GetComponent<BaseEnemyAI>().CheckIfSpawned(travelDuration);
         }
+        Destroy(spawned.GetComponent<PortalClip>(), travelDuration);
     }
 
     private Vector3 GetSpawnPoint()
@@ -103,18 +112,32 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator MoveThroughPortal(Transform obj, Vector3 target)
     {
-        while (Vector3.Distance(obj.position, target) > 0.05f)
+        Vector3 startPos = obj.position;
+
+        // Preserve prefab Y (the real rule)
+        float fixedY = startPos.y;
+
+        float elapsed = Time.deltaTime; // avoid zero-frame stall
+
+        while (elapsed < travelDuration)
         {
-            obj.position = Vector3.MoveTowards(
-                obj.position,
-                target,
-                travelSpeed * Time.deltaTime
-            );
+            float t = elapsed / travelDuration;
+
+            Vector3 pos = Vector3.Lerp(startPos, target, t);
+            pos.y = fixedY;
+
+            obj.position = pos;
+
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
+        target.y = fixedY;
         obj.position = target;
     }
+
+
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

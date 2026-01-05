@@ -13,6 +13,9 @@ public class Inventory : MonoBehaviour
     
     [SerializeField] private GameObject inventorySlotsParent;
     [SerializeField] private GameObject inventorySlot;
+
+    [Header("Aura Inventory Reference")]
+    [SerializeField] private AuraInventory auraInventory;
     
 
     [SerializeField] private Transform draggablesTransform;
@@ -51,23 +54,24 @@ public class Inventory : MonoBehaviour
         inventorySlots.Add(slot);
         return slot;
     }
-    public void SpawnInventoryItem(Item item = null)
+    public void SpawnInventoryItem(Item item)
     {
-        Item _item = item;
+        if (item == null) return;
 
-        if (_item.ItemIcon == null)
+        // 👉 Route Aura items to AuraInventory
+        if (item.itemTypePublic == ItemType.Aura)
         {
-            int random = Random.Range(0, items.Length);
-            _item = items[random];
+            auraInventory.SpawnAuraItem(item);
+            return;
         }
 
-        // Create a new slot
+        // Normal inventory flow
         InventorySlot newSlot = CreateInventorySlot();
 
-        // Create the item in that slot
         Instantiate(itemPrefab, newSlot.transform)
-            .Initialize(_item, newSlot);
+            .Initialize(item, newSlot);
     }
+
 
     // Update is called once per frame
     void Update()

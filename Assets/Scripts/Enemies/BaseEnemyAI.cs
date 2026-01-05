@@ -29,6 +29,10 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     [SerializeField] protected Item item;
 
+    [SerializeField] protected GameObject canvas;
+
+    [SerializeField] protected int auraValue = 100;
+
     private float spawnTimer;
     private bool isSpawnDelayed = false;
 
@@ -62,6 +66,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected CombatAnimationManager animManager;
 
     public bool IsInAttackAnimation => isInAttackAnimation;
+    public int AuraValue => auraValue;
 
     protected virtual void Awake()
     {
@@ -100,15 +105,16 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
             if (spawnTimer <= 0f)
             {
                 isSpawnDelayed = false;
+                canvas.SetActive(true);
                 agent.isStopped = false; // allow movement again
             }
             else
             {
-                // Optional: still play walking animation (set anim values to zero or a walk blend)
                 Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
                 anim.SetFloat("x", 0);
                 anim.SetFloat("y", 1);
-                return; // skip rest of Update while in spawn delay
+                anim.SetBool("IsWalking", true);
+                return; 
             }
         }
 
@@ -118,9 +124,19 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
             Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
             anim.SetFloat("x", localVel.x);
             anim.SetFloat("y", localVel.z);
+            if(localVel.magnitude > 0)
+            {
+                anim.SetBool("IsWalking", true);
+            }
+            else
+            {
+                anim.SetBool("IsWalking", false);
+            }
+
         }
         else
         {
+            anim.SetBool("IsWalking", false);
             anim.SetFloat("x", 0);
             anim.SetFloat("y", 0);
             if (!IsTouchingPlayer())
@@ -129,6 +145,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 transform.position += (transform.forward * mov.y + transform.right * mov.x) * (Time.deltaTime * timeScale);
             }
         }
+
 
         animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
         UpdatePerception();

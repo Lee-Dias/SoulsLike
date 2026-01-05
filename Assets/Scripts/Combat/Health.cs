@@ -47,8 +47,11 @@ public class Health : MonoBehaviour
                 Scene currentScene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(currentScene.name);
             }
+            if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);
+            }
             Destroy(this.gameObject);
-            
         }
         animator.SetTrigger("GetHit");
         timePassedSinceLastHit = 0;

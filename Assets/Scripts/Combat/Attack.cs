@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private GameObject groundVFX; 
 
     private Item item;
-    private PlayerCombat playerCombat;
+    private PlayerAnimationsController playerAnimationsController;
     private BaseEnemyAI enemy;
 
     private float damage;
@@ -26,9 +26,9 @@ public class Attack : MonoBehaviour
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
 
-        playerCombat = character.GetComponent<PlayerCombat>();
+        playerAnimationsController = character.GetComponent<PlayerAnimationsController>();
         enemy = character.GetComponent<BaseEnemyAI>();
-        if(playerCombat != null)
+        if(playerAnimationsController != null)
         {
             PlayerAttack(other);
         }
@@ -56,7 +56,7 @@ public class Attack : MonoBehaviour
 
     private void EnemyAttack(Collider other)
     {
-        PlayerCombat player = other.GetComponent<PlayerCombat>();
+        PlayerAnimationsController player = other.GetComponent<PlayerAnimationsController>();
         if(player != null)
         {
             if (player.CanParry)
@@ -69,7 +69,7 @@ public class Attack : MonoBehaviour
     }
     private void PlayerAttack(Collider other)
     {
-        if (playerCombat.IsDoingParry)
+        if (playerAnimationsController.IsDoingParry)
         {
             if (TryParry(other))
             {
@@ -78,7 +78,7 @@ public class Attack : MonoBehaviour
             stop = true;
             return;
         }
-        damage = playerCombat.DamageToDeal();
+        damage = playerAnimationsController.DamageToDeal();
         
     }
     private bool TryParry(Collider other)
@@ -89,7 +89,7 @@ public class Attack : MonoBehaviour
             if (enemyAIOther.IsInAttackAnimation)
             {
                 damage = 0;
-                playerCombat.PerformParry();
+                playerAnimationsController.PerformParry();
                 return true;
             }
         }       

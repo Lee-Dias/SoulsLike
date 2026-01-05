@@ -5,8 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Items", menuName = "Scriptable Objects/Items")]
 public class Item : ScriptableObject
 {
-    public enum ItemType { Weapon, Shield ,Equipment, Consumable, None}
-    private enum BodyPlace { Head, Chest, Pants, Ring}
+    public enum ItemType { Weapon, Shield ,Equipment, Consumable, Aura,None}
     private enum Buff { Health, Damage, Armor}
 
     [SerializeField] private ItemType itemType;
@@ -29,11 +28,17 @@ public class Item : ScriptableObject
 
     // Equipment ------------------------------------------------------------------------------
     [SerializeField, ShowIf("itemType", ItemType.Equipment)] private int armorQuantity;
-    [SerializeField, ShowIf("itemType", ItemType.Equipment)] private BodyPlace bodyPlace;
 
 
     //Consumable ------------------------------------------------------------------------------
     [SerializeField, ShowIf("itemType", ItemType.Consumable)] private int duration;
+    [SerializeField, ShowIf("itemType", ItemType.Consumable)] private CombatAnimations animation;
+
+    //Aura ------------------------------------------------------------------------------
+    [SerializeField, ShowIf("itemType", ItemType.Aura)]
+    private AuraData auraData;
+
+    
 
 
     // Buff ------------------------------------------------------------------------------
@@ -48,10 +53,11 @@ public class Item : ScriptableObject
 
 
 
-
+    public AuraData AuraData => auraData;
     public int ArmorQuantity => armorQuantity;
     public float Damage => damage;
     public WeaponAnimationsData AnimationsData => animationsData;
+    public CombatAnimations Animation => animation;
     public Sprite ItemIcon => icon;
     public GameObject Weapon => weapon;
 

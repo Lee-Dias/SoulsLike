@@ -18,6 +18,10 @@ public class CombatAnimations : ScriptableObject
     [ShowIf(nameof(ShouldShowWalk))] [SerializeField] private MovementInterval[] movementCurve;
     [ShowIf(nameof(isCombo))] [SerializeField] private ComboStep[] comboSteps;
 
+    [SerializeField] private bool spawnObject;
+    [ShowIf(nameof(spawnObject))] [SerializeField] private GameObject objectToSpawn;
+    [ShowIf(nameof(spawnObject))] [SerializeField] private Vector3 positionToSpawnObject;
+
     [System.Serializable]
     public struct MovementInterval
     {
@@ -70,6 +74,10 @@ public class CombatAnimations : ScriptableObject
     public MovementInterval[] MovementCurve => movementCurve;
 
     public float Speed => speed;
+
+    public bool SpawnObject => spawnObject;
+    public GameObject ObjectToSpawn => objectToSpawn;
+    public Vector3 PositionToSpawnObject => positionToSpawnObject;
 
 
 }

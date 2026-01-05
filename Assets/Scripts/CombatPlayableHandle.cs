@@ -1,4 +1,5 @@
 using UnityEngine;
+
 using UnityEngine.Playables;
 using UnityEngine.Animations;
 using System.Runtime.InteropServices;
@@ -47,6 +48,8 @@ public class CombatPlayableHandle
     private float startBlendTimer = 0f;
     private float startBlendDuration = 0.15f; // can be per-animation if needed
 
+    private bool spawn = false;
+
     private bool activateHitBox; // can be per-animation if needed
 
     public event Action<int> StepStarted;
@@ -55,6 +58,7 @@ public class CombatPlayableHandle
     public bool IsFadingOut => fadeOutActive;
     public bool IsFadingIn => startBlendActive;
     public bool ActivateHitBox => activateHitBox;
+    public bool Spawn => spawn;
 
     public int ComboIndex;
 
@@ -108,7 +112,7 @@ public class CombatPlayableHandle
     public void Play(int stepIndex = 0)
     {
         if (!IsValid) return;
-
+        spawn = false;
         isPlaying = true;
         currentStep = Mathf.Clamp(stepIndex, 0, isCombo ? data.Steps.Length - 1 : 0);
 
@@ -178,6 +182,14 @@ public class CombatPlayableHandle
         {
             activateHitBox = false; 
         }
+
+        if (data.SpawnObject && !spawn)
+        {
+            if(data.ActiveStartTime < GetNormalizedTime() && data.ActivetEndTime > GetNormalizedTime())
+            {
+                spawn = true;
+            }
+        }
         ComboIndex = currentStep;
         // -----------------------
         // BLENDING BETWEEN STEPS
@@ -231,12 +243,20 @@ public class CombatPlayableHandle
                 output.SetWeight(w);  
             if (t >= 1f)
             {
-                output.SetWeight(w);  
                 fadeOutActive = false;
                 isPlaying = false;
-                // DO NOT immediately reset animation root
-                graph.Stop();
-                
+
+                if (!isCombo)
+                {
+                    singlePlayable.SetTime(0);       // reset animation time
+                    singlePlayable.SetSpeed(data.Speed); // reset speed
+                    output.SetWeight(0f);            // reset output weight
+                    // DO NOT stop the graph
+                }
+                else
+                {
+                    graph.Stop(); // keep stopping combos if you want
+                }
             }
         }
 

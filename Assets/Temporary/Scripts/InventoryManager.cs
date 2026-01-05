@@ -11,17 +11,20 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject button;
     [SerializeField] private GameObject inventory;
     [SerializeField] private List<GameObject> extras = new List<GameObject>();
+
+    private PlayerController playerController;
     private bool isActive = false;
     public bool IsActive => isActive;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerController = FindFirstObjectByType<PlayerController>();
         closeButton.onClick.AddListener(CloseInventory);
     }
 
     public void OnInventory(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed) return;
+        if (!ctx.performed || playerController.IsOnBonfire) return;
         UpdateSetActives();
 
     }
@@ -33,11 +36,15 @@ public class InventoryManager : MonoBehaviour
         {            
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            playerController.ChangeIsInInventoryState(true);
+            playerController.PlayerCanMoveState(false);
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            playerController.ChangeIsInInventoryState(false);
+            playerController.PlayerCanMoveState(true);
         }
         button.SetActive(isActive);
         inventory.SetActive(isActive);

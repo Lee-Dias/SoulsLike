@@ -25,10 +25,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CameraSettings cameraSettings;
 
 
+    [SerializeField] private Inventory inventory;
 
-    [SerializeField] private PlayerCombat playerCombat;
+
+
+    [SerializeField] private PlayerAnimationsController playerAnimationsController;
     [SerializeField] private float walkAfterConsumable;
-    [SerializeField] private GameObject Lumenvia;
     
     private bool isSprinting = false;
 
@@ -37,14 +39,22 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentDirection;
 
     private bool isDashing = false;
-    private bool isInvincible = false;
-    private float stopGraceTime = 0.1f; // 80ms grace
-    private float stopTimer = 0f;
 
-    private bool usingConsumable;
-    private float walkTimer;
-    private bool canUse = true;
-    
+    private bool isInvincible = false;
+
+    private bool playerCanMove = true;
+
+    private bool isOnInventory;
+    private bool isOnBonfire;
+
+    public bool PlayerCanMove => playerCanMove;
+    public bool IsOnInventory => isOnInventory;
+    public bool IsOnBonfire => isOnBonfire;
+
+    [HideInInspector]public bool playerIsInBonfire;
+    [HideInInspector]public LiminalWorldChanger playerBonfire;
+
+
 
 
     // Input
@@ -55,23 +65,28 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
-        walkTimer = walkAfterConsumable;
     }
+    public void PlayerCanMoveState(bool state)
+    {
+        playerCanMove = state;
+    }
+    public void ChangeIsInInventoryState(bool state)
+    {
+        isOnInventory = state;  
+    }
+    public void ChangeIsInBonfireState(bool state)
+    {
+        isOnBonfire = state;  
+    }
+
+    
 
     public void OnMove(InputAction.CallbackContext value)
     {
         
         moveInput = value.ReadValue<Vector2>();
     }
-    public void OnConsumable(InputAction.CallbackContext context)
-    {
-        if (usingConsumable || playerCombat.IsAttacking || !canUse)
-            return;
-        canUse = false;
-        usingConsumable  = true;
-        walkTimer = 0f;
-        animator.SetBool("Consumable", true);
-    }
+
 
     public void OnDodge(InputAction.CallbackContext context)
     {
@@ -94,38 +109,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(moveInput.magnitude == 0)
+        if (moveInput.magnitude == 0)
         {
-            stopTimer += Time.deltaTime;
-            if (stopTimer > stopGraceTime)
-            {
-                animator.SetBool("IsWalking",false);
-            }
-            
+            animator.SetBool("IsWalking", false);
         }
         else
         {
-            stopTimer = 0;
-            animator.SetBool("IsWalking",true);
-        }
-        walkTimer += Time.deltaTime;  
-        if(walkTimer > walkAfterConsumable-0.5 && usingConsumable)
-        {
-            Lumenvia.SetActive(true);  
-        }
-        if(walkTimer > walkAfterConsumable)
-        {
-            usingConsumable = false;
-            animator.SetBool("Consumable", false);
+            if(playerCanMove)
+                animator.SetBool("IsWalking", true);
         }
         MoveCharacter();
     }
 
     private void MoveCharacter()
     {
-        if (!controller || usingConsumable) return;
+        if (!controller) return;
 
-        if (playerCombat.ShouldBlockMovement(out Vector3 animWalk) )
+        if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerCanMove )
         {
             controller.Move(animWalk * Time.deltaTime);
             animator.SetFloat("x", 0);
