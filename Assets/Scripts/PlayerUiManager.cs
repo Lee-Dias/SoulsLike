@@ -11,6 +11,9 @@ public class PlayerUiManager : MonoBehaviour
     private Stamina stamina;
     [SerializeField]
     private Health health;
+    [SerializeField]
+    private PlayerStats playerStats;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +23,8 @@ public class PlayerUiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         staminaBar.fillAmount = stamina.StaminaValue / stamina.MaxStamina;
         healthBar.fillAmount = health.HealthValue / health.MaxHealth;
     }

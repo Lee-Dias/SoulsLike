@@ -50,7 +50,7 @@ public class PickUpItem : MonoBehaviour
         {
             playerInside = false;
             inventory = null;
-            playerController.ChangeInteractionMessageState(true);
+            playerController.ChangeInteractionMessageState(false);
         }
     }
 }

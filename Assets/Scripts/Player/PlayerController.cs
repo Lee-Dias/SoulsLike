@@ -136,6 +136,14 @@ public class PlayerController : MonoBehaviour
             if(playerCanMove)
                 animator.SetBool("IsWalking", true);
         }
+        if (playerIsInBonfire || !isOnBonfire)
+        {
+            ChangeInteractionMessageState(true);
+        }
+        else
+        {
+            ChangeInteractionMessageState(false);
+        }
         MoveCharacter();
     }
     private void ResetMovementState()
