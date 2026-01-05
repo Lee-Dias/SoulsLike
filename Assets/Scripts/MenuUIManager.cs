@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuUIManager : MonoBehaviour
 {
-    [SerializeField] private Button startButon;
-    [SerializeField] private Button exitButon;
-    private bool isHovering = false;
-
-    private void Awake()
+    public void StartGame()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // OR: SceneManager.LoadScene("GameSceneName");
     }
 
-    
+    // Call this from the Exit button
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

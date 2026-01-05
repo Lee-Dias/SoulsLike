@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 77895327}
   - component: {fileID: 77895326}
   - component: {fileID: 77895325}
+  - component: {fileID: 77895328}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -180,10 +181,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.4641509, g: 0.4641509, b: 0.4641509, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.2679245, g: 0.2679245, b: 0.2679245, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.4641509, g: 0.4641509, b: 0.4641509, a: 0}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_SelectedColor: {r: 0.2679245, g: 0.2679245, b: 0.2679245, a: 0}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -202,9 +203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 577007485}
-        m_TargetAssemblyTypeName: tempbuttons, Assembly-CSharp
-        m_MethodName: Startbutton
+      - m_Target: {fileID: 658725563}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -252,6 +253,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77895323}
   m_CullTransparentMesh: 1
+--- !u!114 &77895328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77895323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c7d04624089d44b364c63d222f079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuUIButton
+  isMouseOver: 0
 --- !u!1 &565185221
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,8 +565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79d77b6c7239f14bacfbabb7ec2a0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuUIManager
-  startButon: {fileID: 1052142647}
-  exitButon: {fileID: 0}
 --- !u!1 &676755035
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +656,7 @@ GameObject:
   - component: {fileID: 1052142649}
   - component: {fileID: 1052142648}
   - component: {fileID: 1052142647}
+  - component: {fileID: 1052142650}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -693,10 +706,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.4641509, g: 0.4641509, b: 0.4641509, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.2679245, g: 0.2679245, b: 0.2679245, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.4641509, g: 0.4641509, b: 0.4641509, a: 0}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_SelectedColor: {r: 0.2679245, g: 0.2679245, b: 0.2679245, a: 0}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -715,9 +728,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 577007485}
-        m_TargetAssemblyTypeName: tempbuttons, Assembly-CSharp
-        m_MethodName: Startbutton
+      - m_Target: {fileID: 658725563}
+        m_TargetAssemblyTypeName: MenuUIManager, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -765,6 +778,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052142645}
   m_CullTransparentMesh: 1
+--- !u!114 &1052142650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052142645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0c7d04624089d44b364c63d222f079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuUIButton
+  isMouseOver: 0
 --- !u!1 &1114650507
 GameObject:
   m_ObjectHideFlags: 0

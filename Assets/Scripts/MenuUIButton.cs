@@ -14,12 +14,6 @@ public class MenuUIButton: MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         // For UI text (most common in canvases)
         tmpText = GetComponentInChildren<TextMeshProUGUI>();
 
-        // Or for 3D world-space text
-        // tmpText = GetComponentInChildren<TextMeshPro>();
-
-        // Or using the base class (works for either)
-        // tmpText = GetComponentInChildren<TMP_Text>();
-
         if (tmpText == null)
         {
             Debug.LogError("No TextMeshPro component found in children!");
@@ -42,12 +36,10 @@ public class MenuUIButton: MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         isMouseOver = true;
-        Debug.Log($"{name} hovered");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         isMouseOver = false;
-        Debug.Log($"{name} unhovered");
     }
 }
