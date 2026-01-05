@@ -981,8 +981,11 @@ MonoBehaviour:
   chanceToCircle: 0.5
   anim: {fileID: 0}
   weaponCollider: {fileID: 0}
-  timeToGoBackToCircleAfterLight: 3
-  animData: {fileID: 0}
+  item: {fileID: 0}
+  lightAttackChance: 25
+  heavyAttackChance: 25
+  specialAttackChance: 25
+  parryChance: 25
 --- !u!54 &60431520
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4021,7 +4024,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283033490}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -5421,7 +5424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.45
+      value: 11.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5429,7 +5432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.59
+      value: -28.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7858,8 +7861,11 @@ MonoBehaviour:
   chanceToCircle: 0.5
   anim: {fileID: 0}
   weaponCollider: {fileID: 0}
-  timeToGoBackToCircleAfterLight: 3
-  animData: {fileID: 0}
+  item: {fileID: 0}
+  lightAttackChance: 25
+  heavyAttackChance: 25
+  specialAttackChance: 25
+  parryChance: 25
 --- !u!54 &509937686
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8326,7 +8332,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515547026}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11544,7 +11550,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686424582}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11866,7 +11872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.45
+      value: 13.502
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11874,7 +11880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.59
+      value: -26.726
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa7c1b0a1503fdf49841aa5612893c25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13785,7 +13791,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837540164}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -14668,7 +14674,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885622870}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -15058,8 +15064,11 @@ MonoBehaviour:
   chanceToCircle: 0.5
   anim: {fileID: 0}
   weaponCollider: {fileID: 0}
-  timeToGoBackToCircleAfterLight: 3
-  animData: {fileID: 0}
+  item: {fileID: 0}
+  lightAttackChance: 25
+  heavyAttackChance: 25
+  specialAttackChance: 25
+  parryChance: 25
 --- !u!54 &894888506
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19845,9 +19854,18 @@ MonoBehaviour:
   comboResetTime: 1
   inputBufferTime: 0.5
   staminaToWastePerAttack: 25.5
-  equippedWeapon: {fileID: 11400000, guid: 4efa490ffe027a24ca807482cae10e8b, type: 2}
-  weaponCollider: {fileID: 1716254850}
   inventoryManager: {fileID: 0}
+  inventory: {fileID: 0}
+  playerStats: {fileID: 0}
+  playerController: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  parryRadius: 10
+  parryTimeScale: 0.1
+  parryFreezeDuration: 3
+  parryDelay: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1157802705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20045,7 +20063,6 @@ MonoBehaviour:
   renderers:
   - {fileID: 660729805}
   - {fileID: 1574851119}
-  weaponRenderer: []
   cameraTransform: {fileID: 0}
   animator: {fileID: 1157802708}
   cameraSettings: {fileID: 0}
@@ -20244,7 +20261,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c29e1842c61127e419aa741693d4358b, type: 3}
 --- !u!4 &1167936746 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6877740261906273196, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 499956243774790863, guid: c29e1842c61127e419aa741693d4358b, type: 3}
   m_PrefabInstance: {fileID: 1167936745}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1168506360
@@ -24861,7 +24878,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453740250}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -25447,7 +25464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cce912fe97856f49a17a6c0157b8ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 10
+  character: {fileID: 0}
   ignore:
     serializedVersion: 2
     m_Bits: 0
@@ -28035,13 +28052,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1167936746}
   - {fileID: 1614969828}
   - {fileID: 1927599323}
   - {fileID: 73173257}
   - {fileID: 871310670}
   - {fileID: 760598467}
   - {fileID: 1859415123}
+  - {fileID: 1167936746}
   m_Father: {fileID: 543450653118986720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1544196906
@@ -28116,8 +28133,11 @@ MonoBehaviour:
   chanceToCircle: 0.5
   anim: {fileID: 0}
   weaponCollider: {fileID: 0}
-  timeToGoBackToCircleAfterLight: 3
-  animData: {fileID: 0}
+  item: {fileID: 0}
+  lightAttackChance: 25
+  heavyAttackChance: 25
+  specialAttackChance: 25
+  parryChance: 25
 --- !u!54 &1544196909
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28887,7 +28907,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578605556}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -29491,7 +29511,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633702164}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -30722,7 +30742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cce912fe97856f49a17a6c0157b8ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 10
+  character: {fileID: 0}
   ignore:
     serializedVersion: 2
     m_Bits: 0
@@ -30874,8 +30894,11 @@ MonoBehaviour:
   chanceToCircle: 0.5
   anim: {fileID: 0}
   weaponCollider: {fileID: 0}
-  timeToGoBackToCircleAfterLight: 3
-  animData: {fileID: 0}
+  item: {fileID: 0}
+  lightAttackChance: 25
+  heavyAttackChance: 25
+  specialAttackChance: 25
+  parryChance: 25
 --- !u!54 &1727751927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31192,7 +31215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cce912fe97856f49a17a6c0157b8ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 10
+  character: {fileID: 0}
   ignore:
     serializedVersion: 2
     m_Bits: 0
@@ -31558,7 +31581,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769156541}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -32411,9 +32434,18 @@ MonoBehaviour:
   comboResetTime: 1
   inputBufferTime: 0.5
   staminaToWastePerAttack: 25.5
-  equippedWeapon: {fileID: 11400000, guid: b74f303c2103edf4c99c4a4a2029af88, type: 2}
-  weaponCollider: {fileID: 1492357790}
   inventoryManager: {fileID: 0}
+  inventory: {fileID: 0}
+  playerStats: {fileID: 0}
+  playerController: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  parryRadius: 10
+  parryTimeScale: 0.1
+  parryFreezeDuration: 3
+  parryDelay: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1860184775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32611,7 +32643,6 @@ MonoBehaviour:
   renderers:
   - {fileID: 8456412}
   - {fileID: 868440656}
-  weaponRenderer: []
   cameraTransform: {fileID: 0}
   animator: {fileID: 1860184778}
   cameraSettings: {fileID: 0}
@@ -38013,7 +38044,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060527466}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
