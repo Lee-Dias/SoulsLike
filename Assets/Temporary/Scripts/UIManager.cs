@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Item;
-using static Unity.VisualScripting.Metadata;
 
 public class UIManager : MonoBehaviour
 {
