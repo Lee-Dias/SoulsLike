@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 
 public class Health : MonoBehaviour
@@ -11,18 +12,26 @@ public class Health : MonoBehaviour
     [SerializeField] private float statsMultiplier = 1.5f; 
     [SerializeField] private float baseMaxHealth = 100f; 
 
+    [SerializeField] private AudioClip audioClip; 
+    [SerializeField] private AudioClip hit; 
+
+    private AudioManager audioManager;
+
     private float maxHealth;
     private float health;
     private Animator animator;
     private float timePassedSinceLastHit;
     private float timePassedSinceLastHitForAttack;
     private float timePassedSinceLastBlockMovement;
+    private bool healthScaled = false;
+    
 
     public float MaxHealth => maxHealth;
     public float HealthValue => health;
 
     void Start()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
         if (playerStats)
         {
             maxHealth += baseMaxHealth + (playerStats.TotalVitality * statsMultiplier);
@@ -39,6 +48,33 @@ public class Health : MonoBehaviour
         timePassedSinceLastHit = cooldownPerGetHit;
         timePassedSinceLastHitForAttack = cooldownToAttack; 
     }
+
+    public void OnScaleHealth(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        if (playerStats == null) return;
+
+        if (!healthScaled)
+        {
+            maxHealth *= 1000f;
+            health *= 1000f;
+            healthScaled = true;
+        }
+        else
+        {
+            maxHealth /= 1000f;
+            health /= 1000f;
+            healthScaled = false;
+        }
+
+        health = Mathf.Clamp(health, 0f, maxHealth);
+    }
+    public void OnRestartGame(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        SceneManager.LoadScene("ManagerScene", LoadSceneMode.Single);
+    }
+
     private void FixedUpdate()
     {
         timePassedSinceLastHit += Time.deltaTime;
@@ -49,12 +85,14 @@ public class Health : MonoBehaviour
     public void GetHit(float damage)
     {
         health -= damage;
+        audioManager.PlayAudioWithRandomPitch(audioClip, 0.3f);
+        audioManager.PlayAudioWithRandomPitch(hit, 0.3f);
         if (health <= 0)
         {
             if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 Scene currentScene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(currentScene.name);
+                SceneManager.LoadScene("ManagerScene", LoadSceneMode.Single);
             }
             if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
@@ -62,6 +100,7 @@ public class Health : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+        
         animator.SetTrigger("GetHit");
         timePassedSinceLastHit = 0;
         timePassedSinceLastHitForAttack = 0;

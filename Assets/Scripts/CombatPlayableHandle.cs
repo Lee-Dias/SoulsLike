@@ -140,6 +140,7 @@ public class CombatPlayableHandle
             startBlendActive = true;
         }
 
+
         graph.Play();
     }
 

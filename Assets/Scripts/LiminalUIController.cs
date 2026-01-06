@@ -91,6 +91,7 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
+        PauseAllSpawners();
     }
     public void TurnOff()
     {
@@ -102,6 +103,18 @@ public class LiminalUIController : MonoBehaviour
         Cursor.visible = false;
         menuIsActive = false;
         ResetUpgrades();
+        ResumeAllSpawners();
+    }
+    private void PauseAllSpawners()
+    {
+        foreach (Spawner spawner in FindObjectsByType<Spawner>(FindObjectsSortMode.None))
+            spawner.PauseSpawner();
+    }
+
+    private void ResumeAllSpawners()
+    {
+        foreach (Spawner spawner in FindObjectsByType<Spawner>(FindObjectsSortMode.None))
+            spawner.ResumeSpawner();
     }
 
     public void DisableSittingAfterDelay()

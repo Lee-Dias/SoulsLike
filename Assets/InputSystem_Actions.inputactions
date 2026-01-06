@@ -158,6 +158,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OnChangeHealth",
+                    "type": "Button",
+                    "id": "6b33e846-830b-4320-aa54-16480dcd972d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OnAddMoney",
+                    "type": "Button",
+                    "id": "7922d643-283e-40f8-b2d2-af6d77bed91b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OnRestartGame",
+                    "type": "Button",
+                    "id": "8e24ee5f-5bcc-431c-9ea9-789b326716dd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -532,6 +559,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Consumable",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38bea3d7-1691-4664-ab91-2ee9112067e0",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnChangeHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2828b7cb-8e72-4b35-af3f-c5792ccaaae9",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnAddMoney",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90d1b41f-32bd-4338-bdc9-1eabcd9e90e6",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnRestartGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

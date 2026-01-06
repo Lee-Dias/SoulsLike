@@ -945,6 +945,7 @@ RectTransform:
   - {fileID: 3860278363549394063}
   - {fileID: 7760938309556414843}
   - {fileID: 5283531226402161119}
+  - {fileID: 8455547344549193927}
   m_Father: {fileID: 6223882584642204016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2216,7 +2217,6 @@ RectTransform:
   - {fileID: 4239609560854738620}
   - {fileID: 3614005043390091588}
   - {fileID: 8553587126435082990}
-  - {fileID: 8455547344549193927}
   - {fileID: 1889383079140837866}
   - {fileID: 6725282772404014805}
   m_Father: {fileID: 0}
@@ -2439,6 +2439,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 33d25a11-f9da-4e7b-8b08-708f9b435d5e
     m_ActionName: 'Player/Consumable[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 567d7865-c5fd-40ec-b56b-2bf75efef623
+    m_ActionName: 'Player/ChangeRightHand[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c4c2401b-3bce-407b-934b-0a48ee97f296
+    m_ActionName: 'Player/ChangeLeftHand[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5ee070ba-e98e-4f26-b408-9662b04c214d
+    m_ActionName: 'Player/ChangeConsumable[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6b33e846-830b-4320-aa54-16480dcd972d
+    m_ActionName: 'Player/OnChangeHealth[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7922d643-283e-40f8-b2d2-af6d77bed91b
+    m_ActionName: 'Player/OnAddMoney[/Keyboard/u]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e24ee5f-5bcc-431c-9ea9-789b326716dd
+    m_ActionName: 'Player/OnRestartGame[/Keyboard/p]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2799,12 +2823,12 @@ Transform:
   m_GameObject: {fileID: 7993441708354649477}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 174, y: 135, z: 0}
+  m_LocalPosition: {x: 174, y: 85, z: 0}
   m_LocalScale: {x: 0.059326675, y: 0.035895806, z: 0.035895806}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2816731945257516134}
-  m_Father: {fileID: 6223882584642204016}
+  m_Father: {fileID: 8553587126435082990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8314085106771963930
 GameObject:
@@ -3217,7 +3241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   weaponImage: {fileID: 0}
-  ShieldImage: {fileID: 0}
+  shieldImage: {fileID: 0}
   consumableImage: {fileID: 0}
   inventory: {fileID: 0}
   auraText: {fileID: 4872787702982929865}

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SlotsUIHandler : MonoBehaviour
 {
     [SerializeField]private Image weaponImage;
-    [SerializeField]private Image ShieldImage;
+    [SerializeField]private Image shieldImage;
     [SerializeField]private Image consumableImage;
     [SerializeField]private Inventory inventory;
     [SerializeField]private TextMeshProUGUI auraText;
@@ -18,13 +18,26 @@ public class SlotsUIHandler : MonoBehaviour
         playerStats = FindFirstObjectByType<PlayerStats>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        weaponImage.sprite = inventory.GetItemOnRightHand() != null ? inventory.GetItemOnRightHand().ItemIcon : null;
-        ShieldImage.sprite = inventory.GetItemOnLeftHand() != null ? inventory.GetItemOnLeftHand().ItemIcon : null;
-        consumableImage.sprite = inventory.GetItemOnConsumablesSlot() != null ? inventory.GetItemOnConsumablesSlot().ItemIcon: null;
+        UpdateSlot(weaponImage, inventory.GetItemOnRightHand());
+        UpdateSlot(shieldImage, inventory.GetItemOnLeftHand());
+        UpdateSlot(consumableImage, inventory.GetItemOnConsumablesSlot());
 
         auraText.text = playerStats.CrystalShards.ToString();
+    }
+
+    private void UpdateSlot(Image image, Item item)
+    {
+        if (item != null)
+        {
+            image.sprite = item.ItemIcon;
+            image.color = new Color(1f, 1f, 1f, 1f); // fully visible
+        }
+        else
+        {
+            image.sprite = null;
+            image.color = new Color(1f, 1f, 1f, 0f); // alpha = 0 (invisible)
+        }
     }
 }

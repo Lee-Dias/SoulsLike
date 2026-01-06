@@ -35,6 +35,15 @@ public class PlayerAnimationsController : MonoBehaviour
 
     [SerializeField] private CombatModifiers combatModifiers;
     [SerializeField] private LiminalUIController liminalUIController;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip lightSwoosh;
+    [SerializeField] private AudioClip HeavySwoosh;
+    [SerializeField] private AudioClip parryHit;
+    [SerializeField] private AudioClip timeStop;
+
+
+    private AudioManager audioManager;
     
 
     private Item equippedWeapon;
@@ -73,6 +82,7 @@ public class PlayerAnimationsController : MonoBehaviour
         health = GetComponent<Health>();
         animManager = new CombatAnimationManager(anim);
         animManager.OnStepStarted += HandleAnimStepStarted;
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     public void EnablePlayerAfterSitting()
@@ -185,14 +195,16 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public float DamageToDeal()
     {
-        return equippedWeapon.Damage + (playerStats.TotalStrength / 4) + (playerStats.TotalDexterity /6);
+        return equippedWeapon.Damage + (playerStats.TotalStrength / 3) + (playerStats.TotalDexterity /6);
     }
     public bool PerformParry()
     {
         if(!canParry) return false;
+        audioManager.PlayAudio(parryHit);
         parryVfx.Play();
         canParry = false;
         StartCoroutine(DoTimeStop());
+        audioManager.PlayAudio(timeStop);
         return true;
     }
     private IEnumerator DoTimeStop()
@@ -248,12 +260,12 @@ public class PlayerAnimationsController : MonoBehaviour
     {
         if (!ctx.performed) return;
 
-        HandleAttackInput(equippedWeapon?.AnimationsData?.LightAttack);
+        HandleAttackInput(equippedWeapon?.AnimationsData?.LightAttack, lightSwoosh);
     }
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
-        HandleAttackInput(equippedWeapon?.AnimationsData?.HeavyAttack);
+        HandleAttackInput(equippedWeapon?.AnimationsData?.HeavyAttack, HeavySwoosh);
     }
     public void OnSpecialAttack(InputAction.CallbackContext ctx)
     {
@@ -316,7 +328,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
         playerController.SnapRotateToTarget();
     }
-    private void HandleAttackInput(CombatAnimations animData)
+    private void HandleAttackInput(CombatAnimations animData, AudioClip audioClip = null)
     {
         if (animData == null || !health.CanAttack() || !playerController.PlayerCanMove) return;
 
@@ -342,6 +354,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
             Debug.Log("attack called");
             animManager.Play(animData);
+                
             if (animData.SpawnObject)
             {
                 objectToSpawn = animData.ObjectToSpawn;

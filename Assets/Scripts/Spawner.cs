@@ -40,6 +40,10 @@ public class Spawner : MonoBehaviour
 
     private float nextSpawnTime = 0f;
     private int aliveEnemies = 0;
+
+    private bool isPaused = false;
+
+    private float remainingTimeToSpawn = 0f;
     
 
     private void Start()
@@ -49,6 +53,8 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (isPaused) return;
+
         if (aliveEnemies >= maxAliveEnemies)
             return;
 
@@ -62,6 +68,21 @@ public class Spawner : MonoBehaviour
     private void ScheduleNextSpawn()
     {
         nextSpawnTime = Time.time + Random.Range(minSpawnTime, maxSpawnTime);
+    }
+    public void PauseSpawner()
+    {
+        if (isPaused) return;
+
+        isPaused = true;
+        remainingTimeToSpawn = nextSpawnTime - Time.time;
+    }
+
+    public void ResumeSpawner()
+    {
+        if (!isPaused) return;
+
+        isPaused = false;
+        nextSpawnTime = Time.time + remainingTimeToSpawn;
     }
 
     private void Spawn()

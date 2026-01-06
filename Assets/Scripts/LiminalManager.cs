@@ -1,18 +1,52 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LiminalManager : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
 
     private PlayerController playerController;
 
     private void Start()
     {
         playerController = FindFirstObjectByType<PlayerController>();
+        StartCoroutine(LoadScenesAndTeleport());
+    }
+
+    IEnumerator LoadScenesAndTeleport()
+    {
+        // Start loading both scenes at the same time
+        AsyncOperation normalLoad =
+            SceneManager.LoadSceneAsync("Normal_Realm", LoadSceneMode.Additive);
+
+        AsyncOperation darkLoad =
+            SceneManager.LoadSceneAsync("Dark_Realm", LoadSceneMode.Additive);
+
+        // Optional: prevent automatic scene activation
+        // normalLoad.allowSceneActivation = true;
+        // darkLoad.allowSceneActivation = true;
+
+        // Wait until BOTH scenes are fully loaded
+        while (!normalLoad.isDone || !darkLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // (Optional but recommended) Set an active scene
+        Scene normalScene = SceneManager.GetSceneByName("normal");
+        if (normalScene.IsValid())
+        {
+            SceneManager.SetActiveScene(normalScene);
+        }
+
+        // Now teleport the player
         TeleportPlayerToStartingBonfire();
     }
 
     private void TeleportPlayerToStartingBonfire()
     {
+
         int START_BONFIRE_ID = 1;
         bool START_IS_NORMAL_WORLD = false;
 
@@ -45,13 +79,19 @@ public class LiminalManager : MonoBehaviour
             if (bonfire.BonfireID == playerController.playerBonfire.BonfireID &&
                 bonfire.IsNormalWorld == targetWorldIsNormal)
             {
-                TeleportPlayer(bonfire.SpawnPoint);
+                animator.SetTrigger("Change");
+                StartCoroutine(TeleportAfterDelay(bonfire.SpawnPoint, 1f));
                 return;
             }
         }
 
         Debug.LogError("Matching bonfire not found!");
         
+    }
+    private IEnumerator TeleportAfterDelay(Transform spawnPoint, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TeleportPlayer(spawnPoint);
     }
     private void TeleportPlayer(Transform spawnPoint)
     {

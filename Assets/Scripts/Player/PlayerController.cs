@@ -36,6 +36,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkAfterConsumable;
 
     [SerializeField] private GameObject interactionMessage;
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip[] walk;
+    [SerializeField] private AudioClip dash;
+    [SerializeField] private float playWalkEvery = 0.5f;
+
+    private float walkSoundTimer;
+
+    private AudioManager audioManager;
      
     
     private bool isSprinting = false;
@@ -70,6 +78,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
+        walkSoundTimer = 0f;
         controller = GetComponent<CharacterController>();
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
@@ -106,6 +116,7 @@ public class PlayerController : MonoBehaviour
         meshTrail.Trail(0.6f);
         StartCoroutine(Dash());
         StartCoroutine(DashCooldown());
+        audioManager.PlayAudioWithRandomPitch(dash, 0.3f);
 
         animator.SetBool("Dodge", true);
     }
@@ -146,7 +157,7 @@ public class PlayerController : MonoBehaviour
             if(playerCanMove)
                 animator.SetBool("IsWalking", true);
         }
-
+        HandleWalkAudio();
         MoveCharacter();
     }
     private void ResetMovementState()
@@ -162,7 +173,33 @@ public class PlayerController : MonoBehaviour
 
         isSprinting = false;
     }
+    private void HandleWalkAudio()
+    {
+        bool isWalking =
+            playerCanMove &&
+            moveInput.sqrMagnitude > 0.1f &&
+            !isDashing;
 
+        if (!isWalking)
+        {
+            walkSoundTimer = 0f;
+            return;
+        }
+
+        walkSoundTimer -= Time.deltaTime;
+
+        if (walkSoundTimer <= 0f)
+        {
+            audioManager.PlayRandomFromListWithRandomPitch(
+                walk,
+                0.1f,
+                0.9f,
+                1.1f
+            );
+
+            walkSoundTimer = playWalkEvery;
+        }
+    }
 
     private void MoveCharacter()
     {
@@ -176,6 +213,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("y", 0);
             return;
         }
+        
         Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
         camForward.y = 0f;

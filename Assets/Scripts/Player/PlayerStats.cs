@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlayerStats : MonoBehaviour
@@ -46,6 +47,13 @@ public class PlayerStats : MonoBehaviour
     public float MaxHealth => TotalVitality * 10f;
     public float MaxStamina => TotalEndurance * 8f;
     public float MaxMana => TotalMana * 5f;
+
+    public void OnAddShard(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        GiveCrystalShards(10000);
+        
+    }
 
     public void GiveCrystalShards(int crystalShardsToAdd)
     {

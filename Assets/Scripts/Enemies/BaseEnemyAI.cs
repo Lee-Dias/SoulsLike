@@ -118,6 +118,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
                 anim.SetFloat("x", 0);
                 anim.SetFloat("y", 1);
+                anim.SetBool("IsIdle", false);
                 return; 
             }
         }
@@ -309,7 +310,6 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected bool IsTouchingPlayer()
     {
         if (player == null) return false;
-        return false;
 
         float radius = 1.0f; // tweak based on enemy size
         return Physics.CheckSphere(transform.position, radius, LayerMask.GetMask("Player"));
