@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &82842875612401987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3741988145873455166}
+  - component: {fileID: 4548116206790459326}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3741988145873455166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82842875612401987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.15, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4548116206790459326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82842875612401987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08579cb6e2edd4d449f74a6bfc733fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  portalVfx: {fileID: 2223834019970471824, guid: da7142d82abe56744a0cb074a2edfb41, type: 3}
+  objectToSpawn: {fileID: 1702540643388466331, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+  spawnInArea: 0
+  spawningArea: 10
+  minSpawnTime: 40
+  maxSpawnTime: 60
+  maxAliveEnemies: 1
+  portalDepth: 2
+  travelDuration: 4
+  continueForward: 1
+  postExitDistance: 3
+  portalLifetime: 4
+  destroyObject: 0
+  objectLifetime: 5

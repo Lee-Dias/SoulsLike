@@ -16,7 +16,7 @@ public class MeleeEnemyAI : BaseEnemyAI
     
     protected override void OnEnterAttack()
     {
-
+        anim.SetBool("IsIdle", false);
         isInAttackAnimation = true;
         animManager = new CombatAnimationManager(anim);
         animManager.EnableAutoCombo();

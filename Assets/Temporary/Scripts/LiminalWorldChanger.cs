@@ -26,8 +26,10 @@ public class LiminalWorldChanger : MonoBehaviour
     {
         if (tag.CompareTag("Player"))
         {
+            
             playerController.playerIsInBonfire = true;
             playerController.playerBonfire = this;
+            playerController.CheckInteractionMessageState();
         }
     }
 
@@ -35,8 +37,10 @@ public class LiminalWorldChanger : MonoBehaviour
     {
         if (tag.CompareTag("Player"))
         {
+            
             playerController.playerIsInBonfire = false;
             playerController.playerBonfire = null;
+            playerController.CheckInteractionMessageState();
         }
     }
 }

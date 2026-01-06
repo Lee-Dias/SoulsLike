@@ -17,6 +17,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float minSpawnTime = 1f;
     [SerializeField] private float maxSpawnTime = 3f;
 
+    [Header("Spawn Limit")]
+    [SerializeField] private int maxAliveEnemies = 3;
+
     [Header("Portal Movement")]
     [SerializeField] private float portalDepth = 2f;
     [SerializeField] private float travelDuration = 4f; // seconds to fully pass portal
@@ -36,6 +39,7 @@ public class Spawner : MonoBehaviour
     private float objectLifetime = 5f;
 
     private float nextSpawnTime = 0f;
+    private int aliveEnemies = 0;
     
 
     private void Start()
@@ -45,6 +49,9 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (aliveEnemies >= maxAliveEnemies)
+            return;
+
         if (Time.time >= nextSpawnTime)
         {
             Spawn();
@@ -63,7 +70,7 @@ public class Spawner : MonoBehaviour
 
         Vector3 exitPoint = GetSpawnPoint();
         Vector3 spawnPoint = exitPoint - transform.forward * portalDepth;
-        spawnPoint.y = prefabY;
+        spawnPoint.y += prefabY;
 
 
         // Spawn portal VFX
@@ -76,6 +83,12 @@ public class Spawner : MonoBehaviour
 
         // Spawn object
         GameObject spawned = Instantiate(objectToSpawn, spawnPoint, transform.rotation);
+        aliveEnemies++;
+        SpawnedLifetimeTracker tracker = spawned.AddComponent<SpawnedLifetimeTracker>();
+        tracker.OnDestroyed += () =>
+        {
+            aliveEnemies = Mathf.Max(0, aliveEnemies - 1);
+        };
 
         PortalClip clip = spawned.AddComponent<PortalClip>();
         clip.portalTransform = transform; // the portal transform
@@ -85,7 +98,7 @@ public class Spawner : MonoBehaviour
         if (continueForward)
             finalTarget += transform.forward * postExitDistance;
         
-        finalTarget.y = prefabY;
+        finalTarget.y += prefabY;
 
         // Move object through portal
         StartCoroutine(MoveThroughPortal(spawned.transform, finalTarget));

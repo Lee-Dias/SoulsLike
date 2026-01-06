@@ -1,7 +1,6 @@
 using LibGameAI.FSMs;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
 
 public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 {
@@ -79,7 +78,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     
     public float DamageToDeal()
     {
-        return item.Damage * enemy.BaseDexterity * (enemy.BaseStrength / 2);
+        return item.Damage + (enemy.BaseDexterity / 5 ) + (enemy.BaseStrength / 10);
     }
 
     public void CheckIfSpawned(float delay)
@@ -119,7 +118,6 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
                 anim.SetFloat("x", 0);
                 anim.SetFloat("y", 1);
-                anim.SetBool("IsWalking", true);
                 return; 
             }
         }
@@ -130,19 +128,10 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
             Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
             anim.SetFloat("x", localVel.x);
             anim.SetFloat("y", localVel.z);
-            if(localVel.magnitude > 0)
-            {
-                anim.SetBool("IsWalking", true);
-            }
-            else
-            {
-                anim.SetBool("IsWalking", false);
-            }
 
         }
         else
         {
-            anim.SetBool("IsWalking", false);
             anim.SetFloat("x", 0);
             anim.SetFloat("y", 0);
             if (!IsTouchingPlayer())
@@ -231,7 +220,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected virtual void OnEnterIdle()
     {
         agent.isStopped = true;
-        Debug.Log("Idle");
+        anim.SetBool("IsIdle", true);
+        
     }
 
     protected virtual void Idle() { }
@@ -249,6 +239,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     protected virtual void OnEnterChase()
     {
+        anim.SetBool("IsIdle", false);
         agent.isStopped = false;
         agent.updateRotation = true;
         agent.speed = baseSpeed;
@@ -263,6 +254,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     protected virtual void OnEnterCircle()
     {
+        anim.SetBool("IsIdle", false);
         Debug.Log("Circling player");
         agent.isStopped = false;
         agent.updateRotation = false;
@@ -317,6 +309,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected bool IsTouchingPlayer()
     {
         if (player == null) return false;
+        return false;
 
         float radius = 1.0f; // tweak based on enemy size
         return Physics.CheckSphere(transform.position, radius, LayerMask.GetMask("Player"));

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,13 +41,14 @@ public class LiminalUIController : MonoBehaviour
 
     private bool menuIsActive = false;
     private Animator animator;
-    
+    private PlayerAnimationsController playerAnimationsController;
 
     void Start()
     {
         pendingUpgrades = new Dictionary<PlayerStats.Stats, int>();
         
         playerController = FindFirstObjectByType<PlayerController>();
+        playerAnimationsController = FindFirstObjectByType<PlayerAnimationsController>();
         animator = playerController.GetComponent<Animator>();
         foreach (PlayerStats.Stats stat in System.Enum.GetValues(typeof(PlayerStats.Stats)))
         {
@@ -58,7 +60,7 @@ public class LiminalUIController : MonoBehaviour
 
     public void BonfireMenu(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed) return;
+        if (!ctx.performed || (!playerController.IsOnBonfire && !playerController.PlayerCanMove) || playerAnimationsController.IsAttacking) return;
         if (playerController.playerIsInBonfire)
         {
             if (!menuIsActive)

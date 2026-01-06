@@ -136,7 +136,6 @@ public class PlayerAnimationsController : MonoBehaviour
             float normalizedTime;
 
             normalizedTime = animManager.Handle.GetNormalizedTime();
-            Debug.Log(normalizedTime);
 
             if (normalizedTime >= 0.95f && !animManager.QueuedNext)
             {
@@ -186,7 +185,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public float DamageToDeal()
     {
-        return equippedWeapon.Damage * playerStats.TotalStrength * (playerStats.TotalDexterity /2);
+        return equippedWeapon.Damage + (playerStats.TotalStrength / 4) + (playerStats.TotalDexterity /6);
     }
     public bool PerformParry()
     {

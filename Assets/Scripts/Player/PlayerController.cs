@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     public void ChangeIsInBonfireState(bool state)
     {
         isOnBonfire = state;  
+        CheckInteractionMessageState();
     }
 
     
@@ -123,8 +124,17 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsSprinting",isSprinting);
     }
 
-
-
+    public void CheckInteractionMessageState()
+    {
+        if (playerIsInBonfire && !isOnBonfire)
+        {
+            ChangeInteractionMessageState(true);
+        }
+        else
+        {
+            ChangeInteractionMessageState(false);
+        }
+    }
     void Update()
     {
         if (moveInput.magnitude == 0)
@@ -136,14 +146,7 @@ public class PlayerController : MonoBehaviour
             if(playerCanMove)
                 animator.SetBool("IsWalking", true);
         }
-        if (playerIsInBonfire || !isOnBonfire)
-        {
-            ChangeInteractionMessageState(true);
-        }
-        else
-        {
-            ChangeInteractionMessageState(false);
-        }
+
         MoveCharacter();
     }
     private void ResetMovementState()

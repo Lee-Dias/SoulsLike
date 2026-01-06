@@ -23,7 +23,16 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        maxHealth += baseMaxHealth + (playerStats.TotalVitality * statsMultiplier);
+        if (playerStats)
+        {
+            maxHealth += baseMaxHealth + (playerStats.TotalVitality * statsMultiplier);
+        }
+        else
+        {
+            maxHealth += baseMaxHealth ;
+        }
+            
+
         health = maxHealth;
 
         animator = GetComponent<Animator>();
