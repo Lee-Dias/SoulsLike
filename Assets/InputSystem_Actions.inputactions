@@ -185,6 +185,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "b7ec5a5a-4de9-4456-ab6c-fe86346bb0b9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -592,6 +601,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "OnRestartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "394422bb-1a1b-4fe9-99fd-ac13e58968d2",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

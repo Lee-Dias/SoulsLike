@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private Button closeButton;
-    [SerializeField] private GameObject button;
     [SerializeField] private GameObject inventory;
     [SerializeField] private List<GameObject> extras = new List<GameObject>();
 
@@ -19,7 +17,6 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         playerController = FindFirstObjectByType<PlayerController>();
-        closeButton.onClick.AddListener(CloseInventory);
     }
 
     public void OnInventory(InputAction.CallbackContext ctx)
@@ -46,7 +43,6 @@ public class InventoryManager : MonoBehaviour
             playerController.ChangeIsInInventoryState(false);
             playerController.PlayerCanMoveState(true);
         }
-        button.SetActive(isActive);
         inventory.SetActive(isActive);
         foreach (GameObject extra in extras)
         {
@@ -60,7 +56,6 @@ public class InventoryManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inventory.SetActive(isActive);
-        button.SetActive(isActive);
         foreach(GameObject extra in extras)
         {
             extra.SetActive(isActive);

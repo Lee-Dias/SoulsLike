@@ -4,9 +4,11 @@ using UnityEngine.EventSystems;
 
 public class MenuUIButton: MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool isMouseOver;
-    private TMP_Text tmpText;
-    private Color prevText;
+    [SerializeField] Color chosenColer = Color.white;
+
+    bool isMouseOver = false;
+    TMP_Text tmpText;
+    Color prevText;
 
 
     void Start()
@@ -19,18 +21,20 @@ public class MenuUIButton: MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             Debug.LogError("No TextMeshPro component found in children!");
         }
         prevText = tmpText.color;
+        
     }
 
     private void Update()
     {
-        if(isMouseOver)
+        if (isMouseOver)
         {
-            tmpText.color = Color.white; // Change color when hovered
+            tmpText.color = chosenColer; // Change color when hovered
         }
         else
         {
             tmpText.color = prevText; // Default color
         }
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -39,6 +43,11 @@ public class MenuUIButton: MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     public void OnPointerExit(PointerEventData eventData)
+    {
+        isMouseOver = false;
+    }
+
+    void OnEnable()
     {
         isMouseOver = false;
     }
