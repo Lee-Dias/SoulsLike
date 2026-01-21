@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
@@ -118,6 +119,9 @@ public class SettingsManager : MonoBehaviour
         settingsMenu.SetActive(false);
         background.SetActive(false);
         closeButton.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        playerController.PlayerCanMoveState(true);
     }
     //------------End of UI Management Method------------//
 
@@ -131,6 +135,7 @@ public class SettingsManager : MonoBehaviour
     void Load()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("MainVolume");
+        AudioListener.volume = PlayerPrefs.GetFloat("MainVolume");
     }
 
     void Save(System.Single volume)
