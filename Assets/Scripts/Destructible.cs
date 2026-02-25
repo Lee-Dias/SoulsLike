@@ -7,7 +7,14 @@ public class Destructible : MonoBehaviour
     [SerializeField] private float explosionForce = 0.5f;
     [SerializeField] private float explosionRadius = 0.01f;
     [SerializeField] private float upwardModifier = 0.05f;
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private float audioDelay = 0f;
 
+    private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
     void Update()
     {
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
@@ -26,6 +33,7 @@ public class Destructible : MonoBehaviour
                     {
                         rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardModifier, ForceMode.Impulse);
                     }
+                    audioManager.PlayAudio(audioClip, audioDelay);
 
                     Destroy(gameObject);
                 }
