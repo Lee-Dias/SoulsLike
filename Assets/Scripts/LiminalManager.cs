@@ -18,10 +18,10 @@ public class LiminalManager : MonoBehaviour
     {
         // Start loading both scenes at the same time
         AsyncOperation normalLoad =
-            SceneManager.LoadSceneAsync("Normal_Realm", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("NormalRealm", LoadSceneMode.Additive);
 
         AsyncOperation darkLoad =
-            SceneManager.LoadSceneAsync("Dark_Realm", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("DarkRealm", LoadSceneMode.Additive);
 
         // Optional: prevent automatic scene activation
         // normalLoad.allowSceneActivation = true;
