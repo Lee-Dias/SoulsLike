@@ -1,11 +1,13 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LiminalManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
+    [SerializeField] private string normalWorld;
+    [SerializeField] private string darkWorld;
     private PlayerController playerController;
 
     private void Start()
@@ -18,10 +20,10 @@ public class LiminalManager : MonoBehaviour
     {
         // Start loading both scenes at the same time
         AsyncOperation normalLoad =
-            SceneManager.LoadSceneAsync("NormalRealm", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(normalWorld, LoadSceneMode.Additive);
 
         AsyncOperation darkLoad =
-            SceneManager.LoadSceneAsync("DarkRealm", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(darkWorld, LoadSceneMode.Additive);
 
         // Optional: prevent automatic scene activation
         // normalLoad.allowSceneActivation = true;
@@ -47,22 +49,13 @@ public class LiminalManager : MonoBehaviour
     private void TeleportPlayerToStartingBonfire()
     {
 
-        int START_BONFIRE_ID = 1;
-        bool START_IS_NORMAL_WORLD = false;
+        int spawnLayer = LayerMask.NameToLayer("SpawnPoint");
 
-        LiminalWorldChanger[] allBonfires =
-            FindObjectsOfType<LiminalWorldChanger>(true);
+        GameObject spawnPoint = FindObjectsOfType<GameObject>()
+            .FirstOrDefault(obj => obj.layer == spawnLayer);
 
-        foreach (var bonfire in allBonfires)
-        {
-            if (bonfire.BonfireID == START_BONFIRE_ID &&
-                bonfire.IsNormalWorld == START_IS_NORMAL_WORLD)
-            {
-                TeleportPlayer(bonfire.SpawnPoint);
+        TeleportPlayer(spawnPoint.transform);
 
-                return;
-            }
-        }
 
         Debug.LogError("Starting bonfire (ID 1, IsNormalWorld = false) not found!");
     }

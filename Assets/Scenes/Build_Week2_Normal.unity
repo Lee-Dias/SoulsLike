@@ -180,6 +180,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -231,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23859439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3x3 wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,19 +327,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (16)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 27218093}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &27218091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 27218090}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &27218092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 27218090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &27218093
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27218092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &76498824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,19 +435,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 76498827}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &76498825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 76498824}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &76498826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 76498824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &76498827
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76498826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &114196575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,6 +543,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -522,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 115466123}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AllSides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,6 +694,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -690,6 +770,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -795,6 +879,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -837,6 +925,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 0.5}
   m_Center: {x: -1.0000001, y: 1, z: 0.24999958}
+--- !u!1 &141355414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141355415}
+  m_Layer: 9
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &141355415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141355414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.627, y: 0.42, z: -1.272}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &161972568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -892,6 +1011,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -968,6 +1091,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1038,6 +1165,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1061,11 +1192,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Range
-      value: 2.223455
+      value: 2.1656237
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Intensity
-      value: 1.8351823
+      value: 1.7484354
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -1303,19 +1434,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 209596374}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &209596372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 209596371}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &209596373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 209596371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &209596374
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209596373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1 &216476561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1680,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Corner_Inwards (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1589,19 +1758,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (29)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 236541341}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &236541339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 236541338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &236541340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 236541338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &236541341
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236541340}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &249466275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1661,6 +1864,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1766,6 +1973,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (6)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1829,7 +2040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 257581116}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1913,6 +2124,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2014,6 +2229,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (5)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2036,7 +2255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292343238}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3x3 wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,11 +2293,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Range
-      value: 2.2577696
+      value: 2.140589
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Intensity
-      value: 1.8866544
+      value: 1.7108836
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -2203,6 +2422,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (13)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2277,19 +2500,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 319398860}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &319398858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 319398857}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &319398859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 319398857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &319398860
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319398859}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &321112834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2339,8 +2596,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3714074880520146989, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3714074880520146989, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 273888629481858616, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 273888629481858616, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2349,6 +2614,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Arch
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2524,19 +2793,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 329067886}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &329067884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 329067883}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &329067885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 329067883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &329067886
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329067885}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &333439509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2598,19 +2901,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 333439512}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &333439510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 333439509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &333439511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 333439509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &333439512
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333439511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1 &371214811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &371214812
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2758,11 +3095,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Range
-      value: 2.9941063
+      value: 2.051941
       objectReference: {fileID: 0}
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Intensity
-      value: 2.9911594
+      value: 1.5779114
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Name
@@ -2879,6 +3216,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2951,6 +3292,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3056,19 +3401,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 418876973}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &418876971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 418876970}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &418876972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 418876970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &418876973
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418876972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &419150659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3130,19 +3509,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (16)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 419150662}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &419150660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 419150659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &419150661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 419150659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &419150662
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419150661}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &445959655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3204,6 +3617,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3255,7 +3672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 460935386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3339,6 +3756,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3444,6 +3865,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Hole
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3547,6 +3972,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3621,19 +4050,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 494743432}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &494743430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 494743429}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &494743431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 494743429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &494743432
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494743431}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &501258648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3689,6 +4152,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3761,6 +4228,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3800,11 +4271,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2154199516691624137, guid: b8baa7ae9f4ebd3468d1895966d5a365, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5282353
+      value: 0.996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154199516691624137, guid: b8baa7ae9f4ebd3468d1895966d5a365, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.634
       objectReference: {fileID: 0}
     - target: {fileID: 2154199516691624137, guid: b8baa7ae9f4ebd3468d1895966d5a365, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.8464701
+      value: -0.002
       objectReference: {fileID: 0}
     - target: {fileID: 2154199516691624137, guid: b8baa7ae9f4ebd3468d1895966d5a365, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3881,11 +4356,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Range
-      value: 2.9972794
+      value: 2.034941
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Intensity
-      value: 2.9959192
+      value: 1.5524114
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -4010,19 +4485,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 518728782}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &518728780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 518728779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &518728781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 518728779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &518728782
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518728781}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1 &541687565
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,7 +4541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 541687566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4067,11 +4576,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Range
-      value: 2.976694
+      value: 2.8813224
       objectReference: {fileID: 0}
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Intensity
-      value: 2.9650412
+      value: 2.8219836
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Name
@@ -4188,19 +4697,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (15)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 573975014}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &573975012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 573975011}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &573975013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 573975011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &573975014
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573975013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &575674856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4260,6 +4803,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4334,6 +4881,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4427,8 +4978,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3714074880520146989, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3714074880520146989, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 273888629481858616, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 273888629481858616, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4437,6 +4996,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Arch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af30d73f5748a274faec34ab96184a1f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4560,7 +5123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 585865269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4641,6 +5204,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (27)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4715,6 +5282,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4766,7 +5337,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596154714}
-  m_Layer: 0
+  - component: {fileID: 596154715}
+  m_Layer: 7
   m_Name: 3x3 floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4797,6 +5369,28 @@ Transform:
   - {fileID: 162124262}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &596154715
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596154713}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &597089769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4856,6 +5450,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4961,6 +5559,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (15)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5064,19 +5666,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 603986693}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &603986691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 603986690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &603986692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 603986690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &603986693
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603986692}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &614338991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5138,19 +5774,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 614338994}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &614338992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 614338991}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &614338993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 614338991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &614338994
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614338993}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1 &615869883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5160,7 +5830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 615869884}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5191,7 +5861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623915893}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1x3 Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5273,6 +5943,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5347,6 +6021,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5369,7 +6047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640915063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5455,6 +6133,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5529,6 +6211,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5551,7 +6237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652929353}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5634,6 +6320,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5739,6 +6429,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (5)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5842,6 +6536,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5894,11 +6592,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Range
-      value: 2.641064
+      value: 2.1859634
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Intensity
-      value: 2.4615958
+      value: 1.7789451
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -5971,7 +6669,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 670162419}
-  m_Layer: 0
+  - component: {fileID: 670162420}
+  m_Layer: 7
   m_Name: 3x3 floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6005,6 +6704,28 @@ Transform:
   - {fileID: 1493099178}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &670162420
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670162418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &673784912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6064,6 +6785,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6140,6 +6865,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6162,7 +6891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 682011958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6197,11 +6926,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Range
-      value: 2.9969254
+      value: 2.0461583
       objectReference: {fileID: 0}
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Intensity
-      value: 2.995388
+      value: 1.5692374
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Name
@@ -6316,6 +7045,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6433,6 +7166,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (26)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6532,6 +7269,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Corner_Inwards (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6604,6 +7345,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6709,6 +7454,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6777,6 +7526,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6853,19 +7606,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 748511662}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &748511660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 748511659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &748511661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 748511659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &748511662
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748511661}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &763979787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6921,6 +7708,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6995,6 +7786,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7096,6 +7891,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (26)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7168,6 +7967,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Corner_Inwards (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7244,19 +8047,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 853632885}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &853632883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 853632882}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &853632884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 853632882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &853632885
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853632884}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &880587278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7316,6 +8153,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7421,6 +8262,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7524,19 +8369,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 925053802}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &925053800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 925053799}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &925053801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 925053799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &925053802
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925053801}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &931245785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7596,6 +8475,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7672,19 +8555,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (15)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 934533602}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &934533600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 934533599}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &934533601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 934533599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &934533602
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934533601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &935293800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7746,19 +8663,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 935293803}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &935293801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 935293800}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &935293802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 935293800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &935293803
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935293802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &958446636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7814,6 +8765,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7886,6 +8841,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7956,6 +8915,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8024,6 +8987,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8100,6 +9067,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8174,19 +9145,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (13)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 992507052}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &992507050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 992507049}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &992507051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 992507049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &992507052
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992507051}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &994497609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8246,6 +9251,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8351,6 +9360,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (15)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8423,6 +9436,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Hole (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8526,6 +9543,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8680,6 +9701,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8783,6 +9808,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (32)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8805,7 +9834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152506062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8839,7 +9868,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1153074524}
-  m_Layer: 0
+  - component: {fileID: 1153074525}
+  m_Layer: 7
   m_Name: 3x3 floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8873,6 +9903,28 @@ Transform:
   - {fileID: 122762241}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1153074525
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153074523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1160366106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8932,6 +9984,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9037,6 +10093,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9111,6 +10171,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9183,6 +10247,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Hole (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9284,6 +10352,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (28)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9356,6 +10428,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Corner_Inwards (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9481,6 +10557,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9555,6 +10635,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (16)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9623,6 +10707,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9695,6 +10783,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (26)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9717,7 +10809,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1295022237}
-  m_Layer: 0
+  - component: {fileID: 1295022238}
+  m_Layer: 7
   m_Name: 3x3 floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9748,6 +10841,28 @@ Transform:
   - {fileID: 748511660}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1295022238
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295022236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1298502049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9803,6 +10918,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10019,6 +11138,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10070,7 +11193,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1365575573}
-  m_Layer: 0
+  - component: {fileID: 1365575574}
+  m_Layer: 7
   m_Name: Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10092,6 +11216,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!64 &1365575574
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365575572}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1375899954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10153,6 +11299,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (19)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10204,7 +11354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1384246325}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10292,6 +11442,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Corner_Inwards
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10367,7 +11521,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1440701884}
-  m_Layer: 0
+  - component: {fileID: 1440701885}
+  m_Layer: 7
   m_Name: Floor1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10392,6 +11547,28 @@ Transform:
   - {fileID: 494743430}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!64 &1440701885
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440701883}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1443036754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10453,19 +11630,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (30)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1443036757}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1443036755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1443036754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1443036756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1443036754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1443036757
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443036756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1467750541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10527,6 +11738,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10578,7 +11793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1491574631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10664,19 +11879,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (18)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1493099180}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1493099178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1493099177}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1493099179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1493099177}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1493099180
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493099179}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1510303506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10738,19 +11987,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1510303509}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1510303507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1510303506}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1510303508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1510303506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1510303509
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510303508}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1 &1510484494
 GameObject:
   m_ObjectHideFlags: 0
@@ -10760,7 +12043,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1510484495}
-  m_Layer: 0
+  - component: {fileID: 1510484496}
+  m_Layer: 7
   m_Name: Floor1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10785,6 +12069,28 @@ Transform:
   - {fileID: 333439510}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!64 &1510484496
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510484494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1515168281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10846,6 +12152,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10897,7 +12207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531671131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10983,6 +12293,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (33)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11057,6 +12371,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Corner_Inwards
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78bf18a7fe9269b4393d3efbe48d84fc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11079,7 +12397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1581136852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1x3 Corner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11114,11 +12432,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Range
-      value: 2.413338
+      value: 2.047333
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Intensity
-      value: 2.120007
+      value: 1.5709995
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -11191,7 +12509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1607902189}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3x3 wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11234,7 +12552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1616695088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sides (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11320,6 +12638,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (34)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11388,6 +12710,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11462,6 +12788,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11563,6 +12893,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (16)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11637,19 +12971,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (31)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1657070074}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1657070072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1657070071}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1657070073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1657070071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1657070074
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657070073}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1661701781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11705,6 +13073,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11779,6 +13151,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11884,6 +13260,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11958,6 +13338,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Hole
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -12009,7 +13393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1696194981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12099,6 +13483,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12204,19 +13592,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (13)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1703557715}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1703557713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1703557712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1703557714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1703557712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1703557715
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703557714}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1 &1706800925
 GameObject:
   m_ObjectHideFlags: 0
@@ -12226,7 +13648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706800926}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12312,19 +13734,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1709278266}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1709278264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1709278263}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1709278265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1709278263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1709278266
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709278265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1712130578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12380,6 +13836,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12456,6 +13916,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (25)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -12507,7 +13971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1724452672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3x3 wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12596,19 +14060,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1746351671}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1746351669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1746351668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1746351670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1746351668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1746351671
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746351670}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1757531119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12668,6 +14166,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12771,6 +14273,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12974,6 +14480,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (15)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -13075,6 +14585,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13180,6 +14694,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -13254,19 +14772,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1831249450}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1831249448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1831249447}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1831249449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1831249447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1831249450
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831249449}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1832041404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13326,6 +14878,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13431,6 +14987,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -13454,11 +15014,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Range
-      value: 2.5750885
+      value: 2.2523675
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_Intensity
-      value: 2.3626328
+      value: 1.8785511
       objectReference: {fileID: 0}
     - target: {fileID: 3658565231636855194, guid: b465a3db5f638ef41affd7b6bee1cfa6, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -13583,6 +15143,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -13686,19 +15250,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1859108436}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &1859108434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 1859108433}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1859108435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 1859108433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1859108436
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859108435}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &1881604563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13760,6 +15358,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -13811,7 +15413,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891034155}
-  m_Layer: 0
+  - component: {fileID: 1891034156}
+  m_Layer: 7
   m_Name: Floor1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13833,6 +15436,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!64 &1891034156
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891034154}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1900605406
 GameObject:
   m_ObjectHideFlags: 0
@@ -13842,7 +15467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900605407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3x3 wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13890,7 +15515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1908807037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13925,11 +15550,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Range
-      value: 2.6923523
+      value: 2.7005086
       objectReference: {fileID: 0}
     - target: {fileID: 2329678919753847980, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Intensity
-      value: 2.5385287
+      value: 2.550763
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Name
@@ -14042,6 +15667,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14116,6 +15745,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (22)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14167,7 +15800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1964708954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14250,6 +15883,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14272,7 +15909,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2018191160}
-  m_Layer: 0
+  - component: {fileID: 2018191161}
+  m_Layer: 7
   m_Name: Floor1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14297,6 +15935,28 @@ Transform:
   - {fileID: 1510303507}
   m_Father: {fileID: 1696194981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!64 &2018191161
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018191159}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &2023649233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14431,6 +16091,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14503,6 +16167,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14608,6 +16276,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (20)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14711,6 +16383,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14733,7 +16409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2065811355}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1x3 Corner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14812,6 +16488,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14886,6 +16566,10 @@ PrefabInstance:
       value: Env_Castle_Wall_Hole
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc7040860db36df47bfc301777f21195, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14937,7 +16621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121837191}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sides (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14971,7 +16655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123068940}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15056,19 +16740,53 @@ PrefabInstance:
       value: Env_Castle_Wall_Floor_Ceiling (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2127356207}
   m_SourcePrefab: {fileID: 100100000, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!4 &2127356205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 2127356204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2127356206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+  m_PrefabInstance: {fileID: 2127356204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2127356207
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127356206}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
 --- !u!1001 &2129306228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15128,6 +16846,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15202,6 +16924,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Wall_Floor_Ceiling (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15382,3 +17108,4 @@ SceneRoots:
   - {fileID: 3893031531078344003}
   - {fileID: 2023649233}
   - {fileID: 482214550982447095}
+  - {fileID: 141355415}

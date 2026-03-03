@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
         meshTrail.Trail(0.6f);
         StartCoroutine(Dash());
         StartCoroutine(DashCooldown());
-        audioManager.PlayAudioWithRandomPitch(dash, 0.3f);
+        audioManager.PlayAudio(dash, null, 0 , 1, 0.9f, 1.1f);
 
         animator.SetBool("Dodge", true);
     }
@@ -190,12 +190,7 @@ public class PlayerController : MonoBehaviour
 
         if (walkSoundTimer <= 0f)
         {
-            audioManager.PlayRandomFromListWithRandomPitch(
-                walk,
-                0.1f,
-                0.9f,
-                1.1f
-            );
+            audioManager.PlayAudio(null , walk, 0 , 0.1f, 0.9f, 1.1f);
 
             walkSoundTimer = playWalkEvery;
         }

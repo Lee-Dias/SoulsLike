@@ -33,7 +33,7 @@ public class Destructible : MonoBehaviour
                     {
                         rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardModifier, ForceMode.Impulse);
                     }
-                    audioManager.PlayAudio(audioClip, audioDelay);
+                    audioManager.PlayAudio(audioClip, null,audioDelay);
 
                     Destroy(gameObject);
                 }

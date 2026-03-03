@@ -23,52 +23,50 @@ public class AudioManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void PlayAudio(AudioClip audioClip, float delay = 0f)
+    public void PlayAudio(AudioClip audioClip = null, AudioClip[] clips = null, float delay = 0f, float volume = 1f,float pitchmin = 1f, float pitchmax = 1f)
     {
-        if (audioClip == null || audioSource == null)
+        if (instance == null)
             return;
+
+        AudioClip clipToPlay = null;
+
+        // Pick random from list if available
+        if (clips != null && clips.Length > 0)
+        {
+            clipToPlay = clips[UnityEngine.Random.Range(0, clips.Length)];
+        }
+        else if (audioClip != null)
+        {
+            clipToPlay = audioClip;
+        }
+        else
+        {
+            return;
+        }
 
         StartCoroutine(PlayDelayed(() =>
         {
-            audioSource.volume = 1f;
-            audioSource.pitch = 1f;
-            audioSource.PlayOneShot(audioClip);
+            // Create temporary GameObject
+            GameObject tempGO = new GameObject("TempAudio");
+            tempGO.transform.position = transform.position;
+
+            AudioSource tempSource = tempGO.AddComponent<AudioSource>();
+            tempSource.clip = clipToPlay;
+            tempSource.volume = 1f;
+            tempSource.pitch = UnityEngine.Random.Range(pitchmin, pitchmax);
+            tempSource.Play();
+
+            // Destroy after finished playing
+            Destroy(tempGO, clipToPlay.length / tempSource.pitch);
+
         }, delay));
     }
+
     private IEnumerator PlayDelayed(Action playAction, float delay)
     {
         if (delay > 0f)
             yield return new WaitForSeconds(delay);
 
         playAction?.Invoke();
-    }
-    public void PlayAudioWithRandomPitch(AudioClip audioClip, float volume = 1f ,float pitchmin= 0.9f, float pitchmax= 1.1f)
-    {
-        audioSource.pitch = 1f; 
-        if (audioClip == null || audioSource == null)
-            return;
-        audioSource.volume = volume;
-        audioSource.pitch = UnityEngine.Random.Range(pitchmin, pitchmax); // Adjust range as needed
-        audioSource.PlayOneShot(audioClip);
-        
-    }
-    public void PlayRandomFromListWithRandomPitch(
-    AudioClip[] clips,
-    float volume = 1f,
-    float pitchMin = 0.9f,
-    float pitchMax = 1.1f
-    )
-    {
-        if (audioSource == null)
-            return;
-
-        if (clips == null || clips.Length == 0)
-            return;
-
-        AudioClip chosenClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-
-        audioSource.volume = volume;
-        audioSource.pitch = UnityEngine.Random.Range(pitchMin, pitchMax);
-        audioSource.PlayOneShot(chosenClip);
     }
 }

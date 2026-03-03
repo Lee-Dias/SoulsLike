@@ -85,8 +85,8 @@ public class Health : MonoBehaviour
     public void GetHit(float damage)
     {
         health -= damage;
-        audioManager.PlayAudioWithRandomPitch(audioClip, 0.3f);
-        audioManager.PlayAudioWithRandomPitch(hit, 0.3f);
+        audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
+        audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
         if (health <= 0)
         {
             if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
