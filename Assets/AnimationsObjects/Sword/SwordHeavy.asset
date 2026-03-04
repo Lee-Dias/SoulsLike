@@ -27,7 +27,7 @@ MonoBehaviour:
     speed: {x: 0, y: 1}
   comboSteps:
   - name: Heavy
-    clip: {fileID: -623603649343465320, guid: 54050e031f070f445aeb754208b193aa, type: 3}
+    clip: {fileID: -623603649343465320, guid: 956c6c49e89b0604cb6e42e68b2c6787, type: 3}
     soundEffectCombo: {fileID: 0}
     transitionWindowStart: 0
     transitionWindowEnd: 0
@@ -36,7 +36,10 @@ MonoBehaviour:
       endTime: 1
       speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 1
+    comboSpeed: 0.7
     blendTime: 0.2
     hitStartTime: 0.2
     hitEndTime: 0.6
+  spawnObject: 0
+  objectToSpawn: {fileID: 0}
+  positionToSpawnObject: {x: 0, y: 0, z: 0}
