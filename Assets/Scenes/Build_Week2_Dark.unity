@@ -235,6 +235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (6)
@@ -399,6 +403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (1)
@@ -1073,6 +1081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (2)
@@ -2170,11 +2182,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.0009074
+      value: 2.7490294
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 1.5013611
+      value: 2.6235442
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -3223,11 +3235,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.053019
+      value: 2.0443869
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 3.553019
+      value: 3.5443869
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -3299,6 +3311,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (13)
@@ -4432,6 +4448,91 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4998540605694263414, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
+--- !u!1001 &241321103
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1702540643388466331, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748427172027250823, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.7667615
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 41.46344
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.423216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.97879195
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.20485719
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 336.358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037106565536135174, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: viewRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037106565536135174, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: audioRange
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
 --- !u!1001 &249466275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4625,6 +4726,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (1)
@@ -5061,6 +5166,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (16)
@@ -5368,11 +5477,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.0411482
+      value: 2.5768344
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 3.5411482
+      value: 4.0768347
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -5444,6 +5553,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (7)
@@ -7029,11 +7142,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.050823
+      value: 2.2187252
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 1.5762343
+      value: 1.8280879
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -7752,6 +7865,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (7)
@@ -9404,11 +9521,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.1462195
+      value: 2.3241603
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 3.6462195
+      value: 3.8241603
       objectReference: {fileID: 0}
     - target: {fileID: 8641282008637730265, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Name
@@ -10017,11 +10134,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.379237
+      value: 2.8733315
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 2.0688555
+      value: 2.809997
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -11261,6 +11378,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (6)
@@ -12023,6 +12144,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (3)
@@ -13280,11 +13405,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.1072598
+      value: 2.8711133
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 3.6072598
+      value: 4.3711133
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -13669,11 +13794,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.7202957
+      value: 2.1747413
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 2.5804434
+      value: 1.7621121
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -14282,11 +14407,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.9461002
+      value: 2.648745
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 4.4461
+      value: 4.148745
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -14475,6 +14600,10 @@ PrefabInstance:
     - target: {fileID: 7907576787606698212, guid: d2c0959b2ba177a4a8341de02ba90270, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Bench (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054389985563168868, guid: d2c0959b2ba177a4a8341de02ba90270, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15031,6 +15160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (5)
@@ -15228,6 +15361,91 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cf3e7521bb94264187b55a78fe8ce2e, type: 3}
   m_PrefabInstance: {fileID: 763979787}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &764134836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1702540643388466331, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_Name
+      value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748427172027250823, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 41.46344
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.97879195
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.20485719
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 336.358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176724784196780520, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037106565536135174, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: viewRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037106565536135174, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
+      propertyPath: audioRange
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 364ea8d0308a0174592262086e88ee7f, type: 3}
 --- !u!1001 &764612773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15763,6 +15981,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (5)
@@ -16197,11 +16419,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.3528967
+      value: 2.041568
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 2.0293448
+      value: 1.5623521
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -16427,11 +16649,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.0011816
+      value: 2.1067734
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 3.5011816
+      value: 3.6067734
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -16939,11 +17161,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.9123917
+      value: 2.988403
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 4.4123917
+      value: 4.4884033
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -18339,11 +18561,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.903573
+      value: 2.5294228
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 4.403573
+      value: 4.0294228
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -19137,11 +19359,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.214707
+      value: 2.1552553
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 1.8220605
+      value: 1.7328827
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -20578,6 +20800,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (2)
@@ -21337,6 +21563,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (9)
@@ -22143,6 +22373,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel (4)
@@ -22580,6 +22814,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878917569879004509, guid: 45f888bc88739a049894825a8796ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6292201020040445676, guid: 45f888bc88739a049894825a8796ef03, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Barrel
@@ -23888,6 +24126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (3)
@@ -24041,6 +24283,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (4)
@@ -24098,6 +24344,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (15)
@@ -25071,6 +25321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Castle_Bench (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8054389985563168868, guid: d2c0959b2ba177a4a8341de02ba90270, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25741,11 +25995,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.2875404
+      value: 2.9382596
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 3.7875404
+      value: 4.4382596
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -25926,11 +26180,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.2421649
+      value: 2.254059
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 1.8632474
+      value: 1.8810886
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -26732,6 +26986,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket
@@ -27512,6 +27770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (10)
@@ -28429,6 +28691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Castle_Bench
       objectReference: {fileID: 0}
+    - target: {fileID: 8054389985563168868, guid: d2c0959b2ba177a4a8341de02ba90270, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28780,11 +29046,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.5960038
+      value: 2.8846734
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 4.096004
+      value: 4.384673
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -29938,6 +30204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (14)
@@ -30879,6 +31149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696194981}
   - component: {fileID: 1696194982}
+  - component: {fileID: 1696194983}
   m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
@@ -30939,6 +31210,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1696194983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696194980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.033333335
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 1227828dcd7f7a44dbe1bf4eafbbc78f, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1701371376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32146,8 +32449,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.855285, g: 0.47500002, b: 1, a: 1}
-  m_Intensity: 2.9874954
-  m_Range: 2.9937477
+  m_Intensity: 2.464427
+  m_Range: 2.7322135
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -32437,6 +32740,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (11)
@@ -34157,11 +34464,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.9911592
+      value: 2.063981
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 4.4911594
+      value: 3.563981
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -34235,11 +34542,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 2.9745917
+      value: 2.888138
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 4.4745917
+      value: 4.388138
       objectReference: {fileID: 0}
     - target: {fileID: 8641282008637730265, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Name
@@ -35598,11 +35905,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 2.0688393
+      value: 2.2072322
       objectReference: {fileID: 0}
     - target: {fileID: 4831328663904609077, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 1.603259
+      value: 1.8108484
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Name
@@ -36359,6 +36666,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (12)
@@ -38297,6 +38608,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3409243685246898058, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8160133753003955220, guid: 263182038ee80f64ca5dc6cf96900b4d, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket (8)
@@ -39462,3 +39777,5 @@ SceneRoots:
   - {fileID: 1309146565}
   - {fileID: 283360241}
   - {fileID: 723649829}
+  - {fileID: 241321103}
+  - {fileID: 764134836}
