@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Destructible : MonoBehaviour
 {
@@ -9,35 +8,43 @@ public class Destructible : MonoBehaviour
     [SerializeField] private float upwardModifier = 0.05f;
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private float audioDelay = 0f;
+    [SerializeField] private string layerToDestroy; // e.g., "Player"
 
     private AudioManager audioManager;
+    private bool _isDestroyed = false; // Prevents multiple triggers
+
     private void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
     }
-    void Update()
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        // 1. Check if it has already been destroyed
+        // 2. Check if the object entering is on the correct layer
+        if (!_isDestroyed && other.gameObject.layer == LayerMask.NameToLayer(layerToDestroy))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                if (hit.collider.gameObject == gameObject)
-                {
-                    GameObject broken = Instantiate(destroyedVersion, transform.position, transform.rotation);
-
-                    Rigidbody[] bodies = broken.GetComponentsInChildren<Rigidbody>();
-
-                    foreach (Rigidbody rb in bodies)
-                    {
-                        rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardModifier, ForceMode.Impulse);
-                    }
-                    audioManager.PlayAudio(audioClip, null,audioDelay);
-
-                    Destroy(gameObject);
-                }
-            }
+            DestroyObject();
         }
+    }
+
+    private void DestroyObject()
+    {
+        _isDestroyed = true; // Lock the state
+
+        GameObject broken = Instantiate(destroyedVersion, transform.position, transform.rotation);
+        Rigidbody[] bodies = broken.GetComponentsInChildren<Rigidbody>();
+
+        foreach (Rigidbody rb in bodies)
+        {
+            rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardModifier, ForceMode.Impulse);
+        }
+
+        if (audioManager != null)
+        {
+            audioManager.PlayAudio(audioClip, null, audioDelay);
+        }
+
+        Destroy(gameObject);
     }
 }
