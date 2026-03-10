@@ -35,11 +35,16 @@ MonoBehaviour:
     - startTime: 0
       endTime: 0.3
       speed: {x: 0, y: 0.3}
+    - startTime: 0.8
+      endTime: 1
+      speed: {x: 0, y: 0.3}
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.55
     blendTime: 0.2
-    hitStartTime: 0.2
-    hitEndTime: 0.6
+    hitStartTime: 0.5
+    hitEndTime: 1
+    cameraShakeTimer: 0.2
+    cameraShake: 0.07
   spawnObject: 0
   objectToSpawn: {fileID: 0}
   positionToSpawnObject: {x: 0, y: 0, z: 0}

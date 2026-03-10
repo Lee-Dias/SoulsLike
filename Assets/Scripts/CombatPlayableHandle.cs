@@ -51,6 +51,8 @@ public class CombatPlayableHandle
     private bool spawn = false;
 
     private bool activateHitBox; // can be per-animation if needed
+    private bool cameraShaked;
+    private float cameraShakeValue;
 
     public event Action<int> StepStarted;
 
@@ -59,6 +61,8 @@ public class CombatPlayableHandle
     public bool IsFadingIn => startBlendActive;
     public bool ActivateHitBox => activateHitBox;
     public bool Spawn => spawn;
+    public bool CameraShaked => cameraShaked;
+    public float CameraShakeValue => cameraShakeValue;
 
     public int ComboIndex;
 
@@ -176,6 +180,16 @@ public class CombatPlayableHandle
                 else
                 {
                     activateHitBox = false;
+                }
+
+                if(data.Steps[currentStep].CameraShakeTimer < GetNormalizedTime() && !cameraShaked)
+                {
+                    cameraShaked = true;
+                    cameraShakeValue = data.Steps[currentStep].CameraShake;
+                }
+                else
+                {
+                    cameraShaked = false;
                 }
             }
         }

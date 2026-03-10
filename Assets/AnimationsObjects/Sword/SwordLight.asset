@@ -34,9 +34,11 @@ MonoBehaviour:
       speed: {x: 0, y: 2}
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.8
-    blendTime: 0.01
-    hitStartTime: 0.3
-    hitEndTime: 0.7
+    blendTime: 0.15
+    hitStartTime: 0.5
+    hitEndTime: 1
+    cameraShakeTimer: 0.1
+    cameraShake: 0.07
   - name: LightAttack2
     clip: {fileID: -623603649343465320, guid: dd07667793dda274fa07439040cc8810, type: 3}
     soundEffectCombo: {fileID: 0}
@@ -52,8 +54,10 @@ MonoBehaviour:
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.8
     blendTime: 0.5
-    hitStartTime: 0.3
-    hitEndTime: 0.7
+    hitStartTime: 0.5
+    hitEndTime: 1
+    cameraShakeTimer: 0.1
+    cameraShake: 0.07
   spawnObject: 0
   objectToSpawn: {fileID: 0}
   positionToSpawnObject: {x: 0, y: 0, z: 0}

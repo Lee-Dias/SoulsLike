@@ -56,8 +56,6 @@ public class LiminalManager : MonoBehaviour
 
         TeleportPlayer(spawnPoint.transform);
 
-
-        Debug.LogError("Starting bonfire (ID 1, IsNormalWorld = false) not found!");
     }
     // Call this method to load the scene (e.g., from a button click, collision, etc.)
     public void LoadTargetScene()

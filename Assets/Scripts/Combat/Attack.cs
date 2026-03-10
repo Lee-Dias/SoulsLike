@@ -11,6 +11,7 @@ public class Attack : MonoBehaviour
 
     private Item item;
     private PlayerAnimationsController playerAnimationsController;
+    
     private BaseEnemyAI enemy;
 
     private float damage;

@@ -43,7 +43,11 @@ public class CombatAnimations : ScriptableObject
         [SerializeField, Range(0.01f, 3f)] private float blendTime;
         [SerializeField, Range(0f, 1f)] private float hitStartTime;
         [SerializeField, Range(0f, 1f)] private float hitEndTime;
-
+        [SerializeField, Range(0f, 1f)] private float cameraShakeTimer;
+        [SerializeField, Range(0f, 1f)] private float cameraShake;
+        
+        public float CameraShakeTimer => cameraShakeTimer;
+        public float CameraShake => cameraShake;
         public float HitStartTime => hitStartTime;
         public float HitEndTime => hitEndTime;
         public string Name => name;

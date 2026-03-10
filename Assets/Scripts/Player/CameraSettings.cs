@@ -33,6 +33,12 @@ public class CameraSettings : MonoBehaviour
     [SerializeField] private float cameraCollisionSmooth = 15f;
     [SerializeField] private LayerMask[] wallLayers; // New variable for the wall layer
 
+    [Header("Lock-On Smoothness")]
+    [SerializeField] private float lockOnSmoothSpeed = 5f; // Velocidade de transição para o Lock-On
+
+    private Vector3 shakeOffset;
+    private Coroutine shakeCoroutine;
+
     private float currentCameraDistance;
     private float yaw;
     private float pitch;
@@ -115,7 +121,6 @@ public class CameraSettings : MonoBehaviour
 
         currentLockTarget = bestTarget;
 
-        pitch = lockOnPitch;
     }
 
     private void Unlock()
@@ -156,59 +161,84 @@ public class CameraSettings : MonoBehaviour
         if (!target) return;
 
         Vector3 targetPosition = target.position;
-        Quaternion rotation;
 
-        if (currentLockTarget != null)
+        // 1. Lógica de Interpolação de ângulos (apenas se houver lock)
+        if (currentLockTarget != null && !editMode)
         {
             Vector3 toEnemy = currentLockTarget.position - targetPosition;
             Vector3 flatDir = new Vector3(toEnemy.x, 0, toEnemy.z).normalized;
 
-            yaw = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
-            pitch = lockOnPitch;
+            float targetYaw = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
+            float targetPitch = lockOnPitch;
 
-            rotation = Quaternion.Euler(pitch, yaw, 0f);
-        }
-        else
-        {
-            rotation = Quaternion.Euler(pitch, yaw, 0f);
+            // Movemos os valores atuais em direção ao alvo suavemente
+            yaw = Mathf.MoveTowardsAngle(yaw, targetYaw, Time.deltaTime * lockOnSmoothSpeed * 50f);
+            pitch = Mathf.MoveTowards(pitch, targetPitch, Time.deltaTime * lockOnSmoothSpeed * 50f);
         }
 
-        // --- Calculate camera position ---
+        // 2. Definir a rotação com base no yaw/pitch atual (que já está a ser interpolado)
+        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
+
+        // --- Calcular a posição da câmera ---
         Vector3 desiredDirection = (rotation * offset).normalized;
         float desiredDistance = offset.magnitude;
         float correctedDistance = desiredDistance;
 
         if (Application.isPlaying)
         {
-            // Loop through all wall layers and check if the object is in any of them
             foreach (var layer in wallLayers)
             {
                 if (Physics.SphereCast(targetPosition, cameraCollisionRadius, desiredDirection, out RaycastHit hit, desiredDistance, layer))
                 {
-                    // Apply the collision when the camera is against a wall
-                    correctedDistance = hit.distance - 0.1f;
-                    if (correctedDistance < 0f) correctedDistance = 0f;
-                    break; // Stop checking further layers once we hit something
+                    correctedDistance = Mathf.Clamp(hit.distance - 0.1f, 0f, desiredDistance);
+                    break;
                 }
             }
 
             currentCameraDistance = Mathf.Lerp(currentCameraDistance, correctedDistance, Time.deltaTime * cameraCollisionSmooth);
-            transform.position = targetPosition + desiredDirection * currentCameraDistance - Vector3.up * verticalCameraShift;
+            transform.position = targetPosition + desiredDirection * currentCameraDistance - Vector3.up * verticalCameraShift + shakeOffset;
         }
         else
         {
-            // Editor preview
             transform.position = targetPosition + desiredDirection * desiredDistance - Vector3.up * verticalCameraShift;
         }
 
-        // Look at target
-        if (currentLockTarget)
-            transform.LookAt(currentLockTarget.position + Vector3.up * 0.8f);
-        else
-            transform.LookAt(targetPosition + Vector3.up * lookHeight);
+        // 3. ROTAÇÃO FINAL
+        // Importante: NÃO uses LookAt se queres que a interpolação que fizemos acima funcione.
+        // O LookAt anula o trabalho do 'rotation' calculado.
+        transform.rotation = rotation;
     }
 
+    
+    public void ShakeCamera(float intensity, float duration = 0.8f, float speed = 10f)
+    {
+        if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);
+        shakeCoroutine = StartCoroutine(DoShake(intensity, duration, speed));
+    }
 
+    private System.Collections.IEnumerator DoShake(float intensity, float duration, float speed)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+
+            float oscillation = Mathf.Sin(elapsed * speed);
+
+            float fade = 1f - (elapsed / duration);
+
+            float yOffset = oscillation * intensity * fade;
+
+            shakeOffset = new Vector3(0, yOffset, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Garante que termina exatamente em zero
+        shakeOffset = Vector3.zero;
+        shakeCoroutine = null;
+    }
 
     private void OnDrawGizmosSelected()
     {

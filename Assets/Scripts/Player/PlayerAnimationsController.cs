@@ -44,6 +44,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
 
     private AudioManager audioManager;
+    private CameraSettings cameraSettings;
     
 
     private Item equippedWeapon;
@@ -69,6 +70,7 @@ public class PlayerAnimationsController : MonoBehaviour
     private GameObject objectToSpawn; 
     private Vector3 positionToSpawnObject; 
     private bool spawned = false;
+    private bool shakeCamera;
 
     public bool IsAttacking => isAttacking;
     public bool IsDoingParry => isDoingParry;
@@ -83,6 +85,7 @@ public class PlayerAnimationsController : MonoBehaviour
         animManager = new CombatAnimationManager(anim);
         animManager.OnStepStarted += HandleAnimStepStarted;
         audioManager = FindFirstObjectByType<AudioManager>();
+        cameraSettings = FindFirstObjectByType<CameraSettings>();
     }
 
     public void EnablePlayerAfterSitting()
@@ -172,6 +175,18 @@ public class PlayerAnimationsController : MonoBehaviour
                     canParry = false;
                 }
             }
+
+            if (animManager.Handle.CameraShaked && !shakeCamera)
+            {
+                shakeCamera = true;
+                cameraSettings.ShakeCamera(animManager.Handle.CameraShakeValue);
+            }
+            else if (!animManager.Handle.CameraShaked)
+            {
+                shakeCamera = false;
+            }
+
+
             if (animManager.Handle.Spawn && objectToSpawn && !spawned)
             {
                 Destroy(objectSpawned);
