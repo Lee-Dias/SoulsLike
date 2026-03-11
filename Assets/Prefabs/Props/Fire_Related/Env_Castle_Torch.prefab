@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.671356
+      value: 27.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,23 +18,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.35
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.673889
+      value: 0.6738881
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21418408
+      value: -0.21418428
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6738871
+      value: 0.6738881
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.2141847
+      value: -0.21418428
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -67,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -133,17 +137,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1814396297363925220, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+      propertyPath: rangeMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814396297363925220, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+      propertyPath: changeSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814396297363925220, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+      propertyPath: intensityMax
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742174142752389045, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Range
-      value: 2.836467
+      value: 2.7780333
       objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Intensity
-      value: 2.7547007
+      value: 2.3890166
       objectReference: {fileID: 0}
     - target: {fileID: 8204835774899091583, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Name
       value: Vfx_Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204835774899091583, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8712831370551834714, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_LocalPosition.x

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4831328663904609077}
   - component: {fileID: 7666577699685097095}
   - component: {fileID: 7798814066453033522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,8 +45,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.5058824, g: 0.101960786, b: 0.85882354, a: 1}
-  m_Intensity: 1.5636884
-  m_Range: 2.042459
+  m_Intensity: 2.4999926
+  m_Range: 2.4999926
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 10, y: 10}
@@ -141,11 +141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OscillateLight
   oscillateLight: {fileID: 4831328663904609077}
-  intensityMin: 1.5
-  intensityMax: 3
-  rangeMin: 2
-  rangeMax: 3
-  changeSpeed: 3
+  intensityMin: 1
+  intensityMax: 2.5
+  rangeMin: 1
+  rangeMax: 2.5
+  changeSpeed: 4
 --- !u!1 &6469712351175879587
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 5357497322310241078}
   - component: {fileID: 2397318267262688112}
   - component: {fileID: 5809344069491282123}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vfx_Fire_Dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,31 +297,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.95
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6738884
+      value: 0.95302165
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21418418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6738877
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2141844
+      value: -0.3029023
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -353,7 +353,11 @@ PrefabInstance:
       objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_Name
-      value: Env_Cave_Torch_Dark
+      value: Env_Castle_Torch_Dark
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_StaticEditorFlags
