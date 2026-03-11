@@ -210,7 +210,7 @@ public class CameraSettings : MonoBehaviour
     }
 
     
-    public void ShakeCamera(float intensity, float duration = 0.8f, float speed = 10f)
+    public void ShakeCamera(float intensity, float duration = 1.2f, float speed = 15f)
     {
         if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);
         shakeCoroutine = StartCoroutine(DoShake(intensity, duration, speed));

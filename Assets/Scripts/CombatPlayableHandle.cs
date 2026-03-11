@@ -129,6 +129,7 @@ public class CombatPlayableHandle
             blendToIndex = currentStep;
             startBlendTimer = 0f;
             startBlendActive = true;
+            cameraShaked = false;
 
             var playable = (AnimationClipPlayable)comboMixer.GetInput(currentStep);
             playable.SetTime(0);
@@ -187,7 +188,7 @@ public class CombatPlayableHandle
                     cameraShaked = true;
                     cameraShakeValue = data.Steps[currentStep].CameraShake;
                 }
-                else
+                else if(data.Steps[currentStep].CameraShakeTimer > GetNormalizedTime() )
                 {
                     cameraShaked = false;
                 }
@@ -346,6 +347,7 @@ public class CombatPlayableHandle
         blendTimer = 0f;
         blendDuration = data.Steps[blendFromIndex].BlendTime;;
         blendActive = true;
+        cameraShaked = false;
 
         var nextPlayable = (AnimationClipPlayable)comboMixer.GetInput(nextIndex);
         nextPlayable.Pause();
