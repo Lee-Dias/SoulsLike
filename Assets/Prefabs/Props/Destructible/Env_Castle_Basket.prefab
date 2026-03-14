@@ -22,19 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.347507
+      value: 6.995942
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.53656
+      value: -0.56149435
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.1256933
+      value: 5.4929957
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9903688
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.13845494
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 15.917
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Basket
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c250cc24edebcf243ab0bf678e4e1f10, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -157,7 +161,7 @@ MonoBehaviour:
   destroyedVersion: {fileID: 3437460640035890937, guid: 096f1ee81317405409519aedbd512015, type: 3}
   explosionForce: 0.75
   explosionRadius: 0.01
-  upwardModifier: 0.05
+  upwardModifier: 0.01
   audioClip: {fileID: 8300000, guid: b4a29d1a9cc9fb44884ae70224ffcb85, type: 3}
   audioDelay: 0
   layerToDestroy: Sword

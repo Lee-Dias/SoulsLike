@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.3500004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9956285
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.09340227
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 10.719
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -56,9 +56,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0ab99add4d52a2e42ad374f9f9e975c8, type: 2}
+    - target: {fileID: -2329736464310780264, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1728353639584627403, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Bench
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bb9e7049dac79d44b4ca6c3af739df0, type: 3}
       propertyPath: m_IsActive
@@ -153,7 +165,7 @@ MonoBehaviour:
   destroyedVersion: {fileID: 3533130926647912879, guid: 911acb45ccaab4d408b9a11f812db0a9, type: 3}
   explosionForce: 0.5
   explosionRadius: 0.01
-  upwardModifier: 0.05
+  upwardModifier: 0.01
   audioClip: {fileID: 8300000, guid: b4a29d1a9cc9fb44884ae70224ffcb85, type: 3}
   audioDelay: 0
   layerToDestroy: Sword
