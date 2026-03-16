@@ -14,15 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
   isCombo: 1
   soundEffect: {fileID: 0}
-  stopControlledMovement: 0
+  stopControlledMovement: 1
   walkDuringAnimation: 0
-  attackAnimation: 0
+  attackAnimation: 1
   activeStartTime: 0
   activetEndTime: 0
   speed: 1
   singleClip: {fileID: 0}
   movementCurve: []
-  comboSteps: []
+  comboSteps:
+  - name: 
+    clip: {fileID: -623603649343465320, guid: 422764dc0aff32e40b5ae04259d0f96b, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0
+    transitionWindowEnd: 0
+    movementCurveOnCombo: []
+    nextAnimationTriggerPoint: 1
+    comboSpeed: 0.5
+    blendTime: 0.01
+    hitStartTime: 0.3
+    hitEndTime: 0.9
+    cameraShakeTimer: 0.01
+    cameraShake: 0.01
   spawnObject: 0
   objectToSpawn: {fileID: 0}
   positionToSpawnObject: {x: 0, y: 0, z: 0}

@@ -192,6 +192,7 @@ public class CombatPlayableHandle
                 {
                     cameraShaked = false;
                 }
+
             }
         }
         else

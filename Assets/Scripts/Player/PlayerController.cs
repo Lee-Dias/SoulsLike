@@ -303,10 +303,11 @@ public class PlayerController : MonoBehaviour
         if (cameraSettings == null) return;
         if (cameraSettings.currentLockTarget == null) return;
 
-        Transform target = cameraSettings.currentLockTarget;
-        Vector3 dir = (target.position - transform.position);
+        Vector3 dir = cameraSettings.currentLockTarget.position - transform.position;
         dir.y = 0f;
-        if (dir.sqrMagnitude < 0.0001f) return;
+
+        if (dir.sqrMagnitude <= 0.001f) return;
+
         transform.rotation = Quaternion.LookRotation(dir);
     }
 

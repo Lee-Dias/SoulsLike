@@ -187,6 +187,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "OnExtraDamage",
+                    "type": "Button",
+                    "id": "fe6746e2-c208-44d6-825d-3a005735df84",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Options",
                     "type": "Button",
                     "id": "b7ec5a5a-4de9-4456-ab6c-fe86346bb0b9",
@@ -601,6 +610,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "OnRestartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48faffe5-2ca8-46cf-9386-2f35042dc6c2",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnExtraDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

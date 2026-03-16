@@ -45,6 +45,7 @@ public class PlayerAnimationsController : MonoBehaviour
     private AudioManager audioManager;
     private CameraSettings cameraSettings;
     
+    
 
     private Item equippedWeapon;
     private Item equippedShield;
@@ -71,6 +72,9 @@ public class PlayerAnimationsController : MonoBehaviour
     private bool shakeCamera;
     private BoxCollider weaponCollider;
     private BoxCollider shieldCollider;
+    private bool parryCalled;
+    private bool rotatedPlayer;
+    private float bonusCheat = 0;
 
     public bool IsAttacking => isAttacking;
     public bool IsDoingParry => isDoingParry;
@@ -107,6 +111,20 @@ public class PlayerAnimationsController : MonoBehaviour
         equippedShield = item;  
     }
 
+    public void OnScaleDamage(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        if (playerStats == null) return;
+
+        if(bonusCheat == 0)
+        {
+            bonusCheat = 100000;
+        }else
+        {
+            bonusCheat = 0;
+        }
+    }
+
 
     private void Update()
     {
@@ -139,17 +157,31 @@ public class PlayerAnimationsController : MonoBehaviour
         {
             if (animManager.Handle.ActivateHitBox)
             {
-                if(weaponCollider != null)
-                    weaponCollider.enabled = true;
                 if (isDoingParry)
                 {
+                    if(shieldCollider != null)
+                    {
+                        shieldCollider.enabled = true;
+                    }
+                    else
+                    {
+                        if(weaponCollider != null)
+                            weaponCollider.enabled = true;
+                    } 
                     canParry = true;
+                }
+                else
+                {
+                    if(weaponCollider != null)
+                        weaponCollider.enabled = true;
                 }
             }
             else
             {
                 if(weaponCollider != null)
                     weaponCollider.enabled = false;
+                if(shieldCollider != null)
+                    shieldCollider.enabled = false;
                 if (isDoingParry)
                 {
                     canParry = false;
@@ -190,7 +222,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public float DamageToDeal()
     {
-        return equippedWeapon.Damage + (playerStats.TotalStrength / 3) + (playerStats.TotalDexterity /6);
+        return equippedWeapon.Damage + (playerStats.TotalStrength / 3) + (playerStats.TotalDexterity /6) + bonusCheat;
     }
     public bool PerformParry()
     {
@@ -269,8 +301,17 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public void OnParryAttack(InputAction.CallbackContext ctx)
     {
+        parryCalled = true;
+        if (equippedShield)
+        {
+            HandleAttackInput(equippedShield?.AnimationsData?.Parry);
+        }
+        else
+        {
+            HandleAttackInput(equippedWeapon?.AnimationsData?.Parry);
+        }
+            
         
-        HandleAttackInput(equippedWeapon?.AnimationsData?.Parry);
     }
     public void OnConsumable(InputAction.CallbackContext ctx)
     {
@@ -337,7 +378,16 @@ public class PlayerAnimationsController : MonoBehaviour
         // Detect if this is the parry animation
         if (animData.IsAttackAnimation)
         {
-            isParryAttack = animData == equippedWeapon.AnimationsData.Parry;            
+            if (parryCalled && equippedShield)
+            {
+                isParryAttack = animData == equippedShield.AnimationsData.Parry;  
+            }
+            else
+            {
+                isParryAttack = animData == equippedWeapon.AnimationsData.Parry;    
+            }
+            parryCalled = false;
+                    
         }
 
         if (!animManager.IsPlaying && stamina.StaminaValue >= staminaToWastePerAttack 

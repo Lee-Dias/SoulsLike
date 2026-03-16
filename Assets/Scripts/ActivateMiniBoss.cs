@@ -34,7 +34,8 @@ public class ActivateMiniBoss : MonoBehaviour
         if ((!playerState.EnemyAround ) && !playerController.playerIsInBonfire && !playerController.IsOnBonfire)
         {
             Instantiate(vfxStart, vfxPostion.position, Quaternion.identity);
-            doorsAnimator.SetTrigger("Open");
+            if(doorsAnimator != null)
+                doorsAnimator.SetTrigger("Close");
             done = true;
             playerController.ChangeInteractionMessageState(false);
             enemyAnimator.SetTrigger("Start");
