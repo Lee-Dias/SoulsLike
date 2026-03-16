@@ -6,7 +6,7 @@ public class Stamina : MonoBehaviour
     private PlayerStats playerStats;
     private float maxStamina;
     private float stamina;
-    private float staminaRegen = 0.1f;
+    private float staminaRegen = 0.2f;
     public float StaminaValue => stamina;
     public float MaxStamina => maxStamina;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

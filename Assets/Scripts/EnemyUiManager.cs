@@ -14,6 +14,7 @@ public class EnemyUiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = health.HealthValue / health.MaxHealth;
+        if(health != null && healthBar != null)
+            healthBar.fillAmount = health.HealthValue / health.MaxHealth;
     }
 }

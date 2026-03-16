@@ -10,12 +10,15 @@ public class Destructible : MonoBehaviour
     [SerializeField] private float audioDelay = 0f;
     [SerializeField] private string layerToDestroy; // e.g., "Player"
 
+
+    private Health health;
     private AudioManager audioManager;
     private bool _isDestroyed = false; // Prevents multiple triggers
 
     private void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
+        health = GetComponentInParent<Health>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,11 +27,18 @@ public class Destructible : MonoBehaviour
         // 2. Check if the object entering is on the correct layer
         if (!_isDestroyed && other.gameObject.layer == LayerMask.NameToLayer(layerToDestroy))
         {
-            DestroyObject();
+            if(health != null)
+            {
+            }
+            else
+            {
+                DestroyObject();
+            }
+            
         }
     }
 
-    private void DestroyObject()
+    public void DestroyObject()
     {
         _isDestroyed = true; // Lock the state
 

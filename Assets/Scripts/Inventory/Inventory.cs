@@ -32,6 +32,9 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject armourSlot;
 
     [SerializeField] private Item giveItemAtStart;
+    [SerializeField] private Item giveLeftItemAtStart;
+
+    private Animator animator;
 
     private List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
@@ -47,10 +50,26 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         Singleton = this;
+        animator = GetComponent<Animator>();
+
     }
     void Start()
     {
         EquipItemAtStart();
+        EquipLeftItemAtStart();
+        UpdateSlots();
+        Item itemOnHand = GetItemOnRightHand();
+        if(itemOnHand.ItemName == "Straight Sword")
+        {
+            animator.SetBool("StraightSword", true);
+        }
+        else
+        {
+            animator.SetBool("StraightSword", false);
+            animator.SetBool("GreatSword", true);
+        }
+        UpdateEquippedItems();
+        
     }
 
     public void ChangeRightHandEquipped(InputAction.CallbackContext ctx)
@@ -164,6 +183,54 @@ public class Inventory : MonoBehaviour
 
         // Optional: notify equip system
         EquipEquipment(ItemType.Weapon, newItem);
+    }
+
+    private void EquipLeftItemAtStart()
+    {
+        if (giveLeftItemAtStart == null)
+            return;
+
+        // Find first left-hand slot
+        InventorySlot targetSlot = null;
+
+        foreach (Transform child in leftHand.transform)
+        {
+            InventorySlot slot = child.GetComponent<InventorySlot>();
+            if (slot != null)
+            {
+                targetSlot = slot;
+                break;
+            }
+        }
+
+        if (targetSlot == null)
+        {
+            Debug.LogError("No left-hand InventorySlot found!");
+            return;
+        }
+
+        // Create inventory item instance
+        InventoryItem newItem = Instantiate(itemPrefab, targetSlot.transform);
+        newItem.canRemove = false;
+
+        newItem.Initialize(giveLeftItemAtStart, targetSlot);
+
+        // Force equip
+        targetSlot.SetItem(newItem);
+
+        leftSelectedItemNum = 0;
+
+        EquipEquipment(ItemType.Weapon, newItem);
+        
+    }
+    private void UpdateEquippedItems()
+    {
+        InventoryItemShow inventoryItemShow = GetComponent<InventoryItemShow>();
+        inventoryItemShow.HandleRightHand();
+        inventoryItemShow.HandleLeftHand();
+        PlayerAnimationsController playerAnimationsController= GetComponent<PlayerAnimationsController>();
+        playerAnimationsController.ChangeEquippedWeapon(GetItemOnRightHand());
+        playerAnimationsController.ChangeEquippedShield(GetItemOnLeftHand());
     }
 
 

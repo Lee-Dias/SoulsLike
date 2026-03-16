@@ -20,9 +20,10 @@ public class Item : ScriptableObject
     public Sprite Icon => icon;
 
     // Weapon ------------------------------------------------------------------------------
-    [SerializeField, ShowIf("itemType", ItemType.Weapon)] private float damage;
-    [SerializeField, ShowIf("itemType", ItemType.Weapon)] private WeaponAnimationsData animationsData;
-    [SerializeField, ShowIf("itemType", ItemType.Weapon)] private GameObject weapon;
+    [SerializeField, ShowIf(nameof(ShowAnimations))] private float damage;
+    [SerializeField, ShowIf(nameof(ShowAnimations))] private WeaponAnimationsData animationsData;
+    [SerializeField, ShowIf(nameof(ShowAnimations))] private GameObject weapon;
+
 
 
 
@@ -50,9 +51,14 @@ public class Item : ScriptableObject
     private bool isConsumable => itemType == ItemType.Consumable;
     [SerializeField, ShowIf(EConditionOperator.And, "buff", "isConsumable")] private int buffCooldown;
 
+    private bool ShowAnimations()
+    {
+        return itemType == ItemType.Weapon || itemType == ItemType.Shield;
+    }
 
 
 
+    public string ItemName => name;
     public AuraData AuraData => auraData;
     public int ArmorQuantity => armorQuantity;
     public float Damage => damage;

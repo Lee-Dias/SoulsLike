@@ -15,7 +15,6 @@ public class PlayerAnimationsController : MonoBehaviour
 
 
     [Header("References")]
-    private BoxCollider weaponCollider;
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private Inventory inventory;
     [SerializeField] private PlayerStats playerStats;
@@ -48,6 +47,7 @@ public class PlayerAnimationsController : MonoBehaviour
     
 
     private Item equippedWeapon;
+    private Item equippedShield;
 
     private Animator anim;
     private Stamina stamina;
@@ -64,13 +64,13 @@ public class PlayerAnimationsController : MonoBehaviour
     private bool isDoingParry;
     private bool canParry = false; 
 
-    private GameObject instantiatedWeapon;
-    private GameObject currentWeaponPrefab; 
 
     private GameObject objectToSpawn; 
     private Vector3 positionToSpawnObject; 
     private bool spawned = false;
     private bool shakeCamera;
+    private BoxCollider weaponCollider;
+    private BoxCollider shieldCollider;
 
     public bool IsAttacking => isAttacking;
     public bool IsDoingParry => isDoingParry;
@@ -92,45 +92,25 @@ public class PlayerAnimationsController : MonoBehaviour
     {
         liminalUIController.DisableSittingAfterDelay();
     }
+    public void ChangeEquippedWeapon(Item item){
+        equippedWeapon = item;
+    }
+    public void ChangeWeaponCollider(BoxCollider boxCollider)
+    {
+        weaponCollider = boxCollider;
+    }
+    public void ChangeShieldCollider(BoxCollider boxCollider)
+    {
+        shieldCollider = boxCollider;
+    }
+    public void ChangeEquippedShield(Item item){
+        equippedShield = item;  
+    }
+
 
     private void Update()
     {
-        equippedWeapon = inventory.GetItemOnRightHand();
-        if (equippedWeapon != null)
-        {
-            // Check if the NEW prefab is different from the OLD prefab
-            if (equippedWeapon.Weapon != currentWeaponPrefab) 
-            {
-                // 1. New weapon detected: Destroy the old instance(s)
-                foreach (Transform child in weaponHolder.transform)
-                {
-                    Destroy(child.gameObject);
-                }
 
-                // 2. Instantiate the new weapon
-                instantiatedWeapon = Instantiate(
-                    equippedWeapon.Weapon,
-                    weaponHolder.transform // To retain prefab's local position/rotation if it has one
-                ); 
-                instantiatedWeapon.GetComponent<Attack>().SetCharacther(this.gameObject);
-                // 3. IMPORTANT: Update the reference variable to the NEW prefab
-                currentWeaponPrefab = equippedWeapon.Weapon; 
-
-                // 4. Get components
-                weaponCollider = instantiatedWeapon.GetComponent<BoxCollider>();
-            }
-            // else: The equippedWeapon is the same as the currentWeaponPrefab, do nothing.
-        }
-        else 
-        {
-            // If nothing is equipped, destroy all children
-            foreach (Transform child in weaponHolder.transform)
-            {
-                Destroy(child.gameObject);
-            }
-            // Also clear the reference to the last equipped prefab
-            currentWeaponPrefab = null; 
-        }
 
         
         // manually update combat animation manager

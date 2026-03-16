@@ -3,11 +3,17 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
 
+    [SerializeField] private float enemyCheckRadius = 10f;
+    [SerializeField] private LayerMask enemyLayer;
+
+
     private bool playerCanMove = true;
 
     private bool isOnInventory;
     private bool isOnBonfire;
-
+    private bool enemyAround;
+    
+    public bool EnemyAround => enemyAround;
     public bool PlayerCanMove => playerCanMove;
     public bool IsOnInventory => isOnInventory;
     public bool IsOnBonfire => isOnBonfire;
@@ -41,5 +47,22 @@ public class PlayerState : MonoBehaviour
     public void ChangeInteractionMessageState(bool state)
     {
         interactionMessage.SetActive(state);
+    }
+    private void Update()
+    {
+        enemyAround = IsEnemyNearby();
+    }
+    public bool IsEnemyNearby()
+    {
+        return Physics.CheckSphere(transform.position, enemyCheckRadius, enemyLayer);
+    }
+    private void OnDrawGizmos()
+    {
+        if (enemyAround)
+            Gizmos.color = Color.red;   // enemy detected
+        else
+            Gizmos.color = Color.green; // no enemies
+
+        Gizmos.DrawWireSphere(transform.position, enemyCheckRadius);
     }
 }

@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private float walkSoundTimer;
 
     private AudioManager audioManager;
+    private PlayerState playerState;
      
     
     private bool isSprinting = false;
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         walkSoundTimer = 0f;
         controller = GetComponent<CharacterController>();
+        playerState = GetComponent<PlayerState>();
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
     }
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
     public void CheckInteractionMessageState()
     {
-        if (playerIsInBonfire && !isOnBonfire)
+        if (playerIsInBonfire && !isOnBonfire && !playerState.EnemyAround)
         {
             ChangeInteractionMessageState(true);
         }
@@ -191,8 +193,16 @@ public class PlayerController : MonoBehaviour
         if (walkSoundTimer <= 0f)
         {
             audioManager.PlayAudio(null , walk, 0 , 0.1f, 0.9f, 1.1f);
-
             walkSoundTimer = playWalkEvery;
+            bool isLocked = cameraSettings != null && cameraSettings.currentLockTarget != null;
+            if (isLocked)
+            {
+                walkSoundTimer = playWalkEvery * lockedDivider;
+            }
+            if (isSprinting)
+            {
+                walkSoundTimer = playWalkEvery / sprintMultiplier;
+            }
         }
     }
 

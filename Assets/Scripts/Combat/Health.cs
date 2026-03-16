@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 
 
 public class Health : MonoBehaviour
@@ -97,8 +98,28 @@ public class Health : MonoBehaviour
             if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);
+                GetComponent<MeleeEnemyAI>().enabled = false;
+                GetComponent<CapsuleCollider>().enabled = false;
+                Destroy(GetComponent<Rigidbody>());
+                GetComponent<NavMeshAgent>().enabled = false;
+                GetComponent<Animator>().enabled = false;
+                Destroy(GetComponentInChildren<Attack>().gameObject);
+                Destroy(GetComponentInChildren<Billboard>().gameObject);
+                int a = 0;
+                foreach (Transform child in transform)
+                {
+                    Destructible destructible = child.GetComponent<Destructible>();
+                    
+                    if (destructible != null)
+                    {
+                        a+= 1;
+                        destructible.DestroyObject();
+                    }
+                }
+                Destroy(this.gameObject);
+                
             }
-            Destroy(this.gameObject);
+            
         }
         
         animator.SetTrigger("GetHit");
