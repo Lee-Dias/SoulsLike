@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private AudioClip audioClip; 
     [SerializeField] private AudioClip hit; 
+    [SerializeField] private Animator animateObject; 
 
     private AudioManager audioManager;
 
@@ -115,6 +116,10 @@ public class Health : MonoBehaviour
                         a+= 1;
                         destructible.DestroyObject();
                     }
+                }
+                if(animateObject != null)
+                {
+                    animateObject.SetTrigger("Close");
                 }
                 Destroy(this.gameObject);
                 
