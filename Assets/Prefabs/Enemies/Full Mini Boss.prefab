@@ -1049,7 +1049,7 @@ MonoBehaviour:
   doorsAnimator: {fileID: 0}
   vfxStart: {fileID: 4534649855674682085, guid: 22343a49af82c6e47a45b03ece4f4f95, type: 3}
   vfxPostion: {fileID: 2099314039411306905}
-  timeToActivateAfter: 4
+  timeToActivateAfter: 2
 --- !u!136 &633757438166716076
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1253,6 +1253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1030247592488917603}
   - component: {fileID: 6777469172350437138}
+  - component: {fileID: 2778465404971206548}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1370,6 +1371,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00032910705, y: 0.0016496778, z: 0.0027853549}
     m_Extent: {x: 0.86030114, y: 0.5625282, z: 0.15792781}
   m_DirtyAABB: 0
+--- !u!114 &2778465404971206548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209769863306492255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a73d82b65e07f45b96c7b1ed5a94cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destructible
+  destroyedVersion: {fileID: 3443326182224085747, guid: e45b5148e4d699c47b54cb8293c894a8, type: 3}
+  explosionForce: 0.5
+  explosionRadius: 0.01
+  upwardModifier: 0.05
+  audioClip: {fileID: 0}
+  audioDelay: 0
+  layerToDestroy: Sword
 --- !u!1 &2245332318227306337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,7 +3852,7 @@ Transform:
   m_GameObject: {fileID: 8263685313485936665}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3867,7 +3887,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 2b8fa50e38cd9054892d8e8b4defd1e9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -3993,6 +4013,8 @@ MonoBehaviour:
   heavyAttackChance: 20
   specialAttackChance: 0
   parryChance: 0
+  swordLight: {fileID: 0}
+  swordHeavy: {fileID: 0}
 --- !u!195 &4392524970578030624
 NavMeshAgent:
   m_ObjectHideFlags: 0

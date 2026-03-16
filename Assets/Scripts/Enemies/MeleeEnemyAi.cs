@@ -7,6 +7,9 @@ public class MeleeEnemyAI : BaseEnemyAI
     [SerializeField, Range(0,100)] private float heavyAttackChance = 25f;
     [SerializeField, Range(0,100)] private float specialAttackChance = 25f;
     [SerializeField, Range(0,100)] private float parryChance = 25f;
+
+    [SerializeField] private AudioClip swordLight;
+    [SerializeField] private AudioClip swordHeavy;
     
     private bool rotated = true;
     private int lastComboIndex = -1;
@@ -33,6 +36,7 @@ public class MeleeEnemyAI : BaseEnemyAI
 
         if (rand < lightAttackChance)
         {
+            audioManager.PlayAudio(swordLight, null, 0.5f);
             animManager.Play(item.AnimationsData.LightAttack);
             return;
         }
@@ -40,6 +44,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         rand -= lightAttackChance;
         if (rand < heavyAttackChance)
         {
+            audioManager.PlayAudio(swordHeavy, null, 0.5f);
             animManager.Play(item.AnimationsData.HeavyAttack);
             return;
         }

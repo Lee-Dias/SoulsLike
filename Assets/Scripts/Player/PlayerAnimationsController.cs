@@ -287,12 +287,12 @@ public class PlayerAnimationsController : MonoBehaviour
     {
         if (!ctx.performed) return;
 
-        HandleAttackInput(equippedWeapon?.AnimationsData?.LightAttack, lightSwoosh);
+        HandleAttackInput(equippedWeapon?.AnimationsData?.LightAttack, lightSwoosh, 0.2f);
     }
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
-        HandleAttackInput(equippedWeapon?.AnimationsData?.HeavyAttack, HeavySwoosh);
+        HandleAttackInput(equippedWeapon?.AnimationsData?.HeavyAttack, HeavySwoosh, 0.2f);
     }
     public void OnSpecialAttack(InputAction.CallbackContext ctx)
     {
@@ -357,6 +357,8 @@ public class PlayerAnimationsController : MonoBehaviour
         // Snap only if the camera is locked (same check you used before)
         if (playerController == null) return;
 
+        audioManager.PlayAudio(HeavySwoosh ,null,0.1f,0.6f);
+
         // Optionally: only snap if this animation is an attack
         // If you want to limit to attack animations only:
         if (animManager.CurrentAnimation != null && !animManager.CurrentAnimation.IsAttackAnimation) 
@@ -364,7 +366,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
         playerController.SnapRotateToTarget();
     }
-    private void HandleAttackInput(CombatAnimations animData, AudioClip audioClip = null)
+    private void HandleAttackInput(CombatAnimations animData, AudioClip audioClip = null, float delay = 0f)
     {
         if (animData == null || !health.CanAttack() || !playerController.PlayerCanMove) return;
 
@@ -373,7 +375,7 @@ public class PlayerAnimationsController : MonoBehaviour
                 return;
         
         bool isParryAttack = false;
-          
+        
 
         // Detect if this is the parry animation
         if (animData.IsAttackAnimation)

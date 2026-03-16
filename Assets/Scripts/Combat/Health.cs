@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip hit; 
     [SerializeField] private Animator animateObject; 
 
+    [SerializeField] private float playerRegenHp; 
+
     private AudioManager audioManager;
 
     private float maxHealth;
@@ -119,7 +121,7 @@ public class Health : MonoBehaviour
                 }
                 if(animateObject != null)
                 {
-                    animateObject.SetTrigger("Close");
+                    animateObject.SetTrigger("Open");
                 }
                 Destroy(this.gameObject);
                 
@@ -131,6 +133,16 @@ public class Health : MonoBehaviour
         timePassedSinceLastHit = 0;
         timePassedSinceLastHitForAttack = 0;
         timePassedSinceLastBlockMovement = 0;
+    }
+    private void Update()
+    {
+        if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            if (health < maxHealth)
+            {
+                health += playerRegenHp;
+            }
+        }
     }
     public bool CanHit()
     {

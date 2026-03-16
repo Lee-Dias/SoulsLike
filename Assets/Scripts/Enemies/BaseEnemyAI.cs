@@ -64,6 +64,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected float timeScale = 1f;
 
     protected CombatAnimationManager animManager;
+    protected AudioManager audioManager;
 
     public bool IsInAttackAnimation => isInAttackAnimation;
     public int AuraValue => auraValue;
@@ -72,10 +73,11 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         animManager = new CombatAnimationManager(anim);
 
+
     }
-    
     public float DamageToDeal()
     {
         return item.Damage + (enemy.BaseDexterity / 5 ) + (enemy.BaseStrength / 10);

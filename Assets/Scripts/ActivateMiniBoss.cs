@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.AI.Navigation;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -14,7 +15,10 @@ public class ActivateMiniBoss : MonoBehaviour
     [SerializeField] private Animator doorsAnimator;
     [SerializeField] private GameObject vfxStart;
     [SerializeField] private Transform vfxPostion;
-    [SerializeField] private float timeToActivateAfter = 2f;
+    [SerializeField] private float timeToActivateAfter = 1f;
+    [SerializeField] private AudioClip audioToPlay;
+
+    private AudioManager audioManager;
     private PlayerState playerState;
     private PlayerController playerController;
     private bool playerInside = false;
@@ -26,6 +30,8 @@ public class ActivateMiniBoss : MonoBehaviour
     {
         playerState = FindFirstObjectByType<PlayerState>();
         playerController = FindFirstObjectByType<PlayerController>();
+        audioManager = FindFirstObjectByType<AudioManager>();
+
     }
 
     public void CanPickUp(InputAction.CallbackContext ctx)
@@ -37,6 +43,7 @@ public class ActivateMiniBoss : MonoBehaviour
             Instantiate(vfxStart, vfxPostion.position, Quaternion.identity);
             if(doorsAnimator != null)
                 doorsAnimator.SetTrigger("Close");
+            audioManager.PlayAudio(audioToPlay, null , 0.4f);
             done = true;
             playerController.ChangeInteractionMessageState(false);
             enemyAnimator.SetTrigger("Start");
@@ -48,9 +55,11 @@ public class ActivateMiniBoss : MonoBehaviour
     private IEnumerator EnableEnemyAfterDelay()
     {
         yield return new WaitForSeconds(timeToActivateAfter);
+        
         enemy.layer = LayerMask.NameToLayer("Enemy");
         meleeEnemyAI.enabled = true;
         enemyCanvas.SetActive(true);
+        
         Destroy(this);
     }
     private void OnTriggerEnter(Collider tag)
@@ -75,9 +84,16 @@ public class ActivateMiniBoss : MonoBehaviour
     }
     private void Update()
     {
-        if (done) return;
+        if (done)
+        {
+            
+            return;
+        }
+        
         if (playerInside)
         {
+
+
             if (!playerState.EnemyAround && !playerController.playerIsInBonfire && !playerController.IsOnBonfire)
             {
                 playerController.ChangeInteractionMessageState(true);
