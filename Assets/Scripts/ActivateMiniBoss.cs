@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,6 +40,7 @@ public class ActivateMiniBoss : MonoBehaviour
             done = true;
             playerController.ChangeInteractionMessageState(false);
             enemyAnimator.SetTrigger("Start");
+            
             StartCoroutine(EnableEnemyAfterDelay());
         }
     }
