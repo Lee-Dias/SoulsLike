@@ -1,7 +1,4 @@
 using System.Collections;
-using Unity.AI.Navigation;
-using UnityEditor;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
