@@ -894,6 +894,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &143822179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3353133030633854394, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &143822182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143822179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c77f1698a505e48afe6f4a94663451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrailAttack
+  nameOfChild: LowpolySword
+  widthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  timeOfTrail: 0.3
+  minVertexDistanceOfTrail: 0.5
+  cornerVerticesOfTrail: 15
+  materialOfTrail: {fileID: 2100000, guid: 29b3ce750752b3946adfb75f9f4063ea, type: 2}
+  playerAnimationsControllerScript: {fileID: 155314501548679356}
 --- !u!1 &275401015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,8 +3447,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   animator: {fileID: 1640002833}
-  normalWorld: Normal_Realm_Light
-  darkWorld: Dark_Realm_Light
+  normalWorldName: Normal_Realm_Light
+  darkWorldName: Dark_Realm_Light
+  normalWorldSkyBox: {fileID: 2100000, guid: e7bb50988075aff45818fe9dd6bf2460, type: 2}
+  darkWorldSkyBox: {fileID: 2100000, guid: 8a2d876b46e74e641a5787e85ba2c364, type: 2}
 --- !u!4 &1549513762
 Transform:
   m_ObjectHideFlags: 0
@@ -4964,6 +5013,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8022221983605619843, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4476348853918764905}
+    - targetCorrespondingSourceObject: {fileID: 3353133030633854394, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 143822182}
   m_SourcePrefab: {fileID: 100100000, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
 --- !u!1 &155314501548679355 stripped
 GameObject:

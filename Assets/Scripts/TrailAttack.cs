@@ -79,6 +79,10 @@ public class TrailAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(trailRenderer == null)
+        {
+            return;
+        }
         activateTrail = playerAnimationsControllerScript.ActivateTrail;
         if(activateTrail)
         {

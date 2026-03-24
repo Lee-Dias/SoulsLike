@@ -6,9 +6,16 @@ using UnityEngine.SceneManagement;
 public class LiminalManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private string normalWorld;
-    [SerializeField] private string darkWorld;
+    [SerializeField] private string normalWorldName;
+    [SerializeField] private string darkWorldName;
+    [SerializeField] private Material normalWorldSkyBox;
+    [SerializeField] private Material darkWorldSkyBox;
     private PlayerController playerController;
+    private GameObject normalWorldLight;
+    private GameObject darkWorldLight;
+    private GameObject normalWorld;
+    private GameObject darkWorld;
+
 
     private void Start()
     {
@@ -20,10 +27,10 @@ public class LiminalManager : MonoBehaviour
     {
         // Start loading both scenes at the same time
         AsyncOperation normalLoad =
-            SceneManager.LoadSceneAsync(normalWorld, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(normalWorldName, LoadSceneMode.Additive);
 
         AsyncOperation darkLoad =
-            SceneManager.LoadSceneAsync(darkWorld, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(darkWorldName, LoadSceneMode.Additive);
 
         // Optional: prevent automatic scene activation
         // normalLoad.allowSceneActivation = true;
@@ -43,17 +50,18 @@ public class LiminalManager : MonoBehaviour
         }
 
         // Now teleport the player
-        TeleportPlayerToStartingBonfire();
+        TeleportPlayerToStartingPoint();
     }
 
-    private void TeleportPlayerToStartingBonfire()
+    private void TeleportPlayerToStartingPoint()
     {
 
         int spawnLayer = LayerMask.NameToLayer("SpawnPoint");
-
+        normalWorld = GameObject.FindWithTag("NormalWorld");
+        darkWorld = GameObject.FindWithTag("DarkWorld");
         GameObject spawnPoint = FindObjectsOfType<GameObject>()
             .FirstOrDefault(obj => obj.layer == spawnLayer);
-
+        
         TeleportPlayer(spawnPoint.transform);
 
     }
@@ -102,8 +110,51 @@ public class LiminalManager : MonoBehaviour
             spawnPoint.position,
             spawnPoint.rotation
         );
-
+        
+        ChangeEnviorment();
         if (cc != null)
             cc.enabled = true;
+    }
+
+    public void ChangeEnviorment()
+    {
+        normalWorldLight = GameObject.FindWithTag("NormalLight");
+        darkWorldLight = GameObject.FindWithTag("DarkLight");
+        Light light;
+        Material material;
+        if (playerController.playerBonfire != null)
+        {
+            if (!playerController.playerBonfire.IsNormalWorld)
+            {
+                light = GameObject.FindWithTag("DarkLight").GetComponent<Light>();
+                material = darkWorldSkyBox;
+                darkWorldLight.GetComponent<Light>().enabled = true;
+                normalWorldLight.GetComponent<Light>().enabled = false; 
+                darkWorld.SetActive(true);
+                normalWorld.SetActive(false);
+            }else
+            {
+                light = GameObject.FindWithTag("NormalLight").GetComponent<Light>();     
+                material = normalWorldSkyBox;   
+                darkWorldLight.GetComponent<Light>().enabled = false;
+                normalWorldLight.GetComponent<Light>().enabled = true;  
+                darkWorld.SetActive(false);
+                normalWorld.SetActive(true);
+                
+            }
+        }
+        else
+        {
+            light = GameObject.FindWithTag("NormalLight").GetComponent<Light>();     
+            material = normalWorldSkyBox; 
+            darkWorldLight.GetComponent<Light>().enabled = false;
+            normalWorldLight.GetComponent<Light>().enabled = true; 
+            darkWorld.SetActive(false);
+            normalWorld.SetActive(true);
+                 
+        }
+        RenderSettings.sun = light;
+        RenderSettings.skybox = material;
+        DynamicGI.UpdateEnvironment();
     }
 }
