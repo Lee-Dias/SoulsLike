@@ -10,9 +10,11 @@ public class TrailAttack : MonoBehaviour
     [SerializeField] float minVertexDistanceOfTrail;
     [SerializeField] int cornerVerticesOfTrail;
     [SerializeField] Material materialOfTrail;
+    [SerializeField] PlayerAnimationsController playerAnimationsControllerScript;
     List<GameObject> listOfChildren= new List<GameObject>();
     TrailRenderer trailRenderer;
     GameObject childWithTrail;
+    bool activateTrail;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -77,6 +79,14 @@ public class TrailAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        activateTrail = playerAnimationsControllerScript.ActivateTrail;
+        if(activateTrail)
+        {
+            trailRenderer.emitting = true;
+        }
+        else
+        {
+            trailRenderer.emitting = false;
+        }
     }
 }
