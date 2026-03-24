@@ -3447,8 +3447,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   animator: {fileID: 1640002833}
-  normalWorld: Normal_Realm
-  darkWorld: Dark_Realm
+  normalWorldName: 
+  darkWorldName: 
+  normalWorldSkyBox: {fileID: 0}
+  darkWorldSkyBox: {fileID: 0}
 --- !u!4 &1549513762
 Transform:
   m_ObjectHideFlags: 0
@@ -4903,7 +4905,7 @@ PrefabInstance:
       objectReference: {fileID: 541377147}
     - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: walk.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: 'Walk.Array.data[0]'
@@ -4924,7 +4926,7 @@ PrefabInstance:
     - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: 'walk.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 792b7e080e980ee4a89d7cf1442e3f5e, type: 3}
+      objectReference: {fileID: 8300000, guid: 8f908e981667f044da59fc57d61b27e3, type: 3}
     - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: 'walk.Array.data[1]'
       value: 
