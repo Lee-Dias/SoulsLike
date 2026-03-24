@@ -45,7 +45,11 @@ public class CombatAnimations : ScriptableObject
         [SerializeField, Range(0f, 1f)] private float hitEndTime;
         [SerializeField, Range(0f, 1f)] private float cameraShakeTimer;
         [SerializeField, Range(0f, 1f)] private float cameraShake;
+        [SerializeField, Range(0f, 1f)] private float activateTrail;
+        [SerializeField, Range(0f, 1f)] private float deActivateTrail;
         
+        public float ActivateTrail => activateTrail;
+        public float DeActivateTrail => deActivateTrail;
         public float CameraShakeTimer => cameraShakeTimer;
         public float CameraShake => cameraShake;
         public float HitStartTime => hitStartTime;

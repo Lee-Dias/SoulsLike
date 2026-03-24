@@ -53,6 +53,7 @@ public class CombatPlayableHandle
     private bool activateHitBox; // can be per-animation if needed
     private bool cameraShaked;
     private float cameraShakeValue;
+    private bool activateTrail;
 
     public event Action<int> StepStarted;
 
@@ -60,11 +61,13 @@ public class CombatPlayableHandle
     public bool IsFadingOut => fadeOutActive;
     public bool IsFadingIn => startBlendActive;
     public bool ActivateHitBox => activateHitBox;
+    public bool ActivateTrail => activateTrail;
     public bool Spawn => spawn;
     public bool CameraShaked => cameraShaked;
     public float CameraShakeValue => cameraShakeValue;
 
     public int ComboIndex;
+    
 
     public CombatPlayableHandle(Animator animator, CombatAnimations animData)
     {
@@ -191,6 +194,15 @@ public class CombatPlayableHandle
                 else if(data.Steps[currentStep].CameraShakeTimer > GetNormalizedTime() )
                 {
                     cameraShaked = false;
+                }
+
+                if(data.Steps[currentStep].ActivateTrail < GetNormalizedTime() && data.Steps[currentStep].DeActivateTrail > GetNormalizedTime())
+                {
+                    activateTrail = true;
+                }
+                else
+                {
+                    activateTrail = false;
                 }
 
             }

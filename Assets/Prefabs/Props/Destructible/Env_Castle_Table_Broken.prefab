@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6247494632848969980, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5358941521872723338, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4711077971734499815, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -68,9 +76,25 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1d852d6f131e7bd4aa78da05dd10b8d2, type: 2}
+    - target: {fileID: 767322294396563367, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
       propertyPath: m_Name
       value: Env_Castle_Table_Broken
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597379698900960666, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759896417144475115, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905190713880209348, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951855717555273121, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -141,7 +165,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1542497879772336856, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
 --- !u!54 &4481708790419979951
@@ -195,7 +219,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 14444616739625460, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
 --- !u!54 &5996894270717095544
@@ -249,7 +273,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1865721738143431792, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
 --- !u!54 &1630844410420162242
@@ -303,7 +327,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8929713867487976086, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
 --- !u!54 &4637381271396935317
@@ -357,7 +381,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8808226388029841047, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
 --- !u!54 &8642295250408078948
@@ -411,7 +435,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7058100201258365268, guid: 3f9cc3a1857408e4d9045378f1e31a76, type: 3}
 --- !u!54 &2693484158206017473

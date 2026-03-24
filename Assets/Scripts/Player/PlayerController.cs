@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Dash());
         StartCoroutine(DashCooldown());
         audioManager.PlayAudio(dash, null, 0 , 1, 0.9f, 1.1f);
-
+        animator.SetTrigger("DoDodge");
         animator.SetBool("Dodge", true);
     }
     private IEnumerator DashCooldown()

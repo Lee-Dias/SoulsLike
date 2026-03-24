@@ -75,8 +75,10 @@ public class PlayerAnimationsController : MonoBehaviour
     private bool parryCalled;
     private bool rotatedPlayer;
     private float bonusCheat = 0;
+    private bool activateTrail;
 
     public bool IsAttacking => isAttacking;
+    public bool ActivateTrail => activateTrail;
     public bool IsDoingParry => isDoingParry;
     public bool CanParry => canParry;
     public Item EquippedWeapon => equippedWeapon;
@@ -155,6 +157,14 @@ public class PlayerAnimationsController : MonoBehaviour
         }
         if (animManager.Handle != null)
         {
+            if (animManager.Handle.ActivateTrail)
+            {
+                activateTrail = true;
+            }
+            else
+            {
+                activateTrail = false;  
+            }
             if (animManager.Handle.ActivateHitBox)
             {
                 if (isDoingParry)
