@@ -19,6 +19,7 @@ public class PlayerAnimationsController : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerState playerState;
     [SerializeField] private GameObject weaponHolder;
     
 
@@ -92,6 +93,7 @@ public class PlayerAnimationsController : MonoBehaviour
         animManager.OnStepStarted += HandleAnimStepStarted;
         audioManager = FindFirstObjectByType<AudioManager>();
         cameraSettings = FindFirstObjectByType<CameraSettings>();
+        playerState = FindFirstObjectByType<PlayerState>();
     }
 
     public void EnablePlayerAfterSitting()
@@ -378,7 +380,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     private void HandleAttackInput(CombatAnimations animData, AudioClip audioClip = null, float delay = 0f)
     {
-        if (animData == null || !health.CanAttack() || !playerController.PlayerCanMove) return;
+        if (animData == null || !health.CanAttack() || !playerState.PlayerCanMove) return;
 
         if (inventoryManager != null)
             if(inventoryManager.IsActive)

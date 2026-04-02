@@ -59,18 +59,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isInvincible = false;
 
-    private bool playerCanMove = true;
-
-    private bool isOnInventory;
-    private bool isOnBonfire;
-
-    public bool PlayerCanMove => playerCanMove;
-    public bool IsOnInventory => isOnInventory;
-    public bool IsOnBonfire => isOnBonfire;
-
-    [HideInInspector]public bool playerIsInBonfire;
-    [HideInInspector]public LiminalWorldChanger playerBonfire;
-
 
 
 
@@ -86,19 +74,6 @@ public class PlayerController : MonoBehaviour
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
     }
-    public void PlayerCanMoveState(bool state)
-    {
-        playerCanMove = state;
-    }
-    public void ChangeIsInInventoryState(bool state)
-    {
-        isOnInventory = state;  
-    }
-    public void ChangeIsInBonfireState(bool state)
-    {
-        isOnBonfire = state;  
-        CheckInteractionMessageState();
-    }
 
     
 
@@ -111,7 +86,7 @@ public class PlayerController : MonoBehaviour
     public void OnDodge(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (!canDash || isDashing || !playerCanMove || playerAnimationsController.IsAttacking) return;
+        if (!canDash || isDashing || !playerState.PlayerCanMove || playerAnimationsController.IsAttacking) return;
 
         canDash = false;
 
@@ -137,17 +112,6 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsSprinting",isSprinting);
     }
 
-    public void CheckInteractionMessageState()
-    {
-        if (playerIsInBonfire && !isOnBonfire && !playerState.EnemyAround)
-        {
-            ChangeInteractionMessageState(true);
-        }
-        else
-        {
-            ChangeInteractionMessageState(false);
-        }
-    }
     void Update()
     {
         if (moveInput.magnitude == 0)
@@ -156,7 +120,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(playerCanMove)
+            if(playerState.PlayerCanMove)
                 animator.SetBool("IsWalking", true);
         }
         HandleWalkAudio();
@@ -178,7 +142,7 @@ public class PlayerController : MonoBehaviour
     private void HandleWalkAudio()
     {
         bool isWalking =
-            playerCanMove &&
+            playerState.PlayerCanMove &&
             moveInput.sqrMagnitude > 0.1f &&
             !isDashing;
 
@@ -192,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
         if (walkSoundTimer <= 0f)
         {
-            audioManager.PlayAudio(null , walk, 0 , 0.1f, 0.9f, 1.1f);
+            audioManager.PlayAudio(null , walk, 0 , 0.05f, 0.9f, 1.1f);
             walkSoundTimer = playWalkEvery;
             bool isLocked = cameraSettings != null && cameraSettings.currentLockTarget != null;
             if (isLocked)
@@ -210,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!controller) return;
 
-        if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerCanMove )
+        if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerState.PlayerCanMove )
         {
             controller.Move(animWalk * Time.deltaTime);
             ResetMovementState();

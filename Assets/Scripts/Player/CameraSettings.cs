@@ -42,7 +42,7 @@ public class CameraSettings : MonoBehaviour
     private float currentCameraDistance;
     private float yaw;
     private float pitch;
-    private PlayerController playerController;
+    private PlayerState playerState;
 
     private Vector2 lookInput;
     public Transform currentLockTarget { get; private set; }
@@ -65,7 +65,7 @@ public class CameraSettings : MonoBehaviour
 
     void Start()
     {
-        playerController = FindFirstObjectByType<PlayerController>();
+        playerState = FindFirstObjectByType<PlayerState>();
         if (Application.isPlaying)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -80,7 +80,7 @@ public class CameraSettings : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (!playerController.PlayerCanMove)
+        if (!playerState.PlayerCanMove)
         {
             lookInput = new Vector2(0, 0);
             return;
@@ -91,7 +91,7 @@ public class CameraSettings : MonoBehaviour
 
     public void OnLock(InputAction.CallbackContext context)
     {
-        if (!context.performed || !playerController.PlayerCanMove) return;
+        if (!context.performed || !playerState.PlayerCanMove) return;
 
         if (currentLockTarget == null)
             TryLockOn();

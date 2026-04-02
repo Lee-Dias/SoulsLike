@@ -11,14 +11,19 @@ public class PlayerState : MonoBehaviour
 
     private bool isOnInventory;
     private bool isOnBonfire;
+    private bool isInSettings;
     private bool enemyAround;
     
     public bool EnemyAround => enemyAround;
     public bool PlayerCanMove => playerCanMove;
     public bool IsOnInventory => isOnInventory;
+    public bool IsInSettings => isInSettings;
     public bool IsOnBonfire => isOnBonfire;
+    
     [SerializeField] private GameObject interactionMessage;
-    [HideInInspector]public bool playerIsInBonfire;
+    [HideInInspector] public bool playerIsInBonfire;
+    [HideInInspector]public LiminalWorldChanger playerBonfire;
+
     public void PlayerCanMoveState(bool state)
     {
         playerCanMove = state;
@@ -26,6 +31,10 @@ public class PlayerState : MonoBehaviour
     public void ChangeIsInInventoryState(bool state)
     {
         isOnInventory = state;  
+    }
+    public void ChangeIsInSettingsState(bool state)
+    {
+        isInSettings = state;  
     }
     public void ChangeIsInBonfireState(bool state)
     {

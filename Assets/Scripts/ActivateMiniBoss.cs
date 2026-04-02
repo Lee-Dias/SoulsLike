@@ -35,7 +35,7 @@ public class ActivateMiniBoss : MonoBehaviour
     {
         if (!ctx.performed || !playerInside) return;
 
-        if ((!playerState.EnemyAround ) && !playerController.playerIsInBonfire && !playerController.IsOnBonfire)
+        if ((!playerState.EnemyAround ) && !playerState.playerIsInBonfire && !playerState.IsOnBonfire)
         {
             Instantiate(vfxStart, vfxPostion.position, Quaternion.identity);
             if(doorsAnimator != null)
@@ -65,7 +65,7 @@ public class ActivateMiniBoss : MonoBehaviour
         if (tag.CompareTag("Player"))
         {
             playerInside = true;
-            if (!playerState.EnemyAround && playerController.playerIsInBonfire && !playerController.IsOnBonfire)
+            if (!playerState.EnemyAround && playerState.playerIsInBonfire && !playerState.IsOnBonfire)
             {
                 playerController.ChangeInteractionMessageState(true);
             }
@@ -91,7 +91,7 @@ public class ActivateMiniBoss : MonoBehaviour
         {
 
 
-            if (!playerState.EnemyAround && !playerController.playerIsInBonfire && !playerController.IsOnBonfire)
+            if (!playerState.EnemyAround && !playerState.playerIsInBonfire && !playerState.IsOnBonfire)
             {
                 playerController.ChangeInteractionMessageState(true);
             }

@@ -15,11 +15,11 @@ public class LiminalWorldChanger : MonoBehaviour
     public Transform SpawnPoint => spawnPoint;
 
 
-    private PlayerController playerController;
+    private PlayerState playerState;
 
     private void Start()
     {
-        playerController = FindFirstObjectByType<PlayerController>();
+        playerState = FindFirstObjectByType<PlayerState>();
     }
 
     private void OnTriggerEnter(Collider tag)
@@ -27,9 +27,9 @@ public class LiminalWorldChanger : MonoBehaviour
         if (tag.CompareTag("Player"))
         {
             
-            playerController.playerIsInBonfire = true;
-            playerController.playerBonfire = this;
-            playerController.CheckInteractionMessageState();
+            playerState.playerIsInBonfire = true;
+            playerState.playerBonfire = this;
+            playerState.CheckInteractionMessageState();
         }
     }
 
@@ -38,9 +38,9 @@ public class LiminalWorldChanger : MonoBehaviour
         if (tag.CompareTag("Player"))
         {
             
-            playerController.playerIsInBonfire = false;
-            playerController.playerBonfire = null;
-            playerController.CheckInteractionMessageState();
+            playerState.playerIsInBonfire = false;
+            playerState.playerBonfire = null;
+            playerState.CheckInteractionMessageState();
         }
     }
 }

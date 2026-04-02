@@ -10,7 +10,7 @@ public class LiminalManager : MonoBehaviour
     [SerializeField] private string darkWorldName;
     [SerializeField] private Material normalWorldSkyBox;
     [SerializeField] private Material darkWorldSkyBox;
-    private PlayerController playerController;
+    private PlayerState playerState;
     private GameObject normalWorldLight;
     private GameObject darkWorldLight;
     private GameObject normalWorld;
@@ -19,7 +19,7 @@ public class LiminalManager : MonoBehaviour
 
     private void Start()
     {
-        playerController = FindFirstObjectByType<PlayerController>();
+        playerState = FindFirstObjectByType<PlayerState>();
         StartCoroutine(LoadScenesAndTeleport());
     }
 
@@ -68,14 +68,14 @@ public class LiminalManager : MonoBehaviour
     // Call this method to load the scene (e.g., from a button click, collision, etc.)
     public void LoadTargetScene()
     {
-        bool targetWorldIsNormal = !playerController.playerBonfire.IsNormalWorld;
+        bool targetWorldIsNormal = !playerState.playerBonfire.IsNormalWorld;
 
         LiminalWorldChanger[] allBonfires =
             FindObjectsOfType<LiminalWorldChanger>(true);
 
         foreach (var bonfire in allBonfires)
         {
-            if (bonfire.BonfireID == playerController.playerBonfire.BonfireID &&
+            if (bonfire.BonfireID == playerState.playerBonfire.BonfireID &&
                 bonfire.IsNormalWorld == targetWorldIsNormal)
             {
                 animator.SetTrigger("Change");
@@ -122,9 +122,9 @@ public class LiminalManager : MonoBehaviour
         darkWorldLight = GameObject.FindWithTag("DarkLight");
         Light light;
         Material material;
-        if (playerController.playerBonfire != null)
+        if (playerState.playerBonfire != null)
         {
-            if (!playerController.playerBonfire.IsNormalWorld)
+            if (!playerState.playerBonfire.IsNormalWorld)
             {
                 light = GameObject.FindWithTag("DarkLight").GetComponent<Light>();
                 material = darkWorldSkyBox;

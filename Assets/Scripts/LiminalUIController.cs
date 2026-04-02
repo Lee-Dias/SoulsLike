@@ -38,6 +38,7 @@ public class LiminalUIController : MonoBehaviour
 
     private int levelsToUpgrade;
     private PlayerController playerController;
+    private PlayerState playerState;
 
     private bool menuIsActive = false;
     private Animator animator;
@@ -47,6 +48,7 @@ public class LiminalUIController : MonoBehaviour
     {
         pendingUpgrades = new Dictionary<PlayerStats.Stats, int>();
         
+        playerState = FindFirstObjectByType<PlayerState>();
         playerController = FindFirstObjectByType<PlayerController>();
         playerAnimationsController = FindFirstObjectByType<PlayerAnimationsController>();
         animator = playerController.GetComponent<Animator>();
@@ -60,8 +62,8 @@ public class LiminalUIController : MonoBehaviour
 
     public void BonfireMenu(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed || (!playerController.IsOnBonfire && !playerController.PlayerCanMove) || playerAnimationsController.IsAttacking) return;
-        if (playerController.playerIsInBonfire)
+        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings) return;
+        if (playerState.playerIsInBonfire)
         {
             if (!menuIsActive)
             {
@@ -80,14 +82,14 @@ public class LiminalUIController : MonoBehaviour
 
     public void TurnOn()
     {
-        if(playerController.IsOnInventory) return;
+        if(playerState.IsOnInventory) return;
         
         animator.SetTrigger("Down");
         animator.ResetTrigger("Up");
         animator.SetBool("Sitting", true);
         baseMenu.SetActive(true);
-        playerController.PlayerCanMoveState(false);
-        playerController.ChangeIsInBonfireState(true);
+        playerState.PlayerCanMoveState(false);
+        playerState.ChangeIsInBonfireState(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
@@ -119,8 +121,8 @@ public class LiminalUIController : MonoBehaviour
 
     public void DisableSittingAfterDelay()
     {
-        playerController.PlayerCanMoveState(true);
-        playerController.ChangeIsInBonfireState(false);
+        playerState.PlayerCanMoveState(true);
+        playerState.ChangeIsInBonfireState(false);
         animator.SetBool("Sitting", false);
     }
 

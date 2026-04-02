@@ -1,148 +1,85 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-using UnityEngine.UI;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.EventSystems;
+
 
 public class SettingsManager : MonoBehaviour
 {
-    GameObject background;
-    GameObject closeButton;
-    GameObject settingsMenu;
-    GameObject settingsOptions;
-    Slider volumeSlider;
-    
-    
-    PlayerController playerController;
-    bool on = false;
-    bool inOptions = false;
+    [SerializeField]private GameObject[] tabsToActivate;
+    [SerializeField]private Button buttonToSelect;
+    [SerializeField]private Slider gammaSlider;
+    [SerializeField]private VolumeProfile volumeProfile;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private PlayerState playerState;
+    private LiftGammaGain liftGammaGain;
+    private bool isOpen = false;
+    
+
+    private void Start()
     {
-        //------------UI Management------------//
-        background = transform.GetChild(0).gameObject;
-        closeButton = transform.GetChild(1).gameObject;
-        settingsMenu = transform.GetChild(2).gameObject;
-        settingsOptions = transform.GetChild(3).gameObject;
-        playerController = FindFirstObjectByType<PlayerController>();
-
-        for (int i = 0; i < settingsOptions.transform.childCount; i++)
+        playerState = FindFirstObjectByType<PlayerState>();
+        // Try to get the LiftGammaGain component from the profile
+        if (volumeProfile.TryGet<LiftGammaGain>(out var tmp))
         {
-            if (settingsOptions.transform.GetChild(i).name == "VolumeSlider")
-            {
-                volumeSlider = settingsOptions.transform.GetChild(i).GetComponent<Slider>();
-            }
+            liftGammaGain = tmp;
+            // Initialize slider value to match current profile value
+            gammaSlider.value = liftGammaGain.gamma.value.w; 
         }
-        //------------End of UI Management------------//
-
-        //------------Volume Management------------//
-        if(!PlayerPrefs.HasKey("MainVolume"))
-        {
-            PlayerPrefs.SetFloat("MainVolume", 1f);
-            Load();
-        }
-        else
-        {
-            Load();
-        }
-        //------------End of Volume Management------------//
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnOpenTab(InputAction.CallbackContext context)
     {
-        //------------UI Management------------//
-        if (on)
+        if(playerState.IsOnBonfire || playerState.IsOnInventory) return;
+        if (!isOpen) 
         {
-            background.SetActive(true);
-            closeButton.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            playerController.PlayerCanMoveState(false);
-
-            if (inOptions)
-            {
-                settingsOptions.SetActive(true);
-                settingsMenu.SetActive(false);
-            }
-            else
-            {
-                settingsOptions.SetActive(false);
-                settingsMenu.SetActive(true);
-            }
-        }
-        else
-        {
-            TurnOff();
-        }
-        //------------End of UI Management------------//
-    }
-
-    //------------UI Management Method------------//
-    public void OpenCloseStettingsInputPlayer(InputAction.CallbackContext ctx)
-    {
-        if(inOptions) 
-        {
-            inOptions = false;
-            on = true;
-        }
-        else if(!on)
-        {
-            on = true;
-        }
-        else
-        {
-            on = false;
-        }
+            playerState.ChangeIsInSettingsState(true);
+            playerState.PlayerCanMoveState(false);
             
-    }
-    public void OpenCloseStettings()
-    {
-        if (inOptions)
-        {
-            inOptions = false;
+            foreach (var tab in tabsToActivate)
+            {
+                tab.SetActive(true);
+            }
+            isOpen = true;
+            EventSystem.current.SetSelectedGameObject(null); // clear current selection
+            EventSystem.current.SetSelectedGameObject(buttonToSelect.gameObject);
         }
         else
         {
-            on = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            playerState.ChangeIsInSettingsState(false);
+            playerState.PlayerCanMoveState(true);
+            
+
+            foreach (var tab in tabsToActivate)
+            {
+                tab.SetActive(false);
+            }
+            isOpen = false;
         }
-    }
+    } 
 
-    public void OpenOptions()
+    public void ChangeGammaValue()
     {
-        inOptions = true;
+
+        if (liftGammaGain != null)
+        {
+            // In HDRP, Gamma is a Vector4 (X, Y, Z, W)
+            // W is usually the 'Master' slider
+            Vector4 newGamma = liftGammaGain.gamma.value;
+            newGamma.w = gammaSlider.value;
+            liftGammaGain.gamma.overrideState = true;
+            liftGammaGain.gamma.value = newGamma;
+        }
+
     }
 
-    void TurnOff()
-    {
-        settingsOptions.SetActive(false);
-        settingsMenu.SetActive(false);
-        background.SetActive(false);
-        closeButton.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        playerController.PlayerCanMoveState(true);
-    }
-    //------------End of UI Management Method------------//
 
-    //------------Volume Management Method------------//
-    public void MainVolumeControl(System.Single volume)
-    {
-        AudioListener.volume = volume;
-        Save(volume);
-    }
-
-    void Load()
-    {
-        volumeSlider.value = PlayerPrefs.GetFloat("MainVolume");
-        AudioListener.volume = PlayerPrefs.GetFloat("MainVolume");
-    }
-
-    void Save(System.Single volume)
-    {
-        PlayerPrefs.SetFloat("MainVolume", volume);
-    }
-    //------------End of Volume Management Method------------//
-
-
+    
 }
