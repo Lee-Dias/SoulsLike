@@ -19,6 +19,10 @@ public class Health : MonoBehaviour
 
     [SerializeField] private float playerRegenHp; 
 
+    [Header("Soul")]
+    [SerializeField] private GameObject soulPrefab;
+    [SerializeField] private GameObject soulSpawnPoint;
+
     private AudioManager audioManager;
 
     private float maxHealth;
@@ -123,6 +127,8 @@ public class Health : MonoBehaviour
                 {
                     animateObject.SetTrigger("Open");
                 }
+
+                Instantiate(soulPrefab, soulSpawnPoint.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 
             }
