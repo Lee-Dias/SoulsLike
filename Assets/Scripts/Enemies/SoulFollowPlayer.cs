@@ -27,7 +27,7 @@ public class SoulFollowPlayer : MonoBehaviour
         if (seq.IsPlaying() == false)
         {
             Transform playerTransform = GameObject.FindWithTag(targetTag).transform;
-            seq.Append(transform.DOMove(playerTransform.position, durationToPlayer));  // second move
+            seq.Append(transform.DOMove((playerTransform.position + new Vector3(0, 1, 0)), durationToPlayer));  // second move
         }
         Collider playerCollider = GameObject.FindWithTag(targetTag).GetComponent<Collider>();
 
