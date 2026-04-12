@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MeleeEnemyAI : BaseEnemyAI
 {
+    [SerializeField] private BoxCollider specialHitBoxForFirstAttacks;
+
     [Header("Probabilidades das Animações (%)")]
     [SerializeField, Range(0,100)] private float lightAttackChance = 25f;
     [SerializeField, Range(0,100)] private float heavyAttackChance = 25f;
@@ -56,7 +58,6 @@ public class MeleeEnemyAI : BaseEnemyAI
             return;
         }
 
-        // Se chegou aqui, cai no último (Parry)
         animManager.Play(item.AnimationsData.Parry);
     }
 
@@ -98,7 +99,6 @@ public class MeleeEnemyAI : BaseEnemyAI
 
             if (Quaternion.Angle(transform.rotation, cachedAttackRotation) < 1f)
                 rotated = true;
-
         }
 
 
@@ -130,5 +130,51 @@ public class MeleeEnemyAI : BaseEnemyAI
         }
     }
 
-    
+    protected override void OnEnterFirstAttack()
+    {
+        anim.SetBool("IsIdle", false);
+        isInAttackAnimation = true;
+        animManager = new CombatAnimationManager(anim);
+        animManager.EnableAutoCombo();
+        agent.isStopped = true;  
+        rotated = false;
+        animManager.Play(item.AnimationsData.LightAttack);
+        lastComboIndex = animManager.Handle.ComboIndex;
+        specialHitBoxForFirstAttacks.enabled = true;
+        
+    }
+
+    protected override void FirstAttack()
+    {
+
+        // --- Animation-driven movement during the swing ---
+        animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
+
+        Vector2 animMove = animManager.GetMovementFromCurrentAnimation();
+        Vector3 move = transform.right * animMove.x + transform.forward * animMove.y;
+        transform.position += move * (Time.deltaTime * timeScale);
+
+
+        // --- Hitbox activation ---
+        if (animManager.Handle != null)
+            weaponCollider.enabled = animManager.Handle.ActivateHitBox;
+        
+        if ((!animManager.IsPlaying && !animManager.Handle.IsFadingOut) || lastComboIndex != animManager.Handle.ComboIndex || !health.CanAttack())
+        {
+            animManager.Stop();
+            if(!health.CanAttack())
+                animManager.Stop();
+
+            doneFirstAttack = true;
+            viewRange = originalViewRange;
+            audioRange = originalAudioRange;
+            weaponCollider.enabled = false;
+            isInAttackAnimation = false;
+            attackEnded = true;
+            agent.isStopped = false;
+            specialHitBoxForFirstAttacks.enabled = false;
+            lastComboIndex = -1;
+        }
+
+    }
 }

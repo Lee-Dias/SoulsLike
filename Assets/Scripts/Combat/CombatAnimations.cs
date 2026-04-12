@@ -34,7 +34,7 @@ public class CombatAnimations : ScriptableObject
     {
         [SerializeField] private string name;
         [SerializeField] private AnimationClip clip;
-        [SerializeField] private AudioClip soundEffectCombo;
+        [SerializeField] private AudioClip[] soundEffectCombo;
         [SerializeField] private float transitionWindowStart;
         [SerializeField] private float transitionWindowEnd;
         [SerializeField] private MovementInterval[] movementCurveOnCombo;
@@ -43,6 +43,7 @@ public class CombatAnimations : ScriptableObject
         [SerializeField, Range(0.01f, 3f)] private float blendTime;
         [SerializeField, Range(0f, 1f)] private float hitStartTime;
         [SerializeField, Range(0f, 1f)] private float hitEndTime;
+        [SerializeField, Range(0f, 1f)] private float soundStartTime;
         [SerializeField, Range(0f, 1f)] private float cameraShakeTimer;
         [SerializeField, Range(0f, 1f)] private float cameraShake;
         [SerializeField, Range(0f, 1f)] private float activateTrail;
@@ -54,10 +55,11 @@ public class CombatAnimations : ScriptableObject
         public float CameraShake => cameraShake;
         public float HitStartTime => hitStartTime;
         public float HitEndTime => hitEndTime;
+        public float SoundStartTime => soundStartTime;
         public string Name => name;
         public AnimationClip Clip => clip;
         public float BlendTime =>blendTime;
-        public AudioClip SoundEffectCombo => soundEffectCombo;
+        public AudioClip[] SoundEffectCombo => soundEffectCombo;
         public float TransitionWindowStart => transitionWindowStart;
         public float TransitionWindowEnd => transitionWindowEnd;
         public MovementInterval[] MovementCurveOnCombo => movementCurveOnCombo;

@@ -12,12 +12,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float sprintMultiplier = 1.3f;
     [SerializeField] private float lockedDivider = 1.5f;
+    [SerializeField] private float staminaToTakeWhileSprinting = 5f;
 
     [Header("Dash Settings")]
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashDuration = 0.5f;
     [SerializeField] private MeshTrail meshTrail;
     [SerializeField] private float dashCooldown = 1.0f;
+    [SerializeField] private float staminaToWasteOnDash = 20f;
+
 
     
     
@@ -54,10 +57,13 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private Vector3 currentDirection;
+    private Stamina stamina;
 
     private bool isDashing = false;
 
     private bool isInvincible = false;
+
+    public bool IsInvincible => isInvincible;
 
 
 
@@ -70,6 +76,7 @@ public class PlayerController : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         walkSoundTimer = 0f;
         controller = GetComponent<CharacterController>();
+        stamina = GetComponent<Stamina>();
         playerState = GetComponent<PlayerState>();
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
@@ -89,6 +96,7 @@ public class PlayerController : MonoBehaviour
         if (!canDash || isDashing || !playerState.PlayerCanMove || playerAnimationsController.IsAttacking) return;
 
         canDash = false;
+        stamina.TakeStamina(staminaToWasteOnDash);
 
         meshTrail.Trail(0.6f);
         StartCoroutine(Dash());
@@ -104,6 +112,8 @@ public class PlayerController : MonoBehaviour
     }
     public void OnSprint(InputAction.CallbackContext context)
     {
+        if(stamina.StaminaValue <= 10) return;
+
         if (context.started)
             isSprinting = true;
         if (context.canceled)
@@ -114,6 +124,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(stamina.StaminaValue <= 1)
+        {
+            isSprinting = false;
+            animator.SetBool("IsSprinting", isSprinting);
+        }
+
+        if (!isSprinting)
+        {
+            stamina.ChangeAmountOfStaminaToTake(0);
+        }else
+        {
+            stamina.ChangeAmountOfStaminaToTake(staminaToTakeWhileSprinting);
+        }
+        
+
         if (moveInput.magnitude == 0)
         {
             animator.SetBool("IsWalking", false);

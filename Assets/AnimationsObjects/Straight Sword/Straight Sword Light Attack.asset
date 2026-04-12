@@ -25,37 +25,42 @@ MonoBehaviour:
   comboSteps:
   - name: 
     clip: {fileID: -623603649343465320, guid: 7bc5d310fac662b48a88323a1cedbb98, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 8300000, guid: 029332240b7b79a4198eb4bf364079e8, type: 3}
     transitionWindowStart: 0
     transitionWindowEnd: 1
     movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
     comboSpeed: 1
-    blendTime: 0.01
+    blendTime: 0.15
     hitStartTime: 0.7
     hitEndTime: 0.95
+    soundStartTime: 0.6
     cameraShakeTimer: 0.01
     cameraShake: 0.01
     activateTrail: 0.4
     deActivateTrail: 0.89
   - name: 
     clip: {fileID: -623603649343465320, guid: 5a086c8f298c3b44b9578633f61ffe3b, type: 3}
-    soundEffectCombo: {fileID: 0}
-    transitionWindowStart: 0
+    soundEffectCombo:
+    - {fileID: 8300000, guid: 029332240b7b79a4198eb4bf364079e8, type: 3}
+    transitionWindowStart: 0.1
     transitionWindowEnd: 1
     movementCurveOnCombo: []
-    nextAnimationTriggerPoint: 1
-    comboSpeed: 0.7
-    blendTime: 0.01
+    nextAnimationTriggerPoint: 0.9
+    comboSpeed: 0.6
+    blendTime: 0.15
     hitStartTime: 0.6
     hitEndTime: 0.95
+    soundStartTime: 0.6
     cameraShakeTimer: 0.01
     cameraShake: 0.01
     activateTrail: 0.3
     deActivateTrail: 0.89
   - name: 
     clip: {fileID: -623603649343465320, guid: bfb0025f15950fd49a72e43060c2580e, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 8300000, guid: 029332240b7b79a4198eb4bf364079e8, type: 3}
     transitionWindowStart: 0.1
     transitionWindowEnd: 1
     movementCurveOnCombo: []
@@ -64,6 +69,7 @@ MonoBehaviour:
     blendTime: 0.4
     hitStartTime: 0.4
     hitEndTime: 0.7
+    soundStartTime: 0.5
     cameraShakeTimer: 0.01
     cameraShake: 0.01
     activateTrail: 0.3

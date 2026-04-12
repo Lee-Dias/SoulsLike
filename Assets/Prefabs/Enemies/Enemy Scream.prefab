@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 8037106565536135174}
   - component: {fileID: 8589064637173916862}
   - component: {fileID: 8717281275639954355}
+  - component: {fileID: -86697933240444451}
   m_Layer: 6
   m_Name: Enemy Scream
   m_TagString: Untagged
@@ -378,6 +379,8 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 0561e9bcab03f2d4ba870adae8cce721, type: 3}
   animateObject: {fileID: 0}
   playerRegenHp: 0
+  soulPrefab: {fileID: 0}
+  soulSpawnPoint: {fileID: 0}
 --- !u!95 &3506815779369100050
 Animator:
   serializedVersion: 7
@@ -497,6 +500,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   health: {fileID: 6841707136486081427}
   healthBar: {fileID: 7474483699321703478}
+--- !u!114 &-86697933240444451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702540643388466331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0867c2426ff876545b4800b2c81a1a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockOnSymbol
+  lockOnSymbol: {fileID: 2218671633208969595}
 --- !u!1 &1939402725855608890
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +545,81 @@ Transform:
   - {fileID: 7191067739186059901}
   m_Father: {fileID: 732779047458555987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2218671633208969595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3132081528605214743}
+  - component: {fileID: 316858925975377829}
+  - component: {fileID: 4492335053079092736}
+  m_Layer: 5
+  m_Name: Lock
+  m_TagString: Lock
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3132081528605214743
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218671633208969595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5704143480302233806}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &316858925975377829
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218671633208969595}
+  m_CullTransparentMesh: 1
+--- !u!114 &4492335053079092736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218671633208969595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e702753b40f91fb4aa29b54508aab8be, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2608671392653318999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1264,7 @@ RectTransform:
   m_Children:
   - {fileID: 968282874391727064}
   - {fileID: 2945911463542000650}
+  - {fileID: 3132081528605214743}
   m_Father: {fileID: 6176724784196780520}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

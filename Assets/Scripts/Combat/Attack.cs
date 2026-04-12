@@ -58,12 +58,17 @@ public class Attack : MonoBehaviour
     private void EnemyAttack(Collider other)
     {
         PlayerAnimationsController player = other.GetComponent<PlayerAnimationsController>();
+        PlayerController playerController = other.GetComponent<PlayerController>();
         if(player != null)
         {
             if (player.CanParry)
             {
                 stop = true;
             }
+        }
+        if(playerController.IsInvincible)
+        {
+            stop = true;
         }
 
         damage = enemy.DamageToDeal();

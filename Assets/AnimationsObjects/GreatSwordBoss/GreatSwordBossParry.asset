@@ -10,35 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e98abd0cd5cae9c4cbb5f0d180a21c47, type: 3}
-  m_Name: Shield Parry
+  m_Name: GreatSwordBossParry
   m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
   isCombo: 1
   soundEffect: {fileID: 0}
   stopControlledMovement: 1
   walkDuringAnimation: 0
   attackAnimation: 1
-  activeStartTime: 0
-  activetEndTime: 0
+  activeStartTime: 0.6
+  activetEndTime: 0.9
   speed: 1
-  singleClip: {fileID: 0}
+  singleClip: {fileID: -203655887218126122, guid: f466dcd95571c29479b0ad5ce6dbb43f, type: 3}
   movementCurve: []
   comboSteps:
   - name: 
-    clip: {fileID: -623603649343465320, guid: 422764dc0aff32e40b5ae04259d0f96b, type: 3}
-    soundEffectCombo: []
-    transitionWindowStart: 0
-    transitionWindowEnd: 0
+    clip: {fileID: -203655887218126122, guid: 9fc66704d476e6844b622b84539904c9, type: 3}
+    soundEffectCombo: {fileID: 0}
+    transitionWindowStart: 0.2
+    transitionWindowEnd: 1
     movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.5
+    comboSpeed: 0.6
     blendTime: 0.01
-    hitStartTime: 0.1
-    hitEndTime: 0.9
-    soundStartTime: 0
-    cameraShakeTimer: 0.01
-    cameraShake: 0.01
-    activateTrail: 0
-    deActivateTrail: 0
-  spawnObject: 0
-  objectToSpawn: {fileID: 0}
-  positionToSpawnObject: {x: 0, y: 0, z: 0}
+    hitStartTime: 0.3
+    hitEndTime: 1

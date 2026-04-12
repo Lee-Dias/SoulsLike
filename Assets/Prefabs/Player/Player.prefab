@@ -5500,6 +5500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7021564953495151978}
   - component: {fileID: 9209590958940791528}
+  - component: {fileID: 3250317986525177424}
   m_Layer: 3
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -5535,6 +5536,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   transformToFollow: {fileID: 4478617082643196905}
+--- !u!114 &3250317986525177424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353133030633854394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c77f1698a505e48afe6f4a94663451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrailAttack
+  nameOfChild: LowpolySword
+  widthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  timeOfTrail: 0.3
+  minVertexDistanceOfTrail: 0.5
+  cornerVerticesOfTrail: 15
+  materialOfTrail: {fileID: 2100000, guid: 29b3ce750752b3946adfb75f9f4063ea, type: 2}
+  playerAnimationsControllerScript: {fileID: 1974441874649951622}
 --- !u!1 &3404855174993730961
 GameObject:
   m_ObjectHideFlags: 0
@@ -6466,6 +6509,8 @@ GameObject:
   - component: {fileID: 3006201383029227448}
   - component: {fileID: 4306874496068307869}
   - component: {fileID: 922331660010497560}
+  - component: {fileID: 7637084609253954492}
+  - component: {fileID: 3104927321007837812}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6558,10 +6603,12 @@ MonoBehaviour:
   gravity: -9.81
   sprintMultiplier: 1.5
   lockedDivider: 1.5
-  dashDistance: 5.5
-  dashDuration: 0.4
+  staminaToTakeWhileSprinting: 5
+  dashDistance: 4
+  dashDuration: 0.3
   meshTrail: {fileID: 3006201383029227448}
   dashCooldown: 1.5
+  staminaToWasteOnDash: 20
   cameraTransform: {fileID: 0}
   animator: {fileID: 7243161618570103146}
   cameraSettings: {fileID: 0}
@@ -6570,13 +6617,9 @@ MonoBehaviour:
   walkAfterConsumable: 1.8
   interactionMessage: {fileID: 0}
   walk:
-  - {fileID: 8300000, guid: 792b7e080e980ee4a89d7cf1442e3f5e, type: 3}
-  - {fileID: 8300000, guid: 09ffb3151de36ad4bb25f1c7a43fcdde, type: 3}
-  - {fileID: 8300000, guid: ff1d17f6dcba3a447b6e0cba059fa191, type: 3}
+  - {fileID: 8300000, guid: 8f908e981667f044da59fc57d61b27e3, type: 3}
   dash: {fileID: 8300000, guid: dfb5081d661196d418e7db4af0520cea, type: 3}
-  playWalkEvery: 0.5
-  playerIsInBonfire: 0
-  playerBonfire: {fileID: 0}
+  playWalkEvery: 0.44
 --- !u!114 &2608192909178490637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6882,6 +6925,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b7ec5a5a-4de9-4456-ab6c-fe86346bb0b9
     m_ActionName: 'Player/Options[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974441874649951622}
+        m_TargetAssemblyTypeName: PlayerAnimationsController, Assembly-CSharp
+        m_MethodName: OnScaleDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe6746e2-c208-44d6-825d-3a005735df84
+    m_ActionName: 'Player/OnExtraDamage[/Keyboard/o]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -6906,6 +6965,7 @@ MonoBehaviour:
   inventory: {fileID: 6948016333332140338}
   playerStats: {fileID: 4422783338112707589}
   playerController: {fileID: 5697246315085396423}
+  playerState: {fileID: 0}
   weaponHolder: {fileID: 3353133030633854394}
   parryVfx: {fileID: 571107620011028630}
   parryRadius: 10
@@ -6917,9 +6977,6 @@ MonoBehaviour:
     m_Bits: 64
   combatModifiers: {fileID: 1024084403526784589}
   liminalUIController: {fileID: 0}
-  lightSwoosh: {fileID: 8300000, guid: a6c5e19b6adca0649afbc1ee0b6588d6, type: 3}
-  HeavySwoosh: {fileID: 8300000, guid: ad858b15b09a3b04aab63af0307ef1bc, type: 3}
-  parryHit: {fileID: 8300000, guid: e5a1b28fbeb1cf946bf035a6ea9aa5f4, type: 3}
   timeStop: {fileID: 8300000, guid: ec41a41992315d84a93f9ac20885c2f3, type: 3}
 --- !u!114 &4422783338112707589
 MonoBehaviour:
@@ -6947,7 +7004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   cooldownPerGetHit: 0.5
-  cooldownToAttack: 0.7
+  cooldownToAttack: 0.4
   blockMovementFor: 0.3
   playerStats: {fileID: 4422783338112707589}
   statsMultiplier: 1.5
@@ -6955,6 +7012,9 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b29bc83d04f8a7746919d72c547d5b78, type: 3}
   hit: {fileID: 8300000, guid: 0561e9bcab03f2d4ba870adae8cce721, type: 3}
   animateObject: {fileID: 0}
+  playerRegenHp: 0.02
+  soulPrefab: {fileID: 0}
+  soulSpawnPoint: {fileID: 0}
 --- !u!114 &1379096196146726794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6967,6 +7027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be99ddc36e1519a46979a5da2e56415d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  staminaRegen: 0.5
 --- !u!114 &6948016333332140338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7074,6 +7135,55 @@ MonoBehaviour:
     m_Bits: 64
   interactionMessage: {fileID: 0}
   playerIsInBonfire: 0
+  playerBonfire: {fileID: 0}
+--- !u!114 &7637084609253954492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022221983605619843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702e53f551b8cee46819acce629ce655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  lookHeight: 1
+  target: {fileID: 0}
+  offset: {x: 0, y: 1.2, z: -5.5}
+  followSpeed: 10
+  rotationSpeed: 0.01
+  pitchLimits: {x: -40, y: 30}
+  verticalCameraShift: 0
+  initialYaw: 0
+  initialPitch: 15
+  rangeToLock: 7
+  distanceToUnlock: 13
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  lockOnPitch: 20
+  cameraCollisionRadius: 0.1
+  cameraCollisionSmooth: 15
+  wallLayers:
+  - serializedVersion: 2
+    m_Bits: 384
+  lockOnSmoothSpeed: 5
+--- !u!114 &3104927321007837812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022221983605619843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb93d8ec6232ff40a1cae32cb489de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemShow
+  inventory: {fileID: 0}
+  rightHandHolder: {fileID: 0}
+  leftHandHolder: {fileID: 0}
 --- !u!1 &8202029870707654736
 GameObject:
   m_ObjectHideFlags: 0

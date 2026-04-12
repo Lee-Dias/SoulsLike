@@ -23,15 +23,16 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     [Header("Decision Chance")]
     [SerializeField] protected float chanceToCircle = 0.5f; // 50/50 default
 
+    [Header("Important")]
     [SerializeField] protected Animator anim;
-
     [SerializeField] protected BoxCollider weaponCollider;
-
     [SerializeField] protected Item item;
-
     [SerializeField] protected GameObject canvas;
-
     [SerializeField] protected int auraValue = 100;
+    [Header("Attack Settings")]
+    [SerializeField] protected bool hasPredifinedFirstAttack = false;
+    [SerializeField] protected float firstAttackDistanceToActivate = 0f;
+    [SerializeField] protected float firstAttackViewDistanceToActivate = 0f;
 
     private float spawnTimer;
     private bool isSpawnDelayed = false;
@@ -45,6 +46,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected State chaseState;
     protected State circleState;
     protected State attackState;
+    protected State firstAttackState;
 
     protected Transform player;
 
@@ -66,6 +68,10 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected CombatAnimationManager animManager;
     protected AudioManager audioManager;
 
+    protected bool doneFirstAttack = true;
+    protected float originalViewRange;
+    protected float originalAudioRange;
+
     public bool IsInAttackAnimation => isInAttackAnimation;
     public int AuraValue => auraValue;
 
@@ -75,6 +81,14 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         health = GetComponent<Health>();
         audioManager = FindFirstObjectByType<AudioManager>();
         animManager = new CombatAnimationManager(anim);
+        if(hasPredifinedFirstAttack)
+        {
+            doneFirstAttack = false;
+            originalViewRange = viewRange;
+            originalAudioRange = audioRange;
+            viewRange = firstAttackViewDistanceToActivate;
+            audioRange = firstAttackDistanceToActivate;
+        }
 
 
     }
@@ -169,6 +183,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         chaseState = new State("Chase", OnEnterChase, Chase, null);
         circleState = new State("Circle", OnEnterCircle, Circle, null);
         attackState = new State("Attack", OnEnterAttack, Attack, null);
+        firstAttackState = new State("FirstAttack", OnEnterFirstAttack, FirstAttack, null);
     }
 
     // ------------------------------------------------------
@@ -176,7 +191,11 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     // ------------------------------------------------------
     protected virtual void CreateTransitions()
     {
-        idleState.AddTransition(new Transition(() => playerInViewRange || playerInAudioRange, null, decideState));
+        idleState.AddTransition(new Transition(() => (playerInViewRange || playerInAudioRange) && doneFirstAttack, null, decideState));
+
+        idleState.AddTransition(new Transition(() => !doneFirstAttack && (playerInViewRange || playerInAudioRange), null, firstAttackState));
+
+        firstAttackState.AddTransition(new Transition(() => doneFirstAttack, null, decideState));
 
         decideState.AddTransition(new Transition(() => ShouldGoIdle(), null, idleState));
         decideState.AddTransition(new Transition(() => ShouldChase(), null, chaseState));
@@ -228,6 +247,10 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     }
 
     protected virtual void Idle() { }
+
+    protected abstract void OnEnterFirstAttack();
+
+    protected abstract void FirstAttack();
 
     protected virtual void OnEnterDecide()
     {

@@ -55,6 +55,9 @@ public class CombatPlayableHandle
     private float cameraShakeValue;
     private bool activateTrail;
 
+    private bool soundActivate;
+    private AudioClip[] audioClips;
+
     public event Action<int> StepStarted;
 
     public bool IsBlending => blendActive;
@@ -62,6 +65,8 @@ public class CombatPlayableHandle
     public bool IsFadingIn => startBlendActive;
     public bool ActivateHitBox => activateHitBox;
     public bool ActivateTrail => activateTrail;
+    public bool SoundActivate => soundActivate;
+    public AudioClip[] SoundEffectCombo => audioClips;
     public bool Spawn => spawn;
     public bool CameraShaked => cameraShaked;
     public float CameraShakeValue => cameraShakeValue;
@@ -122,6 +127,7 @@ public class CombatPlayableHandle
         spawn = false;
         isPlaying = true;
         currentStep = Mathf.Clamp(stepIndex, 0, isCombo ? data.Steps.Length - 1 : 0);
+        soundActivate = false;
 
         if (isCombo)
         {
@@ -184,6 +190,12 @@ public class CombatPlayableHandle
                 else
                 {
                     activateHitBox = false;
+                }
+
+                if(data.Steps[currentStep].SoundStartTime < GetNormalizedTime())
+                {
+                    soundActivate = true;
+                    audioClips = data.Steps[currentStep].SoundEffectCombo;
                 }
 
                 if(data.Steps[currentStep].CameraShakeTimer < GetNormalizedTime() && !cameraShaked)
@@ -352,6 +364,7 @@ public class CombatPlayableHandle
     {
         if (!isCombo || nextIndex >= data.Steps.Length) return;
 
+        soundActivate = false;
         Debug.Log("blend called");
         blendFromIndex = currentStep;
         blendToIndex = nextIndex;

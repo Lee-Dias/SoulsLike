@@ -121,10 +121,20 @@ public class CameraSettings : MonoBehaviour
 
         currentLockTarget = bestTarget;
 
+        ActivateSymbol();
+
+        
+
+    }
+
+    private void ActivateSymbol()
+    {
+        currentLockTarget.gameObject.GetComponent<LockOnSymbol>()?.ActivateSymbol();
     }
 
     private void Unlock()
     {
+        ActivateSymbol();
         currentLockTarget = null;
     }
 

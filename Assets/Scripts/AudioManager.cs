@@ -46,6 +46,8 @@ public class AudioManager : MonoBehaviour
 
         StartCoroutine(PlayDelayed(() =>
         {
+            if (clipToPlay == null)
+                return;
             // Create temporary GameObject
             GameObject tempGO = new GameObject("TempAudio");
             tempGO.transform.position = transform.position;

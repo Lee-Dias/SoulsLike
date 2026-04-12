@@ -37,9 +37,6 @@ public class PlayerAnimationsController : MonoBehaviour
     [SerializeField] private LiminalUIController liminalUIController;
 
     [Header("Audio Settings")]
-    [SerializeField] private AudioClip lightSwoosh;
-    [SerializeField] private AudioClip HeavySwoosh;
-    [SerializeField] private AudioClip parryHit;
     [SerializeField] private AudioClip timeStop;
 
 
@@ -77,6 +74,7 @@ public class PlayerAnimationsController : MonoBehaviour
     private bool rotatedPlayer;
     private float bonusCheat = 0;
     private bool activateTrail;
+    private bool soundActivate;
 
     public bool IsAttacking => isAttacking;
     public bool ActivateTrail => activateTrail;
@@ -167,6 +165,16 @@ public class PlayerAnimationsController : MonoBehaviour
             {
                 activateTrail = false;  
             }
+            if (!animManager.Handle.SoundActivate)
+            {
+                soundActivate = false;
+            }
+            if(animManager.Handle.SoundActivate && !soundActivate)
+            {
+                audioManager.PlayAudio(null, animManager.Handle.SoundEffectCombo, 0f);
+                soundActivate = true;
+            }
+
             if (animManager.Handle.ActivateHitBox)
             {
                 if (isDoingParry)
@@ -239,7 +247,6 @@ public class PlayerAnimationsController : MonoBehaviour
     public bool PerformParry()
     {
         if(!canParry) return false;
-        audioManager.PlayAudio(parryHit);
         parryVfx.Play();
         canParry = false;
         StartCoroutine(DoTimeStop());
@@ -299,12 +306,12 @@ public class PlayerAnimationsController : MonoBehaviour
     {
         if (!ctx.performed) return;
 
-        HandleAttackInput(equippedWeapon?.AnimationsData?.LightAttack, lightSwoosh, 0.2f);
+        HandleAttackInput(equippedWeapon?.AnimationsData?.LightAttack);
     }
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
-        HandleAttackInput(equippedWeapon?.AnimationsData?.HeavyAttack, HeavySwoosh, 0.2f);
+        HandleAttackInput(equippedWeapon?.AnimationsData?.HeavyAttack);
     }
     public void OnSpecialAttack(InputAction.CallbackContext ctx)
     {
@@ -369,7 +376,6 @@ public class PlayerAnimationsController : MonoBehaviour
         // Snap only if the camera is locked (same check you used before)
         if (playerController == null) return;
 
-        audioManager.PlayAudio(HeavySwoosh ,null,0.1f,0.6f);
 
         // Optionally: only snap if this animation is an attack
         // If you want to limit to attack animations only:
@@ -378,7 +384,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
         playerController.SnapRotateToTarget();
     }
-    private void HandleAttackInput(CombatAnimations animData, AudioClip audioClip = null, float delay = 0f)
+    private void HandleAttackInput(CombatAnimations animData)
     {
         if (animData == null || !health.CanAttack() || !playerState.PlayerCanMove) return;
 

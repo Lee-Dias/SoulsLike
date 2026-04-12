@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e98abd0cd5cae9c4cbb5f0d180a21c47, type: 3}
-  m_Name: SwordLight
+  m_Name: GreatSwordLight
   m_EditorClassIdentifier: Assembly-CSharp::CombatAnimations
   isCombo: 1
   soundEffect: {fileID: 0}
@@ -25,7 +25,8 @@ MonoBehaviour:
   comboSteps:
   - name: LightAttack1
     clip: {fileID: -623603649343465320, guid: da1c1a9a53a83b24a96c2f37ce8744fd, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
     movementCurveOnCombo:
@@ -37,11 +38,15 @@ MonoBehaviour:
     blendTime: 0.15
     hitStartTime: 0.5
     hitEndTime: 0.9
+    soundStartTime: 0
     cameraShakeTimer: 0.7
     cameraShake: 0.03
+    activateTrail: 0
+    deActivateTrail: 0
   - name: LightAttack2
     clip: {fileID: -623603649343465320, guid: dd07667793dda274fa07439040cc8810, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
     movementCurveOnCombo:
@@ -56,8 +61,11 @@ MonoBehaviour:
     blendTime: 0.5
     hitStartTime: 0.5
     hitEndTime: 1
+    soundStartTime: 0
     cameraShakeTimer: 0.7
     cameraShake: 0.03
+    activateTrail: 0
+    deActivateTrail: 0
   spawnObject: 0
   objectToSpawn: {fileID: 0}
   positionToSpawnObject: {x: 0, y: 0, z: 0}
