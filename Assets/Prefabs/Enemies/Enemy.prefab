@@ -458,6 +458,10 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 19657fff9d82bab41b05cc36b1a13da9, type: 2}
   canvas: {fileID: 4748427172027250823}
   auraValue: 100
+  hasPredifinedFirstAttack: 0
+  firstAttackDistanceToActivate: 0
+  firstAttackViewDistanceToActivate: 0
+  specialHitBoxForFirstAttacks: {fileID: 0}
   lightAttackChance: 100
   heavyAttackChance: 0
   specialAttackChance: 0
@@ -1153,7 +1157,7 @@ RectTransform:
   m_GameObject: {fileID: 4748427172027250823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 968282874391727064}
@@ -1164,7 +1168,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: 100, y: 20}
+  m_SizeDelta: {x: 99.5, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7793192053171182818
 Canvas:
@@ -1499,8 +1503,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.01499939, y: 0}
-  m_SizeDelta: {x: 1, y: 0.1}
+  m_AnchoredPosition: {x: -0.03, y: 0}
+  m_SizeDelta: {x: 0.65, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1349730104877555078
 CanvasRenderer:
