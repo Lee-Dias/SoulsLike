@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9134223750328108713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8215016271053022084}
+  m_Layer: 0
+  m_Name: Env_Cistern_Wall_Curved_Joined
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &8215016271053022084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134223750328108713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9068970948753943611}
+  - {fileID: 6596926583640383569}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4417868080800554531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8215016271053022084}
+    m_Modifications:
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892636372918363336, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_Name
+      value: Env_Cistern_Ceiling_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892636372918363336, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+--- !u!4 &6596926583640383569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
+  m_PrefabInstance: {fileID: 4417868080800554531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8339565839646773289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8215016271053022084}
+    m_Modifications:
+    - target: {fileID: 372870067777463976, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_Name
+      value: Env_Cistern_Wall_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 372870067777463976, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.20000982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 372870067777463976, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6434718881135473135}
+  m_SourcePrefab: {fileID: 100100000, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+--- !u!1 &8543510650677147265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 372870067777463976, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+  m_PrefabInstance: {fileID: 8339565839646773289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6434718881135473135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543510650677147265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 1.1566211}
+  m_Center: {x: 2.4999928, y: 2.5, z: -0.57831246}
+--- !u!4 &9068970948753943611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1037908145129667602, guid: c9ae3d292736d004cb56ac3b63e16bb1, type: 3}
+  m_PrefabInstance: {fileID: 8339565839646773289}
+  m_PrefabAsset: {fileID: 0}
