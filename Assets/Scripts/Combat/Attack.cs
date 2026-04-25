@@ -66,10 +66,15 @@ public class Attack : MonoBehaviour
                 stop = true;
             }
         }
-        if(playerController.IsInvincible)
+        if(playerController != null)
         {
-            stop = true;
+            if(playerController.IsInvincible)
+            {
+                stop = true;
+            }
         }
+            
+
 
         damage = enemy.DamageToDeal();
     }
