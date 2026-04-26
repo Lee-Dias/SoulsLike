@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7666577699685097095}
   - component: {fileID: 7798814066453033522}
   m_Layer: 7
-  m_Name: Point Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6158130451354411222}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20606436, y: -0.89378256, z: -0.3010408}
+  m_LocalRotation: {x: -0.3730451, y: -0.8304247, z: 0.15623441, w: 0.383175}
+  m_LocalPosition: {x: -0.20606136, y: -0.8937857, z: -0.3010441}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8698309960725554375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.513, y: -131.13, z: 47.694}
 --- !u!108 &4831328663904609077
 Light:
   m_ObjectHideFlags: 0
@@ -43,15 +43,15 @@ Light:
   m_GameObject: {fileID: 6158130451354411222}
   m_Enabled: 1
   serializedVersion: 12
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 0.5058824, g: 0.101960786, b: 0.85882354, a: 1}
-  m_Intensity: 2.4999926
-  m_Range: 2.4999926
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Intensity: 22.345732
+  m_Range: 11.407439
+  m_SpotAngle: 62.9
+  m_InnerSpotAngle: 23
   m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -84,13 +84,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 7
+  m_BounceIntensity: 6
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: 3e-45, z: 7.2128436e+22, w: 3.019037e+12}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 1, w: -0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OscillateLight
   oscillateLight: {fileID: 4831328663904609077}
-  intensityMin: 1
-  intensityMax: 2.5
-  rangeMin: 1
-  rangeMax: 2.5
+  intensityMin: 20
+  intensityMax: 25
+  rangeMin: 10
+  rangeMax: 13
   changeSpeed: 4
 --- !u!1 &6469712351175879587
 GameObject:
@@ -297,31 +297,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23
+      value: 44.01472
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64
+      value: 0.5000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: -5.835466
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.95302165
+      value: 0.6738891
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.21418415
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.6738869
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.3029023
+      value: -0.2141849
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41cbcc92d2690f43a2dec846a5a0e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

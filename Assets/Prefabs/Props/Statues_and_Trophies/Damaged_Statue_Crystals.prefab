@@ -24,10 +24,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7053962399652299894}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1906228458299113503}
   - {fileID: 12034750277946636}
@@ -42,6 +42,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7275621537802978365}
     m_Modifications:
+    - target: {fileID: 1346647975656199983, guid: eee16eef5c571784aa48269f475c1f54, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2318385189191805010, guid: eee16eef5c571784aa48269f475c1f54, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.14408958
@@ -279,6 +283,10 @@ PrefabInstance:
     - target: {fileID: 3687524382311827010, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_Name
       value: Crystal_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390765232043808029, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8814620328629341474, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_LocalScale.x
