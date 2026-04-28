@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.137209
+      value: 41.632057
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.61467
+      value: 0.34223795
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.999974
+      value: 16.129713
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071072
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071065
+      value: -0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalRotation.z
@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   destroyedVersion: {fileID: 8739833185815020526, guid: e717c52ce90854d4e8e3bf60b900d6a9, type: 3}
-  explosionForce: 0.5
-  explosionRadius: 0.01
-  upwardModifier: 0.05
+  explosionForce: 0
+  explosionRadius: 0
+  upwardModifier: 0
   audioClip: {fileID: 8300000, guid: eeb2b554a478a2a46ad4ef41338de94b, type: 3}
   audioDelay: 0
   layerToDestroy: 

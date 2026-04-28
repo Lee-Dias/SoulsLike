@@ -8,6 +8,7 @@ public class Destructible : MonoBehaviour
     [SerializeField] private float upwardModifier = 0.05f;
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private float audioDelay = 0f;
+    [SerializeField] private float audioVolume = 1f;
     [SerializeField] private string layerToDestroy; // e.g., "Player"
 
 
@@ -42,7 +43,7 @@ public class Destructible : MonoBehaviour
     {
         _isDestroyed = true; // Lock the state
 
-        GameObject broken = Instantiate(destroyedVersion, transform.position, transform.rotation);
+        GameObject broken = Instantiate(destroyedVersion, transform.position, transform.rotation, this.transform.parent);
         Rigidbody[] bodies = broken.GetComponentsInChildren<Rigidbody>();
 
         foreach (Rigidbody rb in bodies)

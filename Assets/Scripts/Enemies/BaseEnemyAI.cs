@@ -240,13 +240,14 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     private bool ShouldCircle()
     {
         if (!IsInPreferredRange()) return false;
-
+        if(!canAttack) return true;
         return lastDecisionRoll < chanceToCircle;
     }
 
     private bool ShouldAttack()
     {
         if (!IsInPreferredRange() || canAttack == false) return false;
+        
         return lastDecisionRoll >= chanceToCircle;
     }
 
@@ -278,7 +279,11 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         Debug.Log("Deciding...");
     }
 
-    protected virtual void Decide() { }
+    protected virtual void Decide()
+    {
+        
+        
+    }
 
     protected virtual void OnEnterChase()
     {

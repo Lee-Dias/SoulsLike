@@ -143,15 +143,22 @@ public class Health : MonoBehaviour
                         destructible.DestroyObject();
                     }
                 }
+                DestroyFloor destroyFloor = GetComponent<DestroyFloor>();
+                if (destroyFloor != null)
+                {
+                    destroyFloor.DestroyFloorr();
+                }
                 if(animateObject != null)
                 {
                     animateObject.SetTrigger("Open");
                 }
-
                 Instantiate(soulPrefab, soulSpawnPoint.transform.position, Quaternion.identity);
                 if(doDisolve == true)
                 {
                     StartCoroutine(DissolveOverTime());
+                }else
+                {
+                    Destroy(this.gameObject);
                 }
 
                 

@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.132074
+      value: 36.136772
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21928269
+      value: 0.2251299
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.629711
+      value: 10.62971
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 83c25db038a66bb47ad07e44a7e8bdd3, type: 2}
     - target: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_Name
-      value: Env_Castle_Exterior_Floor_Grid
+      value: Env_Castle_Exterior_Floor_Grid_Broken
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_Layer
@@ -90,29 +90,61 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3306143610827555750}
+      addedObject: {fileID: -8829737114914324646}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1640388591577115427}
   m_SourcePrefab: {fileID: 100100000, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
 --- !u!1 &1753270899346204276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
   m_PrefabInstance: {fileID: 1483293164008790821}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3306143610827555750
-MonoBehaviour:
+--- !u!54 &-8829737114914324646
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753270899346204276}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1640388591577115427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753270899346204276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a73d82b65e07f45b96c7b1ed5a94cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Destructible
-  destroyedVersion: {fileID: 1753270899346204276, guid: b14a4f38ea225084db3ddd6a29c68512, type: 3}
-  explosionForce: 0
-  explosionRadius: 0
-  upwardModifier: 0
-  audioClip: {fileID: 8300000, guid: eeb2b554a478a2a46ad4ef41338de94b, type: 3}
-  audioDelay: 0
-  layerToDestroy: 
+  serializedVersion: 3
+  m_Size: {x: 0.79999995, y: 0.023370499, z: 0.79999995}
+  m_Center: {x: 0.39999998, y: 0.011685249, z: 0.39999998}

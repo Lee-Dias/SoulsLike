@@ -1050,6 +1050,7 @@ MonoBehaviour:
   vfxStart: {fileID: 4534649855674682085, guid: 22343a49af82c6e47a45b03ece4f4f95, type: 3}
   vfxPostion: {fileID: 2099314039411306905}
   timeToActivateAfter: 2
+  audioToPlay: {fileID: 0}
 --- !u!136 &633757438166716076
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2746,6 +2747,37 @@ Transform:
   - {fileID: 9082415189241375155}
   m_Father: {fileID: 1128946354613713631}
   m_LocalEulerAnglesHint: {x: -3.648986, y: -0.50021297, z: 1.660717}
+--- !u!1 &5729992146388698207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4402448572713080271}
+  m_Layer: 0
+  m_Name: SoulPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4402448572713080271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729992146388698207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.134, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8235844440981645835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5877653108523834630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +3904,7 @@ Transform:
   - {fileID: 284114764290761433}
   - {fileID: 1128946354613713631}
   - {fileID: 3812450118060320933}
+  - {fileID: 4402448572713080271}
   m_Father: {fileID: 3264694743114515505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4336405523964032917
@@ -3908,7 +3941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a78ee1d769df64b99a45ca4851bf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  cooldownPerGetHit: 0.5
+  cooldownPerGetHit: 0.3
   cooldownToAttack: 0.7
   blockMovementFor: 0.2
   playerStats: {fileID: 0}
@@ -3917,6 +3950,12 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 74dd660d1531475499d7ad0d4b355b45, type: 3}
   hit: {fileID: 8300000, guid: 0cf2310bcdf2e1547b15bd62d0ba1eb6, type: 3}
   animateObject: {fileID: 0}
+  playerRegenHp: 0
+  doDisolve: 0
+  timeToDissolve: 0
+  activateAfterGetHit: {fileID: 0}
+  soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
+  soulSpawnPoint: {fileID: 5729992146388698207}
 --- !u!136 &2371486957556542213
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3993,7 +4032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d86ab59fc32b046a08629776bd0144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyAI
-  minPreferredDistanceFromPlayer: 0
+  minPreferredDistanceFromPlayer: -1
   maxPreferredDistanceFromPlayer: 3
   audioRange: 15
   viewRange: 25
@@ -4003,12 +4042,21 @@ MonoBehaviour:
   maxTimeCircling: 3
   attacksCooldown: 2
   enemy: {fileID: 11400000, guid: 7137f7c93e2f0364e8cb9a2911967bd1, type: 2}
-  chanceToCircle: 0.2
+  canDodge: 0
+  dodgeDistance: 5
+  dodgeDuration: 0.1
+  chanceToDodge: 25
+  dodgeCoolDown: 3
+  chanceToCircle: 0.6
   anim: {fileID: 4336405523964032917}
   weaponCollider: {fileID: 5424038986186183679}
   item: {fileID: 11400000, guid: a7ec053ae1309fc4e99995a0335d38bb, type: 2}
   canvas: {fileID: 3020342313868964631}
   auraValue: 100
+  hasPredifinedFirstAttack: 0
+  firstAttackDistanceToActivate: 0
+  firstAttackViewDistanceToActivate: 0
+  specialHitBoxForFirstAttacks: {fileID: 0}
   lightAttackChance: 80
   heavyAttackChance: 20
   specialAttackChance: 0

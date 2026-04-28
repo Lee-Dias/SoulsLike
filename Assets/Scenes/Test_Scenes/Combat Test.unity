@@ -2341,7 +2341,7 @@ GameObject:
   - component: {fileID: 662695401}
   - component: {fileID: 662695400}
   - component: {fileID: 662695404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5949,14 +5949,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7478502894191628866, guid: f5ba64303f01fd947b548b1728dc5670, type: 3}
-      propertyPath: baseMaxHealth
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 7478502894191628866, guid: f5ba64303f01fd947b548b1728dc5670, type: 3}
-      propertyPath: cooldownPerGetHit
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6008,6 +6000,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 45383049818586700, guid: 7dab5e2e65d1f934eb5476c53d025489, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352510635923274745, guid: 7dab5e2e65d1f934eb5476c53d025489, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8501094798341071720, guid: 7dab5e2e65d1f934eb5476c53d025489, type: 3}
