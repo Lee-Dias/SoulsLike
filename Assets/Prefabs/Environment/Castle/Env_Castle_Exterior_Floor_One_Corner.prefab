@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.63206
+      value: 16.137209
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3422389
+      value: 43.61467
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.129707
+      value: 9.999974
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: cfa5e17c1fc8d4b488ddbc036f12d22a, type: 2}
     - target: {fileID: 919132149155446097, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_Name
-      value: Env_Castle_Exterior_Floor_One_Corner (16)
+      value: Env_Castle_Exterior_Floor_One_Corner
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       propertyPath: m_Layer
@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 993022d296a852c44addd9384e93f67f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 323461852248057506}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 993022d296a852c44addd9384e93f67f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6395582794972336216}
   m_SourcePrefab: {fileID: 100100000, guid: 993022d296a852c44addd9384e93f67f, type: 3}
 --- !u!1 &4489185416619090192 stripped
 GameObject:
@@ -102,3 +105,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 0.625, z: 5}
   m_Center: {x: 2.5, y: -0.3125, z: 2.499999}
+--- !u!114 &6395582794972336216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4489185416619090192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a73d82b65e07f45b96c7b1ed5a94cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destructible
+  destroyedVersion: {fileID: 8739833185815020526, guid: e717c52ce90854d4e8e3bf60b900d6a9, type: 3}
+  explosionForce: 0.5
+  explosionRadius: 0.01
+  upwardModifier: 0.05
+  audioClip: {fileID: 8300000, guid: eeb2b554a478a2a46ad4ef41338de94b, type: 3}
+  audioDelay: 0
+  layerToDestroy: 
