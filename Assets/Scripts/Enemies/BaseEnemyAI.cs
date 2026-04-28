@@ -20,6 +20,17 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     [SerializeField] protected float attacksCooldown;
     [SerializeField] protected EnemyProfile enemy;
 
+    [Header("Dodge Settings")]
+    [SerializeField] protected bool canDodge;
+    [SerializeField] protected float dodgeDistance = 5f;
+    [SerializeField] protected float dodgeDuration = 0.1f;
+    [SerializeField] protected float chanceToDodge = 25f;
+    [SerializeField] protected float dodgeCoolDown = 3f;
+
+    private float dodgeCoolDownTimer;
+    private float totalCircleTime;
+    private int dodgeChecksDone = 0; // Para garantir que só checa 3 vezes
+
     [Header("Decision Chance")]
     [SerializeField] protected float chanceToCircle = 0.5f; // 50/50 default
 
@@ -34,6 +45,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     [SerializeField] protected float firstAttackDistanceToActivate = 0f;
     [SerializeField] protected float firstAttackViewDistanceToActivate = 0f;
 
+    
     private float spawnTimer;
     private bool isSpawnDelayed = false;
 
@@ -61,6 +73,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected float circleDirection = 1f;
 
     protected bool attackEnded = false;
+    protected bool canAttack = false;
     protected bool isInAttackAnimation = false;
 
     protected float timeScale = 1f;
@@ -71,6 +84,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected bool doneFirstAttack = true;
     protected float originalViewRange;
     protected float originalAudioRange;
+
+    private float lastDecisionRoll;
 
     public bool IsInAttackAnimation => isInAttackAnimation;
     public int AuraValue => auraValue;
@@ -226,13 +241,13 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     {
         if (!IsInPreferredRange()) return false;
 
-        return Random.value < chanceToCircle;
+        return lastDecisionRoll < chanceToCircle;
     }
 
     private bool ShouldAttack()
     {
-        if (!IsInPreferredRange()) return false;
-        return Random.value >= chanceToCircle;
+        if (!IsInPreferredRange() || canAttack == false) return false;
+        return lastDecisionRoll >= chanceToCircle;
     }
 
     // ------------------------------------------------------
@@ -243,6 +258,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     {
         agent.isStopped = true;
         anim.SetBool("IsIdle", true);
+        canAttack = true;
         
     }
 
@@ -257,6 +273,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         agent.isStopped = false;
         agent.updateRotation = false;
         attackEnded = false;
+        lastDecisionRoll = Random.value;
         circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
         Debug.Log("Deciding...");
     }
@@ -269,6 +286,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         agent.isStopped = false;
         agent.updateRotation = true;
         agent.speed = baseSpeed;
+        canAttack = true;
         Debug.Log("Chasing player");
     }
 
@@ -285,36 +303,95 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         agent.isStopped = false;
         agent.updateRotation = false;
         agent.speed = circleEnemySpeed;
-
+        canAttack = true;
+        dodgeCoolDownTimer = dodgeCoolDown;
         circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
+        totalCircleTime = circleTimer; 
+        dodgeChecksDone = 0;   
         circleDirection = Random.value > 0.5f ? 1f : -1f;
     }
 
     protected virtual void Circle()
     {
-        if (player == null) return;
-        if (health.ShouldBlockMovement())
+        if (player == null || health.ShouldBlockMovement()) 
         {
-            agent.isStopped=true;
+            agent.isStopped = true;
+            return;
         }
-        else
-        {
-            agent.isStopped = false;
-        }
+
+        agent.isStopped = false;
         RotateTowardPlayer();
 
+
+        // --- Lógica de Movimento de Círculo ---
         Vector3 toPlayer = (player.position - transform.position).normalized;
         Vector3 strafe = Vector3.Cross(Vector3.up, toPlayer) * circleDirection;
-
         Vector3 target = transform.position + strafe * 2f;
-
+        
+        // Ajuste de distância preferida
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance < minPreferredDistanceFromPlayer) target -= toPlayer;
         else if (distance > maxPreferredDistanceFromPlayer) target += toPlayer;
 
         agent.SetDestination(target);
 
+        // --- Lógica dos 3 Checkpoints de Dodge ---
+        float progress = 1f - (circleTimer / totalCircleTime); // 0 a 1
+        if (canDodge)
+        {
+            if (dodgeChecksDone == 0 && progress >= 0.25f) CheckForDodge();
+            if (dodgeChecksDone == 1 && progress >= 0.50f) CheckForDodge();
+            if (dodgeChecksDone == 2 && progress >= 0.75f) CheckForDodge();
+        }
+
+
         circleTimer -= Time.deltaTime * timeScale;
+        dodgeCoolDownTimer += Time.deltaTime * timeScale;
+    }
+
+    private void CheckForDodge()
+    {
+        dodgeChecksDone++;
+        if (Random.value < (chanceToDodge / 100f) && dodgeCoolDownTimer >= dodgeCoolDown)
+        {
+            Dodge();
+            dodgeCoolDownTimer = 0f; // reset cooldown after dodging
+        }
+    }
+
+    private void Dodge()
+    {
+        // Toca a animação
+        anim.SetTrigger("Dodge");
+        
+        // Calcula a direção lateral baseada no círculo
+        Vector3 dodgeDirection = transform.right * circleDirection;
+
+        // Inicia o movimento suave em vez de um TP instantâneo
+        StartCoroutine(SmoothDodge(dodgeDirection));
+
+        Debug.Log("Inimigo realizou um dodge fluido!");
+    }
+
+    private System.Collections.IEnumerator SmoothDodge(Vector3 direction)
+    {
+        
+        float elapsed = 0f;
+        
+        // Opcional: Podes desativar a atualização do NavMesh temporariamente para não haver conflito
+        // agent.updatePosition = false; 
+
+        while (elapsed < dodgeDuration)
+        {
+            // Calcula quanto mover este frame
+            float speed = dodgeDistance / dodgeDuration;
+            agent.Move(direction * speed * Time.deltaTime * timeScale);
+            
+            elapsed += Time.deltaTime * timeScale;
+            yield return null; // Espera pelo próximo frame
+        }
+
+        // agent.updatePosition = true;
     }
 
     protected abstract void OnEnterAttack();

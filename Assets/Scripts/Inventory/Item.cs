@@ -1,20 +1,24 @@
 using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Items", menuName = "Scriptable Objects/Items")]
 public class Item : ScriptableObject
 {
     public enum ItemType { Weapon, Shield ,Equipment, Consumable, Aura,None}
     private enum Buff { Health, Damage, Armor}
+    [System.Serializable]
+    public struct StatToBuff
+    {
+        [SerializeField]private PlayerStats.Stats stats;
+        [SerializeField]private int amountToBuff;
+    }
 
     [SerializeField] private ItemType itemType;
     [SerializeField] private new string name;
     [SerializeField] private Sprite icon;
     [SerializeField] private string description;
-    [SerializeField] private int value;
-    //[SerializeField] private SlotTag itemTag;
-
     public ItemType itemTypePublic => itemType;
 
     public Sprite Icon => icon;
@@ -33,6 +37,10 @@ public class Item : ScriptableObject
 
     //Consumable ------------------------------------------------------------------------------
     [SerializeField, ShowIf("itemType", ItemType.Consumable)] private int duration;
+    [SerializeField, ShowIf("itemType", ItemType.Consumable)] private bool isHeal;
+    [SerializeField, ShowIf("isHeal")] private int healAmount;
+    [SerializeField, ShowIf("itemType", ItemType.Consumable)] private bool isDamageBuff;
+    [SerializeField, ShowIf("isDamageBuff")] private int damageBuffAmount;
     [SerializeField, ShowIf("itemType", ItemType.Consumable)] private CombatAnimations animation;
 
     //Aura ------------------------------------------------------------------------------
@@ -44,12 +52,13 @@ public class Item : ScriptableObject
 
     // Buff ------------------------------------------------------------------------------
     [SerializeField] private bool buff;
-
-    [SerializeField, ShowIf("buff")] private Buff buffType;
+    [SerializeField, ShowIf("buff")] private StatToBuff[] statToBuff;
     [SerializeField, ShowIf("buff")] private int buffQuantity;
 
+    [SerializeField] private bool destroyOnUse;
+    [SerializeField] private float delayToUse;
+
     private bool isConsumable => itemType == ItemType.Consumable;
-    [SerializeField, ShowIf(EConditionOperator.And, "buff", "isConsumable")] private int buffCooldown;
 
     private bool ShowAnimations()
     {
@@ -66,5 +75,12 @@ public class Item : ScriptableObject
     public CombatAnimations Animation => animation;
     public Sprite ItemIcon => icon;
     public GameObject Weapon => weapon;
+    public StatToBuff[] StatsToBuff => statToBuff;
+    public bool IsHeal => isHeal;
+    public bool IsDamageBuff => isDamageBuff;
+    public int HealAmount => healAmount;
+    public int DamageBuffAmount => damageBuffAmount;
+    public bool DestroyOnUse => destroyOnUse;
+    public float DelayToUse => delayToUse;
 
 }

@@ -23,6 +23,7 @@ public class MeleeEnemyAI : BaseEnemyAI
     {
         anim.SetBool("IsIdle", false);
         isInAttackAnimation = true;
+        canAttack = false;
         animManager = new CombatAnimationManager(anim);
         animManager.EnableAutoCombo();
         ChooseAnimation();

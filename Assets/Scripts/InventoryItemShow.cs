@@ -1,9 +1,13 @@
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InventoryItemShow : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Inventory inventory;
+    private Inventory inventory;
 
     [Header("Holders")]
     [SerializeField] private Transform rightHandHolder;
@@ -20,8 +24,8 @@ public class InventoryItemShow : MonoBehaviour
     private void Awake()
     {
         playerAnimationsController = GetComponent<PlayerAnimationsController>();
+        inventory = FindFirstObjectByType<Inventory>();
     }
-
     public void HandleRightHand()
     {
         Item item = inventory.GetItemOnRightHand();
@@ -74,5 +78,33 @@ public class InventoryItemShow : MonoBehaviour
     {
         foreach (Transform child in holder)
             Destroy(child.gameObject);
+    }
+
+    public void OnConsumable(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        if(inventory.GetItemOnConsumablesSlot() != null) UseConsumable();
+        
+    }
+
+    public void UseConsumable()
+    {
+        playerAnimationsController?.OnConsumable();
+        Item item = inventory.GetItemOnConsumablesSlot();
+        StartCoroutine(ExecuteAfterDelay(item));
+    }
+
+    private IEnumerator ExecuteAfterDelay(Item item)
+    {
+        yield return new WaitForSeconds(item.DelayToUse);
+        DoAfterAnimation(item);
+    }
+    
+    private void DoAfterAnimation(Item item)
+    {
+        if (item.IsHeal)
+        {
+            GetComponent<Health>().Heal(item.HealAmount);
+        }
     }
 }

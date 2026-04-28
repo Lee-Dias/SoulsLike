@@ -8,6 +8,8 @@ public class LockOnSymbol : MonoBehaviour
 
     public void ActivateSymbol()
     {
+        if(lockOnSymbol == null) return; 
+        
         if (!lockOnSymbol.activeInHierarchy)
         {
             lockOnSymbol.SetActive(true);

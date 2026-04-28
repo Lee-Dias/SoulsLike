@@ -146,6 +146,12 @@ public class CameraSettings : MonoBehaviour
         {
             if (currentLockTarget)
             {
+                if (currentLockTarget.gameObject.layer != LayerMask.NameToLayer("Enemy"))
+                {
+                    Unlock();
+                    return;                    
+                }
+
                 float dist = Vector3.Distance(target.position, currentLockTarget.position);
                 if (dist > distanceToUnlock)
                     Unlock();
