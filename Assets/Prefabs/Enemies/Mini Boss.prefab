@@ -12039,7 +12039,7 @@ Animator:
   m_GameObject: {fileID: 1622238932042262626}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d916c101ceddca44a980a1a253f2fb19, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5c356446494875349b46d38c8af61f78, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12073,6 +12073,9 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 0cf2310bcdf2e1547b15bd62d0ba1eb6, type: 3}
   animateObject: {fileID: 0}
   playerRegenHp: 0
+  doDisolve: 0
+  timeToDissolve: 0
+  activateAfterGetHit: {fileID: 0}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 8956698960389246621}
 --- !u!136 &8045291324252064942
@@ -12161,12 +12164,20 @@ MonoBehaviour:
   maxTimeCircling: 3
   attacksCooldown: 2
   enemy: {fileID: 11400000, guid: 7137f7c93e2f0364e8cb9a2911967bd1, type: 2}
+  dodgeDistanceFromPlayer: 2
+  dodgeDistance: 5
+  chanceToDodge: 25
+  dodgeCoolDown: 0
   chanceToCircle: 0.2
   anim: {fileID: 3045673750193452593}
   weaponCollider: {fileID: 7985814108143912429}
   item: {fileID: 11400000, guid: a7ec053ae1309fc4e99995a0335d38bb, type: 2}
   canvas: {fileID: 0}
   auraValue: 100
+  hasPredifinedFirstAttack: 0
+  firstAttackDistanceToActivate: 0
+  firstAttackViewDistanceToActivate: 0
+  specialHitBoxForFirstAttacks: {fileID: 0}
   lightAttackChance: 80
   heavyAttackChance: 20
   specialAttackChance: 0

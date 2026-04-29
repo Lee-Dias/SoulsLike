@@ -332,9 +332,8 @@ public class PlayerAnimationsController : MonoBehaviour
             
         
     }
-    public void OnConsumable(InputAction.CallbackContext ctx)
+    public void OnConsumable()
     {
-        if (!ctx.performed) return;
         HandleAttackInput(inventory?.GetItemOnConsumablesSlot()?.Animation);
     }
     

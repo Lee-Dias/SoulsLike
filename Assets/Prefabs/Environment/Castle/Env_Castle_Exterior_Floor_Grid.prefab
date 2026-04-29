@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.136772
+      value: 26.132074
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2251299
+      value: 0.21928269
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.62971
+      value: 10.629711
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87,5 +87,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3306143610827555750}
   m_SourcePrefab: {fileID: 100100000, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
+--- !u!1 &1753270899346204276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 71d129895f07b3a4a88435ec5762d923, type: 3}
+  m_PrefabInstance: {fileID: 1483293164008790821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3306143610827555750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753270899346204276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a73d82b65e07f45b96c7b1ed5a94cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destructible
+  destroyedVersion: {fileID: 1753270899346204276, guid: b14a4f38ea225084db3ddd6a29c68512, type: 3}
+  explosionForce: 0
+  explosionRadius: 0
+  upwardModifier: 0
+  audioClip: {fileID: 8300000, guid: eeb2b554a478a2a46ad4ef41338de94b, type: 3}
+  audioDelay: 0
+  layerToDestroy: 

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
 
 
 public class Health : MonoBehaviour
@@ -18,6 +20,11 @@ public class Health : MonoBehaviour
     [SerializeField] private Animator animateObject; 
 
     [SerializeField] private float playerRegenHp; 
+
+    [SerializeField] private bool doDisolve; 
+    [SerializeField] private float timeToDissolve; 
+
+    [SerializeField] private GameObject activateAfterGetHit; 
 
     [Header("Soul")]
     [SerializeField] private GameObject soulPrefab;
@@ -49,12 +56,17 @@ public class Health : MonoBehaviour
             maxHealth += baseMaxHealth ;
         }
             
-
         health = maxHealth;
 
         animator = GetComponent<Animator>();
         timePassedSinceLastHit = cooldownPerGetHit;
         timePassedSinceLastHitForAttack = cooldownToAttack; 
+    }
+
+    public void Heal(float healAmount)
+    {
+        health += healAmount;
+        health = Mathf.Clamp(health, 0f, maxHealth);
     }
 
     public void OnScaleHealth(InputAction.CallbackContext context)
@@ -77,6 +89,8 @@ public class Health : MonoBehaviour
 
         health = Mathf.Clamp(health, 0f, maxHealth);
     }
+
+
     public void OnRestartGame(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
@@ -92,6 +106,10 @@ public class Health : MonoBehaviour
 
     public void GetHit(float damage)
     {
+        if (activateAfterGetHit)
+        {
+            activateAfterGetHit.SetActive(true);
+        }
         health -= damage;
         audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
@@ -104,12 +122,14 @@ public class Health : MonoBehaviour
             }
             if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
+                this.gameObject.layer = LayerMask.NameToLayer("Default");
+                animator.SetTrigger("Die");
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);
                 GetComponent<MeleeEnemyAI>().enabled = false;
                 GetComponent<CapsuleCollider>().enabled = false;
                 Destroy(GetComponent<Rigidbody>());
                 GetComponent<NavMeshAgent>().enabled = false;
-                GetComponent<Animator>().enabled = false;
+                //GetComponent<Animator>().enabled = false;
                 Destroy(GetComponentInChildren<Attack>().gameObject);
                 Destroy(GetComponentInChildren<Billboard>().gameObject);
                 int a = 0;
@@ -123,23 +143,79 @@ public class Health : MonoBehaviour
                         destructible.DestroyObject();
                     }
                 }
+                DestroyFloor destroyFloor = GetComponent<DestroyFloor>();
+                if (destroyFloor != null)
+                {
+                    destroyFloor.DestroyFloorr();
+                }
                 if(animateObject != null)
                 {
                     animateObject.SetTrigger("Open");
                 }
-
                 Instantiate(soulPrefab, soulSpawnPoint.transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
+                if(doDisolve == true)
+                {
+                    StartCoroutine(DissolveOverTime());
+                }else
+                {
+                    Destroy(this.gameObject);
+                }
+
+                
                 
             }
             
         }
         
-        animator.SetTrigger("GetHit");
+        
         timePassedSinceLastHit = 0;
         timePassedSinceLastHitForAttack = 0;
         timePassedSinceLastBlockMovement = 0;
     }
+
+    IEnumerator DissolveOverTime()
+    {
+        float duration = 3.0f; // Strict 3 second window
+        float currentTime = 0f;
+        
+        // 1. Collect all materials from children to avoid calling GetComponent every frame
+        List<Material> materials = new List<Material>();
+        foreach (Transform tr in transform)
+        {
+            Renderer rend = tr.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                materials.Add(rend.material);
+            }
+        }
+
+        // 2. Loop until duration is met
+        while (currentTime < timeToDissolve)
+        {
+            currentTime += Time.deltaTime;
+            
+            // Calculate progress (0 to 1)
+            float progress = Mathf.Clamp01(currentTime / duration);
+
+            // 3. Update all collected materials
+            foreach (Material mat in materials)
+            {
+                mat.SetFloat("_DissolveAmount", progress);
+            }
+
+            yield return null; // Wait for the next frame
+        }
+
+        // 4. Ensure it lands exactly on 1.0 at the end
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat("_DissolveAmount", 1.0f);
+            Destroy(this.gameObject);
+        }
+    }
+
+
+
     private void Update()
     {
         if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
