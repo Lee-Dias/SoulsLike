@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8515647487486888833
 Transform:
   m_ObjectHideFlags: 0
@@ -189,10 +189,10 @@ Light:
   m_GameObject: {fileID: 6158130451354411222}
   m_Enabled: 1
   serializedVersion: 12
-  m_Type: 0
+  m_Type: 2
   m_Color: {r: 0.5058824, g: 0.101960786, b: 0.85882354, a: 1}
-  m_Intensity: 22.663872
-  m_Range: 11.598324
+  m_Intensity: 1.0011299
+  m_Range: 2.0022597
   m_SpotAngle: 62.9
   m_InnerSpotAngle: 23
   m_CookieSize2D: {x: 10, y: 10}
@@ -236,7 +236,7 @@ Light:
   m_BounceIntensity: 6
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.0078125, y: 2.0196247e-19, z: 1.9348544e-19, w: 7.0366745e+22}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -287,10 +287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OscillateLight
   oscillateLight: {fileID: 4831328663904609077}
-  intensityMin: 20
-  intensityMax: 25
-  rangeMin: 10
-  rangeMax: 13
+  intensityMin: 1
+  intensityMax: 2
+  rangeMin: 2
+  rangeMax: 4
   changeSpeed: 4
 --- !u!1 &6469712351175879587
 GameObject:
