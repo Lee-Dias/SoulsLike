@@ -113,6 +113,66 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &805497233773506256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4785699881636586504}
+  - component: {fileID: 2324774017363029200}
+  m_Layer: 0
+  m_Name: Water Caustics (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4785699881636586504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805497233773506256}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.29808852, y: 0.6370425, z: -0.3067752, w: -0.6412558}
+  m_LocalPosition: {x: -1.0699997, y: 2.540001, z: -12.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: 50.638, y: -89.039, z: 1.233}
+--- !u!114 &2324774017363029200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805497233773506256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.5030001}
+  m_Size: {x: 23, y: 5, z: 5.01}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &845473612062719540
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,23 +205,16 @@ Transform:
   - {fileID: 618163402506038273}
   - {fileID: 3891984755848178879}
   - {fileID: 6810895788366091257}
-  - {fileID: 8928887438742274460}
   - {fileID: 1760243851943621303}
-  - {fileID: 4601723204303506554}
-  - {fileID: 6026380516503919605}
-  - {fileID: 2047483576685630014}
-  - {fileID: 6214288594509570734}
   - {fileID: 9018575506096771295}
   - {fileID: 3186382468813460359}
   - {fileID: 3055258357742704552}
   - {fileID: 2916140714427226878}
+  - {fileID: 6918755459492393489}
+  - {fileID: 8928887438742274460}
+  - {fileID: 193710624971461008}
   - {fileID: 7445118156989178347}
   - {fileID: 9075101885407634482}
-  - {fileID: 4083672998705301288}
-  - {fileID: 7424295522207504894}
-  - {fileID: 49661517856800184}
-  - {fileID: 3038709719438640409}
-  - {fileID: 7736510047503851093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374080760285369808
@@ -258,6 +311,66 @@ Transform:
   - {fileID: 2213261083857859378}
   m_Father: {fileID: 964010397245826509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2091787291672840887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424171618857420223}
+  - component: {fileID: 2900746826115424723}
+  m_Layer: 0
+  m_Name: Water Caustics (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424171618857420223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091787291672840887}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.0320015, y: -5.420002, z: -12.459999}
+  m_LocalScale: {x: 1, y: 0.43966, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &2900746826115424723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091787291672840887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.5030001}
+  m_Size: {x: 23, y: 27.35, z: 5.01}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &2429804645325386326
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +472,164 @@ Transform:
   - {fileID: 659399244459277433}
   m_Father: {fileID: 964010397245826509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5055678346634199724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193710624971461008}
+  m_Layer: 0
+  m_Name: Water Caustics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &193710624971461008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055678346634199724}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6727375110282297903}
+  - {fileID: 5271872134036375859}
+  - {fileID: 424171618857420223}
+  - {fileID: 4785699881636586504}
+  - {fileID: 4600982851097386753}
+  - {fileID: 3191775731908499468}
+  - {fileID: 8571807074346542517}
+  m_Father: {fileID: 964010397245826509}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5779715375165918034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3191775731908499468}
+  - component: {fileID: 8228838281503120286}
+  m_Layer: 0
+  m_Name: Water Caustics (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3191775731908499468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5779715375165918034}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.59, y: -5.420002, z: 0.040000916}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8228838281503120286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5779715375165918034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.5}
+  m_Size: {x: 27.35, y: 27.35, z: 5}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &6685552690110252788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4600982851097386753}
+  - component: {fileID: 5413609539730695367}
+  m_Layer: 0
+  m_Name: Water Caustics (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4600982851097386753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685552690110252788}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 8.59, y: -5.420002, z: -25.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &5413609539730695367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685552690110252788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.5}
+  m_Size: {x: 27.35, y: 27.35, z: 5}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &7581139750565202343
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +1116,102 @@ Transform:
   - {fileID: 6031202500435449665}
   m_Father: {fileID: 3891984755848178879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7815625171467236876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6918755459492393489}
+  m_Layer: 0
+  m_Name: Crystals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6918755459492393489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815625171467236876}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4083672998705301288}
+  - {fileID: 7424295522207504894}
+  - {fileID: 49661517856800184}
+  - {fileID: 3038709719438640409}
+  - {fileID: 7736510047503851093}
+  m_Father: {fileID: 964010397245826509}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7828800292191111107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8571807074346542517}
+  - component: {fileID: 2457288647880685598}
+  m_Layer: 0
+  m_Name: Water Caustics (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8571807074346542517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828800292191111107}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 20.89, y: -5.420002, z: -11.439999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2457288647880685598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828800292191111107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.5}
+  m_Size: {x: 27.35, y: 27.35, z: 5}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &8054393253120899424
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,8 +1245,132 @@ Transform:
   - {fileID: 87101118231367921}
   - {fileID: 5133399954404012581}
   - {fileID: 5414275325835835989}
+  - {fileID: 4601723204303506554}
+  - {fileID: 6026380516503919605}
+  - {fileID: 2047483576685630014}
+  - {fileID: 6214288594509570734}
   m_Father: {fileID: 964010397245826509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8184474898209375145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5271872134036375859}
+  - component: {fileID: 7173380457620468246}
+  m_Layer: 0
+  m_Name: Water Caustics (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5271872134036375859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184474898209375145}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 9.57, y: 7.369999, z: -13.493683}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &7173380457620468246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184474898209375145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 29.12, y: 28, z: 1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &8324212146027706217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6727375110282297903}
+  - component: {fileID: 6386846645165200685}
+  m_Layer: 0
+  m_Name: Water Caustics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6727375110282297903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324212146027706217}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 9.57, y: 0.24000168, z: -13.493683}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 193710624971461008}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &6386846645165200685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324212146027706217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9f0d07451d864844c8ecbe665f08afaa, type: 2}
+  m_DrawDistance: 100
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1}
+  m_Size: {x: 30, y: 28, z: 2}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &9199232498068561474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,15 +1864,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 6918755459492393489}
     m_Modifications:
     - target: {fileID: 3687524382311827010, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_Name
       value: Crystal_001
       objectReference: {fileID: 0}
     - target: {fileID: 8814620328629341474, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1286223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814620328629341474, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.43999994
+      value: 0.4399999
       objectReference: {fileID: 0}
     - target: {fileID: 8814620328629341474, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1393,7 +1888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8814620328629341474, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.132841
+      value: -12.132843
       objectReference: {fileID: 0}
     - target: {fileID: 8814620328629341474, guid: 7201709024b0e724e98c8fc9e490d74e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1505,7 +2000,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 6918755459492393489}
     m_Modifications:
     - target: {fileID: 4508346102977005469, guid: eee16eef5c571784aa48269f475c1f54, type: 3}
       propertyPath: m_LocalScale.x
@@ -2017,7 +2512,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 3891984755848178879}
     m_Modifications:
     - target: {fileID: 8175134355984227342, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_Name
@@ -2037,15 +2532,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000019073486
+      value: -20.000065
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.9683113
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.90193367
+      value: 1.470665
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2157,19 +2652,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 3891984755848178879}
     m_Modifications:
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -20.000065
       objectReference: {fileID: 0}
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 2.0316887
       objectReference: {fileID: 0}
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7019329
+      value: 1.6706619
       objectReference: {fileID: 0}
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3111,7 +3606,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 3891984755848178879}
     m_Modifications:
     - target: {fileID: 8175134355984227342, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_Name
@@ -3123,15 +3618,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -20.000065
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.9683113
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.843378
+      value: -21.470781
       objectReference: {fileID: 0}
     - target: {fileID: 8806852630752544436, guid: 1406a05be9549d5429e189c7f65cfd79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3572,6 +4067,7 @@ MonoBehaviour:
   upwardModifier: 0.05
   audioClip: {fileID: 8300000, guid: eeb2b554a478a2a46ad4ef41338de94b, type: 3}
   audioDelay: 0
+  audioVolume: 1
   layerToDestroy: 
 --- !u!4 &618163402506038273 stripped
 Transform:
@@ -4112,7 +4608,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 6918755459492393489}
     m_Modifications:
     - target: {fileID: 1591727100821421524, guid: b83ccf1f057f65e49a5f75f6a96ada90, type: 3}
       propertyPath: m_Name
@@ -4120,15 +4616,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6694178199799872179, guid: b83ccf1f057f65e49a5f75f6a96ada90, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5214999
+      value: 1.5214998
       objectReference: {fileID: 0}
     - target: {fileID: 6694178199799872179, guid: b83ccf1f057f65e49a5f75f6a96ada90, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5215002
+      value: 1.5215005
       objectReference: {fileID: 0}
     - target: {fileID: 6694178199799872179, guid: b83ccf1f057f65e49a5f75f6a96ada90, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5215001
+      value: 1.5215002
       objectReference: {fileID: 0}
     - target: {fileID: 6694178199799872179, guid: b83ccf1f057f65e49a5f75f6a96ada90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4186,7 +4682,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 6918755459492393489}
     m_Modifications:
     - target: {fileID: 206234020980061725, guid: 6ff7c5bf4a4e15b449c6d8cc59835813, type: 3}
       propertyPath: m_LocalScale.x
@@ -4210,7 +4706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 206234020980061725, guid: 6ff7c5bf4a4e15b449c6d8cc59835813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.651669
+      value: 14.651665
       objectReference: {fileID: 0}
     - target: {fileID: 206234020980061725, guid: 6ff7c5bf4a4e15b449c6d8cc59835813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4966,7 +5462,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 6918755459492393489}
     m_Modifications:
     - target: {fileID: 4701889478300586223, guid: 63c693a7dd9da854ab52d76e78bc456c, type: 3}
       propertyPath: m_Name
@@ -5164,19 +5660,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 964010397245826509}
+    m_TransformParent: {fileID: 3891984755848178879}
     m_Modifications:
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -25.000065
       objectReference: {fileID: 0}
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 2.0316887
       objectReference: {fileID: 0}
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.043388
+      value: -21.670792
       objectReference: {fileID: 0}
     - target: {fileID: 7404927526953303666, guid: 627b9050cefaf3a40b08374dfd67da73, type: 3}
       propertyPath: m_LocalRotation.w
