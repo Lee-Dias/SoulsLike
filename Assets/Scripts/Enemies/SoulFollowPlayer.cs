@@ -23,7 +23,6 @@ public class SoulFollowPlayer : MonoBehaviour
 
     void Update()
     {
-        print(seq.IsPlaying());
         if (seq.IsPlaying() == false)
         {
             Transform playerTransform = GameObject.FindWithTag(targetTag).transform;

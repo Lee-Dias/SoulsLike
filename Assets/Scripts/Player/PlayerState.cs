@@ -26,6 +26,7 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private GameObject interactionMessage;
     [HideInInspector] public bool playerIsInBonfire;
     [HideInInspector]public LiminalWorldChanger playerBonfire;
+    [HideInInspector] public Vector3 bonfireLocation;
 
     private void Start()
     {

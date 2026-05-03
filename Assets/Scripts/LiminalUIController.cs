@@ -43,6 +43,7 @@ public class LiminalUIController : MonoBehaviour
     private bool menuIsActive = false;
     private Animator animator;
     private PlayerAnimationsController playerAnimationsController;
+    private CameraSettings cameraSettings;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class LiminalUIController : MonoBehaviour
         playerController = FindFirstObjectByType<PlayerController>();
         playerAnimationsController = FindFirstObjectByType<PlayerAnimationsController>();
         animator = playerController.GetComponent<Animator>();
+        cameraSettings = FindFirstObjectByType<CameraSettings>();
         foreach (PlayerStats.Stats stat in System.Enum.GetValues(typeof(PlayerStats.Stats)))
         {
             pendingUpgrades.Add(stat, 0);
@@ -93,6 +95,10 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
+        cameraSettings.ChangeToBonfire(new Vector3(
+            2 * playerState.bonfireLocation.x - playerState.transform.position.x,
+            2 * playerState.bonfireLocation.y - playerState.transform.position.y,
+            playerState.bonfireLocation.z));
         PauseAllSpawners();
     }
     public void TurnOff()
@@ -104,6 +110,7 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         menuIsActive = false;
+        cameraSettings.ReturnFromBonfire();
         ResetUpgrades();
         ResumeAllSpawners();
     }

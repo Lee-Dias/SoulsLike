@@ -29,6 +29,7 @@ public class LiminalWorldChanger : MonoBehaviour
             
             playerState.playerIsInBonfire = true;
             playerState.playerBonfire = this;
+            playerState.bonfireLocation = gameObject.transform.position;
             playerState.CheckInteractionMessageState();
         }
     }

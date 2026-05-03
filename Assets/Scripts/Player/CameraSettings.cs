@@ -46,6 +46,7 @@ public class CameraSettings : MonoBehaviour
 
     private Vector2 lookInput;
     public Transform currentLockTarget { get; private set; }
+    private Transform tempTarget;
 
     private void OnEnable()
     {
@@ -263,5 +264,18 @@ public class CameraSettings : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(target.position, rangeToLock);
         }
+    }
+
+    public void ChangeToBonfire(Vector3 bonfirePosition)
+    {
+        tempTarget = target;
+        target.position = bonfirePosition;
+        UpdateCameraTransform();
+    }
+
+    public void ReturnFromBonfire()
+    {
+        target = tempTarget;
+        UpdateCameraTransform();
     }
 }
