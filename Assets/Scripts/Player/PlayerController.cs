@@ -44,6 +44,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip dash;
     [SerializeField] private float playWalkEvery = 0.5f;
 
+    [Header("Animation Settings")]
+    [SerializeField] private float walkStopDelay = 0.15f; // O tempo de "carência" antes de parar
+    private float walkStopTimer;
+
     private float walkSoundTimer;
 
     private AudioManager audioManager;
@@ -139,14 +143,21 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (moveInput.magnitude == 0)
+        if (moveInput.sqrMagnitude > 0.01f && playerState.PlayerCanMove)
         {
-            animator.SetBool("IsWalking", false);
+            // Se houver input, anda e reseta o timer
+            animator.SetBool("IsWalking", true);
+            walkStopTimer = walkStopDelay; 
         }
         else
         {
-            if(playerState.PlayerCanMove)
-                animator.SetBool("IsWalking", true);
+            // Se não houver input, começa a contar o tempo para desligar
+            walkStopTimer -= Time.deltaTime;
+
+            if (walkStopTimer <= 0)
+            {
+                animator.SetBool("IsWalking", false);
+            }
         }
         HandleWalkAudio();
         MoveCharacter();

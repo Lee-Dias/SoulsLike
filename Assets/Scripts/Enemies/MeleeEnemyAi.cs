@@ -138,6 +138,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         animManager = new CombatAnimationManager(anim);
         animManager.EnableAutoCombo();
         agent.isStopped = true;  
+        canAttack = false;
         rotated = false;
         animManager.Play(item.AnimationsData.LightAttack);
         lastComboIndex = animManager.Handle.ComboIndex;

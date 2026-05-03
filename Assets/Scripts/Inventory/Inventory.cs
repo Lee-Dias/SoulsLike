@@ -211,7 +211,6 @@ public class Inventory : MonoBehaviour
 
         // Create inventory item instance
         InventoryItem newItem = Instantiate(itemPrefab, targetSlot.transform);
-        newItem.canRemove = false;
 
         newItem.Initialize(giveLeftItemAtStart, targetSlot);
 
@@ -225,6 +224,7 @@ public class Inventory : MonoBehaviour
     }
     private void UpdateEquippedItems()
     {
+        UpdateSlots();
         InventoryItemShow inventoryItemShow = GetComponent<InventoryItemShow>();
         inventoryItemShow.HandleRightHand();
         inventoryItemShow.HandleLeftHand();
@@ -271,7 +271,6 @@ public class Inventory : MonoBehaviour
         {
             //carriedItem.transform.position = Input.mousePosition;
         }
-        UpdateSlots();
     }
     public void UpdateSlots()
     {
@@ -384,6 +383,7 @@ public class Inventory : MonoBehaviour
 
     public void EquipEquipment(ItemType type, InventoryItem item = null)
     {
+        UpdateEquippedItems();
         switch(type)
         {
             case ItemType.Weapon:
@@ -402,6 +402,7 @@ public class Inventory : MonoBehaviour
                 break;
             default:
                 break;
-        }//Debug.Log("Equipped " + (item != null ? item.myItem.Name : "Nothing") + " to " + type.ToString());
+        }
+        
     }
 }
