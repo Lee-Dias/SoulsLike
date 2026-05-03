@@ -1308,6 +1308,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fe6746e2-c208-44d6-825d-3a005735df84
     m_ActionName: 'Player/OnExtraDamage[/Keyboard/o]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a91240a1-0193-4517-b2c6-8baeaa641a96
+    m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2512,6 +2516,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fe6746e2-c208-44d6-825d-3a005735df84
     m_ActionName: 'Player/OnExtraDamage[/Keyboard/o]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a91240a1-0193-4517-b2c6-8baeaa641a96
+    m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3849,6 +3857,26 @@ PrefabInstance:
       propertyPath: liminalUIController
       value: 
       objectReference: {fileID: 1886655001}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[32].m_ActionId
+      value: a91240a1-0193-4517-b2c6-8baeaa641a96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[32].m_ActionName
+      value: 'Player/Defend[/Keyboard/leftCtrl]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[23].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[23].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerAnimationsController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5076251678615360261, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5192,10 +5220,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2086866094820217181, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2882063896731902157, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: m_Name
       value: PlayerCanvas
@@ -5212,18 +5236,6 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 4476348853918764890}
-    - target: {fileID: 5514376314526593918, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
-      propertyPath: m_Maskable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5876871227069673427, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5876871227069673427, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -797
-      objectReference: {fileID: 0}
     - target: {fileID: 7195718386307081976, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5303,10 +5315,6 @@ PrefabInstance:
     - target: {fileID: 7195718386307081976, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8818868891023579460, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

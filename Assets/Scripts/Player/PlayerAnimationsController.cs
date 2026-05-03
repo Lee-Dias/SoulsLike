@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,6 +61,8 @@ public class PlayerAnimationsController : MonoBehaviour
     private bool isDoingParry;
     private bool canParry = false; 
 
+    private bool isDefending;
+
 
     private GameObject objectToSpawn; 
     private Vector3 positionToSpawnObject; 
@@ -75,6 +75,7 @@ public class PlayerAnimationsController : MonoBehaviour
     private float bonusCheat = 0;
     private bool activateTrail;
     private bool soundActivate;
+    private bool holdDefend;
 
     public bool IsAttacking => isAttacking;
     public bool ActivateTrail => activateTrail;
@@ -129,9 +130,8 @@ public class PlayerAnimationsController : MonoBehaviour
 
 
     private void Update()
-    {
-
-
+    {         
+        HandleDefense();
         
         // manually update combat animation manager
         animManager.UpdatePerFrame(Time.deltaTime);
@@ -328,9 +328,31 @@ public class PlayerAnimationsController : MonoBehaviour
         else
         {
             HandleAttackInput(equippedWeapon?.AnimationsData?.Parry);
+        }                   
+    }
+    public void OnDefend(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) holdDefend = true;
+        else if (ctx.canceled) holdDefend = false;
+    }
+
+    private void HandleDefense()
+    {
+        // Só defende se: estiver a premir o botão, tiver escudo E não estiver a atacar
+        if (holdDefend && equippedShield && !isAttacking)
+        {
+            if (!isDefending) // Evita chamar o SetBool repetidamente se já estiver a defender
+            {
+                anim.SetBool("Defend", true);
+                isDefending = true;
+            }
         }
-            
-        
+        else
+        {
+            anim.SetBool("Defend", false);
+            isDefending = false;
+        }
+        playerState.HandleDefense(isDefending);
     }
     public void OnConsumable()
     {

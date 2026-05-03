@@ -246,6 +246,10 @@ public class Inventory : MonoBehaviour
     {
         if (item == null) return;
 
+        if (ItemPickedUp.Instance != null) {
+            ItemPickedUp.Instance.ShowItem(item);
+        }
+        
         if (item.itemTypePublic == ItemType.Aura)
         {
             auraInventory.SpawnAuraItem(item);

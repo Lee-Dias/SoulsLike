@@ -6,9 +6,12 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private float enemyCheckRadius = 10f;
     [SerializeField] private LayerMask enemyLayer;
 
+    private Inventory inventory;
+
 
     private bool playerCanMove = true;
 
+    private bool isDefending = false;  
     private bool isOnInventory;
     private bool isOnBonfire;
     private bool isInSettings;
@@ -23,6 +26,11 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private GameObject interactionMessage;
     [HideInInspector] public bool playerIsInBonfire;
     [HideInInspector]public LiminalWorldChanger playerBonfire;
+
+    private void Start()
+    {
+        inventory = GetComponent<Inventory>();
+    }
 
     public void PlayerCanMoveState(bool state)
     {
@@ -73,5 +81,27 @@ public class PlayerState : MonoBehaviour
             Gizmos.color = Color.green; // no enemies
 
         Gizmos.DrawWireSphere(transform.position, enemyCheckRadius);
+    }
+
+    public float getAmountToDefend()
+    {
+        if(isDefending)
+        {
+           float a = inventory.GetItemOnLeftHand().Damage;
+           return a;
+        }
+         else
+        {
+        }
+        return 0f;
+    }
+
+    public void HandleDefense(bool def)
+    {
+        isDefending = def;
+    }
+    public bool IsDefending()
+    {
+        return isDefending;
     }
 }

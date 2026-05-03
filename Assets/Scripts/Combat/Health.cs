@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private float playerRegenHp; 
 
+
     [SerializeField] private bool doDisolve; 
     [SerializeField] private float timeToDissolve; 
 
@@ -30,6 +31,7 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject soulPrefab;
     [SerializeField] private GameObject soulSpawnPoint;
 
+    private PlayerState playerState;
     private AudioManager audioManager;
 
     private float maxHealth;
@@ -57,7 +59,7 @@ public class Health : MonoBehaviour
         }
             
         health = maxHealth;
-
+        playerState?.GetComponent<PlayerState>();
         animator = GetComponent<Animator>();
         timePassedSinceLastHit = cooldownPerGetHit;
         timePassedSinceLastHitForAttack = cooldownToAttack; 
@@ -99,20 +101,27 @@ public class Health : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         timePassedSinceLastHit += Time.deltaTime;
         timePassedSinceLastHitForAttack += Time.deltaTime;
         timePassedSinceLastBlockMovement += Time.deltaTime;
     }
-
+    private void TakeDamage(float damage)
+    {
+        health -= damage - (playerStats != null ? (playerStats.TotalDefense * 0.5f) : 0) - (playerState != null ? playerState.getAmountToDefend() : 0);
+    }
     public void GetHit(float damage)
     {
         if (activateAfterGetHit)
         {
             activateAfterGetHit.SetActive(true);
         }
-        health -= damage;
+        TakeDamage(damage);
         audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
+        if (playerState != null) if(!playerState.IsDefending()) animator.SetTrigger("GetHit");
+        
+        
         if (health <= 0)
         {
             if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -160,8 +169,6 @@ public class Health : MonoBehaviour
                 {
                     Destroy(this.gameObject);
                 }
-
-                
                 
             }
             
