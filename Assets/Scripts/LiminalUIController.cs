@@ -62,7 +62,7 @@ public class LiminalUIController : MonoBehaviour
 
     public void BonfireMenu(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings) return;
+        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings || playerState.EnemyAround) return;
         if (playerState.playerIsInBonfire)
         {
             if (!menuIsActive)
