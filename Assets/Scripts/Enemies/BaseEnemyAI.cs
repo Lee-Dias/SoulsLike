@@ -27,6 +27,9 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     [SerializeField] protected float chanceToDodge = 25f;
     [SerializeField] protected float dodgeCoolDown = 3f;
 
+    [Header("Perception Layers")]
+    [SerializeField] protected LayerMask occlusionLayers;
+
     private float dodgeCoolDownTimer;
     private float totalCircleTime;
     private int dodgeChecksDone = 0; // Para garantir que só checa 3 vezes
@@ -415,7 +418,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
         float dist = Vector3.Distance(transform.position, player.position);
 
-        playerInAudioRange = dist <= audioRange;
+        playerInAudioRange = dist <= audioRange && HasLineOfSight();
+        
         playerInViewRange = IsPlayerInViewRange();
     }
     protected bool IsTouchingPlayer()
@@ -436,8 +440,29 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     {
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        float distance = Vector3.Distance(transform.position, player.position);
 
-        return angle <= viewAngle / 2f && Vector3.Distance(transform.position, player.position) <= viewRange;
+        // Verifica: Ângulo -> Distância -> Paredes
+        return angle <= viewAngle / 2f && distance <= viewRange && HasLineOfSight();
+    }
+
+    protected bool HasLineOfSight()
+    {
+        if (player == null) return false;
+
+        Vector3 direction = (player.position - transform.position).normalized;
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        // Lança um raio do inimigo até ao jogador
+        // Se o raio bater em algo que pertença à 'occlusionLayers' antes de chegar ao jogador, retorna false
+        if (Physics.Raycast(transform.position + Vector3.up, direction, out RaycastHit hit, distance, occlusionLayers))
+        {
+            // Se bateu em algo (parede), não consegue ver/ouvir
+            return false;
+        }
+
+        // Se o caminho estiver limpo
+        return true;
     }
 
     protected void RotateTowardPlayer()

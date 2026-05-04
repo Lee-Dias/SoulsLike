@@ -42,7 +42,7 @@ public class ActivateMiniBoss : MonoBehaviour
                 doorsAnimator.SetTrigger("Close");
             audioManager.PlayAudio(audioToPlay, null , 0.4f);
             done = true;
-            playerController.ChangeInteractionMessageState(false);
+            playerState.ChangeInteractionMessageState(false);
             enemyAnimator.SetTrigger("Start");
             
             StartCoroutine(EnableEnemyAfterDelay());
@@ -67,7 +67,7 @@ public class ActivateMiniBoss : MonoBehaviour
             playerInside = true;
             if (!playerState.EnemyAround && playerState.playerIsInBonfire && !playerState.IsOnBonfire)
             {
-                playerController.ChangeInteractionMessageState(true);
+                playerState.ChangeInteractionMessageState(true);
             }
         }
     }
@@ -76,7 +76,7 @@ public class ActivateMiniBoss : MonoBehaviour
         if (tag.CompareTag("Player"))
         {
             playerInside = false;
-            playerController.ChangeInteractionMessageState(false);
+            playerState.ChangeInteractionMessageState(false);
         }
     }
     private void Update()
@@ -93,11 +93,11 @@ public class ActivateMiniBoss : MonoBehaviour
 
             if (!playerState.EnemyAround && !playerState.playerIsInBonfire && !playerState.IsOnBonfire)
             {
-                playerController.ChangeInteractionMessageState(true);
+                playerState.ChangeInteractionMessageState(true);
             }
             else
             {
-                playerController.ChangeInteractionMessageState(false);
+                playerState .ChangeInteractionMessageState(false);
             }
         }
     }

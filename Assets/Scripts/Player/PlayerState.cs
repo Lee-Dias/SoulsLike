@@ -5,6 +5,7 @@ public class PlayerState : MonoBehaviour
 
     [SerializeField] private float enemyCheckRadius = 10f;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     private Inventory inventory;
 
@@ -72,7 +73,25 @@ public class PlayerState : MonoBehaviour
     }
     public bool IsEnemyNearby()
     {
-        return Physics.CheckSphere(transform.position, enemyCheckRadius, enemyLayer);
+        // 1. Encontra todos os colliders na camada de inimigos dentro do raio
+        Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, enemyCheckRadius, enemyLayer);
+
+        foreach (Collider enemyCollider in enemiesInRange)
+        {
+            // 2. Calcula a direção e distância para o inimigo
+            Vector3 directionToEnemy = (enemyCollider.transform.position - transform.position).normalized;
+            float distanceToEnemy = Vector3.Distance(transform.position, enemyCollider.transform.position);
+
+            // 3. Lança um raio para ver se bate numa parede antes de chegar ao inimigo
+            // Usamos transform.position + Vector3.up para o raio não sair "do chão"
+            if (!Physics.Raycast(transform.position + Vector3.up, directionToEnemy, distanceToEnemy, wallLayer))
+            {
+                // Se o raio NÃO bateu em nenhuma parede, significa que o inimigo está visível
+                return true; 
+            }
+        }
+
+        return false;
     }
     private void OnDrawGizmos()
     {

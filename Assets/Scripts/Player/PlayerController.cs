@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerAnimationsController playerAnimationsController;
     [SerializeField] private float walkAfterConsumable;
 
-    [SerializeField] private GameObject interactionMessage;
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] walk;
     [SerializeField] private AudioClip dash;
@@ -352,8 +351,4 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
     }
 
-    public void ChangeInteractionMessageState(bool state)
-    {
-        interactionMessage.SetActive(state);
-    }
 }

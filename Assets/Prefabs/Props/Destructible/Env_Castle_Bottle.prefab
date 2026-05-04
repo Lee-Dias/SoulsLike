@@ -72,6 +72,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a151b9fd0923af4aacd54318a9d69ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4983113827915503914}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a151b9fd0923af4aacd54318a9d69ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2627464629813509755}
   m_SourcePrefab: {fileID: 100100000, guid: 0a151b9fd0923af4aacd54318a9d69ba, type: 3}
 --- !u!1 &714840116570849999 stripped
 GameObject:
@@ -122,7 +125,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -144,6 +147,7 @@ MonoBehaviour:
   upwardModifier: 0.01
   audioClip: {fileID: 8300000, guid: 65a0330652ba7f2408047aab5c320a2b, type: 3}
   audioDelay: 0
+  audioVolume: 1
   layerToDestroy: Sword
 --- !u!65 &4983113827915503914
 BoxCollider:
@@ -166,3 +170,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.08, y: 0.16154656, z: 0.06928204}
   m_Center: {x: 0.00000033900142, y: 0.08077328, z: -0.0000000037252903}
+--- !u!208 &2627464629813509755
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714840116570849999}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.040000003, y: 0.081, z: 0.035}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.081, z: 0}
+  m_TimeToStationary: 0.5

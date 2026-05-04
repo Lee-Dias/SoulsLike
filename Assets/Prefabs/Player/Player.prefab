@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   transformToFollow: {fileID: 1600046849339121750}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &313589795306176010
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,6 +5538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   transformToFollow: {fileID: 4478617082643196905}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!114 &3250317986525177424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6615,7 +6619,6 @@ MonoBehaviour:
   inventory: {fileID: 6948016333332140338}
   playerAnimationsController: {fileID: 1974441874649951622}
   walkAfterConsumable: 1.8
-  interactionMessage: {fileID: 0}
   walk:
   - {fileID: 8300000, guid: 8f908e981667f044da59fc57d61b27e3, type: 3}
   dash: {fileID: 8300000, guid: dfb5081d661196d418e7db4af0520cea, type: 3}
@@ -7154,6 +7157,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   interactionMessage: {fileID: 0}
   playerIsInBonfire: 0
   playerBonfire: {fileID: 0}

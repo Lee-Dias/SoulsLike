@@ -7,12 +7,12 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private Item objectToGive;
     private Inventory inventory;
     private bool playerInside = false;
-    private PlayerController playerController;
+    private PlayerState playerState;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerController = FindFirstObjectByType<PlayerController>();
+        playerState = FindFirstObjectByType<PlayerState>();
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class PickUpItem : MonoBehaviour
             if (ItemPickedUp.Instance != null) {
                 ItemPickedUp.Instance.ShowItem(objectToGive);
             }
-            playerController.ChangeInteractionMessageState(false);
+            playerState.ChangeInteractionMessageState(false);
             Destroy(gameObject);
         }
 
@@ -43,7 +43,7 @@ public class PickUpItem : MonoBehaviour
         {
             playerInside = true;
             inventory = tag.GetComponent<Inventory>();
-            playerController.ChangeInteractionMessageState(true);
+            playerState.ChangeInteractionMessageState(true);
         }
     }
 
@@ -53,7 +53,7 @@ public class PickUpItem : MonoBehaviour
         {
             playerInside = false;
             inventory = null;
-            playerController.ChangeInteractionMessageState(false);
+            playerState.ChangeInteractionMessageState(false);
         }
     }
 }

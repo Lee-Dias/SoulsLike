@@ -84,10 +84,7 @@ public class LiminalUIController : MonoBehaviour
     }
 
     public void TurnOn()
-    {
-        AreaResetter areaResetter = FindFirstObjectByType<AreaResetter>();
-        
-
+    {        
         animator.SetTrigger("Down");
         animator.ResetTrigger("Up");
         animator.SetBool("Sitting", true);
@@ -103,7 +100,10 @@ public class LiminalUIController : MonoBehaviour
             playerState.bonfireLocation.z));
             */
         PauseAllSpawners();
-        areaResetter.ResetArea();
+        foreach (AreaResetter areaResetter in FindObjectsByType<AreaResetter>(FindObjectsSortMode.None))
+        {
+            areaResetter.ResetArea();
+        }
     }
     public void TurnOff()
     {
@@ -128,9 +128,10 @@ public class LiminalUIController : MonoBehaviour
         // Espera 5 segundos
         yield return new WaitForSeconds(1f);
         
-        AreaResetter areaResetter = FindFirstObjectByType<AreaResetter>();
-        areaResetter.ResetArea();
-        
+        foreach (AreaResetter areaResetter in FindObjectsByType<AreaResetter>(FindObjectsSortMode.None))
+        {
+            areaResetter.ResetArea();
+        }
     }
 
 
