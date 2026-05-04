@@ -44,8 +44,8 @@ public class LiminalUIController : MonoBehaviour
     private bool menuIsActive = false;
     private Animator animator;
     private PlayerAnimationsController playerAnimationsController;
-    private BonfireMenuCamera cameraSettings;
-    private GameObject cinemachineCamera;
+    [SerializeField]private BonfireMenuCamera cameraSettings;
+    [SerializeField]private GameObject cinemachineCamera;
 
     void Start()
     {
@@ -125,7 +125,7 @@ public class LiminalUIController : MonoBehaviour
         ResetUpgrades();
         ResumeAllSpawners();
         
-        StartCoroutine(ResetRoutine());
+        if(playerState.IsOnBonfire) StartCoroutine(ResetRoutine());
         
     }
 

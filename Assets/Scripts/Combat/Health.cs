@@ -142,7 +142,10 @@ public class Health : MonoBehaviour
                 agent.ResetPath();
                 GetComponent<NavMeshAgent>().enabled = false;
                 
-                activateAfterGetHit.SetActive(false);
+                if (activateAfterGetHit)
+                {
+                    activateAfterGetHit.SetActive(false);
+                }
                 //GetComponent<Animator>().enabled = false;
                 //Destroy(GetComponentInChildren<Attack>().gameObject);
                 //Destroy(GetComponentInChildren<Billboard>().gameObject);
@@ -262,7 +265,8 @@ public class Health : MonoBehaviour
     internal void ResetHealth()
     {
         health = maxHealth;
-        animator.ResetControllerState();
+        if(animator != null)animator.ResetControllerState();
+        
         //GetComponent<Rigidbody>().WakeUp();
 
         GetComponent<MeleeEnemyAI>().enabled = true;

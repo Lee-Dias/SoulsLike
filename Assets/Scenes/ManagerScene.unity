@@ -1353,6 +1353,9 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 384
   lockOnSmoothSpeed: 5
+  wallCheckLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &541377144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,7 +1441,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3582,7 +3585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51f650d76f87644eb90448960a76a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BonfireMenuCamera
-  cinemachineCamera: {fileID: 0}
+  cinemachineCamera: {fileID: 1800574089}
   splineDolly: {fileID: 1800574088}
   rotationComposer: {fileID: 1800574087}
   splineContainer: {fileID: 774298374}
@@ -5080,6 +5083,14 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 4476348853918764890}
+    - target: {fileID: 43732050672498846, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
+      propertyPath: cameraSettings
+      value: 
+      objectReference: {fileID: 1800574086}
+    - target: {fileID: 43732050672498846, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
+      propertyPath: cinemachineCamera
+      value: 
+      objectReference: {fileID: 1800574084}
     - target: {fileID: 256264626011356005, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
       propertyPath: m_fontAsset
       value: 

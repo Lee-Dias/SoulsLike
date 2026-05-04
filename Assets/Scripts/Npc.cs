@@ -75,7 +75,6 @@ public class Npc : MonoBehaviour
         if (tag.CompareTag("Player"))
         {
             playerInside = true;
-            inventory = tag.GetComponent<Inventory>();
             playerState.ChangeInteractionMessageState(true);
         }
     }
@@ -85,7 +84,6 @@ public class Npc : MonoBehaviour
         if (tag.CompareTag("Player"))
         {
             playerInside = false;
-            inventory = null;
             playerState.ChangeInteractionMessageState(false);
         }
     }
