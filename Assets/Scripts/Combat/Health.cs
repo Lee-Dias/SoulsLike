@@ -119,6 +119,7 @@ public class Health : MonoBehaviour
             activateAfterGetHit.SetActive(true);
         }
         TakeDamage(damage);
+        if (health > 0) animator.SetTrigger("GetHit");
         audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
         if (playerState != null) if(!playerState.IsDefending()) animator.SetTrigger("GetHit");
@@ -142,7 +143,10 @@ public class Health : MonoBehaviour
                 agent.ResetPath();
                 GetComponent<NavMeshAgent>().enabled = false;
                 
-                activateAfterGetHit.SetActive(false);
+                if (activateAfterGetHit)
+                {
+                    activateAfterGetHit.SetActive(false);
+                }
                 //GetComponent<Animator>().enabled = false;
                 //Destroy(GetComponentInChildren<Attack>().gameObject);
                 //Destroy(GetComponentInChildren<Billboard>().gameObject);
@@ -192,13 +196,13 @@ public class Health : MonoBehaviour
         
         // 1. Collect all materials from children to avoid calling GetComponent every frame
         List<Material> materials = new List<Material>();
-        foreach (Transform tr in transform)
+
+        // O "true" dentro dos parênteses serve para incluir objetos desativados (opcional)
+        Renderer[] allRenderers = GetComponentsInChildren<Renderer>(true);
+
+        foreach (Renderer rend in allRenderers)
         {
-            Renderer rend = tr.GetComponent<Renderer>();
-            if (rend != null)
-            {
-                materials.Add(rend.material);
-            }
+            materials.Add(rend.material);
         }
 
         // 2. Loop until duration is met
@@ -262,7 +266,8 @@ public class Health : MonoBehaviour
     internal void ResetHealth()
     {
         health = maxHealth;
-        animator.ResetControllerState();
+        if(animator != null)animator.ResetControllerState();
+        
         //GetComponent<Rigidbody>().WakeUp();
 
         GetComponent<MeleeEnemyAI>().enabled = true;

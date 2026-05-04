@@ -35,6 +35,7 @@ public class CameraSettings : MonoBehaviour
 
     [Header("Lock-On Smoothness")]
     [SerializeField] private float lockOnSmoothSpeed = 5f; // Velocidade de transição para o Lock-On
+    [SerializeField] private LayerMask wallCheckLayer;
 
     private Vector3 shakeOffset;
     private Coroutine shakeCoroutine;
@@ -46,7 +47,6 @@ public class CameraSettings : MonoBehaviour
 
     private Vector2 lookInput;
     public Transform currentLockTarget { get; private set; }
-    private Transform tempTarget;
 
     private void OnEnable()
     {
@@ -104,28 +104,42 @@ public class CameraSettings : MonoBehaviour
     {
         if (!target) return;
 
+        // 1. Pega todos os inimigos no raio
         Collider[] enemies = Physics.OverlapSphere(target.position, rangeToLock, enemyLayer);
         if (enemies.Length == 0) return;
 
         Camera cam = Camera.main;
         if (!cam) return;
 
+        // 2. Filtra e ordena os inimigos
         var bestTarget = enemies
             .Select(e => e.transform)
+            .Where(e => 
+            {
+                // Verificação de Linha de Visão (Line of Sight)
+                Vector3 directionToEnemy = (e.position + Vector3.up * lookHeight) - (target.position + Vector3.up * lookHeight);
+                float distanceToEnemy = directionToEnemy.magnitude;
+
+                // Lança um raio. Se bater em algo na wallCheckLayer ANTES de chegar ao inimigo, retorna false (ignora)
+                if (Physics.Raycast(target.position + Vector3.up * lookHeight, directionToEnemy.normalized, out RaycastHit hit, distanceToEnemy, wallCheckLayer))
+                {
+                    return false; 
+                }
+                return true;
+            })
             .OrderBy(e =>
             {
                 Vector3 screenPos = cam.WorldToViewportPoint(e.position);
-                if (screenPos.z < 0) return float.MaxValue;
+                if (screenPos.z < 0) return float.MaxValue; // Inimigo atrás da câmara
                 return Vector2.Distance(new Vector2(screenPos.x, screenPos.y), new Vector2(0.5f, 0.5f));
             })
             .FirstOrDefault();
 
-        currentLockTarget = bestTarget;
-
-        ActivateSymbol();
-
-        
-
+        if (bestTarget != null)
+        {
+            currentLockTarget = bestTarget;
+            ActivateSymbol();
+        }
     }
 
     private void ActivateSymbol()
@@ -147,13 +161,16 @@ public class CameraSettings : MonoBehaviour
         {
             if (currentLockTarget)
             {
-                if (currentLockTarget.gameObject.layer != LayerMask.NameToLayer("Enemy"))
+                float dist = Vector3.Distance(target.position, currentLockTarget.position);
+
+                // Verifica se há uma parede no meio durante o lock ativo
+                Vector3 dir = (currentLockTarget.position + Vector3.up) - (target.position + Vector3.up);
+                if (Physics.Raycast(target.position + Vector3.up, dir.normalized, dist, wallCheckLayer) || (currentLockTarget.gameObject.layer != LayerMask.NameToLayer("Enemy")))
                 {
                     Unlock();
-                    return;                    
+                    return;
                 }
 
-                float dist = Vector3.Distance(target.position, currentLockTarget.position);
                 if (dist > distanceToUnlock)
                     Unlock();
             }
@@ -264,18 +281,5 @@ public class CameraSettings : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(target.position, rangeToLock);
         }
-    }
-
-    public void ChangeToBonfire(Vector3 bonfirePosition)
-    {
-        tempTarget = target;
-        target.position = bonfirePosition;
-        UpdateCameraTransform();
-    }
-
-    public void ReturnFromBonfire()
-    {
-        target = tempTarget;
-        UpdateCameraTransform();
     }
 }

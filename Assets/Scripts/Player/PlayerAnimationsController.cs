@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -157,7 +158,7 @@ public class PlayerAnimationsController : MonoBehaviour
         }
         if (animManager.Handle != null)
         {
-            if (animManager.Handle.ActivateTrail)
+            if (animManager.Handle.ActivateTrail && animManager.IsPlaying)
             {
                 activateTrail = true;
             }
@@ -485,7 +486,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
 
 
-    private void ResetCombatState()
+    public void ResetCombatState()
     {
         animManager.Stop();
         isAttacking = false;
