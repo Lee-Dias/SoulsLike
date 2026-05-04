@@ -195,13 +195,13 @@ public class Health : MonoBehaviour
         
         // 1. Collect all materials from children to avoid calling GetComponent every frame
         List<Material> materials = new List<Material>();
-        foreach (Transform tr in transform)
+
+        // O "true" dentro dos parênteses serve para incluir objetos desativados (opcional)
+        Renderer[] allRenderers = GetComponentsInChildren<Renderer>(true);
+
+        foreach (Renderer rend in allRenderers)
         {
-            Renderer rend = tr.GetComponent<Renderer>();
-            if (rend != null)
-            {
-                materials.Add(rend.material);
-            }
+            materials.Add(rend.material);
         }
 
         // 2. Loop until duration is met

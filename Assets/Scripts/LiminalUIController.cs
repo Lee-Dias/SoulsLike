@@ -86,6 +86,7 @@ public class LiminalUIController : MonoBehaviour
 
     public void TurnOn()
     {        
+        playerState.gameObject.GetComponent<Health>().Heal(1000);
         animator.SetTrigger("Down");
         animator.ResetTrigger("Up");
         animator.SetBool("Sitting", true);
