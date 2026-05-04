@@ -55,8 +55,6 @@ public class LiminalUIController : MonoBehaviour
         playerController = FindFirstObjectByType<PlayerController>();
         playerAnimationsController = FindFirstObjectByType<PlayerAnimationsController>();
         animator = playerController.GetComponent<Animator>();
-        cameraSettings = FindFirstObjectByType<BonfireMenuCamera>();
-        cinemachineCamera = cameraSettings.gameObject;
 
         foreach (PlayerStats.Stats stat in System.Enum.GetValues(typeof(PlayerStats.Stats)))
         {
@@ -97,11 +95,11 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
-        cinemachineCamera.SetActive(true);
+        /*cinemachineCamera.SetActive(true);
         cameraSettings.ChangeToBonfire(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
             2 * playerState.bonfireLocation.y - playerState.transform.position.y,
-            playerState.bonfireLocation.z));
+            playerState.bonfireLocation.z));*/
         
         PauseAllSpawners();
         foreach (AreaResetter areaResetter in FindObjectsByType<AreaResetter>(FindObjectsSortMode.None))
@@ -118,10 +116,10 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         menuIsActive = false;
-        cameraSettings.ChangeToPlayer(new Vector3(
+        /*cameraSettings.ChangeToPlayer(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
             2 * playerState.bonfireLocation.y - playerState.transform.position.y,
-            playerState.bonfireLocation.z));
+            playerState.bonfireLocation.z));*/
         ResetUpgrades();
         ResumeAllSpawners();
         
