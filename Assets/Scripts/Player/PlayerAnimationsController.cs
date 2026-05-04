@@ -357,6 +357,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public void OnConsumable()
     {
+        if(isAttacking || playerState.IsOnInventory || playerState.IsInSettings|| playerState.IsOnBonfire) return;
         HandleAttackInput(inventory?.GetItemOnConsumablesSlot()?.Animation);
     }
     

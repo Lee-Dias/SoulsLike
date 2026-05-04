@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivateMiniBoss
   meleeEnemyAI: {fileID: 7100725540125783524}
   health: {fileID: 7478502894191628866}
-  enemyCanvas: {fileID: 3020342313868964631}
+  enemyCanvas: {fileID: 381292108976640710}
   enemy: {fileID: 8263685313485936665}
   enemyAnimator: {fileID: 4336405523964032917}
   doorsAnimator: {fileID: 0}
@@ -1094,12 +1094,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3597842120385631748}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 7.2638124e-12, z: 1.1957546e-11, w: 0.7071067}
-  m_LocalPosition: {x: 0.00421, y: -0.01786, z: 0.0163}
-  m_LocalScale: {x: 0.0480569, y: 0.02832952, z: 0.101252474}
+  m_LocalRotation: {x: -0.00000008950772, y: -0.7071068, z: 0.00000006715598, w: 0.70710677}
+  m_LocalPosition: {x: -0.121, y: -0.122, z: 0.047}
+  m_LocalScale: {x: 0.66666996, y: 0.6666699, z: 0.6666701}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4797113525942186839}
+  m_Father: {fileID: 3216572217498819571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &2304102748734931699
 VisualEffect:
@@ -2637,9 +2637,7 @@ Transform:
   m_LocalPosition: {x: -0.011198044, y: 1.2592685, z: -0.007507324}
   m_LocalScale: {x: 13.872512, y: 6.584235, z: 23.532698}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6841474700652915114}
-  - {fileID: 6124845372532866172}
+  m_Children: []
   m_Father: {fileID: 8235844440981645835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1408294969734778
@@ -2782,12 +2780,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7922326387180779445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 7.2638124e-12, z: 1.1957546e-11, w: 0.7071067}
-  m_LocalPosition: {x: -0.00278, y: -0.01786, z: 0.0163}
-  m_LocalScale: {x: 0.0480569, y: 0.02832952, z: 0.101252474}
+  m_LocalRotation: {x: -0.00000008950772, y: -0.7071068, z: 0.00000006715598, w: 0.70710677}
+  m_LocalPosition: {x: -0.107, y: -0.122, z: -0.05}
+  m_LocalScale: {x: 0.66666996, y: 0.6666699, z: 0.6666701}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4797113525942186839}
+  m_Father: {fileID: 3216572217498819571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &8872632551590480901
 VisualEffect:
@@ -3063,7 +3061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   cooldownPerGetHit: 0.3
-  cooldownToAttack: 0.7
+  cooldownToAttack: 0
   blockMovementFor: 0.2
   playerStats: {fileID: 0}
   statsMultiplier: 1.5
@@ -3077,6 +3075,7 @@ MonoBehaviour:
   activateAfterGetHit: {fileID: 0}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 5729992146388698207}
+  hasKnockBack: 0
 --- !u!136 &2371486957556542213
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3171,7 +3170,7 @@ MonoBehaviour:
   occlusionLayers:
     serializedVersion: 2
     m_Bits: 0
-  chanceToCircle: 0.6
+  chanceToCircle: 0.4
   anim: {fileID: 4336405523964032917}
   weaponCollider: {fileID: 3745673300368455072}
   item: {fileID: 11400000, guid: 623ee65a8d8c0554b83cd9ce109c43cf, type: 2}
@@ -3181,9 +3180,9 @@ MonoBehaviour:
   firstAttackDistanceToActivate: 0
   firstAttackViewDistanceToActivate: 0
   specialHitBoxForFirstAttacks: {fileID: 0}
-  lightAttackChance: 60
-  heavyAttackChance: 30
-  specialAttackChance: 10
+  lightAttackChance: 50
+  heavyAttackChance: 35
+  specialAttackChance: 15
   parryChance: 0
   swordLight: {fileID: 0}
   swordHeavy: {fileID: 0}
@@ -3328,7 +3327,9 @@ Transform:
   m_LocalPosition: {x: -0.059178155, y: 0.2505104, z: 2.997602e-17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6841474700652915114}
+  - {fileID: 6124845372532866172}
   m_Father: {fileID: 7894120084544054368}
   m_LocalEulerAnglesHint: {x: -0.0000000033350531, y: -0.00000017342276, z: -0.000000113391806}
 --- !u!1 &9049835970640533067

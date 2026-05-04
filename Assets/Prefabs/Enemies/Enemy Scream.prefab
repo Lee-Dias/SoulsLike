@@ -384,6 +384,7 @@ MonoBehaviour:
   activateAfterGetHit: {fileID: 7807696900007893793}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 3076715006691545143}
+  hasKnockBack: 1
 --- !u!95 &3506815779369100050
 Animator:
   serializedVersion: 7
@@ -594,7 +595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.397}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &316858925975377829

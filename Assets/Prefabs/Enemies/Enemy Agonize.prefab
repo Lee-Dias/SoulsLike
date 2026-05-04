@@ -384,6 +384,7 @@ MonoBehaviour:
   activateAfterGetHit: {fileID: 2621986368341276698}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 2450826141508936221}
+  hasKnockBack: 1
 --- !u!95 &3506815779369100050
 Animator:
   serializedVersion: 7
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0867c2426ff876545b4800b2c81a1a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnSymbol
-  lockOnSymbol: {fileID: 0}
+  lockOnSymbol: {fileID: 8788520594389220483}
 --- !u!1 &1939402725855608890
 GameObject:
   m_ObjectHideFlags: 0

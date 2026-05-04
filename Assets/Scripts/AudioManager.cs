@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
 
             AudioSource tempSource = tempGO.AddComponent<AudioSource>();
             tempSource.clip = clipToPlay;
-            tempSource.volume = 1f;
+            tempSource.volume = volume;
             tempSource.pitch = UnityEngine.Random.Range(pitchmin, pitchmax);
             tempSource.Play();
 

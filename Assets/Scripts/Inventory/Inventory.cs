@@ -245,8 +245,8 @@ public class Inventory : MonoBehaviour
     public void SpawnInventoryItem(Item item)
     {
         if (item == null) return;
-
-
+        
+        
         if (item.itemTypePublic == ItemType.Aura)
         {
             auraInventory.SpawnAuraItem(item);
@@ -258,6 +258,7 @@ public class Inventory : MonoBehaviour
 
         Instantiate(itemPrefab, newSlot.transform)
             .Initialize(item, newSlot);
+        UpdateEquippedItems();
     }
 
 

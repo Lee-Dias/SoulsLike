@@ -33,6 +33,8 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject soulPrefab;
     [SerializeField] private GameObject soulSpawnPoint;
 
+    [SerializeField] private bool hasKnockBack = true;
+
     private PlayerState playerState;
     private AudioManager audioManager;
 
@@ -119,7 +121,8 @@ public class Health : MonoBehaviour
             activateAfterGetHit.SetActive(true);
         }
         TakeDamage(damage);
-        if (health > 0) animator.SetTrigger("GetHit");
+        if (health > 0 && hasKnockBack && playerState == null) animator.SetTrigger("GetHit");
+
         audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
         if (playerState != null) if(!playerState.IsDefending()) animator.SetTrigger("GetHit");
@@ -278,13 +281,13 @@ public class Health : MonoBehaviour
         this.gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         List<Material> materials = new List<Material>();
-        foreach (Transform tr in transform)
+
+        // O "true" dentro dos parênteses serve para incluir objetos desativados (opcional)
+        Renderer[] allRenderers = GetComponentsInChildren<Renderer>(true);
+
+        foreach (Renderer rend in allRenderers)
         {
-            Renderer rend = tr.GetComponent<Renderer>();
-            if (rend != null)
-            {
-                materials.Add(rend.material);
-            }
+            materials.Add(rend.material);
         }
 
         foreach (Material mat in materials)
