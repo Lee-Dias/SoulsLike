@@ -44,5 +44,6 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         {
             Inventory.Singleton.EquipEquipment(myType, myItem);
         }
+        EquipmentManager.Singleton.UpdateUpdateEquippedAura();
     }
 }

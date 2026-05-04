@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class InventoryItemShow : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class InventoryItemShow : MonoBehaviour
     [Header("Holders")]
     [SerializeField] private Transform rightHandHolder;
     [SerializeField] private Transform leftHandHolder;
+
+    [SerializeField] private GameObject AuraEffectPrefab;
+    [SerializeField] private VisualEffect AuraColorRenderer;
+
+    public static InventoryItemShow Singleton;
 
     private PlayerAnimationsController playerAnimationsController;
 
@@ -21,9 +27,24 @@ public class InventoryItemShow : MonoBehaviour
 
     private void Awake()
     {
+        Singleton = this;
         playerAnimationsController = GetComponent<PlayerAnimationsController>();
         inventory = FindFirstObjectByType<Inventory>();
     }
+
+    public void ShowHideAura(bool show)
+    {
+        if (show)
+        {
+            AuraColorRenderer.SetVector4("Color", AuraInventory.Singleton.GetAuraEquipped().AuraData.AuraColor);
+            AuraEffectPrefab.SetActive(true);
+        }
+        else
+        {
+            AuraEffectPrefab.SetActive(false);
+        }
+    }   
+    
     public void HandleRightHand()
     {
         Item item = inventory.GetItemOnRightHand();

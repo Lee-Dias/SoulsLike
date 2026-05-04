@@ -9,6 +9,12 @@ public class AuraInventory : MonoBehaviour
     [SerializeField] private InventoryItem itemPrefab;
 
     private List<InventorySlot> auraSlots = new();
+    public static AuraInventory Singleton;
+
+    private void Start()
+    {
+        Singleton = this;
+    }
 
     public void SpawnAuraItem(Item item)
     {

@@ -28,6 +28,9 @@ public class PickUpItem : MonoBehaviour
         if (playerInside)
         {
             inventory.SpawnInventoryItem(objectToGive);
+            if (ItemPickedUp.Instance != null) {
+                ItemPickedUp.Instance.ShowItem(objectToGive);
+            }
             playerController.ChangeInteractionMessageState(false);
             Destroy(gameObject);
         }
