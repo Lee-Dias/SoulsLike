@@ -44,7 +44,8 @@ public class LiminalUIController : MonoBehaviour
     private bool menuIsActive = false;
     private Animator animator;
     private PlayerAnimationsController playerAnimationsController;
-    private CameraSettings cameraSettings;
+    private BonfireMenuCamera cameraSettings;
+    private GameObject cinemachineCamera;
 
     void Start()
     {
@@ -54,7 +55,9 @@ public class LiminalUIController : MonoBehaviour
         playerController = FindFirstObjectByType<PlayerController>();
         playerAnimationsController = FindFirstObjectByType<PlayerAnimationsController>();
         animator = playerController.GetComponent<Animator>();
-        cameraSettings = FindFirstObjectByType<CameraSettings>();
+        cameraSettings = FindFirstObjectByType<BonfireMenuCamera>();
+        cinemachineCamera = cameraSettings.gameObject;
+
         foreach (PlayerStats.Stats stat in System.Enum.GetValues(typeof(PlayerStats.Stats)))
         {
             pendingUpgrades.Add(stat, 0);
@@ -94,11 +97,12 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
-  /*      cameraSettings.ChangeToBonfire(new Vector3(
+        cinemachineCamera.SetActive(true);
+        cameraSettings.ChangeToBonfire(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
             2 * playerState.bonfireLocation.y - playerState.transform.position.y,
             playerState.bonfireLocation.z));
-            */
+        
         PauseAllSpawners();
         foreach (AreaResetter areaResetter in FindObjectsByType<AreaResetter>(FindObjectsSortMode.None))
         {
@@ -114,10 +118,12 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         menuIsActive = false;
-        cameraSettings.ReturnFromBonfire();
+        cameraSettings.ChangeToPlayer(new Vector3(
+            2 * playerState.bonfireLocation.x - playerState.transform.position.x,
+            2 * playerState.bonfireLocation.y - playerState.transform.position.y,
+            playerState.bonfireLocation.z));
         ResetUpgrades();
         ResumeAllSpawners();
-        
         
         StartCoroutine(ResetRoutine());
         
