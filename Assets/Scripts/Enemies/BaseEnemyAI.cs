@@ -107,6 +107,10 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
 
     }
+    public virtual void ResetEnemy()
+    {
+        animManager.Stop();
+    }
     public float DamageToDeal()
     {
         return item.Damage + (enemy.BaseDexterity / 5 ) + (enemy.BaseStrength / 10);

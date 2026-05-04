@@ -3847,7 +3847,7 @@ PrefabInstance:
       objectReference: {fileID: 1783445479}
     - target: {fileID: 1379096196146726794, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: staminaRegen
-      value: 15
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1974441874649951622, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: inventoryManager
@@ -3989,9 +3989,21 @@ PrefabInstance:
       propertyPath: inventorySlotsParent
       value: 
       objectReference: {fileID: 3056147753890595130}
+    - target: {fileID: 7021564953495151978, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8022221983605619843, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209590958940791528, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: position.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209590958940791528, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: position.y
+      value: -0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

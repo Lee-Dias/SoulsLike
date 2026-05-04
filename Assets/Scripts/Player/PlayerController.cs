@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
     public void OnDodge(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (!canDash || isDashing || !playerState.PlayerCanMove || playerAnimationsController.IsAttacking) return;
+        if (!canDash || isDashing || !playerState.PlayerCanMove || playerAnimationsController.IsAttacking|| stamina.StaminaValue < staminaToWasteOnDash ) return;
 
         canDash = false;
         stamina.TakeStamina(staminaToWasteOnDash);

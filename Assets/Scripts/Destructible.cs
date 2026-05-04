@@ -56,6 +56,6 @@ public class Destructible : MonoBehaviour
             audioManager.PlayAudio(audioClip, null, audioDelay, audioVolume);
         }
 
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

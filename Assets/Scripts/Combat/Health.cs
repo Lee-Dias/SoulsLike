@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using Unity.VisualScripting;
 
 
 public class Health : MonoBehaviour
@@ -136,11 +138,14 @@ public class Health : MonoBehaviour
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);
                 GetComponent<MeleeEnemyAI>().enabled = false;
                 GetComponent<CapsuleCollider>().enabled = false;
-                Destroy(GetComponent<Rigidbody>());
+                NavMeshAgent agent = GetComponent<NavMeshAgent>();
+                agent.ResetPath();
                 GetComponent<NavMeshAgent>().enabled = false;
+                
+                activateAfterGetHit.SetActive(false);
                 //GetComponent<Animator>().enabled = false;
-                Destroy(GetComponentInChildren<Attack>().gameObject);
-                Destroy(GetComponentInChildren<Billboard>().gameObject);
+                //Destroy(GetComponentInChildren<Attack>().gameObject);
+                //Destroy(GetComponentInChildren<Billboard>().gameObject);
                 int a = 0;
                 foreach (Transform child in transform)
                 {
@@ -167,7 +172,7 @@ public class Health : MonoBehaviour
                     StartCoroutine(DissolveOverTime());
                 }else
                 {
-                    Destroy(this.gameObject);
+                    this.gameObject.SetActive(false);
                 }
                 
             }
@@ -217,7 +222,7 @@ public class Health : MonoBehaviour
         foreach (Material mat in materials)
         {
             mat.SetFloat("_DissolveAmount", 1.0f);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -252,5 +257,34 @@ public class Health : MonoBehaviour
             return false;
         } 
         return true;
+    }
+
+    internal void ResetHealth()
+    {
+        health = maxHealth;
+        animator.ResetControllerState();
+        //GetComponent<Rigidbody>().WakeUp();
+
+        GetComponent<MeleeEnemyAI>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<NavMeshAgent>().enabled = true;
+        
+
+        this.gameObject.layer = LayerMask.NameToLayer("Enemy");
+
+        List<Material> materials = new List<Material>();
+        foreach (Transform tr in transform)
+        {
+            Renderer rend = tr.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                materials.Add(rend.material);
+            }
+        }
+
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat("_DissolveAmount", 0);
+        }
     }
 }

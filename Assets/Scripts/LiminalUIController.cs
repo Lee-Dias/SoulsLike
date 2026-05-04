@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using TMPro;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -64,7 +65,7 @@ public class LiminalUIController : MonoBehaviour
 
     public void BonfireMenu(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings || playerState.EnemyAround) return;
+        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings || playerState.EnemyAround || playerState.IsOnInventory) return;
         if (playerState.playerIsInBonfire)
         {
             if (!menuIsActive)
@@ -84,8 +85,9 @@ public class LiminalUIController : MonoBehaviour
 
     public void TurnOn()
     {
-        if(playerState.IsOnInventory) return;
+        AreaResetter areaResetter = FindFirstObjectByType<AreaResetter>();
         
+
         animator.SetTrigger("Down");
         animator.ResetTrigger("Up");
         animator.SetBool("Sitting", true);
@@ -95,11 +97,13 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
-        cameraSettings.ChangeToBonfire(new Vector3(
+  /*      cameraSettings.ChangeToBonfire(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
             2 * playerState.bonfireLocation.y - playerState.transform.position.y,
             playerState.bonfireLocation.z));
+            */
         PauseAllSpawners();
+        areaResetter.ResetArea();
     }
     public void TurnOff()
     {
@@ -113,7 +117,23 @@ public class LiminalUIController : MonoBehaviour
         cameraSettings.ReturnFromBonfire();
         ResetUpgrades();
         ResumeAllSpawners();
+        
+        
+        StartCoroutine(ResetRoutine());
+        
     }
+
+    private IEnumerator ResetRoutine() 
+    {
+        // Espera 5 segundos
+        yield return new WaitForSeconds(1f);
+        
+        AreaResetter areaResetter = FindFirstObjectByType<AreaResetter>();
+        areaResetter.ResetArea();
+        
+    }
+
+
     private void PauseAllSpawners()
     {
         foreach (Spawner spawner in FindObjectsByType<Spawner>(FindObjectsSortMode.None))
