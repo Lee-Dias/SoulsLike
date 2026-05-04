@@ -165,7 +165,7 @@ public class CameraSettings : MonoBehaviour
 
                 // Verifica se há uma parede no meio durante o lock ativo
                 Vector3 dir = (currentLockTarget.position + Vector3.up) - (target.position + Vector3.up);
-                if (Physics.Raycast(target.position + Vector3.up, dir.normalized, dist, wallCheckLayer))
+                if (Physics.Raycast(target.position + Vector3.up, dir.normalized, dist, wallCheckLayer) || (currentLockTarget.gameObject.layer != LayerMask.NameToLayer("Enemy")))
                 {
                     Unlock();
                     return;

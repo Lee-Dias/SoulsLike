@@ -119,6 +119,7 @@ public class Health : MonoBehaviour
             activateAfterGetHit.SetActive(true);
         }
         TakeDamage(damage);
+        if (health > 0) animator.SetTrigger("GetHit");
         audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
         if (playerState != null) if(!playerState.IsDefending()) animator.SetTrigger("GetHit");
