@@ -145,6 +145,10 @@ public class MeleeEnemyAI : BaseEnemyAI
         specialHitBoxForFirstAttacks.enabled = true;
         
     }
+    public void DeactivateCollider()
+    {
+        weaponCollider.enabled = false;
+    }
 
     protected override void FirstAttack()
     {
