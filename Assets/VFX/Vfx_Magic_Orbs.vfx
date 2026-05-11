@@ -214,15 +214,6 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614895}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614597}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614602}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614804}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614926}
       id: 0
       isStickyNote: 0
@@ -303,56 +294,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: Orb Size
-    path: Orb Size
-    tooltip: 
-    space: -1
-    spaceable: 0
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.3
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
   - name: Orb Rotation Speed
     path: Orb Rotation Speed
-    tooltip: 
-    space: -1
-    spaceable: 0
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
-  - name: Orb Color
-    path: Orb Color
-    tooltip: 
-    space: -1
-    spaceable: 0
-    sheetType: m_Vector4f
-    realType: Color
-    defaultValue:
-      m_Type:
-        m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.5507935285568238,"g":0.12709157168865205,"b":3.8490567207336427,"a":0.0}'
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
-  - name: Trail Size
-    path: Trail Size
     tooltip: 
     space: -1
     spaceable: 0
@@ -378,7 +321,55 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.44600778818130495,"g":0.07182762771844864,"b":1.171342372894287,"a":1.0},"time":0.0},{"color":{"r":0.40932199358940127,"g":0.08494176715612412,"b":1.059273600578308,"a":1.0},"time":0.29706263542175295},{"color":{"r":0.17473186552524568,"g":0.04621761664748192,"b":0.890739381313324,"a":1.0},"time":0.5441214442253113},{"color":{"r":0.15105625987052918,"g":0.03408024087548256,"b":0.8027793765068054,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.6431372761726379,"time":0.7000076174736023},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.570402979850769,"g":0.09186093509197235,"b":1.4980392456054688,"a":1.0},"time":0.0},{"color":{"r":0.5039345622062683,"g":0.10457559674978256,"b":1.3041188716888428,"a":1.0},"time":0.29706263542175295},{"color":{"r":0.20071420073509217,"g":0.05309009924530983,"b":1.0231908559799195,"a":1.0},"time":0.5441214442253113},{"color":{"r":0.16189807653427125,"g":0.03652629628777504,"b":0.8603975772857666,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.6431372761726379,"time":0.7000076174736023},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
+  - name: Orb Color
+    path: Orb Color
+    tooltip: 
+    space: -1
+    spaceable: 0
+    sheetType: m_Vector4f
+    realType: Color
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"r":1.2071267366409302,"g":0.09892718493938446,"b":2.9960787296295168,"a":0.0}'
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
+  - name: Orb Size
+    path: Orb Size
+    tooltip: 
+    space: -1
+    spaceable: 0
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0.3
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
+  - name: Trail Size
+    path: Trail Size
+    tooltip: 
+    space: -1
+    spaceable: 0
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 1
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -1918,7 +1909,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -3342,7 +3333,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614650}
   m_ExposedName: Orb Rotation Speed
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 1
   m_Category: 
   m_Min:
     m_Type:
@@ -5025,14 +5016,14 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614793}
   m_ExposedName: Trail Gradient
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -5080,7 +5071,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.44600778818130495,"g":0.07182762771844864,"b":1.171342372894287,"a":1.0},"time":0.0},{"color":{"r":0.40932199358940127,"g":0.08494176715612412,"b":1.059273600578308,"a":1.0},"time":0.29706263542175295},{"color":{"r":0.17473186552524568,"g":0.04621761664748192,"b":0.890739381313324,"a":1.0},"time":0.5441214442253113},{"color":{"r":0.15105625987052918,"g":0.03408024087548256,"b":0.8027793765068054,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.6431372761726379,"time":0.7000076174736023},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.570402979850769,"g":0.09186093509197235,"b":1.4980392456054688,"a":1.0},"time":0.0},{"color":{"r":0.5039345622062683,"g":0.10457559674978256,"b":1.3041188716888428,"a":1.0},"time":0.29706263542175295},{"color":{"r":0.20071420073509217,"g":0.05309009924530983,"b":1.0231908559799195,"a":1.0},"time":0.5441214442253113},{"color":{"r":0.16189807653427125,"g":0.03652629628777504,"b":0.8603975772857666,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.6431372761726379,"time":0.7000076174736023},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: -1
   m_Property:
     name: o
@@ -5366,7 +5357,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.5507935285568238,"g":0.12709157168865205,"b":3.8490567207336427,"a":0.0}'
+      m_SerializableObject: '{"r":1.2071267366409302,"g":0.09892718493938446,"b":2.9960787296295168,"a":0.0}'
     m_Space: -1
   m_Property:
     name: o
@@ -5798,7 +5789,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: 
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"6f5d3c87bb3e50d4daa492c4869c0a0c","type":3}}'
     m_Space: -1
   m_Property:
     name: _Scroll_Tex
@@ -6333,7 +6324,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614896}
   m_ExposedName: Orb Size
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 4
   m_Category: 
   m_Min:
     m_Type:
@@ -6417,7 +6408,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614898}
   m_ExposedName: Trail Size
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 5
   m_Category: 
   m_Min:
     m_Type:
@@ -7614,7 +7605,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: 
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"1f08bbeed9e2e954981b383838aa13c3","type":3}}'
     m_Space: -1
   m_Property:
     name: _Orb_Tex
