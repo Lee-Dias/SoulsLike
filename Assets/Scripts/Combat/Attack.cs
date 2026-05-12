@@ -26,9 +26,17 @@ public class Attack : MonoBehaviour
         if (((1 << other.gameObject.layer) & ignore) != 0) return;
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
+        if(character == null)
+        {
+            character = this.GetComponentInParent<BaseEnemyAI>()?.gameObject;
+        }
 
         playerAnimationsController = character.GetComponent<PlayerAnimationsController>();
         enemy = character.GetComponent<BaseEnemyAI>();
+        if (enemy == null)
+        {
+            enemy = character.GetComponentInParent<BaseEnemyAI>();
+        }
         if(playerAnimationsController != null)
         {
             PlayerAttack(other);
@@ -51,6 +59,10 @@ public class Attack : MonoBehaviour
                 health.GetHit(damage);
                 if(hitPoint != null && damage > 0)
                     Instantiate(hitVFX, hitPoint, Quaternion.identity);
+                if(this.GetComponent<OrbProjectile>() != null)
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

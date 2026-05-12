@@ -38,7 +38,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     [SerializeField] protected float chanceToCircle = 0.5f; // 50/50 default
 
     [Header("Important")]
-    [SerializeField] protected Animator anim;
+    protected Animator anim;
     [SerializeField] protected BoxCollider weaponCollider;
     [SerializeField] protected Item item;
     [SerializeField] protected GameObject canvas;
@@ -97,6 +97,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+        anim = GetComponent<Animator>();
         audioManager = FindFirstObjectByType<AudioManager>();
         animManager = new CombatAnimationManager(anim);
         if(hasPredifinedFirstAttack)
@@ -165,6 +166,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         if (!isInAttackAnimation)
         {
             Vector3 localVel = transform.InverseTransformDirection(agent.velocity);
+            
             anim.SetFloat("x", localVel.x);
             anim.SetFloat("y", localVel.z);
 

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponAnimationsData", menuName = "Scriptable Objects/Weapon Animations Data")]
 public class WeaponAnimationsData : ScriptableObject
 {
-    public enum WeaponType { Sword, Axe, Spear, Shield }
+    public enum WeaponType { Sword, Axe, Spear, Shield, Staff }
 
     [SerializeField] private WeaponType weaponType;
     [SerializeField] private bool twoHanded;
