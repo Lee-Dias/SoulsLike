@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5506458646839283749}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.30290252, y: 0.9530215, z: -0.00000089406956, w: 0.0000027567146}
+  m_LocalRotation: {x: -0.3029023, y: 0.95302165, z: -0, w: 0}
   m_LocalPosition: {x: 59.1, y: 0.4999982, z: -14.272762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,7 +50,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &5547943140182844294
 Transform:
@@ -117,7 +117,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 6
@@ -329,17 +329,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2742174142752389045, guid: c29e1842c61127e419aa741693d4358b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Range
-      value: 6.355562
+      value: 8.638596
       objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Intensity
-      value: 2.8133373
+      value: 4.1831574
       objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_SpotAngle
@@ -347,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_Lightmapping
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6521363768938718449, guid: c29e1842c61127e419aa741693d4358b, type: 3}
       propertyPath: m_InnerSpotAngle
