@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5401769911229135922}
   - component: {fileID: 5607932264704904272}
   m_Layer: 10
-  m_Name: Cylinder001
+  m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -621184621979588601, guid: 11397211b890ef543ba62f7768447494, type: 3}
+  - {fileID: 2100000, guid: bb8d29646bb90b941940ff0bc3e566d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,8 +122,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4285018952312447309}
-  - {fileID: 76088084816371528}
   - {fileID: 1828584094121912685}
+  - {fileID: 76088084816371528}
   - {fileID: 6465121788611956445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 90}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 7462974596033281807}
   - component: {fileID: 3973192782900666554}
   m_Layer: 10
-  m_Name: Object001
+  m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5567897635444601682, guid: 11397211b890ef543ba62f7768447494, type: 3}
+  - {fileID: 2100000, guid: d212b1e94b493874aa9579c89330bb4e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 1236613667202966148}
   - component: {fileID: 752781621808963856}
   m_Layer: 10
-  m_Name: Sphere001
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 934714567791821240, guid: 11397211b890ef543ba62f7768447494, type: 3}
+  - {fileID: 2100000, guid: bb8d29646bb90b941940ff0bc3e566d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 5133637203061579455}
   - component: {fileID: 6643158842864692399}
   m_Layer: 10
-  m_Name: Object002
+  m_Name: Blade_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +415,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 934714567791821240, guid: 11397211b890ef543ba62f7768447494, type: 3}
+  - {fileID: 2100000, guid: bb8d29646bb90b941940ff0bc3e566d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
