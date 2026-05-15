@@ -7,7 +7,7 @@ namespace NaughtyAttributes.Test
     {
     }
 
-    [System.Serializable]
+    /* [System.Serializable]
     public class MyClass
     {
     }
@@ -15,5 +15,5 @@ namespace NaughtyAttributes.Test
     [System.Serializable]
     public struct MyStruct
     {
-    }
+    } */
 }

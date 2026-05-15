@@ -43,7 +43,6 @@ public class LiminalUIController : MonoBehaviour
     private Animator animator;
     private PlayerAnimationsController playerAnimationsController;
     [SerializeField]private BonfireMenuCamera cameraSettings;
-    [SerializeField]private GameObject cinemachineCamera;
 
     void Start()
     {
@@ -94,11 +93,10 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         menuIsActive = true;
-        /*cinemachineCamera.SetActive(true);
         cameraSettings.ChangeToBonfire(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
             2 * playerState.bonfireLocation.y - playerState.transform.position.y,
-            playerState.bonfireLocation.z));*/
+            playerState.bonfireLocation.z));
         
         PauseAllSpawners();
         foreach (AreaResetter areaResetter in FindObjectsByType<AreaResetter>(FindObjectsSortMode.None))

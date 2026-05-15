@@ -1,22 +1,18 @@
 using UnityEngine;
-using Unity.Cinemachine;
-using UnityEngine.Splines; 
+using DG.Tweening;
 using System.Collections.Generic;
 using System.Collections;
 
 public class BonfireMenuCamera : MonoBehaviour
 {
-    [SerializeField] private CinemachineCamera cinemachineCamera;
-    [SerializeField] private CinemachineSplineDolly splineDolly;
-    [SerializeField] private CinemachineRotationComposer rotationComposer;
-    [SerializeField] private SplineContainer splineContainer;
+    
     [SerializeField] private Transform mainCamera;
+    private Camera selfCamera;
     private Transform bonfireTarget;
-    private Spline spline;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spline = splineContainer.Splines[0];
+        selfCamera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -27,38 +23,18 @@ public class BonfireMenuCamera : MonoBehaviour
 
     public void ChangeToBonfire(Vector3 bonfireTransform)
     {
-
-        List<BezierKnot> knots = new List<BezierKnot>
-        {
-            new BezierKnot(mainCamera.position),
-            new BezierKnot(bonfireTransform),
-        };
-        spline.Knots = knots;
-
-        print("Added knots to spline: " + mainCamera.position + " and " + bonfireTransform);
-        splineDolly.AutomaticDolly.Enabled = true;
+        selfCamera.enabled = true;
+        transform.position = mainCamera.position;
+        mainCamera.gameObject.SetActive(false);
     }
     public void ChangeToPlayer(Vector3 bonfireTransform)
     {
-        List<BezierKnot> knots = new List<BezierKnot>
-        {
-            new BezierKnot(bonfireTransform),
-            new BezierKnot(mainCamera.position),
-        };
-        spline.Knots = knots;
-
-        print("Added knots to spline: " + mainCamera.position + " and " + bonfireTransform);
-        
-        splineDolly.AutomaticDolly.Enabled = true;
-      StartCoroutine(WaitForSplineEnd());
+      //StartCoroutine(WaitForSplineEnd());
     }
 
-    IEnumerator WaitForSplineEnd()
+    /* IEnumerator WaitForSplineEnd()
     {
-        yield return new WaitUntil(() => splineDolly.CameraPosition >= spline.Count - 1);
-
-        Debug.Log("Reached the last knot!");
-        splineDolly.AutomaticDolly.Enabled = false;
+        
         gameObject.SetActive(false);
-    }
+    } */
 }

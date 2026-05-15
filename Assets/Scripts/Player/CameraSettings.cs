@@ -15,6 +15,7 @@ public class CameraSettings : MonoBehaviour
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private Vector2 pitchLimits = new Vector2(-20f, 45f);
     [SerializeField] private float verticalCameraShift = 0f; // new variable
+    [SerializeField] private bool followTarget = true;
 
     [Header("Initial Rotation")]
     [SerializeField] private float initialYaw = 0f;
@@ -182,6 +183,7 @@ public class CameraSettings : MonoBehaviour
                 pitch = Mathf.Clamp(pitch, pitchLimits.x, pitchLimits.y);
             }
 
+            if (followTarget)
             UpdateCameraTransform();
         }
         else
