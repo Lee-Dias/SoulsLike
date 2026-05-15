@@ -216,7 +216,6 @@ GameObject:
   - component: {fileID: 89915703}
   - component: {fileID: 89915702}
   - component: {fileID: 89915701}
-  - component: {fileID: 89915700}
   - component: {fileID: 89915704}
   m_Layer: 0
   m_Name: CameraForBonfire
@@ -234,49 +233,12 @@ Transform:
   m_GameObject: {fileID: 89915698}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09229596, y: 0.7010574, z: -0.09229596, w: 0.7010574}
-  m_LocalPosition: {x: 0, y: 0.97900003, z: -0.2}
+  m_LocalPosition: {x: -5.0020094, y: 3.5616162, z: -0.20000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 120498467}
   m_LocalEulerAnglesHint: {x: 15, y: 89.96, z: 0}
---- !u!114 &89915700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89915698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702e53f551b8cee46819acce629ce655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  lookHeight: 1
-  target: {fileID: 2946711465664253000}
-  offset: {x: 0, y: 0, z: 0}
-  followSpeed: 0
-  rotationSpeed: 0.01
-  pitchLimits: {x: -40, y: 15}
-  verticalCameraShift: 0
-  followTarget: 0
-  initialYaw: 90
-  initialPitch: 15
-  rangeToLock: 7
-  distanceToUnlock: 13
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  lockOnPitch: 20
-  cameraCollisionRadius: 0.1
-  cameraCollisionSmooth: 15
-  wallLayers:
-  - serializedVersion: 2
-    m_Bits: 384
-  lockOnSmoothSpeed: 5
-  wallCheckLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &89915701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51f650d76f87644eb90448960a76a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BonfireMenuCamera
-  mainCamera: {fileID: 541377147}
+  mainCamera: {fileID: 541377141}
+  player: {fileID: 1156823805}
+  duration: 1
 --- !u!1 &110508181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,7 +1630,6 @@ MonoBehaviour:
   rotationSpeed: 0.01
   pitchLimits: {x: -40, y: 15}
   verticalCameraShift: 0
-  followTarget: 1
   initialYaw: 90
   initialPitch: 15
   rangeToLock: 7
@@ -2410,6 +2373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!4 &1156823805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4586885668573864051, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215058323
 GameObject:
   m_ObjectHideFlags: 0

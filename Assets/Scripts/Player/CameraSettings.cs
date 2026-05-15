@@ -15,7 +15,6 @@ public class CameraSettings : MonoBehaviour
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private Vector2 pitchLimits = new Vector2(-20f, 45f);
     [SerializeField] private float verticalCameraShift = 0f; // new variable
-    [SerializeField] private bool followTarget = true;
 
     [Header("Initial Rotation")]
     [SerializeField] private float initialYaw = 0f;
@@ -183,7 +182,6 @@ public class CameraSettings : MonoBehaviour
                 pitch = Mathf.Clamp(pitch, pitchLimits.x, pitchLimits.y);
             }
 
-            if (followTarget)
             UpdateCameraTransform();
         }
         else
@@ -214,7 +212,8 @@ public class CameraSettings : MonoBehaviour
 
         // 2. Definir a rotação com base no yaw/pitch atual (que já está a ser interpolado)
         Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
-
+        
+        
         // --- Calcular a posição da câmera ---
         Vector3 desiredDirection = (rotation * offset).normalized;
         float desiredDistance = offset.magnitude;
@@ -238,6 +237,7 @@ public class CameraSettings : MonoBehaviour
         {
             transform.position = targetPosition + desiredDirection * desiredDistance - Vector3.up * verticalCameraShift;
         }
+        
 
         // 3. ROTAÇÃO FINAL
         // Importante: NÃO uses LookAt se queres que a interpolação que fizemos acima funcione.

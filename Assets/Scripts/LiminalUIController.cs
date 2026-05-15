@@ -113,10 +113,10 @@ public class LiminalUIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         menuIsActive = false;
-        /*cameraSettings.ChangeToPlayer(new Vector3(
+        cameraSettings.ChangeToPlayer(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
             2 * playerState.bonfireLocation.y - playerState.transform.position.y,
-            playerState.bonfireLocation.z));*/
+            playerState.bonfireLocation.z));
         ResetUpgrades();
         ResumeAllSpawners();
         
