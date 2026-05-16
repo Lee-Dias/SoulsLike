@@ -95,8 +95,8 @@ public class LiminalUIController : MonoBehaviour
         menuIsActive = true;
         cameraSettings.ChangeToBonfire(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
-            2 * playerState.bonfireLocation.y - playerState.transform.position.y,
-            playerState.bonfireLocation.z));
+            playerState.bonfireLocation.y + 1.5f,
+            2 * playerState.bonfireLocation.z - playerState.transform.position.z));
         
         PauseAllSpawners();
         foreach (AreaResetter areaResetter in FindObjectsByType<AreaResetter>(FindObjectsSortMode.None))
@@ -115,8 +115,8 @@ public class LiminalUIController : MonoBehaviour
         menuIsActive = false;
         cameraSettings.ChangeToPlayer(new Vector3(
             2 * playerState.bonfireLocation.x - playerState.transform.position.x,
-            2 * playerState.bonfireLocation.y - playerState.transform.position.y,
-            playerState.bonfireLocation.z));
+            playerState.bonfireLocation.y + 1.5f,
+            2 * playerState.bonfireLocation.z - playerState.transform.position.z));
         ResetUpgrades();
         ResumeAllSpawners();
         
