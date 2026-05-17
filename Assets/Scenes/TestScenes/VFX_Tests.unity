@@ -181,11 +181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1815888652021051555, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Range
-      value: 2.6900196
+      value: 6.973852
       objectReference: {fileID: 0}
     - target: {fileID: 1815888652021051555, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Intensity
-      value: 4.1900196
+      value: 3.9895408
       objectReference: {fileID: 0}
     - target: {fileID: 1815888652021051555, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Lightmapping
@@ -197,11 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2208174615625469003, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Range
-      value: 2.3147957
+      value: 6.6198344
       objectReference: {fileID: 0}
     - target: {fileID: 2208174615625469003, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Intensity
-      value: 3.8147957
+      value: 3.8479338
       objectReference: {fileID: 0}
     - target: {fileID: 2208174615625469003, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Lightmapping
@@ -225,11 +225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5651560454871345208, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Range
-      value: 9.878687
+      value: 5.084956
       objectReference: {fileID: 0}
     - target: {fileID: 5651560454871345208, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Intensity
-      value: 4.9272118
+      value: 2.0509737
       objectReference: {fileID: 0}
     - target: {fileID: 6214288594509570734, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_LocalScale.x
@@ -2157,11 +2157,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6640975392179926077, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Range
-      value: 9.774071
+      value: 9.440161
       objectReference: {fileID: 0}
     - target: {fileID: 6640975392179926077, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Intensity
-      value: 4.864443
+      value: 4.664097
       objectReference: {fileID: 0}
     - target: {fileID: 7030766733913632011, guid: ab44df22056c2024e870ade4f325024e, type: 3}
       propertyPath: m_Mesh
@@ -3006,11 +3006,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Range
-      value: 5.48362
+      value: 8.138973
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Intensity
-      value: 2.290172
+      value: 3.8833838
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Name
@@ -3074,6 +3074,66 @@ PrefabInstance:
       addedObject: {fileID: 1640813474}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
+--- !u!1 &333755575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333755577}
+  - component: {fileID: 333755576}
+  m_Layer: 0
+  m_Name: Decal Projector (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &333755576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333755575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: ebcc1e892a1bfa247a02e4ebe136136f, type: 2}
+  m_DrawDistance: 50
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.495}
+  m_Size: {x: 1, y: 1, z: 2.99}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!4 &333755577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333755575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 7.935, y: 44.596, z: 4.937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &345996832
 GameObject:
   m_ObjectHideFlags: 0
@@ -15213,7 +15273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
   m_Material: {fileID: 2100000, guid: ebcc1e892a1bfa247a02e4ebe136136f, type: 2}
   m_DrawDistance: 50
-  m_FadeScale: 0
+  m_FadeScale: 1
   m_StartAngleFade: 180
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
@@ -15222,8 +15282,8 @@ MonoBehaviour:
     serializedVersion: 0
     m_Bits: 1
   m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 0.005}
-  m_Size: {x: 1, y: 1, z: 0.01}
+  m_Offset: {x: 0, y: 0, z: 0.025}
+  m_Size: {x: 1, y: 1, z: 0.05}
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
@@ -15235,13 +15295,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593416339}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6862072, y: -0.17064516, z: 0.17064516, w: 0.6862072}
-  m_LocalPosition: {x: 7.179, y: 42.947, z: 4.863635}
+  m_LocalRotation: {x: 0.64893806, y: 0.28275904, z: 0.6475466, w: 0.28215274}
+  m_LocalPosition: {x: 5.45, y: 44.596, z: 4.937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 27.93}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.123, z: 132.912}
 --- !u!1001 &1628626484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15293,6 +15353,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d8ab74b860437ba48a6ff3217e608a57, type: 3}
       propertyPath: m_Name
       value: Anim_Gemi_TPose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967845835588870549, guid: d8ab74b860437ba48a6ff3217e608a57, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5967845835588870549, guid: d8ab74b860437ba48a6ff3217e608a57, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -18045,6 +18109,7 @@ SceneRoots:
   - {fileID: 109236427}
   - {fileID: 845054954}
   - {fileID: 1593416341}
+  - {fileID: 333755577}
   - {fileID: 3989766}
   - {fileID: 767604456}
   - {fileID: 3339312058122913969}
