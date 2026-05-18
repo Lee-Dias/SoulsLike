@@ -9,6 +9,7 @@ public class SoulFollowPlayer : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] string targetTag;
     [SerializeField] float durationToPlayer = 2f;
+    [SerializeField] float durationToPlayerOffset = 0.01f;
     Sequence seq;
 
     void Start()
@@ -34,5 +35,8 @@ public class SoulFollowPlayer : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        durationToPlayer = durationToPlayer - durationToPlayerOffset; 
+        print(durationToPlayer);
     }
 }

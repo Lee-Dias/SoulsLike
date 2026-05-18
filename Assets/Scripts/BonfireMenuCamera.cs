@@ -9,10 +9,15 @@ public class BonfireMenuCamera : MonoBehaviour
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private Transform player;
     [SerializeField] private float duration = 1f;
+    [SerializeField] private float distanceXZ = 3f;
+    [SerializeField] private float distanceY = 1.5f;
     private Camera selfCamera;
     private Transform bonfireTarget;
-    Sequence seq;
-    Camera mainCameraComponent;
+    private Sequence seq;
+    private Camera mainCameraComponent;
+
+    private bool isMovingToPlayer = false;
+    private Transform tempCamera;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,27 +31,66 @@ public class BonfireMenuCamera : MonoBehaviour
     void Update()
     {
         transform.LookAt(player);
+
+        if(isMovingToPlayer)
+        {
+
+            if (tempCamera != mainCamera.transform)
+            {
+                float timeLeft = seq.Duration() - seq.Elapsed();
+                seq.Kill();
+                seq = DOTween.Sequence(); 
+                seq.Append(transform.DOMove(mainCamera.transform.position, duration))
+                .Join(transform.DORotateQuaternion(mainCamera.transform.rotation, duration))
+                .OnComplete(() => {
+                    print("Arrived");
+                    selfCamera.enabled = false;
+                    mainCameraComponent.enabled = true;
+                });
+                tempCamera = mainCamera.transform;
+            }
+        }
+        else
+        {
+            transform.LookAt(player);
+        }
     }
 
-    public void ChangeToBonfire(Vector3 bonfireTransform)
+    public void ChangeToBonfire(Vector3 bonfireTransform, Vector3 playerTransform)
     {
         seq.Kill();
         seq = DOTween.Sequence(); 
         selfCamera.enabled = true;
         transform.position = mainCamera.transform.position;
         mainCameraComponent.enabled = false;
-        seq.Append(transform.DOMove(bonfireTransform, duration));
+
+        // Get the mirrored direction
+        Vector3 direction = (bonfireTransform - playerTransform).normalized;
+
+
+        Vector3 targetPosition = new Vector3(
+            bonfireTransform.x + direction.x * distanceXZ,
+            bonfireTransform.y + distanceY,
+            bonfireTransform.z + direction.z * distanceXZ);
+        seq.Append(transform.DOMove(targetPosition, duration));
     }
-    public void ChangeToPlayer(Vector3 bonfireTransform)
+    public void ChangeToPlayer()
     {
+        isMovingToPlayer = true;
+
+        tempCamera = mainCamera.transform;
         seq.Kill();
         seq = DOTween.Sequence(); 
-        seq.Append(transform.DOMove(mainCamera.transform.position, duration)).OnComplete(() => {
+        seq.Append(transform.DOMove(mainCamera.transform.position, duration))
+        .Join(transform.DORotateQuaternion(mainCamera.transform.rotation, duration))
+        .OnComplete(() => {
             print("Arrived");
             selfCamera.enabled = false;
             mainCameraComponent.enabled = true;
         });
         //StartCoroutine(WaitForMovementEnd());
+
+        isMovingToPlayer = false;
     }
 
     /* IEnumerator WaitForMovementEnd()
