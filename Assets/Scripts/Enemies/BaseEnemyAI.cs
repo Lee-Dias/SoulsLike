@@ -52,6 +52,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     private float spawnTimer;
     private bool isSpawnDelayed = false;
 
+    public bool HasNoShield = false;
+
     protected NavMeshAgent agent;
     protected StateMachine stateMachine;
     protected Health health;
@@ -62,6 +64,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected State circleState;
     protected State attackState;
     protected State firstAttackState;
+    protected State downState;
 
     protected Transform player;
 
@@ -92,6 +95,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     public bool IsInAttackAnimation => isInAttackAnimation;
     public int AuraValue => auraValue;
+
+    private Vector3 enemyTargetPosition;
 
     protected virtual void Awake()
     {
@@ -207,7 +212,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         chaseState = new State("Chase", OnEnterChase, Chase, null);
         circleState = new State("Circle", OnEnterCircle, Circle, null);
         attackState = new State("Attack", OnEnterAttack, Attack, null);
-        firstAttackState = new State("FirstAttack", OnEnterFirstAttack, FirstAttack, null);
+        firstAttackState = new State("FirstAttack", OnEnterFirstAttack, FirstAttack, null);        
+        downState = new State("down", OnEnterDown, Down, null);
     }
 
     // ------------------------------------------------------
@@ -221,10 +227,18 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
         firstAttackState.AddTransition(new Transition(() => doneFirstAttack, null, decideState));
 
-        decideState.AddTransition(new Transition(() => ShouldGoIdle(), null, idleState));
-        decideState.AddTransition(new Transition(() => ShouldChase(), null, chaseState));
-        decideState.AddTransition(new Transition(() => ShouldCircle(), null, circleState));
-        decideState.AddTransition(new Transition(() => ShouldAttack() && health.CanAttack(), null, attackState));
+        decideState.AddTransition(new Transition(() => ShouldGoIdle() && !HasNoShield, null, idleState));
+        decideState.AddTransition(new Transition(() => ShouldChase() && !HasNoShield, null, chaseState));
+        decideState.AddTransition(new Transition(() => ShouldCircle() && !HasNoShield , null, circleState));
+        decideState.AddTransition(new Transition(() => ShouldAttack() && health.CanAttack() && !HasNoShield, null, attackState));
+
+        idleState.AddTransition(new Transition(() => HasNoShield, null, downState));
+        chaseState.AddTransition(new Transition(() => HasNoShield, null, downState));
+        circleState.AddTransition(new Transition(() => HasNoShield, null, downState));
+        attackState.AddTransition(new Transition(() => HasNoShield, null, downState));
+        firstAttackState.AddTransition(new Transition(() => HasNoShield, null, downState));
+
+        downState.AddTransition(new Transition(() => !HasNoShield, null, decideState));
 
         chaseState.AddTransition(new Transition(() => IsInPreferredRange(), null, decideState));
 
@@ -275,8 +289,10 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected virtual void Idle() { }
 
     protected abstract void OnEnterFirstAttack();
-
     protected abstract void FirstAttack();
+
+    protected abstract void OnEnterDown();
+    protected abstract void Down();
 
     protected virtual void OnEnterDecide()
     {
@@ -302,12 +318,32 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         agent.speed = baseSpeed;
         canAttack = true;
         Debug.Log("Chasing player");
+        // 1. Descobre a direção: do jogador apontando para o inimigo
+        Vector3 directionFromPlayer = (transform.position - player.position).normalized;
+
+        // 2. Escolhe a distância ideal (o meio termo entre o mínimo e o máximo)
+        float targetDistance = (minPreferredDistanceFromPlayer + maxPreferredDistanceFromPlayer) / 2f;
+
+        // 3. Calcula o ponto exato no mundo que fica nessa distância do jogador
+        enemyTargetPosition = player.position + (directionFromPlayer * targetDistance);
     }
 
     protected virtual void Chase()
     {
         if (player == null) return;
-        agent.SetDestination(player.position);
+
+        
+        agent.SetDestination(enemyTargetPosition);
+        if(this.transform.position.x - enemyTargetPosition.x < 0.5f || this.transform.position.x - enemyTargetPosition.x > 0.5f)
+        {
+            Vector3 directionFromPlayer = (transform.position - player.position).normalized;
+
+            // 2. Escolhe a distância ideal (o meio termo entre o mínimo e o máximo)
+            float targetDistance = (minPreferredDistanceFromPlayer + maxPreferredDistanceFromPlayer) / 2f;
+
+            // 3. Calcula o ponto exato no mundo que fica nessa distância do jogador
+            enemyTargetPosition = player.position + (directionFromPlayer * targetDistance);
+        }
     }
 
     protected virtual void OnEnterCircle()

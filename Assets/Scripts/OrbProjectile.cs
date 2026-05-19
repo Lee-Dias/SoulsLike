@@ -6,11 +6,14 @@ public class OrbProjectile : MonoBehaviour
     [SerializeField] private float rotationSpeed = 10f;
     
     private Transform _target; // Variável interna para guardar o alvo
-
+    private Transform Curr; // Variável para guardar a posição constante, se necessário
+    private bool AlwaysFollow = true; 
     // Este método é chamado pelo Boss ou Spawner para definir quem seguir
-    public void SetTarget(Transform target)
+    public void SetTarget(Transform target, bool constantFollow = true)
     {
         _target = target;
+        Curr = target;
+        AlwaysFollow = constantFollow;
     }
 
     private void Update()
@@ -18,8 +21,12 @@ public class OrbProjectile : MonoBehaviour
         // Se não tiver alvo, o projétil vai apenas para frente ou fica parado
         if (_target == null) return;
 
+        if (AlwaysFollow)
+        {
+            Curr = _target; // Atualiza o alvo constantemente
+        }
         // 1. Calcula a direção
-        Vector3 direction = (_target.position - transform.position).normalized;
+        Vector3 direction = (Curr.position - transform.position).normalized;
 
         // 2. Move o projétil
         transform.position += direction * speed * Time.deltaTime;
@@ -30,6 +37,11 @@ public class OrbProjectile : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    public void ChangeCharacter(GameObject gameObject)
+    {
+        GetComponent<Attack>().SetCharacther(gameObject);
     }
 
 }

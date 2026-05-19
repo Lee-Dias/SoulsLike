@@ -140,8 +140,11 @@ public class Health : MonoBehaviour
                 this.gameObject.layer = LayerMask.NameToLayer("Default");
                 animator.SetTrigger("Die");
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);
-                GetComponent<MeleeEnemyAI>().enabled = false;
-                GetComponent<MeleeEnemyAI>()?.DeactivateCollider();  
+               if (TryGetComponent<MeleeEnemyAI>(out var meleeAI))
+                {
+                    meleeAI.enabled = false;
+                }
+                GetComponent<MeleeEnemyAI>()?.DeactivateCollider();
                 GetComponent<CapsuleCollider>().enabled = false;
                 NavMeshAgent agent = GetComponent<NavMeshAgent>();
                 agent.ResetPath();

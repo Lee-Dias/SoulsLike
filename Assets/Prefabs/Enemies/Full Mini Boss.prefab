@@ -488,7 +488,7 @@ MonoBehaviour:
   vfxStart: {fileID: 4534649855674682085, guid: 22343a49af82c6e47a45b03ece4f4f95, type: 3}
   vfxPostion: {fileID: 2099314039411306905}
   timeToActivateAfter: 2
-  audioToPlay: {fileID: 0}
+  audioToPlay: {fileID: 8300000, guid: 73d2cb2b5480423449d754e1517f3700, type: 3}
 --- !u!136 &633757438166716076
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -508,10 +508,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.04
+  m_Radius: 8
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 2.17}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8384650380414228931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +681,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a024c7cb-ef79-4574-8eba-6e72ed40438c
     m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 300541cc-05cd-4109-aeea-44d612d0c0af
+    m_ActionName: 'Player/Boss[/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2997,6 +3001,7 @@ GameObject:
   - component: {fileID: 4392524970578030624}
   - component: {fileID: 7593879591253054063}
   - component: {fileID: 2248848526745975269}
+  - component: {fileID: 9192649996525300689}
   m_Layer: 0
   m_Name: Mini Boss
   m_TagString: MiniBoss
@@ -3013,9 +3018,9 @@ Transform:
   m_GameObject: {fileID: 8263685313485936665}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.79, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -1.22, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1126904728272013868}
   - {fileID: 969333104661488521}
@@ -3060,14 +3065,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a78ee1d769df64b99a45ca4851bf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  cooldownPerGetHit: 0.3
+  cooldownPerGetHit: 0.2
   cooldownToAttack: 0
   blockMovementFor: 0.2
   playerStats: {fileID: 0}
   statsMultiplier: 1.5
   baseMaxHealth: 500
-  audioClip: {fileID: 8300000, guid: 74dd660d1531475499d7ad0d4b355b45, type: 3}
-  hit: {fileID: 8300000, guid: 0cf2310bcdf2e1547b15bd62d0ba1eb6, type: 3}
+  audioClip: {fileID: 8300000, guid: d2d176dac82f1f64ca0539caa4ba3dcb, type: 3}
+  hit: {fileID: 8300000, guid: 1a5d3e2fb9a9b8f4e9acba3637f23c9f, type: 3}
   animateObject: {fileID: 0}
   playerRegenHp: 0
   doDisolve: 0
@@ -3140,6 +3145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUiManager
   health: {fileID: 7478502894191628866}
   healthBar: {fileID: 4691618245587084161}
+  shield: {fileID: 0}
+  shieldBar: {fileID: 0}
 --- !u!114 &7100725540125783524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3160,7 +3167,7 @@ MonoBehaviour:
   circleEnemySpeed: 2
   minTimeCircling: 1
   maxTimeCircling: 3
-  attacksCooldown: 2
+  attacksCooldown: 1.5
   enemy: {fileID: 11400000, guid: 7137f7c93e2f0364e8cb9a2911967bd1, type: 2}
   canDodge: 0
   dodgeDistance: 5
@@ -3171,7 +3178,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   chanceToCircle: 0.4
-  anim: {fileID: 4336405523964032917}
   weaponCollider: {fileID: 3745673300368455072}
   item: {fileID: 11400000, guid: 623ee65a8d8c0554b83cd9ce109c43cf, type: 2}
   canvas: {fileID: 381292108976640710}
@@ -3179,6 +3185,7 @@ MonoBehaviour:
   hasPredifinedFirstAttack: 0
   firstAttackDistanceToActivate: 0
   firstAttackViewDistanceToActivate: 0
+  HasNoShield: 0
   specialHitBoxForFirstAttacks: {fileID: 0}
   lightAttackChance: 50
   heavyAttackChance: 35
@@ -3199,7 +3206,7 @@ NavMeshAgent:
   m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 320
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -3233,6 +3240,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnSymbol
   lockOnSymbol: {fileID: 7384322810645031955}
+--- !u!114 &9192649996525300689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263685313485936665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a2411043513304ba926942ee2cd197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  destructableParent: {fileID: 0}
+  navMeshSurface: {fileID: 0}
 --- !u!1 &8298692146131304590
 GameObject:
   m_ObjectHideFlags: 0

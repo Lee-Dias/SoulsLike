@@ -20,22 +20,23 @@ public class Attack : MonoBehaviour
     public void SetCharacther(GameObject gameObject)
     {
         character = gameObject;
+        ignore = 1 << gameObject.layer;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (((1 << other.gameObject.layer) & ignore) != 0) return;
+        if (((1 << other.gameObject.layer) & ignore) != 0 || other.GetComponent<Health>() == null) return;
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
         if(character == null)
         {
-            character = this.GetComponentInParent<BaseEnemyAI>()?.gameObject;
+            character = FindFirstObjectByType<BaseEnemyAI>()?.gameObject;
         }
 
         playerAnimationsController = character.GetComponent<PlayerAnimationsController>();
         enemy = character.GetComponent<BaseEnemyAI>();
         if (enemy == null)
         {
-            enemy = character.GetComponentInParent<BaseEnemyAI>();
+            enemy = FindFirstObjectByType<BaseEnemyAI>();
         }
         if(playerAnimationsController != null)
         {
@@ -56,7 +57,15 @@ public class Attack : MonoBehaviour
         {
             if (health.CanHit())
             {
-                health.GetHit(damage);
+                if(other.GetComponent<Shield>() != null)
+                {
+                    other.GetComponent<Shield>().TakeShieldDamage(damage);
+                }
+                else
+                {
+                    health.GetHit(damage);
+                }
+                
                 if(hitPoint != null && damage > 0)
                     Instantiate(hitVFX, hitPoint, Quaternion.identity);
                 if(this.GetComponent<OrbProjectile>() != null)

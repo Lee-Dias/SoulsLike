@@ -44,7 +44,6 @@ public class ActivateMiniBoss : MonoBehaviour
             done = true;
             playerState.ChangeInteractionMessageState(false);
             enemyAnimator.SetTrigger("Start");
-            
             StartCoroutine(EnableEnemyAfterDelay());
         }
     }
@@ -61,14 +60,22 @@ public class ActivateMiniBoss : MonoBehaviour
     }
     private void OnTriggerEnter(Collider tag)
     {
-
         if (tag.CompareTag("Player"))
         {
+            /*
             playerInside = true;
             if (!playerState.EnemyAround && playerState.playerIsInBonfire && !playerState.IsOnBonfire)
             {
                 playerState.ChangeInteractionMessageState(true);
-            }
+            }*/
+            Instantiate(vfxStart, vfxPostion.position, Quaternion.identity);
+            if(doorsAnimator != null)
+                doorsAnimator.SetTrigger("Close");
+            audioManager.PlayAudio(audioToPlay, null , 0.4f);
+            done = true;
+            playerState.ChangeInteractionMessageState(false);
+            enemyAnimator.SetTrigger("Start");
+            StartCoroutine(EnableEnemyAfterDelay());
         }
     }
     private void OnTriggerExit(Collider tag)

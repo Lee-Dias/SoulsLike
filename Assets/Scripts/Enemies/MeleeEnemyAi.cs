@@ -183,4 +183,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         }
 
     }
+
+    protected override void OnEnterDown(){}
+    protected override void Down(){}
 }

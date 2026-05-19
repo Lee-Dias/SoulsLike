@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -90,6 +91,10 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext value)
     {
         moveInput = value.ReadValue<Vector2>();
+    }
+    public void OnBoss(InputAction.CallbackContext value)
+    {
+        SceneManager.LoadScene("BossTest", LoadSceneMode.Single);
     }
 
 

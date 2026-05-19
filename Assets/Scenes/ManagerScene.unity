@@ -4298,18 +4298,30 @@ PrefabInstance:
       objectReference: {fileID: 1886655001}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_ActionId
       value: a024c7cb-ef79-4574-8eba-6e72ed40438c
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_ActionId
+      value: 300541cc-05cd-4109-aeea-44d612d0c0af
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_ActionName
       value: 'Player/Defend[/Keyboard/leftCtrl]'
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_ActionName
+      value: 'Player/Boss[/Keyboard/period]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
@@ -4321,16 +4333,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 155314501548679355}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4476348853918764898}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnDefend
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBoss
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[23].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4341,7 +4369,15 @@ PrefabInstance:
       value: PlayerAnimationsController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5076251678615360261, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
@@ -5208,6 +5244,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a78ee1d769df64b99a45ca4851bf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+--- !u!114 &4476348853918764898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2007db783963fb442ae7366616cdcb06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &6394524383785016541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5124468848590971091, guid: 1c84cd948ff12b241ba0a5c82602268e, type: 3}
