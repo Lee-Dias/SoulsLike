@@ -2153,15 +2153,15 @@ RectTransform:
   m_GameObject: {fileID: 5283610720223277096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.34361857, y: 0.3398642, z: 0.2920792}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6725282772404014805}
+  m_Father: {fileID: 2941745589834964517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -826.48145, y: -484.54694}
-  m_SizeDelta: {x: -1664, y: -824}
+  m_AnchoredPosition: {x: 0.23693848, y: 0.00012207031}
+  m_SizeDelta: {x: 156, y: 156.78284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4675088105989016600
 CanvasRenderer:
@@ -2682,14 +2682,14 @@ RectTransform:
   m_GameObject: {fileID: 6527438230220888976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4867987, y: 0.30350938, z: 0.48679864}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6725282772404014805}
+  m_Father: {fileID: 3068409830935815504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -894.59595, y: -349.35138}
+  m_AnchoredPosition: {x: 0.23687744, y: 0.00012207031}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9038841296823352352
@@ -2757,15 +2757,15 @@ RectTransform:
   m_GameObject: {fileID: 6801265989842840818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.38943896, y: 0.24280752, z: 0.3894389}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6725282772404014805}
+  m_Father: {fileID: 4538865406111306496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -770.04364, y: -349.35138}
-  m_SizeDelta: {x: -1664, y: -824}
+  m_AnchoredPosition: {x: 0.23693848, y: 0.00012207031}
+  m_SizeDelta: {x: 156, y: 156.78284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4920011826857324662
 CanvasRenderer:
@@ -3605,9 +3605,6 @@ RectTransform:
   m_Children:
   - {fileID: 7023201853170347193}
   - {fileID: 2640600648424725615}
-  - {fileID: 8626398892662973240}
-  - {fileID: 6424075691162566543}
-  - {fileID: 6047145038429669044}
   m_Father: {fileID: 6223882584642204016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3738,11 +3735,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1957304907082078989, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8626398892662973240}
+    - targetCorrespondingSourceObject: {fileID: 1099399491807456605, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6424075691162566543}
+    - targetCorrespondingSourceObject: {fileID: 1832892539029430392, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6047145038429669044}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
 --- !u!224 &2640600648424725615 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1520488543006941746, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
+  m_PrefabInstance: {fileID: 3583897779224673885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2941745589834964517 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1832892539029430392, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
+  m_PrefabInstance: {fileID: 3583897779224673885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3068409830935815504 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1957304907082078989, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
+  m_PrefabInstance: {fileID: 3583897779224673885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4538865406111306496 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1099399491807456605, guid: 7e2c2201f62ce8148bea2d68aa8c88a5, type: 3}
   m_PrefabInstance: {fileID: 3583897779224673885}
   m_PrefabAsset: {fileID: 0}
