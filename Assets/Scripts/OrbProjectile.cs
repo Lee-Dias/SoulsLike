@@ -11,6 +11,8 @@ public class OrbProjectile : MonoBehaviour
     // Este método é chamado pelo Boss ou Spawner para definir quem seguir
     public void SetTarget(Transform target, bool constantFollow = true)
     {
+        Vector3 newTargetPosition = new Vector3(target.position.x, transform.position.y + 1.5f, target.position.z);
+        target.position = newTargetPosition;
         _target = target;
         Curr = target;
         AlwaysFollow = constantFollow;

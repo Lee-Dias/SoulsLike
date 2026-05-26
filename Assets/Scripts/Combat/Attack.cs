@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
                     health.GetHit(damage);
                 }
                 
-                if(hitPoint != null && damage > 0)
+                if(hitPoint != null && damage > 0 && hitVFX != null)
                     Instantiate(hitVFX, hitPoint, Quaternion.identity);
                 if(this.GetComponent<OrbProjectile>() != null)
                 {

@@ -168,11 +168,18 @@ public class Health : MonoBehaviour
                         destructible.DestroyObject();
                     }
                 }
+                
                 DestroyFloor destroyFloor = GetComponent<DestroyFloor>();
                 if (destroyFloor != null)
                 {
                     destroyFloor.DestroyFloorr();
                 }
+                
+                if (destroyFloor != null)
+                {
+                    destroyFloor.RebuildNavMesh();
+                }
+
                 if(animateObject != null)
                 {
                     animateObject.SetTrigger("Open");
