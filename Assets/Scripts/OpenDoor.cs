@@ -31,6 +31,7 @@ public class OpenDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = true;
+            other.GetComponent<PlayerState>().ChangeInteractionMessageState(true);
         }
     }
     void OnTriggerExit(Collider other)
@@ -38,6 +39,7 @@ public class OpenDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = false;
+            other.GetComponent<PlayerState>().ChangeInteractionMessageState(false);
         }
     }
 

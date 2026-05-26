@@ -2227,6 +2227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &822112999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4445736646882189807, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830328592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,6 +2380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &1138579277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4055494608998294206, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215058323
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,6 +4303,10 @@ PrefabInstance:
       propertyPath: staminaRegen
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 1402527925994356677, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1974441874649951622, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -4385,6 +4399,30 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3006201383029227448, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: positionToSpawn
+      value: 
+      objectReference: {fileID: 155314501548679357}
+    - target: {fileID: 3294884804883734990, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055494608998294206, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_Name
+      value: Armor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306874496068307869, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: Armor
+      value: 
+      objectReference: {fileID: 1138579277}
+    - target: {fileID: 4306874496068307869, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: armor
+      value: 
+      objectReference: {fileID: 1138579277}
+    - target: {fileID: 4306874496068307869, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: mainBody
+      value: 
+      objectReference: {fileID: 822112999}
     - target: {fileID: 5076251678615360261, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4424,6 +4462,10 @@ PrefabInstance:
     - target: {fileID: 5076251678615360261, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564692354095124781, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: cameraSettings
@@ -4469,6 +4511,10 @@ PrefabInstance:
       propertyPath: inventorySlotsParent
       value: 
       objectReference: {fileID: 3056147753890595130}
+    - target: {fileID: 7015891777208154950, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7021564953495151978, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1
@@ -4480,6 +4526,10 @@ PrefabInstance:
     - target: {fileID: 8390983452625274731, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: playerRegenHp
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591740386225351971, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9209590958940791528, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: position.x
@@ -4516,6 +4566,11 @@ MonoBehaviour:
 --- !u!4 &155314501548679356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6286620938879001918, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &155314501548679357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7137747774390187588, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2641693233844998778 stripped
@@ -7279,6 +7334,26 @@ PrefabInstance:
     - target: {fileID: 2225058121551641788, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 11.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232124235492852360, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
+      propertyPath: m_fontSize
+      value: 44.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232124235492852360, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
+      propertyPath: m_margin.x
+      value: -17.911087
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232124235492852360, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
+      propertyPath: m_margin.z
+      value: -47.254272
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232124235492852360, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232124235492852360, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2882063896731902157, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: m_Name

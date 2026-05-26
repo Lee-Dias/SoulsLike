@@ -228,6 +228,7 @@ public class Inventory : MonoBehaviour
         InventoryItemShow inventoryItemShow = GetComponent<InventoryItemShow>();
         inventoryItemShow.HandleRightHand();
         inventoryItemShow.HandleLeftHand();
+        inventoryItemShow.HandleArmorSlot();
         PlayerAnimationsController playerAnimationsController= GetComponent<PlayerAnimationsController>();
         playerAnimationsController.ChangeEquippedWeapon(GetItemOnRightHand());
         playerAnimationsController.ChangeEquippedShield(GetItemOnLeftHand());
@@ -284,8 +285,8 @@ public class Inventory : MonoBehaviour
                 {
                     rightHandItems[r] = null;
                 }
-            }
-            r+=1;
+                r+=1;
+            }    
         }
         r= 0;
         foreach(Transform item in leftHand.transform)
@@ -299,8 +300,8 @@ public class Inventory : MonoBehaviour
                 {
                     leftHandItems[r] = null;
                 }
-            }
-            r+=1;
+                r+=1;
+            }            
         }
         r= 0;
         foreach(Transform item in consumablesSlot.transform)
@@ -314,8 +315,8 @@ public class Inventory : MonoBehaviour
                 {
                     consumableItems[r] = null;
                 }
-            }
-            r+=1;
+                r+=1;
+            }            
         }
         if(armourSlot.GetComponentInChildren<InventorySlot>().myItem != null)
         {

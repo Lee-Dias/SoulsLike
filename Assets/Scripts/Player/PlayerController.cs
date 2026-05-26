@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
         if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerState.PlayerCanMove )
         {
             controller.Move(animWalk * Time.deltaTime);
-            ResetMovementState();
+            //ResetMovementState();
             animator.SetFloat("x", 0);
             animator.SetFloat("y", 0);
             return;

@@ -107,13 +107,16 @@ public class PlayerState : MonoBehaviour
     {
         if(isDefending)
         {
-           float a = inventory.GetItemOnLeftHand().Damage;
+           float a = inventory.GetItemOnLeftHand().Damage + inventory.GetItemOnArmourSlot().Damage;
+           
            return a;
         }
          else
         {
+            if(inventory.GetItemOnArmourSlot() == null) return 0;
+            float a = inventory.GetItemOnArmourSlot().ArmorQuantity;
+            return a;
         }
-        return 0f;
     }
 
     public void HandleDefense(bool def)

@@ -11,6 +11,8 @@ public class InventoryItemShow : MonoBehaviour
     [Header("Holders")]
     [SerializeField] private Transform rightHandHolder;
     [SerializeField] private Transform leftHandHolder;
+    [SerializeField] private GameObject armor;
+    [SerializeField] private GameObject mainBody;
 
     [SerializeField] private GameObject AuraEffectPrefab;
     [SerializeField] private VisualEffect AuraColorRenderer;
@@ -90,6 +92,21 @@ public class InventoryItemShow : MonoBehaviour
         {
             ClearHolder(leftHandHolder);
             currentLeftPrefab = null;
+        }
+    }
+    public void HandleArmorSlot()
+    {
+        Item item = inventory.GetItemOnArmourSlot();
+
+        if (item != null)
+        {
+            armor.SetActive(true);
+            mainBody.SetActive(false);
+        }
+        else if (item == null)
+        {
+            armor.SetActive(false);
+            mainBody.SetActive(true);   
         }
     }
 

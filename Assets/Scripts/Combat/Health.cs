@@ -63,7 +63,7 @@ public class Health : MonoBehaviour
         }
             
         health = maxHealth;
-        playerState?.GetComponent<PlayerState>();
+        playerState = GetComponent<PlayerState>();
         animator = GetComponent<Animator>();
         timePassedSinceLastHit = cooldownPerGetHit;
         timePassedSinceLastHitForAttack = cooldownToAttack; 
