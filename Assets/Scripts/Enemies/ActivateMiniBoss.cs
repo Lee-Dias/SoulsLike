@@ -6,6 +6,7 @@ public class ActivateMiniBoss : MonoBehaviour
 {
     [SerializeField] private MeleeEnemyAI meleeEnemyAI;
     [SerializeField] private Health health;
+    [SerializeField] private CapsuleCollider enemyCollider;
     [SerializeField] private GameObject enemyCanvas;
     [SerializeField] private GameObject enemy;
     [SerializeField] private Animator enemyAnimator;
@@ -54,6 +55,8 @@ public class ActivateMiniBoss : MonoBehaviour
         
         enemy.layer = LayerMask.NameToLayer("Enemy");
         meleeEnemyAI.enabled = true;
+        health.enabled = true;
+        enemyCollider.enabled = true;
         enemyCanvas.SetActive(true);
         
         Destroy(this);

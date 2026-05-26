@@ -7,7 +7,7 @@ public class DratorsaAI : BaseEnemyAI
 {
 
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float delayToInstantiateProjectile = 1f;
+    [SerializeField] private float delayToInstantiateProjectile = 2f;
 
     [SerializeField] private float timeDownlimit = 5f;
     
