@@ -929,27 +929,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Range
-      value: 5.0040593
+      value: 8.035198
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Intensity
-      value: 2.000203
+      value: 2.1517599
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.8304599e+25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.0901195e+27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 3221.0159
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2926190194149342164, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 1.8058762e+28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6212026567057836017, guid: 4dff6fde9050a3d44bc620e23bd0dc50, type: 3}
       propertyPath: m_Name
@@ -13998,6 +13998,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6636533239968965718, guid: 45f888bc88739a049894825a8796ef03, type: 3}
   m_PrefabInstance: {fileID: 1548842171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1552383338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552383342}
+  - component: {fileID: 1552383341}
+  - component: {fileID: 1552383340}
+  - component: {fileID: 1552383339}
+  m_Layer: 0
+  m_Name: Zone 1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1552383339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552383338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: af83352cab74aa44eb638f690e398624, type: 2}
+--- !u!114 &1552383340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552383338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 8300000, guid: cabcb6ef76795404dbeba69d171d2d8f, type: 3}
+  transitionTime: 0.5
+--- !u!65 &1552383341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552383338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1552383342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552383338}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.53, y: 47.68, z: -85.03641}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1556806488
 GameObject:
   m_ObjectHideFlags: 0
@@ -20302,11 +20388,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965982043516222269, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 5.033117
+      value: 9.9979515
       objectReference: {fileID: 0}
     - target: {fileID: 6965982043516222269, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 2.01987
+      value: 4.9987707
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22027,11 +22113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965982043516222269, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Range
-      value: 7.724663
+      value: 6.932317
       objectReference: {fileID: 0}
     - target: {fileID: 6965982043516222269, guid: 8fddaf87179c3be46b0bbd659129595c, type: 3}
       propertyPath: m_Intensity
-      value: 3.6347976
+      value: 3.1593902
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25091,11 +25177,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 4.242631
+      value: 2.0054305
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 2.8970523
+      value: 2.0021722
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Lightmapping
@@ -26553,11 +26639,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Range
-      value: 3.0680606
+      value: 4.1602054
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Intensity
-      value: 2.4272242
+      value: 2.8640823
       objectReference: {fileID: 0}
     - target: {fileID: 5658700860527157036, guid: d3d0599efc3f94843b53f4c127c277bc, type: 3}
       propertyPath: m_Lightmapping
@@ -31928,6 +32014,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1333238881}
+  - {fileID: 1552383342}
   - {fileID: 887523046}
   - {fileID: 1095224979}
   - {fileID: 865594766}

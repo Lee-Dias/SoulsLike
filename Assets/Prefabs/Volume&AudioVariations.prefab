@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 185242025910206792}
   - component: {fileID: 7477773642728398599}
   - component: {fileID: 5188039209866233818}
+  - component: {fileID: 2719739456791512785}
   m_Layer: 0
   m_Name: Cistern
   m_TagString: Untagged
@@ -71,6 +72,106 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: af83352cab74aa44eb638f690e398624, type: 2}
+--- !u!114 &2719739456791512785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535064694725527203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
+--- !u!1 &2615943178362019833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7409828786373579842}
+  - component: {fileID: 8887016472685133537}
+  - component: {fileID: 3596911701320986265}
+  - component: {fileID: 5051829764460579955}
+  m_Layer: 0
+  m_Name: Outside
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7409828786373579842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615943178362019833}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.4010315, y: 3.6725922, z: 22.828604}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4701848359313138724}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8887016472685133537
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615943178362019833}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20.203262, y: 11.358376, z: 20.185122}
+  m_Center: {x: -0.23852158, y: 0.090465546, z: -0.22945309}
+--- !u!114 &3596911701320986265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615943178362019833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 2
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+--- !u!114 &5051829764460579955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615943178362019833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &3041726696435290456
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,6 +183,7 @@ GameObject:
   - component: {fileID: 5713902320065821675}
   - component: {fileID: 7885912624505285863}
   - component: {fileID: 4063010896189411558}
+  - component: {fileID: 509332060211214318}
   m_Layer: 0
   m_Name: Initial_Area
   m_TagString: Untagged
@@ -142,6 +244,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: af83352cab74aa44eb638f690e398624, type: 2}
+--- !u!114 &509332060211214318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041726696435290456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &3177255718486843371
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +269,7 @@ GameObject:
   - component: {fileID: 3066315936472293321}
   - component: {fileID: 3567357419658546864}
   - component: {fileID: 7971372354772592742}
+  - component: {fileID: 6719196350044979503}
   m_Layer: 0
   m_Name: Water_Area
   m_TagString: Untagged
@@ -213,6 +330,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a5a92ee36e0b4bd44a885d39ca103de8, type: 2}
+--- !u!114 &6719196350044979503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177255718486843371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &4483651131115578609
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +355,7 @@ GameObject:
   - component: {fileID: 934095757686478706}
   - component: {fileID: 599989011292876932}
   - component: {fileID: 1686661781531266540}
+  - component: {fileID: 3711602420765063772}
   m_Layer: 0
   m_Name: Liminal_Room
   m_TagString: Untagged
@@ -284,6 +416,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: af83352cab74aa44eb638f690e398624, type: 2}
+--- !u!114 &3711602420765063772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483651131115578609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &4606946830066104967
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +441,7 @@ GameObject:
   - component: {fileID: 2894863687201375547}
   - component: {fileID: 5959534353757760440}
   - component: {fileID: 4246568710372144325}
+  - component: {fileID: 804816042535898172}
   m_Layer: 0
   m_Name: Courtyard (2)
   m_TagString: Untagged
@@ -355,6 +502,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a884f84b2d4b83043a02f3287e77c240, type: 2}
+--- !u!114 &804816042535898172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606946830066104967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &5200282089741044546
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +527,7 @@ GameObject:
   - component: {fileID: 5804257618652694718}
   - component: {fileID: 6374229158416880306}
   - component: {fileID: 8518241514230241798}
+  - component: {fileID: 4670125239455819225}
   m_Layer: 0
   m_Name: Courtyard
   m_TagString: Untagged
@@ -426,6 +588,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a884f84b2d4b83043a02f3287e77c240, type: 2}
+--- !u!114 &4670125239455819225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200282089741044546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &5722203177130890406
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +613,7 @@ GameObject:
   - component: {fileID: 8360929191155399883}
   - component: {fileID: 1884128394205637004}
   - component: {fileID: 8390429508458288591}
+  - component: {fileID: 8065746028198062708}
   m_Layer: 0
   m_Name: Corredor
   m_TagString: Untagged
@@ -497,6 +674,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: af83352cab74aa44eb638f690e398624, type: 2}
+--- !u!114 &8065746028198062708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5722203177130890406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &6473345185797551985
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4701848359313138724}
   m_Layer: 0
-  m_Name: Volume_Interior_Areas
+  m_Name: Volume&AudioVariations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,6 +717,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7409828786373579842}
   - {fileID: 5713902320065821675}
   - {fileID: 8360929191155399883}
   - {fileID: 5804257618652694718}
@@ -548,6 +740,7 @@ GameObject:
   - component: {fileID: 6601171788355249774}
   - component: {fileID: 537287582008897146}
   - component: {fileID: 3490087365098969666}
+  - component: {fileID: 1791026768812406070}
   m_Layer: 0
   m_Name: Courtyard (3)
   m_TagString: Untagged
@@ -608,6 +801,20 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a884f84b2d4b83043a02f3287e77c240, type: 2}
+--- !u!114 &1791026768812406070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800575015571121325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
 --- !u!1 &8670313915900910763
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +826,7 @@ GameObject:
   - component: {fileID: 8713461210507503167}
   - component: {fileID: 8784057821414991519}
   - component: {fileID: 7561310894772743950}
+  - component: {fileID: 7487656198765390311}
   m_Layer: 0
   m_Name: Courtyard (1)
   m_TagString: Untagged
@@ -679,3 +887,17 @@ MonoBehaviour:
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a884f84b2d4b83043a02f3287e77c240, type: 2}
+--- !u!114 &7487656198765390311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670313915900910763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0630145da1a6a5f4e89c69e94bae1286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicZone
+  areaMusic: {fileID: 0}
+  transitionTime: 0.5
