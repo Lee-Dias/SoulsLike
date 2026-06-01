@@ -29,15 +29,12 @@ MonoBehaviour:
     - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
-    movementCurveOnCombo:
-    - startTime: 0
-      endTime: 1
-      speed: {x: 0, y: 2}
+    movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.5
     blendTime: 1
-    hitStartTime: 0.5
-    hitEndTime: 0.9
+    hitStartTime: 0.8
+    hitEndTime: 0.95
     soundStartTime: 0
     cameraShakeTimer: 0.7
     cameraShake: 0.03
@@ -49,18 +46,12 @@ MonoBehaviour:
     - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
-    movementCurveOnCombo:
-    - startTime: 0
-      endTime: 0.5
-      speed: {x: 0, y: 0}
-    - startTime: 0.5
-      endTime: 1
-      speed: {x: 0, y: 1}
+    movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.5
     blendTime: 1
-    hitStartTime: 0.5
-    hitEndTime: 1
+    hitStartTime: 0.2
+    hitEndTime: 0.6
     soundStartTime: 0
     cameraShakeTimer: 0.7
     cameraShake: 0.03
