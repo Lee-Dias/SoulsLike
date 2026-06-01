@@ -7290,6 +7290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5076251678615360261}
+  - component: {fileID: 6074571553469784962}
   - component: {fileID: 7243161618570103146}
   - component: {fileID: 7528501974835084249}
   - component: {fileID: 5697246315085396423}
@@ -7332,6 +7333,14 @@ Transform:
   - {fileID: 8918382818635569211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &6074571553469784962
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022221983605619843}
+  m_Enabled: 1
 --- !u!95 &7243161618570103146
 Animator:
   serializedVersion: 7
@@ -7929,7 +7938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   rightHandHolder: {fileID: 7021564953495151978}
   leftHandHolder: {fileID: 6721650425029743013}
-  Armor: {fileID: 0}
+  armor: {fileID: 0}
+  mainBody: {fileID: 0}
   AuraEffectPrefab: {fileID: 3840943852203480798}
   AuraColorRenderer: {fileID: 2836617143012287226}
 --- !u!114 &922331660010497560
