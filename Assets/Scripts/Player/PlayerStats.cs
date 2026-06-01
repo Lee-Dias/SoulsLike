@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
 
     public int PriceToUpgrade(int levelsPreUpgraded = 0)
     {
-        return (int)(1000 + ((playerLevel + levelsPreUpgraded) * 150f));
+        return (int)(10 + ((playerLevel + levelsPreUpgraded) * 40f));
     }
     public void ApplyUpgrade(Stats stat, int amount)
     {

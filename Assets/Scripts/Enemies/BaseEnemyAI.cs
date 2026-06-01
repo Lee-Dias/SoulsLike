@@ -93,6 +93,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     private float lastDecisionRoll;
 
+    protected int timesCircledSinceLastAttack = 0;
+
     public bool IsInAttackAnimation => isInAttackAnimation;
     public int AuraValue => auraValue;
 
@@ -270,7 +272,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     private bool ShouldAttack()
     {
         if (!IsInPreferredRange() || canAttack == false) return false;
-        
+        if(timesCircledSinceLastAttack > 1 && IsInPreferredRange()) return true; // Garante que o inimigo ataca depois de 2 círculos, mesmo que o RNG não colabore
         return lastDecisionRoll >= chanceToCircle;
     }
 
@@ -332,6 +334,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     {
         if (player == null) return;
 
+        timesCircledSinceLastAttack += 1;   
         
         agent.SetDestination(enemyTargetPosition);
         if(this.transform.position.x - enemyTargetPosition.x < 0.5f || this.transform.position.x - enemyTargetPosition.x > 0.5f)

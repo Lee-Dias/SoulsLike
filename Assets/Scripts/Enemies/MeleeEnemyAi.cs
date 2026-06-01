@@ -143,6 +143,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         animManager.Play(item.AnimationsData.LightAttack);
         lastComboIndex = animManager.Handle.ComboIndex;
         specialHitBoxForFirstAttacks.enabled = true;
+        timesCircledSinceLastAttack = 0;
         
     }
     public void DeactivateCollider()

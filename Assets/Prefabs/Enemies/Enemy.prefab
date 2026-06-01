@@ -384,6 +384,7 @@ MonoBehaviour:
   activateAfterGetHit: {fileID: 2055932083962187546}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 9105953345041645226}
+  hasKnockBack: 1
 --- !u!95 &3506815779369100050
 Animator:
   serializedVersion: 7
@@ -450,7 +451,7 @@ MonoBehaviour:
   audioRange: 15
   viewRange: 25
   viewAngle: 90
-  circleEnemySpeed: 2
+  circleEnemySpeed: 3
   minTimeCircling: 1
   maxTimeCircling: 3
   attacksCooldown: 2
@@ -464,7 +465,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   chanceToCircle: 0.5
-  anim: {fileID: 3506815779369100050}
   weaponCollider: {fileID: 1162236584652226380}
   item: {fileID: 11400000, guid: 19657fff9d82bab41b05cc36b1a13da9, type: 2}
   canvas: {fileID: 4748427172027250823}
@@ -472,6 +472,7 @@ MonoBehaviour:
   hasPredifinedFirstAttack: 0
   firstAttackDistanceToActivate: 0
   firstAttackViewDistanceToActivate: 0
+  HasNoShield: 0
   specialHitBoxForFirstAttacks: {fileID: 0}
   lightAttackChance: 100
   heavyAttackChance: 0
@@ -515,6 +516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   health: {fileID: 6841707136486081427}
   healthBar: {fileID: 7474483699321703478}
+  shield: {fileID: 0}
+  shieldBar: {fileID: 0}
 --- !u!114 &1378800642966603718
 MonoBehaviour:
   m_ObjectHideFlags: 0

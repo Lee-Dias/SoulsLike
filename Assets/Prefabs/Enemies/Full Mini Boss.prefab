@@ -481,6 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivateMiniBoss
   meleeEnemyAI: {fileID: 7100725540125783524}
   health: {fileID: 7478502894191628866}
+  enemyCollider: {fileID: 2371486957556542213}
   enemyCanvas: {fileID: 381292108976640710}
   enemy: {fileID: 8263685313485936665}
   enemyAnimator: {fileID: 4336405523964032917}
@@ -681,10 +682,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a024c7cb-ef79-4574-8eba-6e72ed40438c
     m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 300541cc-05cd-4109-aeea-44d612d0c0af
-    m_ActionName: 'Player/Boss[/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

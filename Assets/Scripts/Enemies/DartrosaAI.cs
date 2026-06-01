@@ -109,6 +109,7 @@ public class DratorsaAI : BaseEnemyAI
         canAttack = false;
         anim.SetTrigger("Attack");
         StartCoroutine(SpawnProjectile());
+        timesCircledSinceLastAttack = 0;
         
     }
 

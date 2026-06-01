@@ -7,6 +7,7 @@ public class Npc : MonoBehaviour
 {
     [SerializeField] private Item itemToGive;   
     [SerializeField] private GameObject DialogueBox;   
+    [SerializeField] private string[] dialogueText; // Texto que o NPC vai falar (pode ser expandido para uma lista de falas, se necessário)
     private Inventory inventory;
     private PlayerState playerState;
     private bool playerInside = false;
