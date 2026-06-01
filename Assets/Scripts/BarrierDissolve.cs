@@ -25,7 +25,7 @@ public class BarrierDissolve : MonoBehaviour
                 Color currentColor = form.material.GetColor("_ShieldColor");
 
                 // 3. Aplica a nova cor com a intensidade de volta ao material
-                form.material.SetColor("_ShieldColor", currentColor * 2f);
+                form.material.SetColor("_ShieldColor", currentColor * 3f);
                 dissolve.material.SetFloat("_Erosion", 0.25f);
             }
             else if (shield.ShieldValue > 50)
@@ -36,8 +36,8 @@ public class BarrierDissolve : MonoBehaviour
                 Color currentColor = form.material.GetColor("_ShieldColor");
 
                 // 3. Aplica a nova cor com a intensidade de volta ao material
-                form.material.SetColor("_ShieldColor", currentColor * 0.5f);
-                dissolve.material.SetFloat("_Erosion", 0.4f);
+                form.material.SetColor("_ShieldColor", currentColor * 1f);
+                dissolve.material.SetFloat("_Erosion", 0.6f);
             }     
             else if (shield.ShieldValue > 10)
             {
@@ -47,8 +47,8 @@ public class BarrierDissolve : MonoBehaviour
                 Color currentColor = form.material.GetColor("_ShieldColor");
 
                 // 3. Aplica a nova cor com a intensidade de volta ao material
-                form.material.SetColor("_ShieldColor", currentColor * 0f);
-                dissolve.material.SetFloat("_Erosion", 0.6f);
+                form.material.SetColor("_ShieldColor", currentColor * 0.2f);
+                dissolve.material.SetFloat("_Erosion", 0.8f);
             }
             else
             {

@@ -95,7 +95,9 @@ public class DratorsaAI : BaseEnemyAI
                 
                 // Restaura o escudo (isto também tira o boss do downState através da FSM)
                 HasNoShield = false;
+                
                 GetComponent<Shield>().RestoreShield();
+                GetComponent<BarrierDissolve>().ChangeBarrierValues();
             }
         }
     }
