@@ -17,12 +17,14 @@ public class PlayerState : MonoBehaviour
     private bool isOnBonfire;
     private bool isInSettings;
     private bool enemyAround;
+    private bool hasArmorEquipped = false;
     
     public bool EnemyAround => enemyAround;
     public bool PlayerCanMove => playerCanMove;
     public bool IsOnInventory => isOnInventory;
     public bool IsInSettings => isInSettings;
     public bool IsOnBonfire => isOnBonfire;
+    public bool HasArmorEquipped => hasArmorEquipped;
     
     [SerializeField] private GameObject interactionMessage;
     [HideInInspector] public bool playerIsInBonfire;
@@ -32,6 +34,11 @@ public class PlayerState : MonoBehaviour
     private void Start()
     {
         inventory = GetComponent<Inventory>();
+    }
+
+    public void ChangeHasArmorEquipped(bool state)
+    {
+        hasArmorEquipped = state;
     }
 
     public void PlayerCanMoveState(bool state)
@@ -107,7 +114,16 @@ public class PlayerState : MonoBehaviour
     {
         if(isDefending)
         {
-           float a = inventory.GetItemOnLeftHand().Damage + inventory.GetItemOnArmourSlot().Damage;
+            float a;
+            if(inventory.GetItemOnArmourSlot() != null)
+            {
+                a = inventory.GetItemOnLeftHand().Damage + inventory.GetItemOnArmourSlot().ArmorQuantity;
+            }
+            else
+            {
+                a = inventory.GetItemOnLeftHand().Damage;
+            }
+
            
            return a;
         }

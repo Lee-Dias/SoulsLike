@@ -5,35 +5,60 @@ public class OrbProjectile : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
     
-    private Transform _target; // Variável interna para guardar o alvo
-    private Transform Curr; // Variável para guardar a posição constante, se necessário
-    private bool AlwaysFollow = true; 
-    // Este método é chamado pelo Boss ou Spawner para definir quem seguir
-    public void SetTarget(Transform target, bool constantFollow = true)
+    private Transform _targetTransform; // Usado se estiver seguindo o alvo em tempo real
+    private Vector3 _moveDirection;     // Direção fixa calculada se NÃO estiver seguindo
+    private bool _hasTarget = false;
+    private bool _followTarget = false;  
+
+    private void Start()
     {
-        Vector3 newTargetPosition = new Vector3(target.position.x, transform.position.y + 1.5f, target.position.z);
-        target.position = newTargetPosition;
-        _target = target;
-        Curr = target;
-        AlwaysFollow = constantFollow;
+        // Destrói a orbe após 5 segundos para não pesar na memória do jogo
+        Destroy(gameObject, 5f); 
+    }
+
+    public void SetTarget(Transform target, bool followTarget = false)
+    {
+        _followTarget = followTarget;
+        _hasTarget = true;
+
+        if (_followTarget)
+        {
+            _targetTransform = target;
+        }
+        else
+        {
+            // 1. Calcula a posição ideal onde o alvo está agora
+            Vector3 targetPosition = target.position + new Vector3(0, 0.5f, 0);
+            
+            // 2. Calcula a direção exata da orbe até essa posição e salva permanentemente
+            _moveDirection = (targetPosition - transform.position).normalized;
+        }
     }
 
     private void Update()
     {
-        // Se não tiver alvo, o projétil vai apenas para frente ou fica parado
-        if (_target == null) return;
+        if (!_hasTarget) return;
 
-        if (AlwaysFollow)
+        Vector3 direction;
+
+        if (_followTarget)
         {
-            Curr = _target; // Atualiza o alvo constantemente
+            if (_targetTransform == null) return; 
+            
+            // Se estiver seguindo, calcula a direção para a posição atual do alvo a cada frame
+            Vector3 currentDestination = _targetTransform.position + new Vector3(0, 0.5f, 0);
+            direction = (currentDestination - transform.position).normalized;
         }
-        // 1. Calcula a direção
-        Vector3 direction = (Curr.position - transform.position).normalized;
+        else
+        {
+            // Se NÃO estiver seguindo, usa a direção fixa calculada no início (fazendo ela passar direto)
+            direction = _moveDirection;
+        }
 
-        // 2. Move o projétil
+        // 1. Move o projétil na direção definida
         transform.position += direction * speed * Time.deltaTime;
 
-        
+        // 2. Rotaciona o projétil para olhar para onde está indo
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
@@ -45,5 +70,4 @@ public class OrbProjectile : MonoBehaviour
     {
         GetComponent<Attack>().SetCharacther(gameObject);
     }
-
 }

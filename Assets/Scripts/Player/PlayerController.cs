@@ -335,7 +335,15 @@ public class PlayerController : MonoBehaviour
 
         float elapsed = 0f;
         Vector3 start = transform.position;
-        Vector3 target = start + dashDir * dashDistance;
+        Vector3 target;
+        if (!GetComponent<PlayerState>().HasArmorEquipped)
+        {
+            target = start + dashDir * dashDistance;
+        }
+        else
+        {
+            target = start + dashDir * dashDistance/2f;
+        }
 
         while (elapsed < dashDuration)
         {

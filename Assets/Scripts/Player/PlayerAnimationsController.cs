@@ -464,8 +464,8 @@ public class PlayerAnimationsController : MonoBehaviour
             return;
         }
 
-        if (!attackQueued && stamina.StaminaValue >= staminaToWastePerAttack 
-            && !animManager.QueuedNext && !animManager.Handle.IsFadingOut && !animManager.Handle.IsBlending)
+        if (/*!attackQueued &&*/ stamina.StaminaValue >= staminaToWastePerAttack 
+            /*&& !animManager.QueuedNext && !animManager.Handle.IsFadingOut && !animManager.Handle.IsBlending*/)
         {
             Debug.Log("queue called");
             attackQueued = true;

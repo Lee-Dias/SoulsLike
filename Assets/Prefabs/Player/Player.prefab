@@ -6049,7 +6049,6 @@ Transform:
   - {fileID: 1051042883479586325}
   - {fileID: 6933436078198396347}
   - {fileID: 7234951615987869639}
-  - {fileID: 142165001748467112}
   m_Father: {fileID: 5076251678615360261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4384414337471963018
@@ -6118,6 +6117,7 @@ Transform:
   - {fileID: 1956289086453609094}
   - {fileID: 3415435464418530755}
   - {fileID: 7068872201985508930}
+  - {fileID: 142165001748467112}
   m_Father: {fileID: 5076251678615360261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4474200898778131722
@@ -6397,12 +6397,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5662961970060812322}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7101709, y: -0.12570374, z: -0.120737426, w: 0.6821131}
-  m_LocalPosition: {x: -0.037301183, y: 0.9769399, z: 0.13557626}
-  m_LocalScale: {x: 3.8421981, y: 1.8463647, z: 3.8421993}
+  m_LocalRotation: {x: -0.7101709, y: -0.12570374, z: -0.12073742, w: 0.6821131}
+  m_LocalPosition: {x: -492.858, y: -329.50604, z: -17.213243}
+  m_LocalScale: {x: 3.8421984, y: 1.8463649, z: 3.8421996}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2510695832121878772}
+  m_Father: {fileID: 8918382818635569211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3919444733133216320
 SkinnedMeshRenderer:
@@ -8465,7 +8465,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8594164796964805011, guid: e208239998199e640a08a5fe6d495c65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1503727857065005782}
   m_SourcePrefab: {fileID: 100100000, guid: e208239998199e640a08a5fe6d495c65, type: 3}
 --- !u!4 &926888399767812491 stripped
 Transform:
@@ -8482,3 +8485,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8594164796964805011, guid: e208239998199e640a08a5fe6d495c65, type: 3}
   m_PrefabInstance: {fileID: 4758437062301847373}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1503727857065005782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840943852203480798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a300d4714775d864d8b6ce86fd2ece1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowTransform
+  transformToFollow: {fileID: 8749868645662482248}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}

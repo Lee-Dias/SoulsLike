@@ -18,11 +18,11 @@ public class OrbDeflect : MonoBehaviour
             other.GetComponent<PlayerAnimationsController>();
             if(playerAnimationsController.IsAttacking || playerAnimationsController.IsDoingParry)
             {
-                orb.SetTarget(Boss);
+                orb.SetTarget(Boss, true);
             }
             else
             {
-                orb.SetTarget(Boss, false); 
+                //orb.SetTarget(Boss, true); 
             }
             orb.ChangeCharacter(playerAnimationsController.gameObject); 
         }

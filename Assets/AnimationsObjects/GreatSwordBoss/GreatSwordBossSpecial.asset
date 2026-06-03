@@ -32,18 +32,12 @@ MonoBehaviour:
     - {fileID: 0}
     transitionWindowStart: 0
     transitionWindowEnd: 0
-    movementCurveOnCombo:
-    - startTime: 0
-      endTime: 0.3
-      speed: {x: 0, y: 0.3}
-    - startTime: 0.8
-      endTime: 1
-      speed: {x: 0, y: 0.3}
+    movementCurveOnCombo: []
     nextAnimationTriggerPoint: 1
     comboSpeed: 0.8
-    blendTime: 1
-    hitStartTime: 0.3
-    hitEndTime: 0.6
+    blendTime: 0.5
+    hitStartTime: 0.37
+    hitEndTime: 0.5
     soundStartTime: 0
     cameraShakeTimer: 0.6
     cameraShake: 0.04

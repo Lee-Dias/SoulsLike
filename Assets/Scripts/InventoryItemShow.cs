@@ -102,11 +102,13 @@ public class InventoryItemShow : MonoBehaviour
         {
             armor.SetActive(true);
             mainBody.SetActive(false);
+            GetComponent<PlayerState>().ChangeHasArmorEquipped(true);
         }
         else if (item == null)
         {
             armor.SetActive(false);
-            mainBody.SetActive(true);   
+            mainBody.SetActive(true);
+            GetComponent<PlayerState>().ChangeHasArmorEquipped(false);
         }
     }
 
