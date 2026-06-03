@@ -30,6 +30,7 @@ public class MeshTrail : MonoBehaviour
     {
         if (!isTrailActive)
         {
+            skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
             isTrailActive = true;   
             StartCoroutine(ActivateTrail(activeTime));            
         }
