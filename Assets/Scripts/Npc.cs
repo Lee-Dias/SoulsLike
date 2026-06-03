@@ -1,30 +1,34 @@
 using UnityEngine;
 using System.Collections;
 using NUnit.Framework;
-using UnityEngine.InputSystem; // Necessário para usar Coroutines
+using UnityEngine.InputSystem;
+using TMPro; // Necessário para usar Coroutines
 
 public class Npc : MonoBehaviour
 {
     [SerializeField] private Item itemToGive;   
-    [SerializeField] private GameObject DialogueBox;   
+    [SerializeField] private GameObject dialogueBox;   
     [SerializeField] private string[] dialogueText; // Texto que o NPC vai falar (pode ser expandido para uma lista de falas, se necessário)
     private Inventory inventory;
     private PlayerState playerState;
     private bool playerInside = false;
-    private bool hasTalked = false; // Garante que só falas uma vez se quiseres que ele desapareça
+    private bool isTalking = false; 
+    private bool firstTalk = true; 
+    private int currentText = 0;
+    private int whereToStartText = 1;
 
     void Start()
     {
         inventory = FindFirstObjectByType<Inventory>();
         playerState = FindFirstObjectByType<PlayerState>();
-        if (DialogueBox != null)
-            DialogueBox.SetActive(false);
+        if (dialogueBox != null)
+            dialogueBox.SetActive(false);
     }
     public void InteractWithNpc(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
 
-        if (playerInside)
+        if (playerInside || isTalking)
         {
             Talk();
         }
@@ -33,49 +37,48 @@ public class Npc : MonoBehaviour
 
     private void Talk()
     {
-        if (hasTalked || playerState.EnemyAround || playerState.IsInSettings || playerState.IsOnInventory || !playerInside) return; // Impede de ganhar itens infinitos enquanto ele não some
+        if (playerState.EnemyAround || playerState.IsInSettings || playerState.IsOnInventory || !playerInside) return; // Impede de ganhar itens infinitos enquanto ele não some
         playerState.ChangeInteractionMessageState(false);
-
-        if (DialogueBox != null)
+        isTalking = true;
+        if (dialogueBox != null)
         {
-            DialogueBox.SetActive(true);
-        }
-
-        hasTalked = true;
-        
-        // Inicia a contagem decrescente para desaparecer
-        StartCoroutine(HandleDisappear());
-    }
-
-    private IEnumerator HandleDisappear()
-    {
-        // Espera por 3 segundos reais
-        yield return new WaitForSeconds(5f);
-
-        // Desativa a caixa de diálogo (opcional, já que o NPC vai sumir)
-        if (DialogueBox != null)
-        {
-            DialogueBox.SetActive(false);
-        }
-
-        if (inventory != null && itemToGive != null)
-        {
-            inventory.SpawnInventoryItem(itemToGive);
-            if (ItemPickedUp.Instance != null) {
-                ItemPickedUp.Instance.ShowItem(itemToGive);
+            dialogueBox.SetActive(true);
+            TextMeshProUGUI text = dialogueBox.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            
+            if (currentText < dialogueText.Length)
+            {
+                text.text = dialogueText[currentText];
+                currentText += 1;
+            }
+            else
+            {
+                currentText = whereToStartText;
+                if (firstTalk)
+                {
+                    inventory.SpawnInventoryItem(itemToGive);
+                    if (ItemPickedUp.Instance != null) {
+                        ItemPickedUp.Instance.ShowItem(itemToGive);
+                    }
+                    firstTalk = false;
+                }
+                
+                isTalking = false;
+                dialogueBox.SetActive(false);
+                if(playerInside)
+                {
+                    playerState.ChangeInteractionMessageState(true);
+                }
             }
         }
 
-        //gameObject.SetActive(false);
-        
     }
 
     private void OnTriggerEnter(Collider tag)
     {
-        if(hasTalked) return;
         if (tag.CompareTag("Player"))
         {
             playerInside = true;
+            if (isTalking) return;  
             playerState.ChangeInteractionMessageState(true);
         }
     }

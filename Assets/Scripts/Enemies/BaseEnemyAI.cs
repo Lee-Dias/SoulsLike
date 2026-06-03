@@ -10,6 +10,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     [SerializeField] protected float audioRange;
     [SerializeField] protected float viewRange;
     [SerializeField] protected float viewAngle;
+    [SerializeField] protected float takeAggroRange = 10f;
 
     [Header("Movement")]
     [SerializeField] protected float circleEnemySpeed;
@@ -72,6 +73,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected float currentHealth;
     protected bool playerInViewRange;
     protected bool playerInAudioRange;
+    protected bool playerInAggroRange;
 
     protected bool isDead;
 
@@ -254,12 +256,12 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     // ------------------------------------------------------
     private bool ShouldGoIdle()
     {
-        return !playerInAudioRange && !playerInViewRange;
+        return !playerInAggroRange;
     }
 
     private bool ShouldChase()
     {
-        return !IsInPreferredRange() && (playerInAudioRange || playerInViewRange);
+        return !IsInPreferredRange() && playerInAggroRange;
     }
 
     private bool ShouldCircle()
@@ -460,7 +462,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         float dist = Vector3.Distance(transform.position, player.position);
 
         playerInAudioRange = dist <= audioRange && HasLineOfSight();
-        
+        playerInAggroRange = dist <= takeAggroRange;
         playerInViewRange = IsPlayerInViewRange();
     }
     protected bool IsTouchingPlayer()
