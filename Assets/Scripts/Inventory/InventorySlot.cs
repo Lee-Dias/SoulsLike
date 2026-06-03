@@ -26,6 +26,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
 
     public void SetItem(InventoryItem item)
     {
+        Destroy(item.imageObj);
         Inventory.carriedItem = null;
 
         //reset old slot

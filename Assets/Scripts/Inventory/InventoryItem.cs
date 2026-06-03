@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +17,8 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     private Inventory inventory;
 
     public bool canRemove = true;
+
+    public GameObject imageObj;
 
     void Awake()
     {
@@ -52,6 +54,9 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Inventory.Singleton.SetCarriedItem(this);
+            
+                CreateImage("Images/Border");
+            
         }
 
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -60,5 +65,23 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             inventory.SpawnInventoryItem(myItem);
             Destroy(this.gameObject);
         }
+    }
+
+    public void CreateImage(string imagePath)
+    {
+        // Create a new GameObject as a child
+        imageObj = new GameObject("ImageChild");
+        imageObj.transform.SetParent(transform, false);
+
+        // Add Image component
+        Image image = imageObj.AddComponent<Image>();
+
+        // Load the sprite from path (must be inside a Resources folder)
+        Sprite sprite = Resources.Load<Sprite>(imagePath);
+
+        if (sprite != null)
+            image.sprite = sprite;
+        else
+            print("Image not found at path: " + imagePath);
     }
 }
