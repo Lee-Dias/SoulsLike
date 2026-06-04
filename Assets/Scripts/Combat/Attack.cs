@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
                     health.GetHit(damage);
                 }
                 
-                if(hitPoint != null && damage > 0 && hitVFX != null)
+                if(hitPoint != null && damage > 0 && hitVFX != null && !other.CompareTag("Dratorsa"))
                     Instantiate(hitVFX, hitPoint, Quaternion.identity);
                 if(this.GetComponent<OrbProjectile>() != null)
                 {

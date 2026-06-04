@@ -2,38 +2,50 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-//using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.EventSystems;
 
-
 public class SettingsManager : MonoBehaviour
 {
-    [SerializeField]private GameObject[] tabsToActivate;
-    [SerializeField]private Button buttonToSelect;
-    [SerializeField]private Slider gammaSlider;
-    [SerializeField]private VolumeProfile volumeProfile;
+    [SerializeField] private GameObject[] tabsToActivate;
+    [SerializeField] private Button buttonToSelect;
+    [SerializeField] private Slider gammaSlider;
+    [SerializeField] private VolumeProfile[] volumeProfile;
 
     private PlayerState playerState;
-    private LiftGammaGain liftGammaGain;
+    // Alterado para array para suportar múltiplos perfis
+    private LiftGammaGain[] liftGammaGain;
     private bool isOpen = false;
-    
 
     private void Start()
     {
         playerState = FindFirstObjectByType<PlayerState>();
-        // Try to get the LiftGammaGain component from the profile
-        if (volumeProfile.TryGet<LiftGammaGain>(out var tmp))
+
+        // Inicializa o array com o mesmo tamanho dos perfis disponíveis
+        liftGammaGain = new LiftGammaGain[volumeProfile.Length];
+
+        for (int i = 0; i < volumeProfile.Length; i++)
         {
-            liftGammaGain = tmp;
-            // Initialize slider value to match current profile value
-            gammaSlider.value = liftGammaGain.gamma.value.w; 
+            if (volumeProfile[i] != null && volumeProfile[i].TryGet<LiftGammaGain>(out var tmp))
+            {
+                liftGammaGain[i] = tmp;
+
+                // Usa o valor do primeiro perfil válido para inicializar o slider na UI
+                if (gammaSlider != null)
+                {
+                    gammaSlider.value = liftGammaGain[i].gamma.value.w;
+                }
+            }
         }
     }
 
     public void OnOpenTab(InputAction.CallbackContext context)
     {
-        if(playerState.IsOnBonfire || playerState.IsOnInventory) return;
+        // Certifica-se de ler o input apenas quando o botão for pressionado (started)
+        if (!context.started) return;
+
+        if (playerState.IsOnBonfire || playerState.IsOnInventory) return;
+
         if (!isOpen) 
         {
             Cursor.lockState = CursorLockMode.None;
@@ -43,10 +55,10 @@ public class SettingsManager : MonoBehaviour
             
             foreach (var tab in tabsToActivate)
             {
-                tab.SetActive(true);
+                if (tab != null) tab.SetActive(true);
             }
             isOpen = true;
-            EventSystem.current.SetSelectedGameObject(null); // clear current selection
+            EventSystem.current.SetSelectedGameObject(null); 
             EventSystem.current.SetSelectedGameObject(buttonToSelect.gameObject);
         }
         else
@@ -56,10 +68,9 @@ public class SettingsManager : MonoBehaviour
             playerState.ChangeIsInSettingsState(false);
             playerState.PlayerCanMoveState(true);
             
-
             foreach (var tab in tabsToActivate)
             {
-                tab.SetActive(false);
+                if (tab != null) tab.SetActive(false);
             }
             isOpen = false;
         }
@@ -67,19 +78,20 @@ public class SettingsManager : MonoBehaviour
 
     public void ChangeGammaValue()
     {
+        if (liftGammaGain == null || gammaSlider == null) return;
 
-        if (liftGammaGain != null)
+        // Percorre todos os componentes guardados no array e atualiza o Gamma de cada um
+        foreach (var lgg in liftGammaGain)
         {
-            // In HDRP, Gamma is a Vector4 (X, Y, Z, W)
-            // W is usually the 'Master' slider
-            Vector4 newGamma = liftGammaGain.gamma.value;
-            newGamma.w = gammaSlider.value;
-            liftGammaGain.gamma.overrideState = true;
-            liftGammaGain.gamma.value = newGamma;
+            if (lgg != null)
+            {
+                // No URP/HDRP, Gamma é um Vector4 (X, Y, Z, W) onde W é o Master
+                Vector4 newGamma = lgg.gamma.value;
+                newGamma.w = gammaSlider.value;
+                
+                lgg.gamma.overrideState = true;
+                lgg.gamma.value = newGamma;
+            }
         }
-
     }
-
-
-    
 }

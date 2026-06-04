@@ -16,7 +16,7 @@ public class OrbProjectile : MonoBehaviour
         Destroy(gameObject, 5f); 
     }
 
-    public void SetTarget(Transform target, bool followTarget = false)
+    public void SetTarget(Transform target, bool followTarget = true)
     {
         _followTarget = followTarget;
         _hasTarget = true;

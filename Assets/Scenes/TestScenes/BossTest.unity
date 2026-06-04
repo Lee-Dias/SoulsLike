@@ -5682,6 +5682,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3006201383029227448, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: positionToSpawn
+      value: 
+      objectReference: {fileID: 2098790609}
     - target: {fileID: 4306874496068307869, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: armor
       value: 
@@ -5840,6 +5844,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a78ee1d769df64b99a45ca4851bf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+--- !u!4 &2098790609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5076251678615360261, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 2098790603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2106774150
 GameObject:
   m_ObjectHideFlags: 0

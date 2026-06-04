@@ -7,10 +7,12 @@ public class Stamina : MonoBehaviour
     private float maxStamina;
     private float stamina;
     [SerializeField] private float staminaRegen = 0.2f;
+    [SerializeField] private float timeToRegenStaminaAfterTake = 2f;
     private float amountOfStaminaToTake;
 
     // Controla se a stamina está sendo drenada por um golpe/ação rápida
-    private bool isDrainingSmoothly = false;
+    private float timeSinceLastTakeStamina = 0f;
+
 
     public float StaminaValue => stamina;
     public float MaxStamina => maxStamina;
@@ -24,6 +26,7 @@ public class Stamina : MonoBehaviour
 
     public void Update()
     {
+        timeSinceLastTakeStamina += Time.deltaTime;
         // Só diminui se houver um custo contínuo (ex: correr)
         if (amountOfStaminaToTake > 0)
         {
@@ -31,7 +34,7 @@ public class Stamina : MonoBehaviour
         }
         
         // Só regenera se não estiver gastando nada e não estiver no meio de um dreno suave
-        if (amountOfStaminaToTake <= 0 && !isDrainingSmoothly)
+        if (amountOfStaminaToTake <= 0 && (timeSinceLastTakeStamina >= timeToRegenStaminaAfterTake) )
         {
             RegenStamina(staminaRegen);
         }
@@ -63,26 +66,9 @@ public class Stamina : MonoBehaviour
     // --- A MUDANÇA PRINCIPAL AQUI ---
     public void TakeStamina(float staminaTaken)
     {
-        // Inicia a redução suave ao longo de 1 segundo
-        StartCoroutine(SmoothTakeRoutine(staminaTaken, 1f));
+        stamina -= staminaTaken;
+        timeSinceLastTakeStamina = 0f; 
     }
 
-    private IEnumerator SmoothTakeRoutine(float amountToTake, float duration)
-    {
-        isDrainingSmoothly = true;
-        float elapsed = 0f;
-        float startStamina = stamina;
-        float targetStamina = Mathf.Max(0, stamina - amountToTake);
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            // Interpolação Linear (Lerp) para suavizar a descida
-            stamina = Mathf.Lerp(startStamina, targetStamina, elapsed / duration);
-            yield return null;
-        }
-
-        stamina = targetStamina;
-        isDrainingSmoothly = false;
-    }
 }
