@@ -18,8 +18,9 @@ public class PlayerState : MonoBehaviour
     private bool isInSettings;
     private bool enemyAround;
     private bool hasArmorEquipped = false;
+    private float enemiesChasingPlayer = 0;
     
-    public bool EnemyAround => enemyAround;
+
     public bool PlayerCanMove => playerCanMove;
     public bool IsOnInventory => isOnInventory;
     public bool IsInSettings => isInSettings;
@@ -142,5 +143,18 @@ public class PlayerState : MonoBehaviour
     public bool IsDefending()
     {
         return isDefending;
+    }
+
+    public bool IsBeingChased()
+    {
+        return enemyAround;
+    }
+    public void UpEnemiesChasingPlayer()
+    {
+        enemiesChasingPlayer += 1;
+    }
+    public void DownEnemiesChasingPlayer()
+    {
+        enemiesChasingPlayer -= 1;
     }
 }

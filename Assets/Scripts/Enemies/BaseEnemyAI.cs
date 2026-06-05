@@ -102,12 +102,15 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     private Vector3 enemyTargetPosition;
 
+    private PlayerState playerstate;
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
         anim = GetComponent<Animator>();
         audioManager = FindFirstObjectByType<AudioManager>();
+        playerstate = FindFirstObjectByType<PlayerState>();
         animManager = new CombatAnimationManager(anim);
         if(hasPredifinedFirstAttack)
         {
@@ -170,7 +173,14 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 return; 
             }
         }
-
+        if(playerInAggroRange || playerInAudioRange || playerInViewRange)
+        {
+            playerstate.UpEnemiesChasingPlayer();
+        }
+        else
+        {
+            playerstate.DownEnemiesChasingPlayer();
+        }
         // === rest of your existing Update() ===
         if (!isInAttackAnimation)
         {

@@ -37,7 +37,7 @@ public class Npc : MonoBehaviour
 
     private void Talk()
     {
-        if (playerState.EnemyAround || playerState.IsInSettings || playerState.IsOnInventory || !playerInside && !isTalking) return; // Impede de ganhar itens infinitos enquanto ele não some
+        if (playerState.IsBeingChased() || playerState.IsInSettings || playerState.IsOnInventory || !playerInside && !isTalking) return; // Impede de ganhar itens infinitos enquanto ele não some
         playerState.ChangeInteractionMessageState(false);
         isTalking = true;
         if (dialogueBox != null)

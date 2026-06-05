@@ -26,7 +26,7 @@ public class LiminalWorldChanger : MonoBehaviour
     {
         if (tag.CompareTag("Player"))
         {
-            
+            if(playerState.IsBeingChased()) return; 
             playerState.playerIsInBonfire = true;
             playerState.playerBonfire = this;
             playerState.bonfireLocation = gameObject.transform.position;
