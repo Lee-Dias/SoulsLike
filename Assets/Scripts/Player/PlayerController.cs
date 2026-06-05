@@ -92,10 +92,6 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = value.ReadValue<Vector2>();
     }
-    public void OnBoss(InputAction.CallbackContext value)
-    {
-        SceneManager.LoadScene("BossTest", LoadSceneMode.Single);
-    }
 
 
     public void OnDodge(InputAction.CallbackContext context)

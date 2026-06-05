@@ -399,6 +399,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5515199159622002866, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1549513761}
+    - target: {fileID: 5515199159622002866, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadTargetScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6052724946216745174, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
       propertyPath: m_Name
       value: BonfireCanvas
@@ -1851,6 +1859,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a024c7cb-ef79-4574-8eba-6e72ed40438c
     m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 198b8613-2e3d-4905-afdb-dee867358066
+    m_ActionName: 'Player/OnBoss[/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3651,6 +3663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1549513762}
   - component: {fileID: 1549513761}
+  - component: {fileID: 1549513763}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3690,6 +3703,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1549513763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549513760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f1167947775d49ba8cc43c8eb5fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Teleport
+  player: {fileID: 155314501548679358}
+  animator: {fileID: 519737897}
 --- !u!1 &1587989361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5279,7 +5306,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6948016333332140338, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 155314501548679358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ec7b65da50848a449ddfe68b3d8aae9, type: 3}
@@ -5463,7 +5490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[33].m_ActionId
-      value: be054473-3217-4ba2-8bf6-44569a762531
+      value: 198b8613-2e3d-4905-afdb-dee867358066
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_ActionName
@@ -5471,7 +5498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[33].m_ActionName
-      value: 'Player/Boss[/Keyboard/period]'
+      value: 'Player/OnBoss[/Keyboard/period]'
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.size
@@ -5479,7 +5506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608192909178490637, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_ActionEvents.Array.data[23].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -5785,6 +5812,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7528501974835084249, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 7955307871145381192, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: m_MaxParticleSize
       value: 5
@@ -5844,7 +5875,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1974441874649951622, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 155314501548679358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daeb68cc369ea7944bd7d6b22f4a0ced, type: 3}
@@ -5858,6 +5889,11 @@ Transform:
 --- !u!4 &155314501548679357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7137747774390187588, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+  m_PrefabInstance: {fileID: 155314501548679354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &155314501548679358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8022221983605619843, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &253954464641356658
@@ -7791,7 +7827,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4422783338112707589, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 155314501548679358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 994c852c213c1cc4682e649f0c549203, type: 3}
@@ -7802,7 +7838,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1379096196146726794, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 155314501548679358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be99ddc36e1519a46979a5da2e56415d, type: 3}
@@ -7813,7 +7849,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8390983452625274731, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 155314501548679358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7a78ee1d769df64b99a45ca4851bf27, type: 3}
@@ -7824,7 +7860,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 155314501548679354}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 155314501548679358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2007db783963fb442ae7366616cdcb06, type: 3}
