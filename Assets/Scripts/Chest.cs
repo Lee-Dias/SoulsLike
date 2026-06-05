@@ -4,10 +4,11 @@ using UnityEngine.InputSystem;
 public class Chest : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private GameObject itemToSpawn;
+    [SerializeField] private Item itemToGive;
     [SerializeField] private BoxCollider triggerCollider;
 
     private PlayerState playerState;
+    private Inventory inventory;
 
     private bool isIn;
     private bool hasBeenOpened = false;
@@ -15,6 +16,7 @@ public class Chest : MonoBehaviour
     void Start()
     {
         playerState = FindFirstObjectByType<PlayerState>();
+        inventory = FindFirstObjectByType<Inventory>();
         animator = GetComponent<Animator>();
         isIn = false;
     }
@@ -28,7 +30,12 @@ public class Chest : MonoBehaviour
         playerState.ChangeInteractionMessageState(false);
         hasBeenOpened = true;
         animator.SetTrigger("Open");
-        itemToSpawn.SetActive(true);
+        inventory.SpawnInventoryItem(itemToGive);
+        if (ItemPickedUp.Instance != null) {
+                ItemPickedUp.Instance.ShowItem(itemToGive);
+        }
+
+        //itemToSpawn.SetActive(true);
     }
 
     
