@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 8589064637173916862}
   - component: {fileID: 8717281275639954355}
   - component: {fileID: 6766168062364734875}
+  - component: {fileID: 6715946544683068366}
   m_Layer: 6
   m_Name: Enemy Agonize
   m_TagString: Untagged
@@ -451,6 +452,7 @@ MonoBehaviour:
   audioRange: 15
   viewRange: 25
   viewAngle: 90
+  takeAggroRange: 10
   circleEnemySpeed: 3
   minTimeCircling: 1
   maxTimeCircling: 3
@@ -531,6 +533,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnSymbol
   lockOnSymbol: {fileID: 8788520594389220483}
+--- !u!114 &6715946544683068366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702540643388466331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff402b2d4925a49995859fd1b0c2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomTalk
+  talkList:
+  - {fileID: 8300000, guid: db705e8b223c9654bbf84654e827d63b, type: 3}
+  - {fileID: 8300000, guid: e50efc0032d4a9444bdc87897e2f7458, type: 3}
+  - {fileID: 8300000, guid: 65aa9b9e260a67b4a850f204a3b0891b, type: 3}
+  - {fileID: 8300000, guid: c0a0eae82a1a3f341b0d13563d18b41f, type: 3}
+  - {fileID: 8300000, guid: 4b1b68e26aef66e409cb9263d73ccab9, type: 3}
+  - {fileID: 8300000, guid: 8749d51db9511d540bdca3c0349ff44f, type: 3}
+  minTalkInterval: 5
+  maxTalkInterval: 15
 --- !u!1 &1939402725855608890
 GameObject:
   m_ObjectHideFlags: 0

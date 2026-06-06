@@ -1836,6 +1836,7 @@ GameObject:
   - component: {fileID: 543925941123590450}
   - component: {fileID: 6046334064137257466}
   - component: {fileID: 187012111048035550}
+  - component: {fileID: 8217935976195198530}
   m_Layer: 6
   m_Name: Enemy First Attack
   m_TagString: Untagged
@@ -1981,6 +1982,7 @@ MonoBehaviour:
   audioRange: 15
   viewRange: 25
   viewAngle: 90
+  takeAggroRange: 10
   circleEnemySpeed: 3
   minTimeCircling: 1
   maxTimeCircling: 3
@@ -2061,6 +2063,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   lockOnSymbol: {fileID: 3940652872414270254}
+--- !u!114 &8217935976195198530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501094798341071720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff402b2d4925a49995859fd1b0c2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomTalk
+  talkList:
+  - {fileID: 8300000, guid: db705e8b223c9654bbf84654e827d63b, type: 3}
+  - {fileID: 8300000, guid: e50efc0032d4a9444bdc87897e2f7458, type: 3}
+  - {fileID: 8300000, guid: 65aa9b9e260a67b4a850f204a3b0891b, type: 3}
+  - {fileID: 8300000, guid: c0a0eae82a1a3f341b0d13563d18b41f, type: 3}
+  - {fileID: 8300000, guid: 4b1b68e26aef66e409cb9263d73ccab9, type: 3}
+  - {fileID: 8300000, guid: 8749d51db9511d540bdca3c0349ff44f, type: 3}
+  minTalkInterval: 5
+  maxTalkInterval: 15
 --- !u!1 &8834265863631180541
 GameObject:
   m_ObjectHideFlags: 0

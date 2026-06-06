@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void PlayAudio(AudioClip audioClip = null, AudioClip[] clips = null, float delay = 0f, float volume = 1f,float pitchmin = 1f, float pitchmax = 1f)
+    public void PlayAudio(AudioClip audioClip = null, AudioClip[] clips = null, float delay = 0f, float volume = 1f,float pitchmin = 1f, float pitchmax = 1f, float spatialBlend = 0f, Transform audioSourceTransform = null, float maxDistance = 10f)
     {
         if (instance == null)
             return;
@@ -50,12 +50,15 @@ public class AudioManager : MonoBehaviour
                 return;
             // Create temporary GameObject
             GameObject tempGO = new GameObject("TempAudio");
-            tempGO.transform.position = transform.position;
+            tempGO.transform.position = audioSourceTransform != null ? audioSourceTransform.position : transform.position;
 
             AudioSource tempSource = tempGO.AddComponent<AudioSource>();
             tempSource.clip = clipToPlay;
             tempSource.volume = volume;
             tempSource.pitch = UnityEngine.Random.Range(pitchmin, pitchmax);
+            tempSource.maxDistance = maxDistance;
+            tempSource.rolloffMode = AudioRolloffMode.Linear;
+            tempSource.spatialBlend = spatialBlend;
             tempSource.Play();
 
             // Destroy after finished playing

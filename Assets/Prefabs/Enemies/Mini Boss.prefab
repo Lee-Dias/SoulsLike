@@ -11795,6 +11795,7 @@ MonoBehaviour:
   upwardModifier: 0.05
   audioClip: {fileID: 0}
   audioDelay: 0
+  audioVolume: 1
   layerToDestroy: Sword
 --- !u!65 &8946491919978850989
 BoxCollider:
@@ -12002,6 +12003,7 @@ GameObject:
   - component: {fileID: 8732133008951489219}
   - component: {fileID: 4121079343462508044}
   - component: {fileID: 373151178062833056}
+  - component: {fileID: 8667737278674108648}
   m_Layer: 6
   m_Name: Mini Boss
   m_TagString: Untagged
@@ -12078,6 +12080,7 @@ MonoBehaviour:
   activateAfterGetHit: {fileID: 0}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 8956698960389246621}
+  hasKnockBack: 1
 --- !u!136 &8045291324252064942
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12142,6 +12145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUiManager
   health: {fileID: 8566297945575187523}
   healthBar: {fileID: 0}
+  shield: {fileID: 0}
+  shieldBar: {fileID: 0}
 --- !u!114 &8732133008951489219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12159,17 +12164,21 @@ MonoBehaviour:
   audioRange: 15
   viewRange: 25
   viewAngle: 90
+  takeAggroRange: 10
   circleEnemySpeed: 2
   minTimeCircling: 1
   maxTimeCircling: 3
   attacksCooldown: 2
   enemy: {fileID: 11400000, guid: 7137f7c93e2f0364e8cb9a2911967bd1, type: 2}
-  dodgeDistanceFromPlayer: 2
+  canDodge: 0
   dodgeDistance: 5
+  dodgeDuration: 0.1
   chanceToDodge: 25
   dodgeCoolDown: 0
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 0
   chanceToCircle: 0.2
-  anim: {fileID: 3045673750193452593}
   weaponCollider: {fileID: 7985814108143912429}
   item: {fileID: 11400000, guid: a7ec053ae1309fc4e99995a0335d38bb, type: 2}
   canvas: {fileID: 0}
@@ -12177,6 +12186,7 @@ MonoBehaviour:
   hasPredifinedFirstAttack: 0
   firstAttackDistanceToActivate: 0
   firstAttackViewDistanceToActivate: 0
+  HasNoShield: 0
   specialHitBoxForFirstAttacks: {fileID: 0}
   lightAttackChance: 80
   heavyAttackChance: 20
@@ -12219,6 +12229,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnSymbol
   lockOnSymbol: {fileID: 0}
+--- !u!114 &8667737278674108648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622238932042262626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff402b2d4925a49995859fd1b0c2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomTalk
+  talkList:
+  - {fileID: 8300000, guid: ea7f508e4eda75d48ab0a91f78c5b487, type: 3}
+  - {fileID: 8300000, guid: e64398a95e797e84d83891873e820edb, type: 3}
+  - {fileID: 8300000, guid: 408d141d392b285419a44b878b1c8ba8, type: 3}
+  - {fileID: 8300000, guid: e524c3256fdb3504cb74357be07fc734, type: 3}
+  minTalkInterval: 4
+  maxTalkInterval: 10
 --- !u!1 &1732948730879679777
 GameObject:
   m_ObjectHideFlags: 0
@@ -13506,6 +13535,7 @@ MonoBehaviour:
   upwardModifier: 0.05
   audioClip: {fileID: 0}
   audioDelay: 0
+  audioVolume: 1
   layerToDestroy: Sword
 --- !u!54 &3955680771301967772
 Rigidbody:
