@@ -25,7 +25,7 @@ public class RandomTalk : MonoBehaviour
         {
             nextTalkTime = Random.Range(minTalkInterval, maxTalkInterval);
             talkTimer = 0f;
-            audioManager.PlayAudio(null, talkList, 0f, 1f, 0.95f, 1.05f, 1f, this.transform);
+            audioManager.PlayAudio(null, talkList, 0f, 0.4f, 0.95f, 1.05f, 1f, this.transform);
         }
     }
 }
