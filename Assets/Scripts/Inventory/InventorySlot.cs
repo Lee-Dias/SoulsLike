@@ -1,12 +1,25 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static Item;
+using TMPro;
 
-public class InventorySlot : MonoBehaviour, IPointerClickHandler
+public class InventorySlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {		
     public InventoryItem myItem { get; set; }   
 
 	public ItemType myType;
+
+    private InfoMouseFollowerUI mouseFollower;
+    private TextMeshProUGUI mouseText;
+
+    private void Awake()
+    {
+        if(mouseFollower == null || mouseText == null)
+        {
+            mouseFollower = GameObject.Find("MouseFollower").GetComponent<InfoMouseFollowerUI>();
+            mouseText = mouseFollower.GetComponentInChildren<TextMeshProUGUI>();
+        }
+    }
 
 
     
@@ -46,5 +59,19 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             Inventory.Singleton.EquipEquipment(myType, myItem);
         }
         EquipmentManager.Singleton.UpdateUpdateEquippedAura();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (myItem == null) return;
+        mouseFollower.isHoveringItem = true;
+        mouseText.text = myItem.myItem.ItemName;
+        print("\nHovering " + myItem.myItem.ItemName + "\n\n\n");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        mouseFollower.isHoveringItem = false;
+        mouseText.text = "";
     }
 }

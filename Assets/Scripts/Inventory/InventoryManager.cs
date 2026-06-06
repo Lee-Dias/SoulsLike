@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
     [SerializeField] private List<GameObject> extras = new List<GameObject>();
+    [SerializeField] private InfoMouseFollowerUI mouseFollower;
 
     private PlayerState playerState;
     private bool isActive = false;
@@ -42,6 +43,7 @@ public class InventoryManager : MonoBehaviour
             Cursor.visible = false;
             playerState.ChangeIsInInventoryState(false);
             playerState.PlayerCanMoveState(true);
+            mouseFollower.isHoveringItem = false;
         }
         inventory.SetActive(isActive);
         foreach (GameObject extra in extras)
@@ -60,5 +62,6 @@ public class InventoryManager : MonoBehaviour
         {
             extra.SetActive(isActive);
         }
+        mouseFollower.isHoveringItem = false;
     }
 }

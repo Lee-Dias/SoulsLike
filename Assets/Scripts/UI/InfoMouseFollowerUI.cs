@@ -1,25 +1,42 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InfoMouseFollowerUI : MonoBehaviour
 {
-    private TextMeshProUGUI tmp;
+    private TextMeshProUGUI text;
     private RectTransform selfRect;
     private RectTransform childRect;
     private Canvas canvas;
+
+    private Image selfImage;
+    private TextMeshProUGUI mouseText;
+    public bool isHoveringItem = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        tmp = GetComponentInChildren<TextMeshProUGUI>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
         selfRect = GetComponent<RectTransform>();
         childRect = transform.GetChild(0).GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        selfImage = GetComponent<Image>();
+        mouseText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isHoveringItem)
+        {
+            selfImage.enabled = false;
+            mouseText.text = "";
+            return;
+        }
+        else
+        {
+            selfImage.enabled = true;
+        }
 
         /* Vector2 mousePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -41,9 +58,9 @@ public class InfoMouseFollowerUI : MonoBehaviour
 
 
 
-        tmp.ForceMeshUpdate();
+        text.ForceMeshUpdate();
 
-        int lineCount = tmp.textInfo.lineCount;
+        int lineCount = text.textInfo.lineCount;
 
         if (lineCount == 1)
         {
