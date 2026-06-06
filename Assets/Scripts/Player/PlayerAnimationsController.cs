@@ -78,6 +78,7 @@ public class PlayerAnimationsController : MonoBehaviour
     private bool soundActivate;
     private bool holdDefend;
 
+    public bool IsDefending => isDefending;
     public bool IsAttacking => isAttacking;
     public bool ActivateTrail => activateTrail;
     public bool IsDoingParry => isDoingParry;
@@ -358,7 +359,7 @@ public class PlayerAnimationsController : MonoBehaviour
     public void OnConsumable()
     {
         if(isAttacking || playerState.IsOnInventory || playerState.IsInSettings|| playerState.IsOnBonfire) return;
-        HandleAttackInput(inventory?.GetItemOnConsumablesSlot()?.Animation);
+        HandleAttackInput(inventory?.GetItemOnConsumablesSlot()?.Animation, false);
     }
     
     public bool ShouldBlockMovement(out Vector3 animMotion)
@@ -407,7 +408,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
         playerController.SnapRotateToTarget();
     }
-    private void HandleAttackInput(CombatAnimations animData)
+    private void HandleAttackInput(CombatAnimations animData, bool wasteStamina = true)
     {
         if (animData == null || !health.CanAttack() || !playerState.PlayerCanMove) return;
 
@@ -458,8 +459,9 @@ public class PlayerAnimationsController : MonoBehaviour
             // Set parry flag
             isDoingParry = isParryAttack;
             canParry = isParryAttack;
+            if(wasteStamina)
+                stamina.TakeStamina(staminaToWastePerAttack);
 
-            stamina.TakeStamina(staminaToWastePerAttack);
             spawned = false; 
             return;
         }
@@ -474,7 +476,8 @@ public class PlayerAnimationsController : MonoBehaviour
 
             if (animManager.QueuedNext)
             {
-                stamina.TakeStamina(staminaToWastePerAttack);
+                if(wasteStamina)
+                    stamina.TakeStamina(staminaToWastePerAttack);
                 spawned = false; 
             }
 

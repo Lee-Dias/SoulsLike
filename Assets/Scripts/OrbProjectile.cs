@@ -34,6 +34,10 @@ public class OrbProjectile : MonoBehaviour
             _moveDirection = (targetPosition - transform.position).normalized;
         }
     }
+    public GameObject GetTarget()
+    {
+        return _hasTarget ? _targetTransform.gameObject : null;
+    }
 
     private void Update()
     {

@@ -8,7 +8,9 @@ public class OrbDeflect : MonoBehaviour
     private void Start()
     {
         playerAnimationsController = FindFirstObjectByType<PlayerAnimationsController>();
-        Boss = GameObject.FindWithTag("Dratorsa").transform;
+        Boss = GameObject.FindWithTag("FakeDratorsa")?.transform;
+        if(Boss == null)
+            Boss = GameObject.FindWithTag("Dratorsa").transform;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -27,6 +29,7 @@ public class OrbDeflect : MonoBehaviour
             orb.ChangeCharacter(playerAnimationsController.gameObject); 
         }
     }
+    
 
     // Update is called once per frame
     void Update()

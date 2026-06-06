@@ -147,14 +147,16 @@ public class PlayerState : MonoBehaviour
 
     public bool IsBeingChased()
     {
-        return enemyAround;
+        return enemiesChasingPlayer > 0;
     }
     public void UpEnemiesChasingPlayer()
     {
+        Debug.Log("Enemy started chasing player. Total now: " + (enemiesChasingPlayer + 1));
         enemiesChasingPlayer += 1;
     }
     public void DownEnemiesChasingPlayer()
     {
+        Debug.Log("Enemy stopped chasing player. Total now: " + (enemiesChasingPlayer - 1));
         enemiesChasingPlayer -= 1;
     }
 }

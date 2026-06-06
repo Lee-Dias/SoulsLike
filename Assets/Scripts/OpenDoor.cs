@@ -5,42 +5,18 @@ public class OpenDoor : MonoBehaviour
 {
      [SerializeField] private Animator[] Animators;
      private bool playerInside = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
 
     // Update is called once per frame
-    public void Open(InputAction.CallbackContext ctx)
+    public void Open()
     {
-        if (playerInside)
-        {
             foreach (Animator animator in Animators)
             {
                 animator.SetTrigger("Open");
             }
             Destroy(this);
-        }
+        
 
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = true;
-            other.GetComponent<PlayerState>().ChangeInteractionMessageState(true);
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = false;
-            other.GetComponent<PlayerState>().ChangeInteractionMessageState(false);
-        }
     }
 
     

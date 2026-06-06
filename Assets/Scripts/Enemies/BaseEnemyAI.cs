@@ -104,6 +104,9 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     private PlayerState playerstate;
 
+    private bool sawPlayerForFirstTime = false;
+    private bool alreadyCalledChase = false;
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -173,13 +176,15 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 return; 
             }
         }
-        if(playerInAggroRange || playerInAudioRange || playerInViewRange)
+        if((playerInAggroRange || playerInViewRange) && alreadyCalledChase == false)
         {
+            alreadyCalledChase = true;
             playerstate.UpEnemiesChasingPlayer();
         }
-        else
+        else if (alreadyCalledChase && !playerInAggroRange && !playerInViewRange)
         {
-            playerstate.DownEnemiesChasingPlayer();
+                alreadyCalledChase = false; 
+                playerstate.DownEnemiesChasingPlayer();                
         }
         // === rest of your existing Update() ===
         if (!isInAttackAnimation)

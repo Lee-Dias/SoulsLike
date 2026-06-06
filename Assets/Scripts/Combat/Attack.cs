@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private LayerMask ignore;
     [SerializeField] private LayerMask layerToApplyGroundVFX;
     [SerializeField] private GameObject hitVFX;   // <--- Your VFX prefab
+    [SerializeField] private GameObject sparkVFX;  // <--- Your spark VFX prefab
     [SerializeField] private GameObject groundVFX; 
 
     private Item item;
@@ -15,6 +16,7 @@ public class Attack : MonoBehaviour
     private BaseEnemyAI enemy;
 
     private float damage;
+    private Vector3 hitPoint;
     
     private bool stop = false;
     public void SetCharacther(GameObject gameObject)
@@ -26,7 +28,7 @@ public class Attack : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & ignore) != 0 || other.GetComponent<Health>() == null) return;
 
-        Vector3 hitPoint = other.ClosestPoint(transform.position);
+        hitPoint = other.ClosestPoint(transform.position);
         if(character == null)
         {
             character = FindFirstObjectByType<BaseEnemyAI>()?.gameObject;
@@ -66,8 +68,13 @@ public class Attack : MonoBehaviour
                     health.GetHit(damage);
                 }
                 
-                if(hitPoint != null && damage > 0 && hitVFX != null && !other.CompareTag("Dratorsa"))
+                if(hitPoint != null && damage > 0 && hitVFX != null)
+                {
+                    if(other.CompareTag("Dratorsa") && this.GetComponent<OrbProjectile>() != null)
+                        return;
                     Instantiate(hitVFX, hitPoint, Quaternion.identity);
+                }
+
                 if(this.GetComponent<OrbProjectile>() != null)
                 {
                     Destroy(this.gameObject);
@@ -85,6 +92,10 @@ public class Attack : MonoBehaviour
             if (player.CanParry)
             {
                 stop = true;
+            }
+            if (player.IsDefending)
+            {
+                Instantiate(sparkVFX, hitPoint, Quaternion.identity);
             }
         }
         if(playerController != null)
@@ -121,7 +132,11 @@ public class Attack : MonoBehaviour
             if (enemyAIOther.IsInAttackAnimation)
             {
                 damage = 0;
-                playerAnimationsController.PerformParry();
+                if(playerAnimationsController.PerformParry())
+                {
+                    if(sparkVFX != null)
+                        Instantiate(sparkVFX, hitPoint, Quaternion.identity);
+                }
                 return true;
             }
         }       

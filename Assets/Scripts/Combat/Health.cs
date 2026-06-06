@@ -45,6 +45,7 @@ public class Health : MonoBehaviour
     private float timePassedSinceLastHitForAttack;
     private float timePassedSinceLastBlockMovement;
     private bool healthScaled = false;
+    private PlayerState playerstate;
     
 
     public float MaxHealth => maxHealth;
@@ -53,6 +54,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
+        playerstate = FindFirstObjectByType<PlayerState>();
         if (playerStats)
         {
             maxHealth += baseMaxHealth + (playerStats.TotalVitality * statsMultiplier);
@@ -137,6 +139,7 @@ public class Health : MonoBehaviour
             }
             if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
+                playerstate.DownEnemiesChasingPlayer();
                 this.gameObject.layer = LayerMask.NameToLayer("Default");
                 animator.SetTrigger("Die");
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);

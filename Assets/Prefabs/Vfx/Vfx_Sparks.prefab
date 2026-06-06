@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5946684221968247633}
   - component: {fileID: 4527199569252803152}
   - component: {fileID: 5517360401256279085}
+  - component: {fileID: 1373892424430661118}
   m_Layer: 0
   m_Name: Vfx_Sparks
   m_TagString: Untagged
@@ -42,7 +43,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348179269959235050}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4895,6 +4896,21 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &1373892424430661118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348179269959235050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20bb5048a1b0364096842fd2220d6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelfDestruct
+  selfDestructIn: 0.5
+  fadeOut: 0
+  fadeDuration: 1
 --- !u!1 &6781295197395383932
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,6 +94,7 @@ public class LiminalManager : MonoBehaviour
     }
     private void TeleportPlayer(Transform spawnPoint)
     {
+        
         if (spawnPoint == null)
         {
             Debug.LogError("SpawnPoint is missing!");
@@ -111,9 +112,10 @@ public class LiminalManager : MonoBehaviour
             spawnPoint.rotation
         );
         
-        ChangeEnviorment();
+        
         if (cc != null)
             cc.enabled = true;
+        ChangeEnviorment();
     }
 
     public void ChangeEnviorment()
@@ -124,7 +126,7 @@ public class LiminalManager : MonoBehaviour
         Material material;
         if (playerState.playerBonfire != null)
         {
-            if (!playerState.playerBonfire.IsNormalWorld)
+            if (playerState.playerBonfire.IsNormalWorld)
             {
                 light = GameObject.FindWithTag("DarkLight").GetComponent<Light>();
                 material = darkWorldSkyBox;
