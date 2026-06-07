@@ -176,16 +176,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
                 return; 
             }
         }
-        if((playerInAggroRange || playerInViewRange) && alreadyCalledChase == false)
-        {
-            alreadyCalledChase = true;
-            playerstate.UpEnemiesChasingPlayer();
-        }
-        else if (alreadyCalledChase && !playerInAggroRange && !playerInViewRange)
-        {
-                alreadyCalledChase = false; 
-                playerstate.DownEnemiesChasingPlayer();                
-        }
+
         // === rest of your existing Update() ===
         if (!isInAttackAnimation)
         {
@@ -211,6 +202,19 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         UpdatePerception();
         var actions = stateMachine.Update();
         actions?.Invoke();
+    }
+    private void ChangePlayerEnemiesState(bool a)
+    {
+        if(a == true && alreadyCalledChase == false)
+        {
+            alreadyCalledChase = true;
+            playerstate.UpEnemiesChasingPlayer();
+        }
+        else if(a == false && alreadyCalledChase == true)
+        {
+             alreadyCalledChase = false; 
+             playerstate.DownEnemiesChasingPlayer();                
+        }
     }
 
 
@@ -299,6 +303,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     protected virtual void OnEnterIdle()
     {
+        ChangePlayerEnemiesState(false);
         agent.isStopped = true;
         anim.SetBool("IsIdle", true);
         canAttack = true;
@@ -315,6 +320,7 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
     protected virtual void OnEnterDecide()
     {
+        ChangePlayerEnemiesState(true);
         agent.isStopped = false;
         agent.updateRotation = false;
         attackEnded = false;
@@ -322,6 +328,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         circleTimer = Random.Range(minTimeCircling, maxTimeCircling);
         Debug.Log("Deciding...");
     }
+
+
 
     protected virtual void Decide()
     {
