@@ -172,7 +172,7 @@ public class Inventory : MonoBehaviour
         // Create inventory item instance
         InventoryItem newItem = Instantiate(itemPrefab, targetSlot.transform);
         // Temporary 
-        newItem.canRemove = false;
+        newItem.canRemove = true;
         newItem.Initialize(giveItemAtStart, targetSlot);
 
 

@@ -87,6 +87,18 @@ public class Npc : MonoBehaviour
     {
         if (tag.CompareTag("Player"))
         {
+            if (firstTalk)
+            {
+                currentText = 0;
+
+            }
+            else
+            {
+                currentText = whereToStartText;
+            }
+            dialogueBox.SetActive(false);
+            
+            isTalking = false;
             playerInside = false;
             playerState.ChangeInteractionMessageState(false);
         }

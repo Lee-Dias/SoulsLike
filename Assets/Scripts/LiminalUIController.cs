@@ -226,11 +226,11 @@ public class LiminalUIController : MonoBehaviour
     // Mantém teu UpdateStatsUI original (opcional)
     public void UpdateStatsUI()
     {
-        vitalityText.text = $"Vitality: {playerStats.TotalVitality} (+{pendingUpgrades[PlayerStats.Stats.Vitality]})";
-        enduranceText.text = $"Endurance: {playerStats.TotalEndurance} (+{pendingUpgrades[PlayerStats.Stats.Endurance]})";
-        manaText.text = $"Mana: {playerStats.TotalMana} (+{pendingUpgrades[PlayerStats.Stats.Mana]})";
-        defenseText.text = $"Defense: {playerStats.TotalDefense} (+{pendingUpgrades[PlayerStats.Stats.Defense]})";
-        strengthText.text = $"Strength: {playerStats.TotalStrength} (+{pendingUpgrades[PlayerStats.Stats.Strength]})";
-        dexterityText.text = $"Dexterity: {playerStats.TotalDexterity} (+{pendingUpgrades[PlayerStats.Stats.Dexterity]})";
+        vitalityText.text = $"Vitality: {playerStats.TotalVitality}  -  ({pendingUpgrades[PlayerStats.Stats.Vitality]})";
+        enduranceText.text = $"Endurance: {playerStats.TotalEndurance} - ({pendingUpgrades[PlayerStats.Stats.Endurance]})";
+        manaText.text = $"Mana: {playerStats.TotalMana} - ({pendingUpgrades[PlayerStats.Stats.Mana]})";
+        defenseText.text = $"Defense: {playerStats.TotalDefense} - ({pendingUpgrades[PlayerStats.Stats.Defense]})";
+        strengthText.text = $"Strength: {playerStats.TotalStrength} - ({pendingUpgrades[PlayerStats.Stats.Strength]})";
+        dexterityText.text = $"Dexterity: {playerStats.TotalDexterity} - ({pendingUpgrades[PlayerStats.Stats.Dexterity]})";
     }
 }
