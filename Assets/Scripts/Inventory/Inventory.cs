@@ -35,6 +35,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Item giveLeftItemAtStart;
 
     private Animator animator;
+    private int amountOfConsumable = 0;
+
 
     private List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
@@ -253,15 +255,32 @@ public class Inventory : MonoBehaviour
             auraInventory.SpawnAuraItem(item);
             return;
         }
+        if (item.itemTypePublic == ItemType.Consumable)
+        {
+            amountOfConsumable += 1;
+            if(amountOfConsumable > 1)
+            {
+                return;
+            }
+        }
+        
 
         // Normal inventory flow
         InventorySlot newSlot = CreateInventorySlot();
 
         Instantiate(itemPrefab, newSlot.transform)
             .Initialize(item, newSlot);
+        
         UpdateEquippedItems();
     }
-
+    public void AddTakeConsumable(int a)
+    {
+        amountOfConsumable += a;
+        if(amountOfConsumable == 0)
+        {
+            DestroyItemOnConsumablesSlot();
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -351,6 +370,26 @@ public class Inventory : MonoBehaviour
             return consumableItems[consumableSelectedItemNum];
         }
         return null;    
+    }
+    private void DestroyItemOnConsumablesSlot()
+    {
+        int r = 0;
+        foreach(Transform item in consumablesSlot.transform)
+        {
+
+            if(item.GetComponent<InventorySlot>() != null)
+            {
+                consumableItems[r] = null; 
+                if(item.GetComponent<InventorySlot>().myItem != null)
+                {
+                    Destroy(item.GetChild(0).gameObject);
+                }else
+                {
+                    consumableItems[r] = null;
+                }
+                r+=1;
+            }            
+        }   
     }
     public Item GetItemOnArmourSlot()
     {

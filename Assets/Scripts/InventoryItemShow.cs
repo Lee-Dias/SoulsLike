@@ -143,6 +143,7 @@ public class InventoryItemShow : MonoBehaviour
         if (item.IsHeal)
         {
             GetComponent<Health>().Heal(item.HealAmount);
+            inventory.AddTakeConsumable(-1);
         }
     }
 }

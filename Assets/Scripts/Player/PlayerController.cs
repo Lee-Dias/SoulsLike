@@ -22,19 +22,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 1.0f;
     [SerializeField] private float staminaToWasteOnDash = 20f;
 
-
-    
-    
-
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Animator animator;
     [SerializeField] private CameraSettings cameraSettings;
 
-
     [SerializeField] private Inventory inventory;
-
-
 
     [SerializeField] private PlayerAnimationsController playerAnimationsController;
     [SerializeField] private float walkAfterConsumable;
@@ -45,7 +38,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playWalkEvery = 0.5f;
 
     [Header("Animation Settings")]
-    [SerializeField] private float walkStopDelay = 0.15f; // O tempo de "carência" antes de parar
+    [SerializeField] private float walkStopDelay = 0.15f; 
     private float walkStopTimer;
 
     private float walkSoundTimer;
@@ -53,10 +46,8 @@ public class PlayerController : MonoBehaviour
     private AudioManager audioManager;
     private PlayerState playerState;
      
-    
     private bool isSprinting = false;
     private bool canDash = true;
-
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -64,16 +55,10 @@ public class PlayerController : MonoBehaviour
     private Stamina stamina;
 
     private bool isDashing = false;
-
     private bool isInvincible = false;
-
     private bool isFalling = false;
-    private float fallingTimer = 0f;
 
     public bool IsInvincible => isInvincible;
-
-
-
 
     // Input
     private Vector2 moveInput;
@@ -89,13 +74,10 @@ public class PlayerController : MonoBehaviour
             cameraTransform = Camera.main.transform;
     }
 
-    
-
     public void OnMove(InputAction.CallbackContext value)
     {
         moveInput = value.ReadValue<Vector2>();
     }
-
 
     public void OnDodge(InputAction.CallbackContext context)
     {
@@ -112,11 +94,13 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("DoDodge");
         animator.SetBool("Dodge", true);
     }
+
     private IEnumerator DashCooldown()
     {
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
+
     public void OnSprint(InputAction.CallbackContext context)
     {
         if(stamina.StaminaValue <= 10) return;
@@ -131,19 +115,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!controller.isGrounded && velocity.y < -10.0f){
-            fallingTimer += Time.deltaTime;
-            if(fallingTimer > 0.5f)
-            {
-                fallingTimer += Time.deltaTime;
-                isFalling = true;
-                animator.SetBool("Falling", true);
-            }
-        }else if(controller.isGrounded)
+        // --- LOGICA DE QUEDA CORRIGIDA ---
+        // Só cai se REALMENTE não estiver no chão e a velocidade vertical for nitidamente para baixo
+        if (!controller.isGrounded && velocity.y < -3.0f)
         {
-            fallingTimer = 0f;
+            isFalling = true;
+            animator.SetBool("IsFalling", true);
+        }
+        else if (controller.isGrounded)
+        {
             isFalling = false;
-            animator.SetBool("Falling", false);
+            animator.SetBool("IsFalling", false);
         }
         
         if(stamina.StaminaValue <= 1)
@@ -155,22 +137,19 @@ public class PlayerController : MonoBehaviour
         if (!isSprinting)
         {
             stamina.ChangeAmountOfStaminaToTake(0);
-        }else
+        }
+        else
         {
             stamina.ChangeAmountOfStaminaToTake(staminaToTakeWhileSprinting);
         }
-        
-        
 
         if (moveInput.sqrMagnitude > 0.01f && playerState.PlayerCanMove)
         {
-            // Se houver input, anda e reseta o timer
             animator.SetBool("IsWalking", true);
             walkStopTimer = walkStopDelay; 
         }
         else
         {
-            // Se não houver input, começa a contar o tempo para desligar
             walkStopTimer -= Time.deltaTime;
 
             if (walkStopTimer <= 0)
@@ -178,9 +157,11 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("IsWalking", false);
             }
         }
+        
         HandleWalkAudio();
         MoveCharacter();
     }
+
     private void ResetMovementState()
     {
         moveInput = Vector2.zero;
@@ -194,12 +175,14 @@ public class PlayerController : MonoBehaviour
 
         isSprinting = false;
     }
+
     private void HandleWalkAudio()
     {
         bool isWalking =
             playerState.PlayerCanMove &&
             moveInput.sqrMagnitude > 0.1f &&
-            !isDashing;
+            !isDashing && 
+            controller.isGrounded; 
 
         if (!isWalking)
         {
@@ -227,12 +210,24 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        if (!controller || isFalling) return;
+        if (!controller) return;
 
-        if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerState.PlayerCanMove )
+        // CRUCIAL: Primeiro aplica e checa a gravidade para manter o isGrounded atualizado constantemente
+        ApplyGravity();
+
+        // Se a animação travar o movimento voluntário
+        if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerState.PlayerCanMove)
         {
-            controller.Move(animWalk * Time.deltaTime);
-            //ResetMovementState();
+            // Forçamos o reset do Y acumulado para a animação não "esmagar" o colisor contra o chão
+            if (controller.isGrounded) 
+            {
+                velocity.y = -2f; 
+            }
+
+            // Move apenas usando a velocidade da animação + gravidade controlada
+            Vector3 blockMove = animWalk + velocity;
+            controller.Move(blockMove * Time.deltaTime);
+
             animator.SetFloat("x", 0);
             animator.SetFloat("y", 0);
             return;
@@ -245,7 +240,6 @@ public class PlayerController : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
 
-
         bool isLocked = cameraSettings != null && cameraSettings.currentLockTarget != null;
         Transform lockTarget = cameraSettings != null ? cameraSettings.currentLockTarget : null;
 
@@ -253,9 +247,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 targetDirection = Vector3.zero;
 
-        if (isLocked && lockTarget != null&& !isSprinting)
+        if (isLocked && lockTarget != null && !isSprinting)
         {
-            // Movement relative to camera, not target
             targetDirection = (camForward * moveInput.y + camRight * moveInput.x).normalized;
 
             if (targetDirection.magnitude > 0.1f)
@@ -267,7 +260,6 @@ public class PlayerController : MonoBehaviour
                 currentDirection = Vector3.Lerp(currentDirection, Vector3.zero, acceleration * Time.deltaTime);
             }
 
-            // --- Rotate player toward lock target ---
             Vector3 lookDir = (lockTarget.position - transform.position);
             lookDir.y = 0f;
             if (lookDir.sqrMagnitude > 0.01f)
@@ -275,19 +267,14 @@ public class PlayerController : MonoBehaviour
                 Quaternion lookRot = Quaternion.LookRotation(lookDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
             }                
-            
-
         }
         else
         {
-            // --- Free look rotation ---
             targetDirection = (camForward * moveInput.y + camRight * moveInput.x).normalized;
 
             if (targetDirection.magnitude > 0.1f)
             {
                 currentDirection = Vector3.Lerp(currentDirection, targetDirection, acceleration * Time.deltaTime);
-
-                // Rotate character toward movement direction
                 Quaternion targetRot = Quaternion.LookRotation(currentDirection);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
             }
@@ -297,26 +284,41 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // --- Apply movement ---
         float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
         if (isLocked)
         {
             speed /= lockedDivider;
         }
         Vector3 move = currentDirection * speed;
-        controller.Move(move * Time.deltaTime);
 
-        // --- Gravity ---
-        if (controller.isGrounded && velocity.y < 0)
-            velocity.y = -2f;
+        // Junção final das forças: Movimento horizontal + Gravidade vertical
+        Vector3 finalMovement = move + velocity;
+        controller.Move(finalMovement * Time.deltaTime);
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        // --- Animator movement inputs ---
         animator.SetFloat("x", moveInput.x);
         animator.SetFloat("y", moveInput.y);
     }
+
+    private void ApplyGravity()
+    {
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            // Força constante pequena para baixo para mantê-lo colado ao chão/rampas
+            velocity.y = -2f; 
+        }
+        else
+        {
+            // Aplica gravidade normalmente se estiver no ar
+            velocity.y += gravity * Time.deltaTime;
+        }
+
+        // Limita a velocidade máxima de queda (terminal velocity) para evitar bugs de colisão extrema
+        if (velocity.y < -50f) 
+        {
+            velocity.y = -50f;
+        }
+    }
+
     public void SnapRotateToTarget()
     {
         if (cameraSettings == null) return;
@@ -334,7 +336,6 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
         isInvincible = true;
-        
 
         Vector3 dashDir = Vector3.zero;
 
@@ -344,7 +345,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            dashDir = -transform.forward; // default to facing direction
+            dashDir = -transform.forward;
         }
         dashDir.y = 0f;
 
@@ -360,23 +361,29 @@ public class PlayerController : MonoBehaviour
             target = start + dashDir * dashDistance/2f;
         }
 
+        // Reset do Y antes do dash para evitar que ele suba ou afunde bizarramente
+        velocity.y = 0f; 
+
         while (elapsed < dashDuration)
         {
-            // Smoothly interpolate between start and target
             Vector3 next = Vector3.Lerp(start, target, elapsed / dashDuration);
-            controller.Move(next - transform.position);
+            
+            // Inclui a gravidade mitigada durante o dash para que ele caia caso dê dash num penhasco
+            Vector3 dashMove = (next - transform.position);
+            if (!controller.isGrounded) 
+                dashMove.y += gravity * Time.deltaTime;
+            else
+                dashMove.y = -2f * Time.deltaTime;
+
+            controller.Move(dashMove);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Final snap to target position
         controller.Move(target - transform.position);
-
         animator.SetBool("Dodge", false);
-
 
         isInvincible = false;
         isDashing = false;
     }
-
 }
