@@ -25,7 +25,8 @@ MonoBehaviour:
   comboSteps:
   - name: AxeHit1
     clip: {fileID: 1827226128182048838, guid: 00a5fa0dc823ad1498aae38cc5af2611, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
     movementCurveOnCombo:
@@ -33,13 +34,19 @@ MonoBehaviour:
       endTime: 1
       speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.3
+    comboSpeed: 0.4
     blendTime: 0.01
     hitStartTime: 0.5
     hitEndTime: 0.7
+    soundStartTime: 0
+    cameraShakeTimer: 0
+    cameraShake: 0
+    activateTrail: 0
+    deActivateTrail: 0
   - name: AxeHit2
     clip: {fileID: 1827226128182048838, guid: bbb69fa55753a4b4a917be40ef8fd259, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
     movementCurveOnCombo:
@@ -47,13 +54,19 @@ MonoBehaviour:
       endTime: 1
       speed: {x: 0, y: 1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.3
+    comboSpeed: 0.4
     blendTime: 0.01
     hitStartTime: 0.2
     hitEndTime: 0.7
+    soundStartTime: 0
+    cameraShakeTimer: 0
+    cameraShake: 0
+    activateTrail: 0
+    deActivateTrail: 0
   - name: AxeHit3
     clip: {fileID: 1827226128182048838, guid: a3e1bbe28974b6e4eb7dc701fbd7d296, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 0}
     transitionWindowStart: 0.2
     transitionWindowEnd: 1
     movementCurveOnCombo:
@@ -64,7 +77,15 @@ MonoBehaviour:
       endTime: 1
       speed: {x: 0, y: -1}
     nextAnimationTriggerPoint: 1
-    comboSpeed: 0.3
+    comboSpeed: 0.4
     blendTime: 0.01
     hitStartTime: 0.2
     hitEndTime: 0.4
+    soundStartTime: 0
+    cameraShakeTimer: 0
+    cameraShake: 0
+    activateTrail: 0
+    deActivateTrail: 0
+  spawnObject: 0
+  objectToSpawn: {fileID: 0}
+  positionToSpawnObject: {x: 0, y: 0, z: 0}

@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Attack : MonoBehaviour
 {
@@ -9,10 +10,11 @@ public class Attack : MonoBehaviour
     [SerializeField] private LayerMask layerToApplyGroundVFX;
     [SerializeField] private GameObject hitVFX;   // <--- Your VFX prefab
     [SerializeField] private GameObject sparkVFX;  // <--- Your spark VFX prefab
-    [SerializeField] private GameObject groundVFX; 
+
 
     private Item item;
     private PlayerAnimationsController playerAnimationsController;
+    private AudioManager audioManager;
     
     private BaseEnemyAI enemy;
 
@@ -27,13 +29,14 @@ public class Attack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (((1 << other.gameObject.layer) & ignore) != 0 || other.GetComponent<Health>() == null) return;
+        if (((1 << other.gameObject.layer) & ignore) != 0) return;
 
         hitPoint = other.ClosestPoint(transform.position);
         if(character == null)
         {
             character = FindFirstObjectByType<BaseEnemyAI>()?.gameObject;
         }
+
 
         playerAnimationsController = character.GetComponent<PlayerAnimationsController>();
         enemy = character.GetComponent<BaseEnemyAI>();

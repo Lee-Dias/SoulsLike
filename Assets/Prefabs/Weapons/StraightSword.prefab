@@ -101,6 +101,8 @@ GameObject:
   - component: {fileID: 2532803084102517653}
   - component: {fileID: 1144921009042050477}
   - component: {fileID: 7418906438250519097}
+  - component: {fileID: -7863568608155370047}
+  - component: {fileID: 8862414430716004216}
   m_Layer: 10
   m_Name: StraightSword
   m_TagString: Untagged
@@ -145,7 +147,6 @@ MonoBehaviour:
     m_Bits: 256
   hitVFX: {fileID: 4962705371907233886, guid: 220fd1343f4ee324da96b2d71353d60a, type: 3}
   sparkVFX: {fileID: 1348179269959235050, guid: 8ca0d8e8df4f2864f931ced67a6eba97, type: 3}
-  groundVFX: {fileID: 4551737649709689300, guid: 79d3a42eef238044b8982169b24e7477, type: 3}
 --- !u!65 &7418906438250519097
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,6 +168,46 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.47, y: 0.3, z: 1.6}
   m_Center: {x: 0, y: 0.07, z: 1}
+--- !u!54 &-7863568608155370047
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782256409757100375}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!114 &8862414430716004216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782256409757100375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52d1e5345c395641b482217c8804ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.CameraSwitcher
+  m_Cameras: []
 --- !u!1 &4554110170808884714
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +487,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8070233972671473392}
-  m_Layer: 10
+  - component: {fileID: 500992710109469309}
+  - component: {fileID: 1479825591956931938}
+  - component: {fileID: 5037374374860180192}
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,3 +516,66 @@ Transform:
   - {fileID: 6465121788611956445}
   m_Father: {fileID: 2532803084102517653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &500992710109469309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019196143288043141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.15, z: 1.66}
+  m_Center: {x: 0, y: 0, z: 0.93}
+--- !u!54 &1479825591956931938
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019196143288043141}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5037374374860180192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019196143288043141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509ecb438d0094546a65aa2f44e98763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  groundVFX: {fileID: 4551737649709689300, guid: 79d3a42eef238044b8982169b24e7477, type: 3}
+  hitGroundSound: {fileID: 8300000, guid: 1a5d3e2fb9a9b8f4e9acba3637f23c9f, type: 3}
+  volume: 0.2

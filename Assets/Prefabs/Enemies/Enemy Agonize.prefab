@@ -376,13 +376,15 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   statsMultiplier: 1.5
   baseMaxHealth: 100
-  audioClip: {fileID: 8300000, guid: 74dd660d1531475499d7ad0d4b355b45, type: 3}
+  audioClip: {fileID: 8300000, guid: 65aa9b9e260a67b4a850f204a3b0891b, type: 3}
   hit: {fileID: 8300000, guid: 0561e9bcab03f2d4ba870adae8cce721, type: 3}
   animateObject: {fileID: 0}
   playerRegenHp: 0
   doDisolve: 1
   timeToDissolve: 3
   activateAfterGetHit: {fileID: 2621986368341276698}
+  activateAfterDeath: {fileID: 0}
+  deActivateAfterDeath: {fileID: 0}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 2450826141508936221}
   hasKnockBack: 1
@@ -480,8 +482,12 @@ MonoBehaviour:
   heavyAttackChance: 0
   specialAttackChance: 0
   parryChance: 0
-  swordLight: {fileID: 0}
-  swordHeavy: {fileID: 0}
+  swordLight:
+  - {fileID: 0}
+  swordHeavy:
+  - {fileID: 0}
+  swordSpecial:
+  - {fileID: 0}
 --- !u!195 &8589064637173916862
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -548,10 +554,15 @@ MonoBehaviour:
   talkList:
   - {fileID: 8300000, guid: db705e8b223c9654bbf84654e827d63b, type: 3}
   - {fileID: 8300000, guid: e50efc0032d4a9444bdc87897e2f7458, type: 3}
-  - {fileID: 8300000, guid: 65aa9b9e260a67b4a850f204a3b0891b, type: 3}
   - {fileID: 8300000, guid: c0a0eae82a1a3f341b0d13563d18b41f, type: 3}
   - {fileID: 8300000, guid: 4b1b68e26aef66e409cb9263d73ccab9, type: 3}
   - {fileID: 8300000, guid: 8749d51db9511d540bdca3c0349ff44f, type: 3}
+  - {fileID: 8300000, guid: ca0c33ba31a928749a38b6cda94c5c1e, type: 3}
+  - {fileID: 8300000, guid: 30af882613989344a8931107010d46f4, type: 3}
+  - {fileID: 8300000, guid: 959012603d1670e4687bda518b14bcbf, type: 3}
+  - {fileID: 8300000, guid: 75fd7f6c0693ab64a93400227c23246c, type: 3}
+  - {fileID: 8300000, guid: 42c5dedcffe12c948abdf9e3c9000147, type: 3}
+  - {fileID: 8300000, guid: 1158a574a63c46b4aaa9c49c99a62e81, type: 3}
   minTalkInterval: 5
   maxTalkInterval: 15
 --- !u!1 &1939402725855608890
@@ -1794,7 +1805,6 @@ MonoBehaviour:
     m_Bits: 256
   hitVFX: {fileID: 4962705371907233886, guid: 220fd1343f4ee324da96b2d71353d60a, type: 3}
   sparkVFX: {fileID: 1348179269959235050, guid: 8ca0d8e8df4f2864f931ced67a6eba97, type: 3}
-  groundVFX: {fileID: 4551737649709689300, guid: 79d3a42eef238044b8982169b24e7477, type: 3}
 --- !u!1 &7630465554096430453
 GameObject:
   m_ObjectHideFlags: 0

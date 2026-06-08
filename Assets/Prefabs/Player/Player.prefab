@@ -5224,7 +5224,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7137747774390187588}
-  - {fileID: 7021564953495151978}
   - {fileID: 6721650425029743013}
   - {fileID: 4014063839113495935}
   - {fileID: 6286620938879001918}
@@ -5729,12 +5728,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3353133030633854394}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.5072616, y: -0.50725216, z: 0.49263915, w: 0.4926333}
+  m_LocalPosition: {x: -0.012329183, y: -0.8336076, z: 0.26364398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6927554807057637541}
+  m_Father: {fileID: 254811630789749981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9209590958940791528
 MonoBehaviour:
@@ -5743,7 +5742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3353133030633854394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a300d4714775d864d8b6ce86fd2ece1b, type: 3}
   m_Name: 
@@ -6182,6 +6181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3219473194574814033}
+  - {fileID: 7021564953495151978}
   m_Father: {fileID: 8688590861514101673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5322269720170794400
@@ -7834,6 +7834,8 @@ MonoBehaviour:
   doDisolve: 0
   timeToDissolve: 0
   activateAfterGetHit: {fileID: 0}
+  activateAfterDeath: {fileID: 0}
+  deActivateAfterDeath: {fileID: 0}
   soulPrefab: {fileID: 0}
   soulSpawnPoint: {fileID: 0}
   hasKnockBack: 1
@@ -7850,6 +7852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   staminaRegen: 5
+  timeToRegenStaminaAfterTake: 2
 --- !u!114 &6948016333332140338
 MonoBehaviour:
   m_ObjectHideFlags: 0

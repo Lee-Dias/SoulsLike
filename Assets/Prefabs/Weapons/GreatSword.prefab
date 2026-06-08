@@ -221,6 +221,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4080300200268786600}
+  - component: {fileID: 2360144232181718753}
+  - component: {fileID: 3159803682751652434}
+  - component: {fileID: 1216159742175480584}
   m_Layer: 0
   m_Name: GreatSwordFinal
   m_TagString: Untagged
@@ -246,6 +249,69 @@ Transform:
   - {fileID: 7986178549650211692}
   m_Father: {fileID: 2919506956756601180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2360144232181718753
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741351944896753938}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 1.5, z: 0.1}
+  m_Center: {x: 0, y: 1.34, z: 0}
+--- !u!114 &3159803682751652434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741351944896753938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509ecb438d0094546a65aa2f44e98763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundChecker
+  groundVFX: {fileID: 4551737649709689300, guid: 79d3a42eef238044b8982169b24e7477, type: 3}
+  hitGroundSound: {fileID: 8300000, guid: f566a7cdefb26e94b801b46fe144a184, type: 3}
+  volume: 0.2
+--- !u!54 &1216159742175480584
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741351944896753938}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4344464000994889377
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +477,7 @@ GameObject:
   - component: {fileID: 2919506956756601180}
   - component: {fileID: 5720092133933593088}
   - component: {fileID: 947539419989438508}
+  - component: {fileID: 6288330366160413959}
   m_Layer: 10
   m_Name: GreatSword
   m_TagString: Untagged
@@ -454,7 +521,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   hitVFX: {fileID: 4962705371907233886, guid: 220fd1343f4ee324da96b2d71353d60a, type: 3}
-  groundVFX: {fileID: 4551737649709689300, guid: 79d3a42eef238044b8982169b24e7477, type: 3}
+  sparkVFX: {fileID: 0}
 --- !u!65 &947539419989438508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -476,3 +543,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 2, z: 0.2}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!54 &6288330366160413959
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675289711917394645}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1

@@ -12003,7 +12003,6 @@ GameObject:
   - component: {fileID: 8732133008951489219}
   - component: {fileID: 4121079343462508044}
   - component: {fileID: 373151178062833056}
-  - component: {fileID: 8667737278674108648}
   m_Layer: 6
   m_Name: Mini Boss
   m_TagString: Untagged
@@ -12078,6 +12077,8 @@ MonoBehaviour:
   doDisolve: 0
   timeToDissolve: 0
   activateAfterGetHit: {fileID: 0}
+  activateAfterDeath: {fileID: 0}
+  deActivateAfterDeath: {fileID: 0}
   soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
   soulSpawnPoint: {fileID: 8956698960389246621}
   hasKnockBack: 1
@@ -12192,8 +12193,13 @@ MonoBehaviour:
   heavyAttackChance: 20
   specialAttackChance: 0
   parryChance: 0
-  swordLight: {fileID: 0}
-  swordHeavy: {fileID: 0}
+  swordLight:
+  - {fileID: 8300000, guid: ea7f508e4eda75d48ab0a91f78c5b487, type: 3}
+  - {fileID: 8300000, guid: e64398a95e797e84d83891873e820edb, type: 3}
+  swordHeavy:
+  - {fileID: 8300000, guid: 408d141d392b285419a44b878b1c8ba8, type: 3}
+  swordSpecial:
+  - {fileID: 8300000, guid: e524c3256fdb3504cb74357be07fc734, type: 3}
 --- !u!195 &4121079343462508044
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12229,25 +12235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockOnSymbol
   lockOnSymbol: {fileID: 0}
---- !u!114 &8667737278674108648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622238932042262626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ff402b2d4925a49995859fd1b0c2c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomTalk
-  talkList:
-  - {fileID: 8300000, guid: ea7f508e4eda75d48ab0a91f78c5b487, type: 3}
-  - {fileID: 8300000, guid: e64398a95e797e84d83891873e820edb, type: 3}
-  - {fileID: 8300000, guid: 408d141d392b285419a44b878b1c8ba8, type: 3}
-  - {fileID: 8300000, guid: e524c3256fdb3504cb74357be07fc734, type: 3}
-  minTalkInterval: 4
-  maxTalkInterval: 10
 --- !u!1 &1732948730879679777
 GameObject:
   m_ObjectHideFlags: 0
