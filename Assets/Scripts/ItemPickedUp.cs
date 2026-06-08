@@ -11,6 +11,7 @@ public class ItemPickedUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private Image itemIcon;
     [SerializeField] private GameObject go;
+    [SerializeField] private Animator animator;
 
     private Coroutine hideCoroutine;
 
@@ -23,11 +24,11 @@ public class ItemPickedUp : MonoBehaviour
     public void ShowItem(Item item)
     {
         if (item == null) return;
-
         itemNameText.text = item.ItemName;
         itemIcon.sprite = item.ItemIcon;
         
         go.SetActive(true);
+        animator.SetTrigger("Play");
 
         // Se já houver um timer rodando, para ele e começa um novo
         if (hideCoroutine != null) StopCoroutine(hideCoroutine);

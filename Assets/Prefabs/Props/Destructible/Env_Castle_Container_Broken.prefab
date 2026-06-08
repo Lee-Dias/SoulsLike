@@ -70,6 +70,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 364637537d1136940b72c75c02523e04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1144539818263203258}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 364637537d1136940b72c75c02523e04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3878708348090991439}
     - targetCorrespondingSourceObject: {fileID: -6408200284572252168, guid: 364637537d1136940b72c75c02523e04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4555397258996804531}
@@ -119,6 +122,29 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &3878708348090991439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644272332316877204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021f2cbc0bb66fd4991837bd2347f000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  itemToGive:
+    itemToGive: {fileID: 11400000, guid: 9e3faa48344458647b2ccded8ba113a9, type: 2}
+    Chance: 10
+  chanceToGiveAndAmount:
+  - SoulsToGive: 50
+    Chance: 30
+  - SoulsToGive: 100
+    Chance: 20
+  - SoulsToGive: 200
+    Chance: 10
+  soulPrefab: {fileID: 8022484417647071006, guid: 9ea1d885efeee1f4e9078ece2c82e8d6, type: 3}
 --- !u!1 &8607543680390345111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6376964077739430574, guid: 364637537d1136940b72c75c02523e04, type: 3}
