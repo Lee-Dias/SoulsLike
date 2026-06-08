@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
+using Unity.Collections;
 
 
 public class Health : MonoBehaviour
@@ -28,6 +29,8 @@ public class Health : MonoBehaviour
     [SerializeField] private float timeToDissolve; 
 
     [SerializeField] private GameObject activateAfterGetHit; 
+    [SerializeField] private GameObject activateAfterDeath; 
+    [SerializeField] private GameObject deActivateAfterDeath; 
 
     [Header("Soul")]
     [SerializeField] private GameObject soulPrefab;
@@ -112,22 +115,27 @@ public class Health : MonoBehaviour
         timePassedSinceLastHitForAttack += Time.deltaTime;
         timePassedSinceLastBlockMovement += Time.deltaTime;
     }
-    private void TakeDamage(float damage)
+    private void TakeDamage(float damage, bool shield)
     {
-        health -= damage - (playerStats != null ? (playerStats.TotalDefense * 0.5f) : 0) - (playerState != null ? playerState.getAmountToDefend() : 0);
+        damage = damage - (playerStats != null ? (playerStats.TotalDefense * 0.5f) : 0) - (playerState != null ? playerState.getAmountToDefend() : 0);
+        if (damage < 0)
+        {
+            damage = 5;
+        }
+        health -= damage;
     }
-    public void GetHit(float damage)
+    public void GetHit(float damage, bool hitShield )
     {
         if (activateAfterGetHit)
         {
             activateAfterGetHit.SetActive(true);
         }
-        TakeDamage(damage);
+        TakeDamage(damage, hitShield);
         if (health > 0 && hasKnockBack && playerState == null) animator.SetTrigger("GetHit");
 
         audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
-        if (playerState != null) if(!playerState.IsDefending()) animator.SetTrigger("GetHit");
+        if (playerState != null) if(!playerstate.IsDefending()) animator.SetTrigger("GetHit");
         
         
         if (health <= 0)
@@ -139,6 +147,14 @@ public class Health : MonoBehaviour
             }
             if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
+                if (activateAfterDeath != null)
+                {
+                    activateAfterDeath.SetActive(true);
+                }
+                if(deActivateAfterDeath != null)
+                {
+                    deActivateAfterDeath.SetActive(false);
+                }
                 playerstate.DownEnemiesChasingPlayer();
                 this.gameObject.layer = LayerMask.NameToLayer("Default");
                 animator.SetTrigger("Die");

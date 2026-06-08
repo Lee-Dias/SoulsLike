@@ -202,7 +202,7 @@ public class PlayerAnimationsController : MonoBehaviour
             {
                 if(weaponCollider != null)
                     weaponCollider.enabled = false;
-                if(shieldCollider != null)
+                if(shieldCollider != null && !isDefending)
                     shieldCollider.enabled = false;
                 if (isDoingParry)
                 {
@@ -270,7 +270,7 @@ public class PlayerAnimationsController : MonoBehaviour
         {
             if (col.TryGetComponent<Health>(out var enemy))
             { 
-                enemy.GetHit(0);
+                enemy.GetHit(0, false);
             }
         }
 
@@ -334,8 +334,13 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     public void OnDefend(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed) holdDefend = true;
-        else if (ctx.canceled) holdDefend = false;
+        if (ctx.performed) {
+            holdDefend = true;
+        }
+        else if (ctx.canceled)
+        {
+            holdDefend = false;
+        } 
     }
 
     private void HandleDefense()
@@ -345,12 +350,15 @@ public class PlayerAnimationsController : MonoBehaviour
         {
             if (!isDefending) // Evita chamar o SetBool repetidamente se já estiver a defender
             {
+                shieldCollider.enabled = true;
                 anim.SetBool("Defend", true);
                 isDefending = true;
             }
         }
         else
         {
+            if(shieldCollider != null && !isDoingParry)
+                shieldCollider.enabled = false;
             anim.SetBool("Defend", false);
             isDefending = false;
         }

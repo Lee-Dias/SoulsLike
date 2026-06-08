@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isInvincible = false;
 
+    private bool isFalling = false;
+    private float fallingTimer = 0f;
+
     public bool IsInvincible => isInvincible;
 
 
@@ -128,6 +131,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(!controller.isGrounded && velocity.y < -10.0f){
+            fallingTimer += Time.deltaTime;
+            if(fallingTimer > 0.5f)
+            {
+                fallingTimer += Time.deltaTime;
+                isFalling = true;
+                animator.SetBool("Falling", true);
+            }
+        }else if(controller.isGrounded)
+        {
+            fallingTimer = 0f;
+            isFalling = false;
+            animator.SetBool("Falling", false);
+        }
+        
         if(stamina.StaminaValue <= 1)
         {
             isSprinting = false;
@@ -141,6 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             stamina.ChangeAmountOfStaminaToTake(staminaToTakeWhileSprinting);
         }
+        
         
 
         if (moveInput.sqrMagnitude > 0.01f && playerState.PlayerCanMove)
@@ -208,7 +227,7 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        if (!controller) return;
+        if (!controller || isFalling) return;
 
         if (playerAnimationsController.ShouldBlockMovement(out Vector3 animWalk) || !playerState.PlayerCanMove )
         {

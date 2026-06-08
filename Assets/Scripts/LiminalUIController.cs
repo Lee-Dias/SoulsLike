@@ -42,6 +42,7 @@ public class LiminalUIController : MonoBehaviour
     private bool menuIsActive = false;
     private Animator animator;
     private PlayerAnimationsController playerAnimationsController;
+    private float justClosedMenu = 4f;
     [SerializeField]private BonfireMenuCamera cameraSettings;
 
     void Start()
@@ -60,10 +61,14 @@ public class LiminalUIController : MonoBehaviour
 
         UpdateUI();
     }
+    private void Update()
+    {
+        justClosedMenu += Time.deltaTime;
+    }
 
     public void BonfireMenu(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings || playerState.IsBeingChased() || playerState.IsOnInventory) return;
+        if (!ctx.performed || (!playerState.IsOnBonfire && !playerState.PlayerCanMove) || playerAnimationsController.IsAttacking || playerState.IsInSettings || playerState.IsBeingChased() || playerState.IsOnInventory || justClosedMenu < 3f) return;
         if (playerState.playerIsInBonfire)
         {
             if (!menuIsActive)
@@ -121,7 +126,7 @@ public class LiminalUIController : MonoBehaviour
         cameraSettings.ChangeToPlayer();
         ResetUpgrades();
         ResumeAllSpawners();
-        
+        justClosedMenu = 0f;
         if(playerState.IsOnBonfire) StartCoroutine(ResetRoutine());
         
     }

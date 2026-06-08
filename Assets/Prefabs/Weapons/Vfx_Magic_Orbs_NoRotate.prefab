@@ -158,7 +158,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1.2071267, y: 0.098927185, z: 2.9960787, w: 1}
+        m_Name: Orb Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -269,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 40
   rotationSpeed: 30
+  visualEffect: {fileID: 7373356479463252150}
 --- !u!114 &1900425582448154316
 MonoBehaviour:
   m_ObjectHideFlags: 0

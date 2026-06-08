@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -65,13 +66,19 @@ public class Attack : MonoBehaviour
                 }
                 else
                 {
-                    health.GetHit(damage);
+                    if(other.gameObject.layer == LayerMask.GetMask("Shield"))
+                        health.GetHit(damage, true);
+                    health.GetHit(damage, false);
                 }
                 
                 if(hitPoint != null && damage > 0 && hitVFX != null)
                 {
                     if(other.CompareTag("Dratorsa") && this.GetComponent<OrbProjectile>() != null)
+                    {
+                        Destroy(this.gameObject);
                         return;
+                    }
+                        
                     Instantiate(hitVFX, hitPoint, Quaternion.identity);
                 }
 
@@ -87,6 +94,11 @@ public class Attack : MonoBehaviour
     {
         PlayerAnimationsController player = other.GetComponent<PlayerAnimationsController>();
         PlayerController playerController = other.GetComponent<PlayerController>();
+        if(other.gameObject.layer == LayerMask.GetMask("Shield"))
+        {
+            playerController = other.GetComponentInParent<PlayerController>();
+            player = other.GetComponentInParent<PlayerAnimationsController>();
+        }
         if(player != null)
         {
             if (player.CanParry)
@@ -118,6 +130,10 @@ public class Attack : MonoBehaviour
             {
                 return;
             }
+            stop = true;
+            return;
+        }else if (playerAnimationsController.IsDefending)
+        {
             stop = true;
             return;
         }

@@ -44,7 +44,6 @@ public class Shooter : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         projectile.GetComponent<OrbProjectile>().SetTarget(target, false);
-        Destroy(projectile, timeBetweenShots - 1f); // Destroy the projectile after 5 seconds to prevent clutter
     }
     private void OnTriggerEnter(Collider other)
     {

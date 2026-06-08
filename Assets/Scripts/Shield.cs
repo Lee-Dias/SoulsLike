@@ -21,7 +21,7 @@ public class Shield : MonoBehaviour
     {
         if (shieldHealth <= 0)
         {
-            this.GetComponent<Health>().GetHit(damage);
+            this.GetComponent<Health>().GetHit(damage, false);
         }
 
         shieldHealth -= damage;
