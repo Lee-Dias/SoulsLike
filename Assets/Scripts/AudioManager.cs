@@ -8,8 +8,9 @@ public class AudioManager : MonoBehaviour
     private static AudioManager instance;
     private AudioSource audioSource;
 
-    // Tracks currently playing clips
-    private HashSet<AudioClip> playingClips = new HashSet<AudioClip>();
+    // Guarda o tempo (Time.time) em que cada clip foi tocado pela última vez
+    private Dictionary<AudioClip, float> lastPlayedTime = new Dictionary<AudioClip, float>();
+    private const float duplicateWindow = 0.3f;
 
     void Awake()
     {
@@ -39,8 +40,8 @@ public class AudioManager : MonoBehaviour
         else
             return;
 
-        // Don't play if this clip is already playing
-        if (playingClips.Contains(clipToPlay))
+        // Bloqueia se foi tocado nos últimos 0.3 segundos
+        if (lastPlayedTime.TryGetValue(clipToPlay, out float lastTime) && Time.time - lastTime < duplicateWindow)
             return;
 
         StartCoroutine(PlayDelayed(() =>
@@ -48,13 +49,14 @@ public class AudioManager : MonoBehaviour
             if (clipToPlay == null)
                 return;
 
-            // Mark as playing
-            playingClips.Add(clipToPlay);
+            // Regista o tempo atual
+            lastPlayedTime[clipToPlay] = Time.time;
 
             GameObject tempGO = new GameObject("TempAudio");
             tempGO.transform.position = audioSourceTransform != null ? audioSourceTransform.position : transform.position;
 
             AudioSource tempSource = tempGO.AddComponent<AudioSource>();
+            tempSource.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
             tempSource.clip = clipToPlay;
             tempSource.volume = volume;
             tempSource.pitch = UnityEngine.Random.Range(pitchmin, pitchmax);
@@ -66,16 +68,7 @@ public class AudioManager : MonoBehaviour
             float destroyDelay = clipToPlay.length / tempSource.pitch;
             Destroy(tempGO, destroyDelay);
 
-            // Unmark after clip finishes
-            StartCoroutine(RemoveClipAfterDelay(clipToPlay, destroyDelay));
-
         }, delay));
-    }
-
-    private IEnumerator RemoveClipAfterDelay(AudioClip clip, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        playingClips.Remove(clip);
     }
 
     private IEnumerator PlayDelayed(Action playAction, float delay)

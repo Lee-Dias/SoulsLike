@@ -4,12 +4,15 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] tabsToActivate;
     [SerializeField] private Button buttonToSelect;
     [SerializeField] private Slider gammaSlider;
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private VolumeProfile[] volumeProfile;
 
     private PlayerState playerState;
@@ -93,5 +96,12 @@ public class SettingsManager : MonoBehaviour
                 lgg.gamma.value = newGamma;
             }
         }
+    }
+    public void ChangeVolumeValue()
+    {
+        if (audioMixer == null || volumeSlider == null) return;
+
+        float dB = Mathf.Lerp(-20f, 20f, volumeSlider.value);
+        audioMixer.SetFloat("Master", dB);
     }
 }
