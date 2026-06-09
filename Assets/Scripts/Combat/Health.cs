@@ -161,7 +161,7 @@ public class Health : MonoBehaviour
                 this.gameObject.layer = LayerMask.NameToLayer("Default");
                 if(playOnDeath != null)
                 {
-                    audioManager.PlayAudio(playOnDeath, null, 0 , hurtVolume, 0.9f, 1.1f);
+                    audioManager.PlayAudio(playOnDeath, null, 0 , 1f, 0.9f, 1.1f);
                 }
                 animator.SetTrigger("Die");
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);

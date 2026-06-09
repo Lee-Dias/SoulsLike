@@ -16,13 +16,19 @@ MonoBehaviour:
   name: Axe
   icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   description: 21312312312
-  value: 1
-  damage: 20
+  damage: 25
   animationsData: {fileID: 11400000, guid: b74f303c2103edf4c99c4a4a2029af88, type: 2}
+  weapon: {fileID: 0}
   armorQuantity: 0
-  bodyPlace: 0
   duration: 0
+  isHeal: 0
+  healAmount: 0
+  isDamageBuff: 0
+  damageBuffAmount: 0
+  animation: {fileID: 0}
+  auraData: {fileID: 0}
   buff: 0
-  buffType: 0
+  statToBuff: []
   buffQuantity: 0
-  buffCooldown: 0
+  destroyOnUse: 0
+  delayToUse: 0

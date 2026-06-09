@@ -25,7 +25,8 @@ MonoBehaviour:
   comboSteps:
   - name: 
     clip: {fileID: -623603649343465320, guid: 7410928ea1a44ea4782bf5ed0a68f00b, type: 3}
-    soundEffectCombo: {fileID: 0}
+    soundEffectCombo:
+    - {fileID: 8300000, guid: fabdd8919c3727d4a889b18de95c7cb5, type: 3}
     transitionWindowStart: 0
     transitionWindowEnd: 0
     movementCurveOnCombo: []
@@ -34,6 +35,7 @@ MonoBehaviour:
     blendTime: 0.01
     hitStartTime: 0.4
     hitEndTime: 0.7
+    soundStartTime: 0
     cameraShakeTimer: 0.01
     cameraShake: 0.01
     activateTrail: 0.3
