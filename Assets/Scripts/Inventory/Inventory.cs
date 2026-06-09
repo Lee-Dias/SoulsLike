@@ -245,7 +245,7 @@ public class Inventory : MonoBehaviour
         inventorySlots.Add(slot);
         return slot;
     }
-    public void SpawnInventoryItem(Item item)
+    public void SpawnInventoryItem(Item item, bool newItem = true)
     {
         if (item == null) return;
         
@@ -255,7 +255,7 @@ public class Inventory : MonoBehaviour
             auraInventory.SpawnAuraItem(item);
             return;
         }
-        if (item.itemTypePublic == ItemType.Consumable)
+        if (item.itemTypePublic == ItemType.Consumable && newItem)
         {
             amountOfConsumable += 1;
             if(amountOfConsumable > 1)

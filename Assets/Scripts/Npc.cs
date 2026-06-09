@@ -93,6 +93,7 @@ public class Npc : MonoBehaviour
     {
         if (tag.CompareTag("Player"))
         {
+            audioSource.Stop();
             if (firstTalk)
             {
                 currentText = 0;

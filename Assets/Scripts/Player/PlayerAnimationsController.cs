@@ -329,6 +329,8 @@ public class PlayerAnimationsController : MonoBehaviour
         if (equippedShield)
         {
             HandleAttackInput(equippedShield?.AnimationsData?.Parry);
+
+            
         }
         else
         {
@@ -437,7 +439,7 @@ public class PlayerAnimationsController : MonoBehaviour
             {
                 isParryAttack = animData == equippedShield.AnimationsData.Parry;  
             }
-            else
+            else if(parryCalled)
             {
                 isParryAttack = animData == equippedWeapon.AnimationsData.Parry;    
             }
@@ -494,8 +496,11 @@ public class PlayerAnimationsController : MonoBehaviour
 
             // If queued animation is parry
             if (isParryAttack)
+            {
                 isDoingParry = true;
                 canParry = true;
+            }
+
         }
         
     }

@@ -62,7 +62,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             this.activeSlot.myItem = null;
-            inventory.SpawnInventoryItem(myItem);
+            inventory.SpawnInventoryItem(myItem,false);
             Destroy(this.gameObject);
         }
     }

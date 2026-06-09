@@ -15,6 +15,7 @@ public class ActivateMiniBoss : MonoBehaviour
     [SerializeField] private Transform vfxPostion;
     [SerializeField] private float timeToActivateAfter = 1f;
     [SerializeField] private AudioClip audioToPlay;
+    [SerializeField] private AudioSource audioSource;
 
     private AudioManager audioManager;
     private PlayerState playerState;
@@ -75,6 +76,7 @@ public class ActivateMiniBoss : MonoBehaviour
             if(doorsAnimator != null)
                 doorsAnimator.SetTrigger("Close");
             audioManager.PlayAudio(audioToPlay, null , 0.4f);
+            audioSource.Play();
             done = true;
             playerState.ChangeInteractionMessageState(false);
             enemyAnimator.SetTrigger("Start");

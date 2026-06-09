@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,8 @@ public class TeleportInSameRealm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        TeleportPlayer();
+        if(other.CompareTag("Player"))
+            TeleportPlayer();
     }
     public void TeleportPlayer()
     {
@@ -21,13 +23,22 @@ public class TeleportInSameRealm : MonoBehaviour
             scene.SetActive(true);
         }
         teleportScript.TeleportPlayer(positionToTeleport.transform);
-        
-    } 
+        StartCoroutine(SetYawDelayed());
+    }
+
+    private IEnumerator SetYawDelayed()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CameraSettings cam = FindFirstObjectByType<CameraSettings>();
+        if (cam != null)
+        {
+            cam.SetYaw(positionToTeleport.transform.eulerAngles.y);
+        }
+    }
     public void OnBoss(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         TeleportPlayer();
-        Debug.Log("Boss");
     }
 
 

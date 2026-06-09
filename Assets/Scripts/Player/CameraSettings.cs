@@ -63,6 +63,11 @@ public class CameraSettings : MonoBehaviour
         currentCameraDistance = offset.magnitude;
         UpdateCameraTransform(editMode: true);
     }
+    public void SetYaw(float newYaw)
+    {
+        yaw = newYaw;
+        UpdateCameraTransform();
+    }
 
     void Start()
     {
