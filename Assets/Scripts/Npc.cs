@@ -9,6 +9,8 @@ public class Npc : MonoBehaviour
     [SerializeField] private Item itemToGive;   
     [SerializeField] private GameObject dialogueBox;   
     [SerializeField] private string[] dialogueText; // Texto que o NPC vai falar (pode ser expandido para uma lista de falas, se necessário)
+    [SerializeField] private AudioSource audioSource; // Texto que o NPC vai falar (pode ser expandido para uma lista de falas, se necessário)
+    [SerializeField] private AudioClip[] dialogueAudio; // Texto que o NPC vai falar (pode ser expandido para uma lista de falas, se necessário)
     private Inventory inventory;
     private PlayerState playerState;
     private bool playerInside = false;
@@ -16,6 +18,7 @@ public class Npc : MonoBehaviour
     private bool firstTalk = true; 
     private int currentText = 0;
     private int whereToStartText = 1;
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -48,10 +51,13 @@ public class Npc : MonoBehaviour
             if (currentText < dialogueText.Length)
             {
                 text.text = dialogueText[currentText];
+                audioSource.Stop();
+                audioSource.PlayOneShot(dialogueAudio[currentText]);
                 currentText += 1;
             }
             else
             {
+                audioSource.Stop();
                 currentText = whereToStartText;
                 if (firstTalk)
                 {

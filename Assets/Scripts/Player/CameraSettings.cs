@@ -135,6 +135,11 @@ public class CameraSettings : MonoBehaviour
             })
             .FirstOrDefault();
 
+        if (bestTarget.gameObject.CompareTag("Dratorsa"))
+        {
+            return;
+        }
+
         if (bestTarget != null)
         {
             currentLockTarget = bestTarget;
