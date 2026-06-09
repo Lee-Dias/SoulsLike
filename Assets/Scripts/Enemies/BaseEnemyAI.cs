@@ -128,7 +128,60 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     }
     public virtual void ResetEnemy()
     {
+        // --- NavMesh ---
+        agent.ResetPath();
+        agent.isStopped = false;
+        agent.speed = baseSpeed;
+        agent.updateRotation = true;
+
+        // --- Flags de combate ---
+        attackEnded = false;
+        canAttack = true;
+        isInAttackAnimation = false;
+        isDead = false;
+        HasNoShield = false;
+
+        // --- Círculo / decisão ---
+        circleTimer = 0f;
+        circleDirection = 1f;
+        timesCircledSinceLastAttack = 0;
+        lastDecisionRoll = 0f; // campo privado, muda para protected
+
+        // --- First Attack ---
+        if (hasPredifinedFirstAttack)
+        {
+            doneFirstAttack = false;
+            viewRange = firstAttackViewDistanceToActivate;
+            audioRange = firstAttackDistanceToActivate;
+        }
+        else
+        {
+            doneFirstAttack = true;
+        }
+
+        // --- Perceção ---
+        playerInViewRange = false;
+        playerInAudioRange = false;
+        playerInAggroRange = false;
+
+        // --- Spawn delay ---
+        isSpawnDelayed = false;
+        spawnTimer = 0f;
+
+        // --- Aggro no PlayerState ---
+        alreadyCalledChase = false; // campo privado, muda para protected
+        sawPlayerForFirstTime = false; // idem
+
+        // --- Animações ---
         animManager.Stop();
+        anim.SetBool("IsIdle", true);
+        anim.SetFloat("x", 0);
+        anim.SetFloat("y", 0);
+        anim.Rebind(); // reseta todos os triggers/states do Animator
+
+        // --- FSM volta ao Idle ---
+        stateMachine = new StateMachine(idleState);
+        idleState.EntryActions?.Invoke();
     }
     public float DamageToDeal()
     {

@@ -10,30 +10,30 @@ public class AreaResetter : MonoBehaviour
         public Quaternion initialRot;
         public Health healthComp;
         public Destructible destComp;
-        internal NavMeshAgent agent;
+        public NavMeshAgent agent;
+        public BaseEnemyAI enemyAI;
     }
 
     private List<ObjectState> childStates = new List<ObjectState>();
 
     void Awake() {
-        // Pega todos os Transforms filhos, netos, etc. (o 'true' inclui objetos desativados)
         Transform[] allChildren = GetComponentsInChildren<Transform>(true);
 
         foreach (Transform child in allChildren) {
-            // Ignora o próprio objeto onde o script está (o Pai de todos)
             if (child == transform) continue;
 
             Health h = child.GetComponent<Health>();
             Destructible d = child.GetComponent<Destructible>();
 
-            // Só adiciona à lista se tiver pelo menos um dos dois componentes
             if (h != null || d != null) {
                 childStates.Add(new ObjectState {
                     obj = child.gameObject,
                     initialPos = child.localPosition,
                     initialRot = child.localRotation,
                     healthComp = h,
-                    destComp = d
+                    destComp = d,
+                    agent = child.GetComponent<NavMeshAgent>(),      // ← was never assigned
+                    enemyAI = child.GetComponent<BaseEnemyAI>()      // ← cache it too
                 });
             }
         }
@@ -41,35 +41,38 @@ public class AreaResetter : MonoBehaviour
 
     public void ResetArea() {
         foreach (var state in childStates) {
-            // 1. Reativa o objeto (caso tenha sido feito SetActive(false))
-            state.obj.SetActive(true); 
+            // 1. Reativa o objeto
+            state.obj.SetActive(true);
 
-            // 2. Reseta posição e rotação
-
-
-            // 3. Reseta a vida se tiver o componente Health
-
-
-            // 4. Reseta o estado de destruído se tiver o componente Destructible
-            if (state.destComp != null) {
+            // 2. Desativa o NavMeshAgent antes de mover, senão ele resiste ao teleport
+            if (state.agent != null) {
+                state.agent.enabled = false;
             }
 
-
-
-
-            if (state.healthComp != null) {
-                state.healthComp.ResetHealth();
-            }
-            if (state.obj.GetComponent<BaseEnemyAI>() != null) {
-                state.obj.GetComponent<BaseEnemyAI>().ResetEnemy();
-            }
+            // 3. Reseta posição e rotação
             state.obj.transform.localPosition = state.initialPos;
             state.obj.transform.localRotation = state.initialRot;
 
+            // 4. Reativa o NavMeshAgent depois de mover
+            if (state.agent != null) {
+                state.agent.enabled = true;
+                state.agent.ResetPath();
+            }
 
+            // 5. Reseta health
+            if (state.healthComp != null) {
+                state.healthComp.ResetHealth();
+            }
 
-           
+            // 6. Reseta destrutível
+            if (state.destComp != null) {
+                
+            }
+
+            // 7. Reseta o AI por último (já tem posição e vida corretas)
+            if (state.enemyAI != null) {
+                state.enemyAI.ResetEnemy();
+            }
         }
-
     }
 }

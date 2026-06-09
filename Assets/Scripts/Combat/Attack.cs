@@ -110,7 +110,14 @@ public class Attack : MonoBehaviour
             }
             if (player.IsDefending)
             {
-                Instantiate(sparkVFX, hitPoint, Quaternion.identity);
+                if(other.gameObject.layer == LayerMask.GetMask("Shield"))
+                {
+                    Instantiate(sparkVFX, hitPoint, Quaternion.identity);
+                    Health health = player.GetComponent<Health>();
+                    health.GetHit(damage, true);
+                    stop = true;
+                    return;
+                }
             }
         }
         if(playerController != null)

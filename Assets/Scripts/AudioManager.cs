@@ -1,54 +1,56 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
-
     private AudioSource audioSource;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // Tracks currently playing clips
+    private HashSet<AudioClip> playingClips = new HashSet<AudioClip>();
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Avoid duplicates
+            Destroy(gameObject);
         }
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    public void PlayAudio(AudioClip audioClip = null, AudioClip[] clips = null, float delay = 0f, float volume = 1f,float pitchmin = 1f, float pitchmax = 1f, float spatialBlend = 0f, Transform audioSourceTransform = null, float maxDistance = 10f)
+    public void PlayAudio(AudioClip audioClip = null, AudioClip[] clips = null, float delay = 0f, float volume = 1f, float pitchmin = 1f, float pitchmax = 1f, float spatialBlend = 0f, Transform audioSourceTransform = null, float maxDistance = 10f)
     {
         if (instance == null)
             return;
 
         AudioClip clipToPlay = null;
 
-        // Pick random from list if available
         if (clips != null && clips.Length > 0)
-        {
             clipToPlay = clips[UnityEngine.Random.Range(0, clips.Length)];
-        }
         else if (audioClip != null)
-        {
             clipToPlay = audioClip;
-        }
         else
-        {
             return;
-        }
+
+        // Don't play if this clip is already playing
+        if (playingClips.Contains(clipToPlay))
+            return;
 
         StartCoroutine(PlayDelayed(() =>
         {
             if (clipToPlay == null)
                 return;
-            // Create temporary GameObject
+
+            // Mark as playing
+            playingClips.Add(clipToPlay);
+
             GameObject tempGO = new GameObject("TempAudio");
             tempGO.transform.position = audioSourceTransform != null ? audioSourceTransform.position : transform.position;
 
@@ -61,10 +63,19 @@ public class AudioManager : MonoBehaviour
             tempSource.spatialBlend = spatialBlend;
             tempSource.Play();
 
-            // Destroy after finished playing
-            Destroy(tempGO, clipToPlay.length / tempSource.pitch);
+            float destroyDelay = clipToPlay.length / tempSource.pitch;
+            Destroy(tempGO, destroyDelay);
+
+            // Unmark after clip finishes
+            StartCoroutine(RemoveClipAfterDelay(clipToPlay, destroyDelay));
 
         }, delay));
+    }
+
+    private IEnumerator RemoveClipAfterDelay(AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        playingClips.Remove(clip);
     }
 
     private IEnumerator PlayDelayed(Action playAction, float delay)
