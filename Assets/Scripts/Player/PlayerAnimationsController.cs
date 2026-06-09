@@ -25,6 +25,7 @@ public class PlayerAnimationsController : MonoBehaviour
 
     [Header("Parry Settings")]
     [SerializeField] private ParticleSystem parryVfx;
+    [SerializeField] private GameObject newParryVfx;
     [SerializeField] private float parryRadius = 10f;
     [SerializeField] private float parryTimeScale = 0.1f;   // time slowdown strength
     [SerializeField] private float parryFreezeDuration = 3f; // how long ZA WARUDO lasts
@@ -250,6 +251,8 @@ public class PlayerAnimationsController : MonoBehaviour
     {
         if(!canParry) return false;
         parryVfx.Play();
+        newParryVfx.SetActive(true);
+        newParryVfx.GetComponent<ExpandParryShockWave>().Play();
         canParry = false;
         StartCoroutine(DoTimeStop());
         audioManager.PlayAudio(timeStop);

@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.EventSystems;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class SettingsManager : MonoBehaviour
                 }
             }
         }
+    }
+    public void ChangeScene(string lp)
+    {
+        SceneManager.LoadScene(lp, LoadSceneMode.Single);
     }
 
     public void OnOpenTab(InputAction.CallbackContext context)

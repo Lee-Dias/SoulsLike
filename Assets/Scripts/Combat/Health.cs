@@ -117,7 +117,7 @@ public class Health : MonoBehaviour
     }
     private void TakeDamage(float damage, bool shield)
     {
-        damage = damage - (playerStats != null ? (playerStats.TotalDefense * 0.5f) : 0) - (shield ? playerState != null ? playerState.getAmountToDefend() : 0 : 0);
+        damage = damage - (playerStats != null ? (playerStats.TotalDefense * 0.5f) : 0) - (playerState != null ? playerState.getAmountToDefend() : 0);
         if (damage < 0)
         {
             damage = 5;

@@ -8,10 +8,6 @@ public class DestroyFloor : MonoBehaviour
     [SerializeField] private GameObject destructableParent;
 
     [SerializeField] private GameObject BlockActivate;
-    private void Start()
-    {
-        DestroyFloorr();
-    }
     public void DestroyFloorr()
     {
         BlockActivate.SetActive(true);
