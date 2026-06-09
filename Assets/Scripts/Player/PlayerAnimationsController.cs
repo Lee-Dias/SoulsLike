@@ -421,7 +421,7 @@ public class PlayerAnimationsController : MonoBehaviour
     }
     private void HandleAttackInput(CombatAnimations animData, bool wasteStamina = true)
     {
-        if (animData == null || !health.CanAttack() || !playerState.PlayerCanMove) return;
+        if (animData == null || !health.CanAttack() || !playerState.PlayerCanMove || playerController.IsFalling) return;
 
         if (inventoryManager != null)
             if(inventoryManager.IsActive)

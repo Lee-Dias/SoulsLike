@@ -7,6 +7,7 @@ public class SlotsUIHandler : MonoBehaviour
     [SerializeField]private Image weaponImage;
     [SerializeField]private Image shieldImage;
     [SerializeField]private Image consumableImage;
+    [SerializeField]private TextMeshProUGUI textMeshPro;
     [SerializeField]private Inventory inventory;
     [SerializeField]private TextMeshProUGUI auraText;
 
@@ -23,6 +24,15 @@ public class SlotsUIHandler : MonoBehaviour
         UpdateSlot(weaponImage, inventory.GetItemOnRightHand());
         UpdateSlot(shieldImage, inventory.GetItemOnLeftHand());
         UpdateSlot(consumableImage, inventory.GetItemOnConsumablesSlot());
+        if(inventory.AmountOfConsumable > 1 && inventory.GetItemOnConsumablesSlot() != null)
+        {
+            textMeshPro.text = "" + inventory.AmountOfConsumable;
+        }
+        else
+        {
+            textMeshPro.text = "";
+        }
+        
 
         auraText.text = playerStats.CrystalShards.ToString();
     }

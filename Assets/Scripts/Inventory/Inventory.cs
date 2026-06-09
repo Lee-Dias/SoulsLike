@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
     private int rightSelectedItemNum = 0; 
     private int leftSelectedItemNum = 0;
     private int consumableSelectedItemNum = 0;
-    
+    public int AmountOfConsumable => amountOfConsumable;
     void Awake()
     {
         Singleton = this;

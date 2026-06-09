@@ -64,7 +64,7 @@ public class BarrierDissolve : MonoBehaviour
         }
         else
         {
-            targetColor = baseColor * 0.01f;
+            targetColor = baseColor * 0.001f;
             targetErosion = 1.2f;
         }
 

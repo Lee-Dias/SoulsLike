@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private float hurtVolume = 1f; 
     [SerializeField] private AudioClip hit; 
+    [SerializeField] private AudioClip playOnDeath; 
     [SerializeField] private Animator animateObject; 
 
     [SerializeField] private float playerRegenHp; 
@@ -158,9 +159,13 @@ public class Health : MonoBehaviour
                 }
                 playerstate.DownEnemiesChasingPlayer();
                 this.gameObject.layer = LayerMask.NameToLayer("Default");
+                if(playOnDeath != null)
+                {
+                    audioManager.PlayAudio(playOnDeath, null, 0 , hurtVolume, 0.9f, 1.1f);
+                }
                 animator.SetTrigger("Die");
                 FindFirstObjectByType<PlayerStats>().GiveCrystalShards(this.GetComponent<BaseEnemyAI>().AuraValue);
-               if (TryGetComponent<MeleeEnemyAI>(out var meleeAI))
+                if (TryGetComponent<MeleeEnemyAI>(out var meleeAI))
                 {
                     meleeAI.enabled = false;
                 }

@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private float walkStopDelay = 0.15f; 
+    [SerializeField] private float fallDelay = 0.3f;
+    [SerializeField] float extraHeight = 10000f;
+    private float fallTimer = 0f;
+
     private float walkStopTimer;
 
     private float walkSoundTimer;
@@ -60,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private bool isFalling = false;
 
     public bool IsInvincible => isInvincible;
+    public bool IsFalling => isFalling;
 
     // Input
     private Vector2 moveInput;
@@ -118,17 +123,27 @@ public class PlayerController : MonoBehaviour
     {
         // --- LOGICA DE QUEDA CORRIGIDA ---
         // Só cai se REALMENTE não estiver no chão e a velocidade vertical for nitidamente para baixo
-        if (!controller.isGrounded && velocity.y < -3.0f)
-        {
-            isFalling = true;
-            animator.SetBool("IsFalling", true);
-        }
-        else if (controller.isGrounded)
-        {
-            isFalling = false;
-            animator.SetBool("IsFalling", false);
-        }
         
+        /*if (playerState.PlayerCanMove)
+        {
+            if (!isGrounded() && velocity.y < -3.0f)
+            {
+                fallTimer += Time.deltaTime;
+                if (fallTimer >= fallDelay)
+                {
+                    isFalling = true;
+                    animator.SetBool("Falling", true);
+                }
+            }
+            else if (isGrounded() || velocity.y >= -3.0f)
+            {
+                fallTimer = 0f;
+                isFalling = false;
+                animator.SetBool("Falling", false);
+            }
+            
+        }*/
+
         if(stamina.StaminaValue <= 1)
         {
             isSprinting = false;
@@ -161,6 +176,12 @@ public class PlayerController : MonoBehaviour
         
         HandleWalkAudio();
         MoveCharacter();
+    }
+    bool isGrounded()
+    {
+        RaycastHit hit;
+        // SphereCast pointing down from the bottom of the character's collider
+        return Physics.SphereCast(transform.position, controller.radius, Vector3.down, out hit, controller.height / 2f + extraHeight);
     }
 
     private void ResetMovementState()

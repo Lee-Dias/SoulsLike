@@ -128,7 +128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 884634090353002200}
   - component: {fileID: 5700231942943712067}
-  - component: {fileID: 8850355786488646134}
   - component: {fileID: 4657431008397968191}
   - component: {fileID: 1833234927320361621}
   - component: {fileID: 5518159972305844564}
@@ -163,55 +162,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5014119321069017834}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8850355786488646134
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5014119321069017834}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6e830b5f88891664391ff20c21c68fd5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4657431008397968191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -379,6 +329,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 33d25a11-f9da-4e7b-8b08-708f9b435d5e
     m_ActionName: 'Player/Consumable[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a024c7cb-ef79-4574-8eba-6e72ed40438c
+    m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 567d7865-c5fd-40ec-b56b-2bf75efef623
+    m_ActionName: 'Player/ChangeRightHand[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c4c2401b-3bce-407b-934b-0a48ee97f296
+    m_ActionName: 'Player/ChangeLeftHand[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5ee070ba-e98e-4f26-b408-9662b04c214d
+    m_ActionName: 'Player/ChangeConsumable[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6b33e846-830b-4320-aa54-16480dcd972d
+    m_ActionName: 'Player/OnChangeHealth[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7922d643-283e-40f8-b2d2-af6d77bed91b
+    m_ActionName: 'Player/OnAddMoney[/Keyboard/m]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e24ee5f-5bcc-431c-9ea9-789b326716dd
+    m_ActionName: 'Player/OnRestartGame[/Keyboard/0]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe6746e2-c208-44d6-825d-3a005735df84
+    m_ActionName: 'Player/OnExtraDamage[/Keyboard/k]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7ec5a5a-4de9-4456-ab6c-fe86346bb0b9
+    m_ActionName: 'Player/Options[/Keyboard/o]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98837858-a7c4-4260-b639-2b5b163f0e57
+    m_ActionName: 'Player/Boss[/Keyboard/b]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
