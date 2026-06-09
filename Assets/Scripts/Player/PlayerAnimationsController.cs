@@ -174,7 +174,7 @@ public class PlayerAnimationsController : MonoBehaviour
             }
             if(animManager.Handle.SoundActivate && !soundActivate)
             {
-                audioManager.PlayAudio(null, animManager.Handle.SoundEffectCombo, 0f);
+                audioManager.PlayAudio(null, animManager.Handle.SoundEffectCombo, 0f, 0.6f);
                 soundActivate = true;
             }
 

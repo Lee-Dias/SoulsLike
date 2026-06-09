@@ -7,6 +7,8 @@ public class DratorsaAI : BaseEnemyAI
 {
 
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private AudioClip[] soundsToPlayOnAttack;
+    [SerializeField] private float Volume;
     [SerializeField] private float delayToInstantiateProjectile = 2f;
 
     [SerializeField] private float timeDownlimit = 5f;
@@ -27,7 +29,7 @@ public class DratorsaAI : BaseEnemyAI
     protected override void Start()
     {
         base.Start();
-       timeDown = timeDownlimit;
+        timeDown = timeDownlimit;
         startHeight = agent.baseOffset;
     }
     protected override void Update()
@@ -125,6 +127,7 @@ public class DratorsaAI : BaseEnemyAI
         if(attacked) yield break; 
         Vector3 tr = this.transform.position;
         tr.y += 2f; 
+        audioManager.PlayAudio(null,soundsToPlayOnAttack,0,Volume);
         GameObject projectile = Instantiate(projectilePrefab, tr, this.transform.rotation);
         projectile.GetComponent<OrbProjectile>().SetTarget(player.transform);
         attackEnded = true;

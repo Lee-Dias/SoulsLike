@@ -6564,6 +6564,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 663d1b0793ac8714480f9705982df2e9, type: 2}
     - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
+      propertyPath: dashVolume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697246315085396423, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
       propertyPath: cameraSettings
       value: 
       objectReference: {fileID: 541377143}
@@ -10114,9 +10118,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   material: {fileID: 7819250545054057397}
-  expandDuration: 1
-  collapseDuration: 0.5
+  expandDuration: 0.5
+  collapseDuration: 0.3
   maxInnerRadius: 0.55
+  opacityStart: 0.5
+  opacityMax: 1
 --- !u!1 &9088872756825656291
 GameObject:
   m_ObjectHideFlags: 0

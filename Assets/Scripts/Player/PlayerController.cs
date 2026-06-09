@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] walk;
     [SerializeField] private AudioClip dash;
+    [SerializeField] private float dashVolume;
     [SerializeField] private float playWalkEvery = 0.5f;
 
     [Header("Animation Settings")]
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour
         meshTrail.Trail(0.6f);
         StartCoroutine(Dash());
         StartCoroutine(DashCooldown());
-        audioManager.PlayAudio(dash, null, 0 , 1, 0.9f, 1.1f);
+        audioManager.PlayAudio(dash, null, 0 , dashVolume, 0.9f, 1.1f);
         animator.SetTrigger("DoDodge");
         animator.SetBool("Dodge", true);
     }

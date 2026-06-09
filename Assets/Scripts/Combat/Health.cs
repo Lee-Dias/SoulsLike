@@ -18,7 +18,8 @@ public class Health : MonoBehaviour
     [SerializeField] private float statsMultiplier = 1.5f; 
     [SerializeField] private float baseMaxHealth = 100f; 
 
-    [SerializeField] private AudioClip audioClip; 
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private float hurtVolume = 1f; 
     [SerializeField] private AudioClip hit; 
     [SerializeField] private Animator animateObject; 
 
@@ -133,7 +134,7 @@ public class Health : MonoBehaviour
         TakeDamage(damage, hitShield);
         if (health > 0 && hasKnockBack && playerState == null) animator.SetTrigger("GetHit");
 
-        audioManager.PlayAudio(audioClip, null, 0 , 1, 0.9f, 1.1f);
+        audioManager.PlayAudio(audioClip, null, 0 , hurtVolume, 0.9f, 1.1f);
         audioManager.PlayAudio(hit, null, 0 , 1, 0.9f, 1.1f);
         if (playerState != null) if(!playerstate.IsDefending()) animator.SetTrigger("GetHit");
         

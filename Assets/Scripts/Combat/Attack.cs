@@ -106,9 +106,11 @@ public class Attack : MonoBehaviour
         {
             if (player.CanParry)
             {
+                player.PerformParry();
+                Instantiate(sparkVFX, hitPoint, Quaternion.identity);
                 stop = true;
             }
-            if (player.IsDefending)
+            /*if (player.IsDefending)
             {
                 if(other.gameObject.layer == LayerMask.GetMask("Shield"))
                 {
@@ -118,7 +120,7 @@ public class Attack : MonoBehaviour
                     stop = true;
                     return;
                 }
-            }
+            }*/
         }
         if(playerController != null)
         {
@@ -136,10 +138,10 @@ public class Attack : MonoBehaviour
     {
         if (playerAnimationsController.IsDoingParry)
         {
-            if (TryParry(other))
+            /*if (TryParry(other))
             {
                 return;
-            }
+            }*/ 
             stop = true;
             return;
         }else if (playerAnimationsController.IsDefending)
