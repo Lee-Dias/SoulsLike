@@ -24,7 +24,6 @@ public class PlayerAnimationsController : MonoBehaviour
 
 
     [Header("Parry Settings")]
-    [SerializeField] private ParticleSystem parryVfx;
     [SerializeField] private GameObject newParryVfx;
     [SerializeField] private float parryRadius = 10f;
     [SerializeField] private float parryTimeScale = 0.1f;   // time slowdown strength
@@ -250,7 +249,6 @@ public class PlayerAnimationsController : MonoBehaviour
     public bool PerformParry()
     {
         if(!canParry) return false;
-        parryVfx.Play();
         newParryVfx.SetActive(true);
         newParryVfx.GetComponent<ExpandParryShockWave>().Play();
         canParry = false;
