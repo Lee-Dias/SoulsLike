@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using LibGameAI.FSMs;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,9 +8,20 @@ public class DratorsaAI : BaseEnemyAI
 {
 
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private AudioClip[] soundsToPlayOnAttack;
+    [SerializeField] private GameObject tornadoPrefab;
+    [SerializeField] private AudioClip[] soundsToPlayOnAttackProjectile;
+    [SerializeField] private AudioClip[] soundsToPlayOnAttackTornado;
     [SerializeField] private float Volume;
+    [SerializeField] private float ChanceToSpawnTornado = 0.25f;
     [SerializeField] private float delayToInstantiateProjectile = 2f;
+    [SerializeField] private float delayToInstantiateTornado = 3f;
+
+    
+    [SerializeField] private int tornadoCount = 3;
+    [SerializeField] private float spawnRadius = 10f; 
+    [SerializeField] private float spawnDistance = 3f;   
+    [SerializeField] private float minDistance = 3f;    
+    [SerializeField] private float tornadoSpeed = 3f;     
 
     [SerializeField] private float timeDownlimit = 5f;
     
@@ -109,8 +121,15 @@ public class DratorsaAI : BaseEnemyAI
     {
         attacked = false;
         canAttack = false;
-        anim.SetTrigger("Attack");
-        StartCoroutine(SpawnProjectile());
+        float rnd = Random.value;
+        if (rnd <= ChanceToSpawnTornado)
+        {
+            StartCoroutine(SpawnTornado());
+        }
+        else
+        {
+            StartCoroutine(SpawnProjectile());
+        }
         timesCircledSinceLastAttack = 0;
         
     }
@@ -125,13 +144,68 @@ public class DratorsaAI : BaseEnemyAI
     {
         yield return new WaitForSeconds(delayToInstantiateProjectile);
         if(attacked) yield break; 
+        anim.SetTrigger("Attack");
         Vector3 tr = this.transform.position;
         tr.y += 2f; 
-        audioManager.PlayAudio(null,soundsToPlayOnAttack,0,Volume);
+        audioManager.PlayAudio(null,soundsToPlayOnAttackProjectile,0,Volume);
         GameObject projectile = Instantiate(projectilePrefab, tr, this.transform.rotation);
         projectile.GetComponent<OrbProjectile>().SetTarget(player.transform);
         attackEnded = true;
         attacked = true;
+    }
+    private IEnumerator SpawnTornado()
+    {
+        yield return new WaitForSeconds(delayToInstantiateTornado);
+        if(attacked) yield break; 
+
+        anim.SetTrigger("Attack");
+
+        Vector3 tr = transform.position;
+        tr.y -= 6f;
+
+        audioManager.PlayAudio(null, soundsToPlayOnAttackTornado, 0, Volume);
+
+
+        List<Vector3> chosenPositions = new List<Vector3>();
+
+        for (int i = 0; i < tornadoCount; i++)
+        {
+            Vector3 pos;
+            int attempts = 0;
+
+            do
+            {
+                Vector2 randomCircle = Random.insideUnitCircle * spawnRadius;
+                pos = player.transform.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+
+                attempts++;
+                if (attempts > 20) break;
+            }
+            while (!IsFarEnough(pos, chosenPositions, minDistance));
+
+            chosenPositions.Add(pos);
+
+            Vector3 dir = pos - tr;
+            dir.y = -1f;       
+            dir = dir.normalized;
+
+            Vector3 spawnPos = tr + dir * spawnDistance;
+            GameObject tornado = Instantiate(tornadoPrefab, spawnPos, transform.rotation);
+
+            tornado.GetComponent<Tornado>().SetDirectionSpeed(dir, tornadoSpeed);
+        }
+
+        attackEnded = true;
+        attacked = true;
+    }
+    private bool IsFarEnough(Vector3 newPos, List<Vector3> existingPositions, float minDist)
+    {
+        foreach (var pos in existingPositions)
+        {
+            if (Vector3.Distance(newPos, pos) < minDist)
+                return false;
+        }
+        return true;
     }
     protected override void OnEnterFirstAttack()
     {
