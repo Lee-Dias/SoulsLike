@@ -481,7 +481,7 @@ PrefabInstance:
     - target: {fileID: 6162278998255219180, guid: 1c84cd948ff12b241ba0a5c82602268e, type: 3}
       propertyPath: inventory
       value: 
-      objectReference: {fileID: 2098790605}
+      objectReference: {fileID: 0}
     - target: {fileID: 6223882584642204016, guid: 1c84cd948ff12b241ba0a5c82602268e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -788,15 +788,15 @@ PrefabInstance:
     - target: {fileID: 5058279919890064114, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: health
       value: 
-      objectReference: {fileID: 2098790608}
+      objectReference: {fileID: 0}
     - target: {fileID: 5058279919890064114, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: stamina
       value: 
-      objectReference: {fileID: 2098790607}
+      objectReference: {fileID: 0}
     - target: {fileID: 5058279919890064114, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: playerStats
       value: 
-      objectReference: {fileID: 2098790604}
+      objectReference: {fileID: 0}
     - target: {fileID: 7195718386307081976, guid: 520382aca62369b4eb282624d7c7dbcf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1157,6 +1157,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a024c7cb-ef79-4574-8eba-6e72ed40438c
     m_ActionName: 'Player/Defend[/Keyboard/leftCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98837858-a7c4-4260-b639-2b5b163f0e57
+    m_ActionName: 'Player/Boss[/Keyboard/b]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2551,7 +2555,7 @@ PrefabInstance:
     - target: {fileID: 43732050672498846, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
       propertyPath: playerStats
       value: 
-      objectReference: {fileID: 2098790604}
+      objectReference: {fileID: 0}
     - target: {fileID: 1311161454218681642, guid: de48cca969ad3f642b798b361b7d8233, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -26.000122
@@ -5816,55 +5820,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
---- !u!114 &2098790604 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4422783338112707589, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
-  m_PrefabInstance: {fileID: 2098790603}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994c852c213c1cc4682e649f0c549203, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
---- !u!114 &2098790605 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6948016333332140338, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
-  m_PrefabInstance: {fileID: 2098790603}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec7b65da50848a449ddfe68b3d8aae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory
 --- !u!4 &2098790606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4014063839113495935, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
   m_PrefabInstance: {fileID: 2098790603}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2098790607 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1379096196146726794, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
-  m_PrefabInstance: {fileID: 2098790603}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be99ddc36e1519a46979a5da2e56415d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
---- !u!114 &2098790608 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8390983452625274731, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}
-  m_PrefabInstance: {fileID: 2098790603}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a78ee1d769df64b99a45ca4851bf27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!4 &2098790609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5076251678615360261, guid: 076f3a1107fb38a4bbbfe4c0c911e17d, type: 3}

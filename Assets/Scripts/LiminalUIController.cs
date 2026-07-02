@@ -75,10 +75,6 @@ public class LiminalUIController : MonoBehaviour
             {
                 TurnOn();
             }
-            else
-            {
-                TurnOff();
-            }
 
         }else
         {

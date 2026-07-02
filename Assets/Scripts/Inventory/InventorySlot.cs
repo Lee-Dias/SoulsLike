@@ -58,7 +58,10 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         {
             Inventory.Singleton.EquipEquipment(myType, myItem);
         }
-        EquipmentManager.Singleton.UpdateUpdateEquippedAura();
+        if(EquipmentManager.Singleton != null)
+        {
+            EquipmentManager.Singleton.UpdateUpdateEquippedAura();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

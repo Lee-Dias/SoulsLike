@@ -253,8 +253,13 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
 
         animManager?.UpdatePerFrame(Time.deltaTime * timeScale);
         UpdatePerception();
-        var actions = stateMachine.Update();
-        actions?.Invoke();
+        if(stateMachine != null)
+        {
+            var actions = stateMachine.Update();
+            actions?.Invoke();
+        }
+        
+
     }
     private void ChangePlayerEnemiesState(bool a)
     {
@@ -357,7 +362,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
     protected virtual void OnEnterIdle()
     {
         ChangePlayerEnemiesState(false);
-        agent.isStopped = true;
+        if(agent != null)
+            agent.isStopped = true;
         anim.SetBool("IsIdle", true);
         canAttack = true;
         
@@ -516,7 +522,8 @@ public abstract class BaseEnemyAI : MonoBehaviour, IEnemyTimeAffectable
         {
             // Calcula quanto mover este frame
             float speed = dodgeDistance / dodgeDuration;
-            agent.Move(direction * speed * Time.deltaTime * timeScale);
+            if(agent != null)
+                agent.Move(direction * speed * Time.deltaTime * timeScale);
             
             elapsed += Time.deltaTime * timeScale;
             yield return null; // Espera pelo próximo frame

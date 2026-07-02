@@ -444,9 +444,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 577007483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532f31b318be4fb45a4b76f2600dca96, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd28725b3a8f6746b2bc63d3df6f5db, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::temp
+  m_EditorClassIdentifier: '::'
+  mouseSpeed: 700
 --- !u!1 &658725558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1017,7 @@ GameObject:
   - component: {fileID: 1268544318}
   - component: {fileID: 1268544317}
   - component: {fileID: 1268544320}
+  - component: {fileID: 1268544321}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1141,6 +1143,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1268544321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268544316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2752bc4659d2648867f5ba11d511fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1328167988
 GameObject:
   m_ObjectHideFlags: 0
