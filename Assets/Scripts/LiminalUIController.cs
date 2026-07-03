@@ -44,6 +44,7 @@ public class LiminalUIController : MonoBehaviour
     private PlayerAnimationsController playerAnimationsController;
     private float justClosedMenu = 4f;
     [SerializeField]private BonfireMenuCamera cameraSettings;
+    [SerializeField] private TMP_Text cancelText;
 
     void Start()
     {
@@ -64,6 +65,15 @@ public class LiminalUIController : MonoBehaviour
     private void Update()
     {
         justClosedMenu += Time.deltaTime;
+
+        if(totalPendingPrice == 0)
+        {
+            cancelText.text = "Return";
+        }
+        else
+        {
+            cancelText.text = "Cancel";
+        }
     }
 
     public void BonfireMenu(InputAction.CallbackContext ctx)
