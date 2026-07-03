@@ -4,9 +4,10 @@ using UnityEngine.InputSystem;
 public class LiminalDoor : MonoBehaviour
 {
     [SerializeField] private OpenDoor openDoor;
+    [SerializeField] private AudioClip audio;
 
     private PlayerState playerState;
-    private Inventory inventory;
+    private AudioManager audioManager;
 
     private bool isIn;
     private bool hasBeenOpened = false;
@@ -14,7 +15,7 @@ public class LiminalDoor : MonoBehaviour
     void Start()
     {
         playerState = FindFirstObjectByType<PlayerState>();
-        inventory = FindFirstObjectByType<Inventory>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         isIn = false;
     }
 
@@ -24,6 +25,7 @@ public class LiminalDoor : MonoBehaviour
         if (!ctx.performed || !isIn) return;
         if (hasBeenOpened) return;
         playerState.ChangeInteractionMessageState(false);
+        audioManager.PlayAudio(audio, null , 0 , 0.4f);
         hasBeenOpened = true;
         openDoor.Open();
     }
