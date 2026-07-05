@@ -802,6 +802,7 @@ Transform:
   - {fileID: 6222399000693206529}
   - {fileID: 612283216686908377}
   - {fileID: 6431682748907350397}
+  - {fileID: 733203471659725921}
   - {fileID: 5014250681591612290}
   - {fileID: 7557611535251823514}
   m_Father: {fileID: 8238893344161948944}
@@ -1379,6 +1380,59 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &5300604375575015076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 733203471659725921}
+  - component: {fileID: 710028555937937956}
+  m_Layer: 0
+  m_Name: stairs avoid falling collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &733203471659725921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300604375575015076}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.11595559, y: -0, z: -0, w: 0.9932544}
+  m_LocalPosition: {x: 18.423, y: 18.689, z: 11.557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5465384518622395597}
+  m_LocalEulerAnglesHint: {x: -13.318, y: 0, z: 0}
+--- !u!65 &710028555937937956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300604375575015076}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7372239, y: 0.69, z: 1.810016}
+  m_Center: {x: -0.20638812, y: 0, z: 0}
 --- !u!1 &5885559317808145719
 GameObject:
   m_ObjectHideFlags: 0
