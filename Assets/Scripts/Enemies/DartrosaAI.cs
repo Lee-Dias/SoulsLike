@@ -14,7 +14,7 @@ public class DratorsaAI : BaseEnemyAI
     [SerializeField] private float Volume;
     [SerializeField] private float ChanceToSpawnTornado = 0.25f;
     [SerializeField] private float delayToInstantiateProjectile = 2f;
-    [SerializeField] private float delayToInstantiateTornado = 3f;
+    [SerializeField] private float delayToInstantiateTornado = 2f;
 
     
     [SerializeField] private int tornadoCount = 3;
